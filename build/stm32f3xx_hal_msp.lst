@@ -1,0 +1,3343 @@
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f3xx_hal_msp.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.HAL_MspInit,"ax",%progbits
+  20              		.align	1
+  21              		.global	HAL_MspInit
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	HAL_MspInit:
+  27              	.LFB130:
+  28              		.file 1 "Core/Src/stm32f3xx_hal_msp.c"
+   1:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE BEGIN Header */
+   2:Core/Src/stm32f3xx_hal_msp.c **** /**
+   3:Core/Src/stm32f3xx_hal_msp.c ****   ******************************************************************************
+   4:Core/Src/stm32f3xx_hal_msp.c ****   * @file         stm32f3xx_hal_msp.c
+   5:Core/Src/stm32f3xx_hal_msp.c ****   * @brief        This file provides code for the MSP Initialization
+   6:Core/Src/stm32f3xx_hal_msp.c ****   *               and de-Initialization codes.
+   7:Core/Src/stm32f3xx_hal_msp.c ****   ******************************************************************************
+   8:Core/Src/stm32f3xx_hal_msp.c ****   * @attention
+   9:Core/Src/stm32f3xx_hal_msp.c ****   *
+  10:Core/Src/stm32f3xx_hal_msp.c ****   * Copyright (c) 2022 STMicroelectronics.
+  11:Core/Src/stm32f3xx_hal_msp.c ****   * All rights reserved.
+  12:Core/Src/stm32f3xx_hal_msp.c ****   *
+  13:Core/Src/stm32f3xx_hal_msp.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  14:Core/Src/stm32f3xx_hal_msp.c ****   * in the root directory of this software component.
+  15:Core/Src/stm32f3xx_hal_msp.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  16:Core/Src/stm32f3xx_hal_msp.c ****   *
+  17:Core/Src/stm32f3xx_hal_msp.c ****   ******************************************************************************
+  18:Core/Src/stm32f3xx_hal_msp.c ****   */
+  19:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE END Header */
+  20:Core/Src/stm32f3xx_hal_msp.c **** 
+  21:Core/Src/stm32f3xx_hal_msp.c **** /* Includes ------------------------------------------------------------------*/
+  22:Core/Src/stm32f3xx_hal_msp.c **** #include "main.h"
+  23:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE BEGIN Includes */
+  24:Core/Src/stm32f3xx_hal_msp.c **** 
+  25:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE END Includes */
+  26:Core/Src/stm32f3xx_hal_msp.c **** extern DMA_HandleTypeDef hdma_usart1_rx;
+  27:Core/Src/stm32f3xx_hal_msp.c **** 
+  28:Core/Src/stm32f3xx_hal_msp.c **** extern DMA_HandleTypeDef hdma_usart2_rx;
+  29:Core/Src/stm32f3xx_hal_msp.c **** 
+  30:Core/Src/stm32f3xx_hal_msp.c **** extern DMA_HandleTypeDef hdma_usart3_rx;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 2
+
+
+  31:Core/Src/stm32f3xx_hal_msp.c **** 
+  32:Core/Src/stm32f3xx_hal_msp.c **** /* Private typedef -----------------------------------------------------------*/
+  33:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE BEGIN TD */
+  34:Core/Src/stm32f3xx_hal_msp.c **** 
+  35:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE END TD */
+  36:Core/Src/stm32f3xx_hal_msp.c **** 
+  37:Core/Src/stm32f3xx_hal_msp.c **** /* Private define ------------------------------------------------------------*/
+  38:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE BEGIN Define */
+  39:Core/Src/stm32f3xx_hal_msp.c **** 
+  40:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE END Define */
+  41:Core/Src/stm32f3xx_hal_msp.c **** 
+  42:Core/Src/stm32f3xx_hal_msp.c **** /* Private macro -------------------------------------------------------------*/
+  43:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE BEGIN Macro */
+  44:Core/Src/stm32f3xx_hal_msp.c **** 
+  45:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE END Macro */
+  46:Core/Src/stm32f3xx_hal_msp.c **** 
+  47:Core/Src/stm32f3xx_hal_msp.c **** /* Private variables ---------------------------------------------------------*/
+  48:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE BEGIN PV */
+  49:Core/Src/stm32f3xx_hal_msp.c **** 
+  50:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE END PV */
+  51:Core/Src/stm32f3xx_hal_msp.c **** 
+  52:Core/Src/stm32f3xx_hal_msp.c **** /* Private function prototypes -----------------------------------------------*/
+  53:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE BEGIN PFP */
+  54:Core/Src/stm32f3xx_hal_msp.c **** 
+  55:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE END PFP */
+  56:Core/Src/stm32f3xx_hal_msp.c **** 
+  57:Core/Src/stm32f3xx_hal_msp.c **** /* External functions --------------------------------------------------------*/
+  58:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE BEGIN ExternalFunctions */
+  59:Core/Src/stm32f3xx_hal_msp.c **** 
+  60:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE END ExternalFunctions */
+  61:Core/Src/stm32f3xx_hal_msp.c **** 
+  62:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE BEGIN 0 */
+  63:Core/Src/stm32f3xx_hal_msp.c **** 
+  64:Core/Src/stm32f3xx_hal_msp.c **** /* USER CODE END 0 */
+  65:Core/Src/stm32f3xx_hal_msp.c **** 
+  66:Core/Src/stm32f3xx_hal_msp.c **** void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+  67:Core/Src/stm32f3xx_hal_msp.c ****                     /**
+  68:Core/Src/stm32f3xx_hal_msp.c ****   * Initializes the Global MSP.
+  69:Core/Src/stm32f3xx_hal_msp.c ****   */
+  70:Core/Src/stm32f3xx_hal_msp.c **** void HAL_MspInit(void)
+  71:Core/Src/stm32f3xx_hal_msp.c **** {
+  29              		.loc 1 71 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34 0000 82B0     		sub	sp, sp, #8
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  72:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN MspInit 0 */
+  73:Core/Src/stm32f3xx_hal_msp.c **** 
+  74:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END MspInit 0 */
+  75:Core/Src/stm32f3xx_hal_msp.c **** 
+  76:Core/Src/stm32f3xx_hal_msp.c ****   __HAL_RCC_SYSCFG_CLK_ENABLE();
+  37              		.loc 1 76 3 view .LVU1
+  38              	.LBB6:
+  39              		.loc 1 76 3 view .LVU2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 3
+
+
+  40              		.loc 1 76 3 view .LVU3
+  41 0002 0A4B     		ldr	r3, .L3
+  42 0004 9A69     		ldr	r2, [r3, #24]
+  43 0006 42F00102 		orr	r2, r2, #1
+  44 000a 9A61     		str	r2, [r3, #24]
+  45              		.loc 1 76 3 view .LVU4
+  46 000c 9A69     		ldr	r2, [r3, #24]
+  47 000e 02F00102 		and	r2, r2, #1
+  48 0012 0092     		str	r2, [sp]
+  49              		.loc 1 76 3 view .LVU5
+  50 0014 009A     		ldr	r2, [sp]
+  51              	.LBE6:
+  52              		.loc 1 76 3 view .LVU6
+  77:Core/Src/stm32f3xx_hal_msp.c ****   __HAL_RCC_PWR_CLK_ENABLE();
+  53              		.loc 1 77 3 view .LVU7
+  54              	.LBB7:
+  55              		.loc 1 77 3 view .LVU8
+  56              		.loc 1 77 3 view .LVU9
+  57 0016 DA69     		ldr	r2, [r3, #28]
+  58 0018 42F08052 		orr	r2, r2, #268435456
+  59 001c DA61     		str	r2, [r3, #28]
+  60              		.loc 1 77 3 view .LVU10
+  61 001e DB69     		ldr	r3, [r3, #28]
+  62 0020 03F08053 		and	r3, r3, #268435456
+  63 0024 0193     		str	r3, [sp, #4]
+  64              		.loc 1 77 3 view .LVU11
+  65 0026 019B     		ldr	r3, [sp, #4]
+  66              	.LBE7:
+  67              		.loc 1 77 3 view .LVU12
+  78:Core/Src/stm32f3xx_hal_msp.c **** 
+  79:Core/Src/stm32f3xx_hal_msp.c ****   /* System interrupt init*/
+  80:Core/Src/stm32f3xx_hal_msp.c **** 
+  81:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN MspInit 1 */
+  82:Core/Src/stm32f3xx_hal_msp.c **** 
+  83:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END MspInit 1 */
+  84:Core/Src/stm32f3xx_hal_msp.c **** }
+  68              		.loc 1 84 1 is_stmt 0 view .LVU13
+  69 0028 02B0     		add	sp, sp, #8
+  70              	.LCFI1:
+  71              		.cfi_def_cfa_offset 0
+  72              		@ sp needed
+  73 002a 7047     		bx	lr
+  74              	.L4:
+  75              		.align	2
+  76              	.L3:
+  77 002c 00100240 		.word	1073876992
+  78              		.cfi_endproc
+  79              	.LFE130:
+  81              		.section	.text.HAL_ADC_MspInit,"ax",%progbits
+  82              		.align	1
+  83              		.global	HAL_ADC_MspInit
+  84              		.syntax unified
+  85              		.thumb
+  86              		.thumb_func
+  88              	HAL_ADC_MspInit:
+  89              	.LVL0:
+  90              	.LFB131:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 4
+
+
+  85:Core/Src/stm32f3xx_hal_msp.c **** 
+  86:Core/Src/stm32f3xx_hal_msp.c **** /**
+  87:Core/Src/stm32f3xx_hal_msp.c **** * @brief ADC MSP Initialization
+  88:Core/Src/stm32f3xx_hal_msp.c **** * This function configures the hardware resources used in this example
+  89:Core/Src/stm32f3xx_hal_msp.c **** * @param hadc: ADC handle pointer
+  90:Core/Src/stm32f3xx_hal_msp.c **** * @retval None
+  91:Core/Src/stm32f3xx_hal_msp.c **** */
+  92:Core/Src/stm32f3xx_hal_msp.c **** void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
+  93:Core/Src/stm32f3xx_hal_msp.c **** {
+  91              		.loc 1 93 1 is_stmt 1 view -0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 32
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95              		.loc 1 93 1 is_stmt 0 view .LVU15
+  96 0000 00B5     		push	{lr}
+  97              	.LCFI2:
+  98              		.cfi_def_cfa_offset 4
+  99              		.cfi_offset 14, -4
+ 100 0002 89B0     		sub	sp, sp, #36
+ 101              	.LCFI3:
+ 102              		.cfi_def_cfa_offset 40
+  94:Core/Src/stm32f3xx_hal_msp.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 103              		.loc 1 94 3 is_stmt 1 view .LVU16
+ 104              		.loc 1 94 20 is_stmt 0 view .LVU17
+ 105 0004 0023     		movs	r3, #0
+ 106 0006 0393     		str	r3, [sp, #12]
+ 107 0008 0493     		str	r3, [sp, #16]
+ 108 000a 0593     		str	r3, [sp, #20]
+ 109 000c 0693     		str	r3, [sp, #24]
+ 110 000e 0793     		str	r3, [sp, #28]
+  95:Core/Src/stm32f3xx_hal_msp.c ****   if(hadc->Instance==ADC2)
+ 111              		.loc 1 95 3 is_stmt 1 view .LVU18
+ 112              		.loc 1 95 10 is_stmt 0 view .LVU19
+ 113 0010 0268     		ldr	r2, [r0]
+ 114              		.loc 1 95 5 view .LVU20
+ 115 0012 154B     		ldr	r3, .L9
+ 116 0014 9A42     		cmp	r2, r3
+ 117 0016 02D0     		beq	.L8
+ 118              	.LVL1:
+ 119              	.L5:
+  96:Core/Src/stm32f3xx_hal_msp.c ****   {
+  97:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN ADC2_MspInit 0 */
+  98:Core/Src/stm32f3xx_hal_msp.c **** 
+  99:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END ADC2_MspInit 0 */
+ 100:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock enable */
+ 101:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_ADC12_CLK_ENABLE();
+ 102:Core/Src/stm32f3xx_hal_msp.c **** 
+ 103:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 104:Core/Src/stm32f3xx_hal_msp.c ****     /**ADC2 GPIO Configuration
+ 105:Core/Src/stm32f3xx_hal_msp.c ****     PA6     ------> ADC2_IN3
+ 106:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 107:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pin = BAT_ADC_Pin;
+ 108:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+ 109:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 110:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(BAT_ADC_GPIO_Port, &GPIO_InitStruct);
+ 111:Core/Src/stm32f3xx_hal_msp.c **** 
+ 112:Core/Src/stm32f3xx_hal_msp.c ****     /* ADC2 interrupt Init */
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 5
+
+
+ 113:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_SetPriority(ADC1_2_IRQn, 2, 0);
+ 114:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(ADC1_2_IRQn);
+ 115:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN ADC2_MspInit 1 */
+ 116:Core/Src/stm32f3xx_hal_msp.c **** 
+ 117:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END ADC2_MspInit 1 */
+ 118:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 119:Core/Src/stm32f3xx_hal_msp.c **** 
+ 120:Core/Src/stm32f3xx_hal_msp.c **** }
+ 120              		.loc 1 120 1 view .LVU21
+ 121 0018 09B0     		add	sp, sp, #36
+ 122              	.LCFI4:
+ 123              		.cfi_remember_state
+ 124              		.cfi_def_cfa_offset 4
+ 125              		@ sp needed
+ 126 001a 5DF804FB 		ldr	pc, [sp], #4
+ 127              	.LVL2:
+ 128              	.L8:
+ 129              	.LCFI5:
+ 130              		.cfi_restore_state
+ 101:Core/Src/stm32f3xx_hal_msp.c **** 
+ 131              		.loc 1 101 5 is_stmt 1 view .LVU22
+ 132              	.LBB8:
+ 101:Core/Src/stm32f3xx_hal_msp.c **** 
+ 133              		.loc 1 101 5 view .LVU23
+ 101:Core/Src/stm32f3xx_hal_msp.c **** 
+ 134              		.loc 1 101 5 view .LVU24
+ 135 001e 134B     		ldr	r3, .L9+4
+ 136 0020 5A69     		ldr	r2, [r3, #20]
+ 137 0022 42F08052 		orr	r2, r2, #268435456
+ 138 0026 5A61     		str	r2, [r3, #20]
+ 101:Core/Src/stm32f3xx_hal_msp.c **** 
+ 139              		.loc 1 101 5 view .LVU25
+ 140 0028 5A69     		ldr	r2, [r3, #20]
+ 141 002a 02F08052 		and	r2, r2, #268435456
+ 142 002e 0192     		str	r2, [sp, #4]
+ 101:Core/Src/stm32f3xx_hal_msp.c **** 
+ 143              		.loc 1 101 5 view .LVU26
+ 144 0030 019A     		ldr	r2, [sp, #4]
+ 145              	.LBE8:
+ 101:Core/Src/stm32f3xx_hal_msp.c **** 
+ 146              		.loc 1 101 5 view .LVU27
+ 103:Core/Src/stm32f3xx_hal_msp.c ****     /**ADC2 GPIO Configuration
+ 147              		.loc 1 103 5 view .LVU28
+ 148              	.LBB9:
+ 103:Core/Src/stm32f3xx_hal_msp.c ****     /**ADC2 GPIO Configuration
+ 149              		.loc 1 103 5 view .LVU29
+ 103:Core/Src/stm32f3xx_hal_msp.c ****     /**ADC2 GPIO Configuration
+ 150              		.loc 1 103 5 view .LVU30
+ 151 0032 5A69     		ldr	r2, [r3, #20]
+ 152 0034 42F40032 		orr	r2, r2, #131072
+ 153 0038 5A61     		str	r2, [r3, #20]
+ 103:Core/Src/stm32f3xx_hal_msp.c ****     /**ADC2 GPIO Configuration
+ 154              		.loc 1 103 5 view .LVU31
+ 155 003a 5B69     		ldr	r3, [r3, #20]
+ 156 003c 03F40033 		and	r3, r3, #131072
+ 157 0040 0293     		str	r3, [sp, #8]
+ 103:Core/Src/stm32f3xx_hal_msp.c ****     /**ADC2 GPIO Configuration
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 6
+
+
+ 158              		.loc 1 103 5 view .LVU32
+ 159 0042 029B     		ldr	r3, [sp, #8]
+ 160              	.LBE9:
+ 103:Core/Src/stm32f3xx_hal_msp.c ****     /**ADC2 GPIO Configuration
+ 161              		.loc 1 103 5 view .LVU33
+ 107:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+ 162              		.loc 1 107 5 view .LVU34
+ 107:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+ 163              		.loc 1 107 25 is_stmt 0 view .LVU35
+ 164 0044 4023     		movs	r3, #64
+ 165 0046 0393     		str	r3, [sp, #12]
+ 108:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 166              		.loc 1 108 5 is_stmt 1 view .LVU36
+ 108:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 167              		.loc 1 108 26 is_stmt 0 view .LVU37
+ 168 0048 0323     		movs	r3, #3
+ 169 004a 0493     		str	r3, [sp, #16]
+ 109:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(BAT_ADC_GPIO_Port, &GPIO_InitStruct);
+ 170              		.loc 1 109 5 is_stmt 1 view .LVU38
+ 110:Core/Src/stm32f3xx_hal_msp.c **** 
+ 171              		.loc 1 110 5 view .LVU39
+ 172 004c 03A9     		add	r1, sp, #12
+ 173 004e 4FF09040 		mov	r0, #1207959552
+ 174              	.LVL3:
+ 110:Core/Src/stm32f3xx_hal_msp.c **** 
+ 175              		.loc 1 110 5 is_stmt 0 view .LVU40
+ 176 0052 FFF7FEFF 		bl	HAL_GPIO_Init
+ 177              	.LVL4:
+ 113:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(ADC1_2_IRQn);
+ 178              		.loc 1 113 5 is_stmt 1 view .LVU41
+ 179 0056 0022     		movs	r2, #0
+ 180 0058 0221     		movs	r1, #2
+ 181 005a 1220     		movs	r0, #18
+ 182 005c FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 183              	.LVL5:
+ 114:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN ADC2_MspInit 1 */
+ 184              		.loc 1 114 5 view .LVU42
+ 185 0060 1220     		movs	r0, #18
+ 186 0062 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 187              	.LVL6:
+ 188              		.loc 1 120 1 is_stmt 0 view .LVU43
+ 189 0066 D7E7     		b	.L5
+ 190              	.L10:
+ 191              		.align	2
+ 192              	.L9:
+ 193 0068 00010050 		.word	1342177536
+ 194 006c 00100240 		.word	1073876992
+ 195              		.cfi_endproc
+ 196              	.LFE131:
+ 198              		.section	.text.HAL_ADC_MspDeInit,"ax",%progbits
+ 199              		.align	1
+ 200              		.global	HAL_ADC_MspDeInit
+ 201              		.syntax unified
+ 202              		.thumb
+ 203              		.thumb_func
+ 205              	HAL_ADC_MspDeInit:
+ 206              	.LVL7:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 7
+
+
+ 207              	.LFB132:
+ 121:Core/Src/stm32f3xx_hal_msp.c **** 
+ 122:Core/Src/stm32f3xx_hal_msp.c **** /**
+ 123:Core/Src/stm32f3xx_hal_msp.c **** * @brief ADC MSP De-Initialization
+ 124:Core/Src/stm32f3xx_hal_msp.c **** * This function freeze the hardware resources used in this example
+ 125:Core/Src/stm32f3xx_hal_msp.c **** * @param hadc: ADC handle pointer
+ 126:Core/Src/stm32f3xx_hal_msp.c **** * @retval None
+ 127:Core/Src/stm32f3xx_hal_msp.c **** */
+ 128:Core/Src/stm32f3xx_hal_msp.c **** void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
+ 129:Core/Src/stm32f3xx_hal_msp.c **** {
+ 208              		.loc 1 129 1 is_stmt 1 view -0
+ 209              		.cfi_startproc
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212              		.loc 1 129 1 is_stmt 0 view .LVU45
+ 213 0000 08B5     		push	{r3, lr}
+ 214              	.LCFI6:
+ 215              		.cfi_def_cfa_offset 8
+ 216              		.cfi_offset 3, -8
+ 217              		.cfi_offset 14, -4
+ 130:Core/Src/stm32f3xx_hal_msp.c ****   if(hadc->Instance==ADC2)
+ 218              		.loc 1 130 3 is_stmt 1 view .LVU46
+ 219              		.loc 1 130 10 is_stmt 0 view .LVU47
+ 220 0002 0268     		ldr	r2, [r0]
+ 221              		.loc 1 130 5 view .LVU48
+ 222 0004 084B     		ldr	r3, .L15
+ 223 0006 9A42     		cmp	r2, r3
+ 224 0008 00D0     		beq	.L14
+ 225              	.LVL8:
+ 226              	.L11:
+ 131:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 132:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN ADC2_MspDeInit 0 */
+ 133:Core/Src/stm32f3xx_hal_msp.c **** 
+ 134:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END ADC2_MspDeInit 0 */
+ 135:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock disable */
+ 136:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_ADC12_CLK_DISABLE();
+ 137:Core/Src/stm32f3xx_hal_msp.c **** 
+ 138:Core/Src/stm32f3xx_hal_msp.c ****     /**ADC2 GPIO Configuration
+ 139:Core/Src/stm32f3xx_hal_msp.c ****     PA6     ------> ADC2_IN3
+ 140:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 141:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_DeInit(BAT_ADC_GPIO_Port, BAT_ADC_Pin);
+ 142:Core/Src/stm32f3xx_hal_msp.c **** 
+ 143:Core/Src/stm32f3xx_hal_msp.c ****     /* ADC2 interrupt DeInit */
+ 144:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_DisableIRQ(ADC1_2_IRQn);
+ 145:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN ADC2_MspDeInit 1 */
+ 146:Core/Src/stm32f3xx_hal_msp.c **** 
+ 147:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END ADC2_MspDeInit 1 */
+ 148:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 149:Core/Src/stm32f3xx_hal_msp.c **** 
+ 150:Core/Src/stm32f3xx_hal_msp.c **** }
+ 227              		.loc 1 150 1 view .LVU49
+ 228 000a 08BD     		pop	{r3, pc}
+ 229              	.LVL9:
+ 230              	.L14:
+ 136:Core/Src/stm32f3xx_hal_msp.c **** 
+ 231              		.loc 1 136 5 is_stmt 1 view .LVU50
+ 232 000c 074A     		ldr	r2, .L15+4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 8
+
+
+ 233 000e 5369     		ldr	r3, [r2, #20]
+ 234 0010 23F08053 		bic	r3, r3, #268435456
+ 235 0014 5361     		str	r3, [r2, #20]
+ 141:Core/Src/stm32f3xx_hal_msp.c **** 
+ 236              		.loc 1 141 5 view .LVU51
+ 237 0016 4021     		movs	r1, #64
+ 238 0018 4FF09040 		mov	r0, #1207959552
+ 239              	.LVL10:
+ 141:Core/Src/stm32f3xx_hal_msp.c **** 
+ 240              		.loc 1 141 5 is_stmt 0 view .LVU52
+ 241 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 242              	.LVL11:
+ 144:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN ADC2_MspDeInit 1 */
+ 243              		.loc 1 144 5 is_stmt 1 view .LVU53
+ 244 0020 1220     		movs	r0, #18
+ 245 0022 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 246              	.LVL12:
+ 247              		.loc 1 150 1 is_stmt 0 view .LVU54
+ 248 0026 F0E7     		b	.L11
+ 249              	.L16:
+ 250              		.align	2
+ 251              	.L15:
+ 252 0028 00010050 		.word	1342177536
+ 253 002c 00100240 		.word	1073876992
+ 254              		.cfi_endproc
+ 255              	.LFE132:
+ 257              		.section	.text.HAL_RTC_MspInit,"ax",%progbits
+ 258              		.align	1
+ 259              		.global	HAL_RTC_MspInit
+ 260              		.syntax unified
+ 261              		.thumb
+ 262              		.thumb_func
+ 264              	HAL_RTC_MspInit:
+ 265              	.LVL13:
+ 266              	.LFB133:
+ 151:Core/Src/stm32f3xx_hal_msp.c **** 
+ 152:Core/Src/stm32f3xx_hal_msp.c **** /**
+ 153:Core/Src/stm32f3xx_hal_msp.c **** * @brief RTC MSP Initialization
+ 154:Core/Src/stm32f3xx_hal_msp.c **** * This function configures the hardware resources used in this example
+ 155:Core/Src/stm32f3xx_hal_msp.c **** * @param hrtc: RTC handle pointer
+ 156:Core/Src/stm32f3xx_hal_msp.c **** * @retval None
+ 157:Core/Src/stm32f3xx_hal_msp.c **** */
+ 158:Core/Src/stm32f3xx_hal_msp.c **** void HAL_RTC_MspInit(RTC_HandleTypeDef* hrtc)
+ 159:Core/Src/stm32f3xx_hal_msp.c **** {
+ 267              		.loc 1 159 1 is_stmt 1 view -0
+ 268              		.cfi_startproc
+ 269              		@ args = 0, pretend = 0, frame = 0
+ 270              		@ frame_needed = 0, uses_anonymous_args = 0
+ 271              		.loc 1 159 1 is_stmt 0 view .LVU56
+ 272 0000 08B5     		push	{r3, lr}
+ 273              	.LCFI7:
+ 274              		.cfi_def_cfa_offset 8
+ 275              		.cfi_offset 3, -8
+ 276              		.cfi_offset 14, -4
+ 160:Core/Src/stm32f3xx_hal_msp.c ****   if(hrtc->Instance==RTC)
+ 277              		.loc 1 160 3 is_stmt 1 view .LVU57
+ 278              		.loc 1 160 10 is_stmt 0 view .LVU58
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 9
+
+
+ 279 0002 0268     		ldr	r2, [r0]
+ 280              		.loc 1 160 5 view .LVU59
+ 281 0004 0B4B     		ldr	r3, .L21
+ 282 0006 9A42     		cmp	r2, r3
+ 283 0008 00D0     		beq	.L20
+ 284              	.LVL14:
+ 285              	.L17:
+ 161:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 162:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN RTC_MspInit 0 */
+ 163:Core/Src/stm32f3xx_hal_msp.c **** 
+ 164:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END RTC_MspInit 0 */
+ 165:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock enable */
+ 166:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_RTC_ENABLE();
+ 167:Core/Src/stm32f3xx_hal_msp.c ****     /* RTC interrupt Init */
+ 168:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_SetPriority(RTC_Alarm_IRQn, 10, 0);
+ 169:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(RTC_Alarm_IRQn);
+ 170:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN RTC_MspInit 1 */
+ 171:Core/Src/stm32f3xx_hal_msp.c **** 
+ 172:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END RTC_MspInit 1 */
+ 173:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 174:Core/Src/stm32f3xx_hal_msp.c **** 
+ 175:Core/Src/stm32f3xx_hal_msp.c **** }
+ 286              		.loc 1 175 1 view .LVU60
+ 287 000a 08BD     		pop	{r3, pc}
+ 288              	.LVL15:
+ 289              	.L20:
+ 166:Core/Src/stm32f3xx_hal_msp.c ****     /* RTC interrupt Init */
+ 290              		.loc 1 166 5 is_stmt 1 view .LVU61
+ 291              	.LBB10:
+ 292              	.LBI10:
+ 293              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
+   1:Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
+   2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
+   3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
+   4:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @version  V5.0.4
+   5:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @date     09. April 2018
+   6:Drivers/CMSIS/Include/cmsis_gcc.h ****  ******************************************************************************/
+   7:Drivers/CMSIS/Include/cmsis_gcc.h **** /*
+   8:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Copyright (c) 2009-2018 Arm Limited. All rights reserved.
+   9:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  10:Drivers/CMSIS/Include/cmsis_gcc.h ****  * SPDX-License-Identifier: Apache-2.0
+  11:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  12:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  13:Drivers/CMSIS/Include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
+  14:Drivers/CMSIS/Include/cmsis_gcc.h ****  * You may obtain a copy of the License at
+  15:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  16:Drivers/CMSIS/Include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
+  17:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  18:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
+  19:Drivers/CMSIS/Include/cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  20:Drivers/CMSIS/Include/cmsis_gcc.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  21:Drivers/CMSIS/Include/cmsis_gcc.h ****  * See the License for the specific language governing permissions and
+  22:Drivers/CMSIS/Include/cmsis_gcc.h ****  * limitations under the License.
+  23:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+  24:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  25:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
+  26:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_H
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 10
+
+
+  27:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  28:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ignore some GCC warnings */
+  29:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic push
+  30:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
+  31:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
+  32:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
+  33:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  34:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Fallback for __has_builtin */
+  35:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
+  36:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
+  37:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  38:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  39:Drivers/CMSIS/Include/cmsis_gcc.h **** /* CMSIS compiler specific defines */
+  40:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ASM
+  41:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ASM                                  __asm
+  42:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  43:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __INLINE
+  44:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __INLINE                               inline
+  45:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  46:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
+  47:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
+  48:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  49:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE                 
+  50:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
+  51:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif                                           
+  52:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __NO_RETURN
+  53:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
+  54:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  55:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __USED
+  56:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __USED                                 __attribute__((used))
+  57:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  58:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __WEAK
+  59:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __WEAK                                 __attribute__((weak))
+  60:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  61:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED
+  62:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
+  63:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  64:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
+  65:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
+  66:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  67:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_UNION
+  68:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
+  69:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  70:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
+  71:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  72:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  73:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  74:Drivers/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
+  75:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  76:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
+  77:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  78:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
+  79:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  80:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  81:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  82:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
+  83:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 11
+
+
+  84:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))-
+  85:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  86:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_READ
+  87:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  88:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  89:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  90:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
+  91:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  92:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
+  93:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  94:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
+  95:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  96:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  97:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  98:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
+  99:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 100:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
+ 101:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 102:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
+ 103:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+ 104:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+ 105:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+ 106:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
+ 107:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 108:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
+ 109:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 110:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ALIGNED
+ 111:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
+ 112:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 113:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __RESTRICT
+ 114:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __RESTRICT                             __restrict
+ 115:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 116:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 117:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 118:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
+ 119:Drivers/CMSIS/Include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+ 120:Drivers/CMSIS/Include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+ 121:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
+ 122:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 123:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 124:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 125:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
+ 126:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
+ 127:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 128:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 129:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
+ 130:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 131:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
+ 132:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 133:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 134:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 135:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 136:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
+ 137:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
+ 138:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 139:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 140:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 12
+
+
+ 141:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 142:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
+ 143:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 144:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 145:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 146:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 147:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Control Register
+ 148:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the content of the Control Register.
+ 149:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Control Register value
+ 150:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 151:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_CONTROL(void)
+ 152:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 153:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 154:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 155:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, control" : "=r" (result) );
+ 156:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 157:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 158:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 159:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 160:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 161:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 162:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Control Register (non-secure)
+ 163:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the content of the non-secure Control Register when in secure mode.
+ 164:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               non-secure Control Register value
+ 165:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 166:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_CONTROL_NS(void)
+ 167:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 168:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 169:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 170:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, control_ns" : "=r" (result) );
+ 171:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 172:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 173:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 174:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 175:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 176:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 177:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Control Register
+ 178:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Writes the given value to the Control Register.
+ 179:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    control  Control Register value to set
+ 180:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 181:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_CONTROL(uint32_t control)
+ 182:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 183:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR control, %0" : : "r" (control) : "memory");
+ 184:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 185:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 186:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 187:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 188:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 189:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Control Register (non-secure)
+ 190:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Writes the given value to the non-secure Control Register when in secure state.
+ 191:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    control  Control Register value to set
+ 192:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 193:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_CONTROL_NS(uint32_t control)
+ 194:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 195:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR control_ns, %0" : : "r" (control) : "memory");
+ 196:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 197:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 13
+
+
+ 198:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 199:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 200:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 201:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get IPSR Register
+ 202:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the content of the IPSR Register.
+ 203:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               IPSR Register value
+ 204:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 205:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_IPSR(void)
+ 206:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 207:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 208:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 209:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, ipsr" : "=r" (result) );
+ 210:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 211:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 212:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 213:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 214:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 215:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get APSR Register
+ 216:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the content of the APSR Register.
+ 217:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               APSR Register value
+ 218:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 219:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_APSR(void)
+ 220:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 221:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 222:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 223:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, apsr" : "=r" (result) );
+ 224:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 225:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 226:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 227:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 228:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 229:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get xPSR Register
+ 230:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the content of the xPSR Register.
+ 231:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               xPSR Register value
+ 232:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 233:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_xPSR(void)
+ 234:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 235:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 236:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 237:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, xpsr" : "=r" (result) );
+ 238:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 239:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 240:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 241:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 242:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 243:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Process Stack Pointer
+ 244:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Process Stack Pointer (PSP).
+ 245:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               PSP Register value
+ 246:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 247:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_PSP(void)
+ 248:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 249:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 250:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 251:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, psp"  : "=r" (result) );
+ 252:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 253:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 254:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 14
+
+
+ 255:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 256:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 257:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 258:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Process Stack Pointer (non-secure)
+ 259:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the non-secure Process Stack Pointer (PSP) when in secure s
+ 260:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               PSP Register value
+ 261:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 262:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_PSP_NS(void)
+ 263:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 264:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 265:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 266:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, psp_ns"  : "=r" (result) );
+ 267:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 268:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 269:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 270:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 271:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 272:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 273:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Process Stack Pointer
+ 274:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the Process Stack Pointer (PSP).
+ 275:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    topOfProcStack  Process Stack Pointer value to set
+ 276:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 277:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_PSP(uint32_t topOfProcStack)
+ 278:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 279:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR psp, %0" : : "r" (topOfProcStack) : );
+ 280:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 281:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 282:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 283:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 284:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 285:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Process Stack Pointer (non-secure)
+ 286:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Process Stack Pointer (PSP) when in secure sta
+ 287:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    topOfProcStack  Process Stack Pointer value to set
+ 288:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 289:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_PSP_NS(uint32_t topOfProcStack)
+ 290:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 291:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR psp_ns, %0" : : "r" (topOfProcStack) : );
+ 292:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 293:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 294:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 295:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 296:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 297:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Main Stack Pointer
+ 298:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Main Stack Pointer (MSP).
+ 299:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               MSP Register value
+ 300:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 301:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_MSP(void)
+ 302:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 303:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 304:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 305:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, msp" : "=r" (result) );
+ 306:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 307:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 308:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 309:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 310:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 311:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 15
+
+
+ 312:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Main Stack Pointer (non-secure)
+ 313:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the non-secure Main Stack Pointer (MSP) when in secure stat
+ 314:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               MSP Register value
+ 315:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 316:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_MSP_NS(void)
+ 317:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 318:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 319:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 320:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, msp_ns" : "=r" (result) );
+ 321:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 322:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 323:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 324:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 325:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 326:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 327:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Main Stack Pointer
+ 328:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the Main Stack Pointer (MSP).
+ 329:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    topOfMainStack  Main Stack Pointer value to set
+ 330:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 331:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_MSP(uint32_t topOfMainStack)
+ 332:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 333:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR msp, %0" : : "r" (topOfMainStack) : );
+ 334:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 335:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 336:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 337:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 338:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 339:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Main Stack Pointer (non-secure)
+ 340:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Main Stack Pointer (MSP) when in secure state.
+ 341:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    topOfMainStack  Main Stack Pointer value to set
+ 342:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 343:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_MSP_NS(uint32_t topOfMainStack)
+ 344:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 345:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR msp_ns, %0" : : "r" (topOfMainStack) : );
+ 346:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 347:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 348:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 349:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 350:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 351:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 352:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Stack Pointer (non-secure)
+ 353:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the non-secure Stack Pointer (SP) when in secure state.
+ 354:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               SP Register value
+ 355:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 356:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_SP_NS(void)
+ 357:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 358:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 359:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 360:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, sp_ns" : "=r" (result) );
+ 361:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 362:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 363:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 364:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 365:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 366:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Stack Pointer (non-secure)
+ 367:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Stack Pointer (SP) when in secure state.
+ 368:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    topOfStack  Stack Pointer value to set
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 16
+
+
+ 369:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 370:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_SP_NS(uint32_t topOfStack)
+ 371:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 372:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR sp_ns, %0" : : "r" (topOfStack) : );
+ 373:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 374:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 375:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 376:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 377:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 378:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Priority Mask
+ 379:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current state of the priority mask bit from the Priority Mask Register.
+ 380:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Priority Mask value
+ 381:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 382:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_PRIMASK(void)
+ 383:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 384:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 385:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 386:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, primask" : "=r" (result) :: "memory");
+ 387:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 388:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 389:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 390:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 391:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 392:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 393:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Priority Mask (non-secure)
+ 394:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current state of the non-secure priority mask bit from the Priority Mask Reg
+ 395:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Priority Mask value
+ 396:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 397:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_PRIMASK_NS(void)
+ 398:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 399:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 400:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 401:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, primask_ns" : "=r" (result) :: "memory");
+ 402:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 403:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 404:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 405:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 406:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 407:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 408:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Priority Mask
+ 409:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the Priority Mask Register.
+ 410:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    priMask  Priority Mask
+ 411:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 412:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
+ 413:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 414:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR primask, %0" : : "r" (priMask) : "memory");
+ 415:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 416:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 417:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 418:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 419:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 420:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Priority Mask (non-secure)
+ 421:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Priority Mask Register when in secure state.
+ 422:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    priMask  Priority Mask
+ 423:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 424:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_PRIMASK_NS(uint32_t priMask)
+ 425:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 17
+
+
+ 426:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR primask_ns, %0" : : "r" (priMask) : "memory");
+ 427:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 428:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 429:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 430:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 431:Drivers/CMSIS/Include/cmsis_gcc.h **** #if ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
+ 432:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
+ 433:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    )
+ 434:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 435:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Enable FIQ
+ 436:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Enables FIQ interrupts by clearing the F-bit in the CPSR.
+ 437:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 438:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 439:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_fault_irq(void)
+ 440:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 441:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie f" : : : "memory");
+ 442:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 443:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 444:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 445:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 446:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable FIQ
+ 447:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Disables FIQ interrupts by setting the F-bit in the CPSR.
+ 448:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 449:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 450:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_fault_irq(void)
+ 451:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 452:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid f" : : : "memory");
+ 453:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 454:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 455:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 456:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 457:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Base Priority
+ 458:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Base Priority register.
+ 459:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Base Priority register value
+ 460:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 461:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_BASEPRI(void)
+ 462:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 463:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 464:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 465:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, basepri" : "=r" (result) );
+ 466:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 467:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 468:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 469:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 470:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 471:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 472:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Base Priority (non-secure)
+ 473:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the non-secure Base Priority register when in secure state.
+ 474:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Base Priority register value
+ 475:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 476:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_BASEPRI_NS(void)
+ 477:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 478:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 479:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 480:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, basepri_ns" : "=r" (result) );
+ 481:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 482:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 18
+
+
+ 483:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 484:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 485:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 486:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 487:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Base Priority
+ 488:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the Base Priority register.
+ 489:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    basePri  Base Priority value to set
+ 490:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 491:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_BASEPRI(uint32_t basePri)
+ 492:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 493:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR basepri, %0" : : "r" (basePri) : "memory");
+ 494:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 495:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 496:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 497:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 498:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 499:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Base Priority (non-secure)
+ 500:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Base Priority register when in secure state.
+ 501:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    basePri  Base Priority value to set
+ 502:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 503:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_BASEPRI_NS(uint32_t basePri)
+ 504:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 505:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR basepri_ns, %0" : : "r" (basePri) : "memory");
+ 506:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 507:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 508:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 509:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 510:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 511:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Base Priority with condition
+ 512:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the Base Priority register only if BASEPRI masking is disable
+ 513:Drivers/CMSIS/Include/cmsis_gcc.h ****            or the new value increases the BASEPRI priority level.
+ 514:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    basePri  Base Priority value to set
+ 515:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 516:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_BASEPRI_MAX(uint32_t basePri)
+ 517:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 518:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR basepri_max, %0" : : "r" (basePri) : "memory");
+ 519:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 520:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 521:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 522:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 523:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Fault Mask
+ 524:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Fault Mask register.
+ 525:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Fault Mask register value
+ 526:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 527:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_FAULTMASK(void)
+ 528:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 529:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 530:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 531:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, faultmask" : "=r" (result) );
+ 532:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 533:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 534:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 535:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 536:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 537:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 538:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Fault Mask (non-secure)
+ 539:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the non-secure Fault Mask register when in secure state.
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 19
+
+
+ 540:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Fault Mask register value
+ 541:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 542:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_FAULTMASK_NS(void)
+ 543:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 544:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 545:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 546:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, faultmask_ns" : "=r" (result) );
+ 547:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 548:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 549:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 550:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 551:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 552:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 553:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Fault Mask
+ 554:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the Fault Mask register.
+ 555:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    faultMask  Fault Mask value to set
+ 556:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 557:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_FAULTMASK(uint32_t faultMask)
+ 558:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 559:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR faultmask, %0" : : "r" (faultMask) : "memory");
+ 560:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 561:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 562:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 563:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 564:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 565:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Fault Mask (non-secure)
+ 566:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Fault Mask register when in secure state.
+ 567:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    faultMask  Fault Mask value to set
+ 568:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 569:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_FAULTMASK_NS(uint32_t faultMask)
+ 570:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 571:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR faultmask_ns, %0" : : "r" (faultMask) : "memory");
+ 572:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 573:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 574:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 575:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif /* ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
+ 576:Drivers/CMSIS/Include/cmsis_gcc.h ****            (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
+ 577:Drivers/CMSIS/Include/cmsis_gcc.h ****            (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    ) */
+ 578:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 579:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 580:Drivers/CMSIS/Include/cmsis_gcc.h **** #if ((defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) || \
+ 581:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_8M_BASE__ ) && (__ARM_ARCH_8M_BASE__ == 1))    )
+ 582:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 583:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 584:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Process Stack Pointer Limit
+ 585:Drivers/CMSIS/Include/cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 586:Drivers/CMSIS/Include/cmsis_gcc.h ****   Stack Pointer Limit register hence zero is returned always in non-secure
+ 587:Drivers/CMSIS/Include/cmsis_gcc.h ****   mode.
+ 588:Drivers/CMSIS/Include/cmsis_gcc.h ****   
+ 589:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Process Stack Pointer Limit (PSPLIM).
+ 590:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               PSPLIM Register value
+ 591:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 592:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_PSPLIM(void)
+ 593:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 594:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
+ 595:Drivers/CMSIS/Include/cmsis_gcc.h ****     (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
+ 596:Drivers/CMSIS/Include/cmsis_gcc.h ****     // without main extensions, the non-secure PSPLIM is RAZ/WI
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 20
+
+
+ 597:Drivers/CMSIS/Include/cmsis_gcc.h ****   return 0U;
+ 598:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 599:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 600:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, psplim"  : "=r" (result) );
+ 601:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
+ 602:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 603:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 604:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 605:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3))
+ 606:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 607:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Process Stack Pointer Limit (non-secure)
+ 608:Drivers/CMSIS/Include/cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 609:Drivers/CMSIS/Include/cmsis_gcc.h ****   Stack Pointer Limit register hence zero is returned always.
+ 610:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 611:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the non-secure Process Stack Pointer Limit (PSPLIM) when in
+ 612:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               PSPLIM Register value
+ 613:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 614:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_PSPLIM_NS(void)
+ 615:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 616:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
+ 617:Drivers/CMSIS/Include/cmsis_gcc.h ****   // without main extensions, the non-secure PSPLIM is RAZ/WI
+ 618:Drivers/CMSIS/Include/cmsis_gcc.h ****   return 0U;
+ 619:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 620:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 621:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, psplim_ns"  : "=r" (result) );
+ 622:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
+ 623:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 624:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 625:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 626:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 627:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 628:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 629:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Process Stack Pointer Limit
+ 630:Drivers/CMSIS/Include/cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 631:Drivers/CMSIS/Include/cmsis_gcc.h ****   Stack Pointer Limit register hence the write is silently ignored in non-secure
+ 632:Drivers/CMSIS/Include/cmsis_gcc.h ****   mode.
+ 633:Drivers/CMSIS/Include/cmsis_gcc.h ****   
+ 634:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the Process Stack Pointer Limit (PSPLIM).
+ 635:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ProcStackPtrLimit  Process Stack Pointer Limit value to set
+ 636:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 637:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_PSPLIM(uint32_t ProcStackPtrLimit)
+ 638:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 639:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
+ 640:Drivers/CMSIS/Include/cmsis_gcc.h ****     (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
+ 641:Drivers/CMSIS/Include/cmsis_gcc.h ****   // without main extensions, the non-secure PSPLIM is RAZ/WI
+ 642:Drivers/CMSIS/Include/cmsis_gcc.h ****   (void)ProcStackPtrLimit;
+ 643:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 644:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR psplim, %0" : : "r" (ProcStackPtrLimit));
+ 645:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 646:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 647:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 648:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 649:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE  ) && (__ARM_FEATURE_CMSE   == 3))
+ 650:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 651:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Process Stack Pointer (non-secure)
+ 652:Drivers/CMSIS/Include/cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 653:Drivers/CMSIS/Include/cmsis_gcc.h ****   Stack Pointer Limit register hence the write is silently ignored.
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 21
+
+
+ 654:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 655:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Process Stack Pointer Limit (PSPLIM) when in s
+ 656:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ProcStackPtrLimit  Process Stack Pointer Limit value to set
+ 657:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 658:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_PSPLIM_NS(uint32_t ProcStackPtrLimit)
+ 659:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 660:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
+ 661:Drivers/CMSIS/Include/cmsis_gcc.h ****   // without main extensions, the non-secure PSPLIM is RAZ/WI
+ 662:Drivers/CMSIS/Include/cmsis_gcc.h ****   (void)ProcStackPtrLimit;
+ 663:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 664:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR psplim_ns, %0\n" : : "r" (ProcStackPtrLimit));
+ 665:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 666:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 667:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 668:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 669:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 670:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 671:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Main Stack Pointer Limit
+ 672:Drivers/CMSIS/Include/cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 673:Drivers/CMSIS/Include/cmsis_gcc.h ****   Stack Pointer Limit register hence zero is returned always in non-secure
+ 674:Drivers/CMSIS/Include/cmsis_gcc.h ****   mode.
+ 675:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 676:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Main Stack Pointer Limit (MSPLIM).
+ 677:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               MSPLIM Register value
+ 678:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 679:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_MSPLIM(void)
+ 680:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 681:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
+ 682:Drivers/CMSIS/Include/cmsis_gcc.h ****     (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
+ 683:Drivers/CMSIS/Include/cmsis_gcc.h ****   // without main extensions, the non-secure MSPLIM is RAZ/WI
+ 684:Drivers/CMSIS/Include/cmsis_gcc.h ****   return 0U;
+ 685:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 686:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 687:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, msplim" : "=r" (result) );
+ 688:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
+ 689:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 690:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 691:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 692:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 693:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE  ) && (__ARM_FEATURE_CMSE   == 3))
+ 694:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 695:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Main Stack Pointer Limit (non-secure)
+ 696:Drivers/CMSIS/Include/cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 697:Drivers/CMSIS/Include/cmsis_gcc.h ****   Stack Pointer Limit register hence zero is returned always.
+ 698:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 699:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the non-secure Main Stack Pointer Limit(MSPLIM) when in sec
+ 700:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               MSPLIM Register value
+ 701:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 702:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_MSPLIM_NS(void)
+ 703:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 704:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
+ 705:Drivers/CMSIS/Include/cmsis_gcc.h ****   // without main extensions, the non-secure MSPLIM is RAZ/WI
+ 706:Drivers/CMSIS/Include/cmsis_gcc.h ****   return 0U;
+ 707:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 708:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 709:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, msplim_ns" : "=r" (result) );
+ 710:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 22
+
+
+ 711:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 712:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 713:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 714:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 715:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 716:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 717:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Main Stack Pointer Limit
+ 718:Drivers/CMSIS/Include/cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 719:Drivers/CMSIS/Include/cmsis_gcc.h ****   Stack Pointer Limit register hence the write is silently ignored in non-secure
+ 720:Drivers/CMSIS/Include/cmsis_gcc.h ****   mode.
+ 721:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 722:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the Main Stack Pointer Limit (MSPLIM).
+ 723:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    MainStackPtrLimit  Main Stack Pointer Limit value to set
+ 724:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 725:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_MSPLIM(uint32_t MainStackPtrLimit)
+ 726:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 727:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
+ 728:Drivers/CMSIS/Include/cmsis_gcc.h ****     (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
+ 729:Drivers/CMSIS/Include/cmsis_gcc.h ****   // without main extensions, the non-secure MSPLIM is RAZ/WI
+ 730:Drivers/CMSIS/Include/cmsis_gcc.h ****   (void)MainStackPtrLimit;
+ 731:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 732:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR msplim, %0" : : "r" (MainStackPtrLimit));
+ 733:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 734:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 735:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 736:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 737:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE  ) && (__ARM_FEATURE_CMSE   == 3))
+ 738:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 739:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Main Stack Pointer Limit (non-secure)
+ 740:Drivers/CMSIS/Include/cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 741:Drivers/CMSIS/Include/cmsis_gcc.h ****   Stack Pointer Limit register hence the write is silently ignored.
+ 742:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 743:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the non-secure Main Stack Pointer Limit (MSPLIM) when in secu
+ 744:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    MainStackPtrLimit  Main Stack Pointer value to set
+ 745:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 746:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_MSPLIM_NS(uint32_t MainStackPtrLimit)
+ 747:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 748:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
+ 749:Drivers/CMSIS/Include/cmsis_gcc.h ****   // without main extensions, the non-secure MSPLIM is RAZ/WI
+ 750:Drivers/CMSIS/Include/cmsis_gcc.h ****   (void)MainStackPtrLimit;
+ 751:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 752:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR msplim_ns, %0" : : "r" (MainStackPtrLimit));
+ 753:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 754:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 755:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 756:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 757:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif /* ((defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) || \
+ 758:Drivers/CMSIS/Include/cmsis_gcc.h ****            (defined (__ARM_ARCH_8M_BASE__ ) && (__ARM_ARCH_8M_BASE__ == 1))    ) */
+ 759:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 760:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 761:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 762:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get FPSCR
+ 763:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Floating Point Status/Control register.
+ 764:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Floating Point Status/Control register value
+ 765:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 766:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_FPSCR(void)
+ 767:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 23
+
+
+ 768:Drivers/CMSIS/Include/cmsis_gcc.h **** #if ((defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)) && \
+ 769:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__FPU_USED   ) && (__FPU_USED    == 1U))     )
+ 770:Drivers/CMSIS/Include/cmsis_gcc.h **** #if __has_builtin(__builtin_arm_get_fpscr) 
+ 771:Drivers/CMSIS/Include/cmsis_gcc.h **** // Re-enable using built-in when GCC has been fixed
+ 772:Drivers/CMSIS/Include/cmsis_gcc.h **** // || (__GNUC__ > 7) || (__GNUC__ == 7 && __GNUC_MINOR__ >= 2)
+ 773:Drivers/CMSIS/Include/cmsis_gcc.h ****   /* see https://gcc.gnu.org/ml/gcc-patches/2017-04/msg00443.html */
+ 774:Drivers/CMSIS/Include/cmsis_gcc.h ****   return __builtin_arm_get_fpscr();
+ 775:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 776:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 777:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 778:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("VMRS %0, fpscr" : "=r" (result) );
+ 779:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
+ 780:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 781:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 782:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(0U);
+ 783:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 784:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 785:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 786:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 787:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 788:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set FPSCR
+ 789:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Assigns the given value to the Floating Point Status/Control register.
+ 790:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    fpscr  Floating Point Status/Control value to set
+ 791:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 792:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_FPSCR(uint32_t fpscr)
+ 793:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 794:Drivers/CMSIS/Include/cmsis_gcc.h **** #if ((defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)) && \
+ 795:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__FPU_USED   ) && (__FPU_USED    == 1U))     )
+ 796:Drivers/CMSIS/Include/cmsis_gcc.h **** #if __has_builtin(__builtin_arm_set_fpscr)
+ 797:Drivers/CMSIS/Include/cmsis_gcc.h **** // Re-enable using built-in when GCC has been fixed
+ 798:Drivers/CMSIS/Include/cmsis_gcc.h **** // || (__GNUC__ > 7) || (__GNUC__ == 7 && __GNUC_MINOR__ >= 2)
+ 799:Drivers/CMSIS/Include/cmsis_gcc.h ****   /* see https://gcc.gnu.org/ml/gcc-patches/2017-04/msg00443.html */
+ 800:Drivers/CMSIS/Include/cmsis_gcc.h ****   __builtin_arm_set_fpscr(fpscr);
+ 801:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 802:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("VMSR fpscr, %0" : : "r" (fpscr) : "vfpcc", "memory");
+ 803:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 804:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 805:Drivers/CMSIS/Include/cmsis_gcc.h ****   (void)fpscr;
+ 806:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 807:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 808:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 809:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 810:Drivers/CMSIS/Include/cmsis_gcc.h **** /*@} end of CMSIS_Core_RegAccFunctions */
+ 811:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 812:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 813:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ##########################  Core Instruction Access  ######################### */
+ 814:Drivers/CMSIS/Include/cmsis_gcc.h **** /** \defgroup CMSIS_Core_InstructionInterface CMSIS Core Instruction Interface
+ 815:Drivers/CMSIS/Include/cmsis_gcc.h ****   Access to dedicated instructions
+ 816:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
+ 817:Drivers/CMSIS/Include/cmsis_gcc.h **** */
+ 818:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 819:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Define macros for porting to both thumb1 and thumb2.
+ 820:Drivers/CMSIS/Include/cmsis_gcc.h ****  * For thumb1, use low register (r0-r7), specified by constraint "l"
+ 821:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Otherwise, use general registers, specified by constraint "r" */
+ 822:Drivers/CMSIS/Include/cmsis_gcc.h **** #if defined (__thumb__) && !defined (__thumb2__)
+ 823:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_OUT_REG(r) "=l" (r)
+ 824:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_RW_REG(r) "+l" (r)
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 24
+
+
+ 825:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_USE_REG(r) "l" (r)
+ 826:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 827:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_OUT_REG(r) "=r" (r)
+ 828:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_RW_REG(r) "+r" (r)
+ 829:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_USE_REG(r) "r" (r)
+ 830:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 831:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 832:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 833:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   No Operation
+ 834:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details No Operation does nothing. This instruction can be used for code alignment purposes.
+ 835:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 836:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __NOP()                             __ASM volatile ("nop")
+ 837:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 838:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 839:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Wait For Interrupt
+ 840:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Wait For Interrupt is a hint instruction that suspends execution until one of a number o
+ 841:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 842:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __WFI()                             __ASM volatile ("wfi")
+ 843:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 844:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 845:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 846:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Wait For Event
+ 847:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Wait For Event is a hint instruction that permits the processor to enter
+ 848:Drivers/CMSIS/Include/cmsis_gcc.h ****            a low-power state until one of a number of events occurs.
+ 849:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 850:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __WFE()                             __ASM volatile ("wfe")
+ 851:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 852:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 853:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 854:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Send Event
+ 855:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Send Event is a hint instruction. It causes an event to be signaled to the CPU.
+ 856:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 857:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __SEV()                             __ASM volatile ("sev")
+ 858:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 859:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 860:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 861:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Instruction Synchronization Barrier
+ 862:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Instruction Synchronization Barrier flushes the pipeline in the processor,
+ 863:Drivers/CMSIS/Include/cmsis_gcc.h ****            so that all instructions following the ISB are fetched from cache or memory,
+ 864:Drivers/CMSIS/Include/cmsis_gcc.h ****            after the instruction has been completed.
+ 865:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 866:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __ISB(void)
+ 867:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 868:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("isb 0xF":::"memory");
+ 869:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 870:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 871:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 872:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 873:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Data Synchronization Barrier
+ 874:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Acts as a special kind of Data Memory Barrier.
+ 875:Drivers/CMSIS/Include/cmsis_gcc.h ****            It completes when all explicit memory accesses before this instruction complete.
+ 876:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 877:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __DSB(void)
+ 878:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 879:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("dsb 0xF":::"memory");
+ 880:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 881:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 25
+
+
+ 882:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 883:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 884:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Data Memory Barrier
+ 885:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Ensures the apparent order of the explicit memory operations before
+ 886:Drivers/CMSIS/Include/cmsis_gcc.h ****            and after the instruction, without ensuring their completion.
+ 887:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 888:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __DMB(void)
+ 889:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 890:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("dmb 0xF":::"memory");
+ 891:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 892:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 893:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 894:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 895:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Reverse byte order (32 bit)
+ 896:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Reverses the byte order in unsigned integer value. For example, 0x12345678 becomes 0x785
+ 897:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    value  Value to reverse
+ 898:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Reversed value
+ 899:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 900:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __REV(uint32_t value)
+ 901:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 902:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (__GNUC__ > 4) || (__GNUC__ == 4 && __GNUC_MINOR__ >= 5)
+ 903:Drivers/CMSIS/Include/cmsis_gcc.h ****   return __builtin_bswap32(value);
+ 904:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 905:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 906:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 907:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("rev %0, %1" : __CMSIS_GCC_OUT_REG (result) : __CMSIS_GCC_USE_REG (value) );
+ 908:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
+ 909:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 910:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 911:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 912:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 913:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 914:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Reverse byte order (16 bit)
+ 915:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Reverses the byte order within each halfword of a word. For example, 0x12345678 becomes 
+ 916:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    value  Value to reverse
+ 917:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Reversed value
+ 918:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 919:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __REV16(uint32_t value)
+ 920:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 921:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 922:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 923:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("rev16 %0, %1" : __CMSIS_GCC_OUT_REG (result) : __CMSIS_GCC_USE_REG (value) );
+ 924:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
+ 925:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 926:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 927:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 928:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 929:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Reverse byte order (16 bit)
+ 930:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Reverses the byte order in a 16-bit value and returns the signed 16-bit result. For exam
+ 931:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    value  Value to reverse
+ 932:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Reversed value
+ 933:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 934:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE int16_t __REVSH(int16_t value)
+ 935:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 936:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (__GNUC__ > 4) || (__GNUC__ == 4 && __GNUC_MINOR__ >= 8)
+ 937:Drivers/CMSIS/Include/cmsis_gcc.h ****   return (int16_t)__builtin_bswap16(value);
+ 938:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 26
+
+
+ 939:Drivers/CMSIS/Include/cmsis_gcc.h ****   int16_t result;
+ 940:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 941:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("revsh %0, %1" : __CMSIS_GCC_OUT_REG (result) : __CMSIS_GCC_USE_REG (value) );
+ 942:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
+ 943:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 944:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 945:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 946:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 947:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 948:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Rotate Right in unsigned value (32 bit)
+ 949:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Rotate Right (immediate) provides the value of the contents of a register rotated by a v
+ 950:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    op1  Value to rotate
+ 951:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    op2  Number of Bits to rotate
+ 952:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Rotated value
+ 953:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 954:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __ROR(uint32_t op1, uint32_t op2)
+ 955:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 956:Drivers/CMSIS/Include/cmsis_gcc.h ****   op2 %= 32U;
+ 957:Drivers/CMSIS/Include/cmsis_gcc.h ****   if (op2 == 0U)
+ 958:Drivers/CMSIS/Include/cmsis_gcc.h ****   {
+ 959:Drivers/CMSIS/Include/cmsis_gcc.h ****     return op1;
+ 960:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
+ 961:Drivers/CMSIS/Include/cmsis_gcc.h ****   return (op1 >> op2) | (op1 << (32U - op2));
+ 962:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 963:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 964:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 965:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 966:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Breakpoint
+ 967:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Causes the processor to enter Debug state.
+ 968:Drivers/CMSIS/Include/cmsis_gcc.h ****            Debug tools can use this to investigate system state when the instruction at a particula
+ 969:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    value  is ignored by the processor.
+ 970:Drivers/CMSIS/Include/cmsis_gcc.h ****                  If required, a debugger can use it to store additional information about the break
+ 971:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 972:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __BKPT(value)                       __ASM volatile ("bkpt "#value)
+ 973:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 974:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 975:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 976:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Reverse bit order of value
+ 977:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Reverses the bit order of the given value.
+ 978:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    value  Value to reverse
+ 979:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Reversed value
+ 980:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 981:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __RBIT(uint32_t value)
+ 294              		.loc 2 981 31 view .LVU62
+ 295              	.LBB11:
+ 982:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 983:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
+ 296              		.loc 2 983 3 view .LVU63
+ 984:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 985:Drivers/CMSIS/Include/cmsis_gcc.h **** #if ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
+ 986:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
+ 987:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    )
+ 988:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("rbit %0, %1" : "=r" (result) : "r" (value) );
+ 297              		.loc 2 988 4 view .LVU64
+ 298 000c 4FF40042 		mov	r2, #32768
+ 299              		.syntax unified
+ 300              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 27
+
+
+ 301 0010 92FAA2F2 		rbit r2, r2
+ 302              	@ 0 "" 2
+ 303              	.LVL16:
+ 989:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 990:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t s = (4U /*sizeof(v)*/ * 8U) - 1U; /* extra shift needed at end */
+ 991:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 992:Drivers/CMSIS/Include/cmsis_gcc.h ****   result = value;                      /* r will be reversed bits of v; first get LSB of v */
+ 993:Drivers/CMSIS/Include/cmsis_gcc.h ****   for (value >>= 1U; value != 0U; value >>= 1U)
+ 994:Drivers/CMSIS/Include/cmsis_gcc.h ****   {
+ 995:Drivers/CMSIS/Include/cmsis_gcc.h ****     result <<= 1U;
+ 996:Drivers/CMSIS/Include/cmsis_gcc.h ****     result |= value & 1U;
+ 997:Drivers/CMSIS/Include/cmsis_gcc.h ****     s--;
+ 998:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
+ 999:Drivers/CMSIS/Include/cmsis_gcc.h ****   result <<= s;                        /* shift when v's highest bits are zero */
+1000:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+1001:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
+ 304              		.loc 2 1001 3 view .LVU65
+ 305              		.loc 2 1001 3 is_stmt 0 view .LVU66
+ 306              		.thumb
+ 307              		.syntax unified
+ 308              	.LBE11:
+ 309              	.LBE10:
+ 166:Core/Src/stm32f3xx_hal_msp.c ****     /* RTC interrupt Init */
+ 310              		.loc 1 166 5 view .LVU67
+ 311 0014 B2FA82F2 		clz	r2, r2
+ 312 0018 074B     		ldr	r3, .L21+4
+ 313 001a 1344     		add	r3, r3, r2
+ 314 001c 9B00     		lsls	r3, r3, #2
+ 315 001e 0122     		movs	r2, #1
+ 316 0020 1A60     		str	r2, [r3]
+ 168:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(RTC_Alarm_IRQn);
+ 317              		.loc 1 168 5 is_stmt 1 view .LVU68
+ 318 0022 0022     		movs	r2, #0
+ 319 0024 0A21     		movs	r1, #10
+ 320 0026 2920     		movs	r0, #41
+ 321              	.LVL17:
+ 168:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(RTC_Alarm_IRQn);
+ 322              		.loc 1 168 5 is_stmt 0 view .LVU69
+ 323 0028 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 324              	.LVL18:
+ 169:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN RTC_MspInit 1 */
+ 325              		.loc 1 169 5 is_stmt 1 view .LVU70
+ 326 002c 2920     		movs	r0, #41
+ 327 002e FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 328              	.LVL19:
+ 329              		.loc 1 175 1 is_stmt 0 view .LVU71
+ 330 0032 EAE7     		b	.L17
+ 331              	.L22:
+ 332              		.align	2
+ 333              	.L21:
+ 334 0034 00280040 		.word	1073752064
+ 335 0038 00819010 		.word	277905664
+ 336              		.cfi_endproc
+ 337              	.LFE133:
+ 339              		.section	.text.HAL_RTC_MspDeInit,"ax",%progbits
+ 340              		.align	1
+ 341              		.global	HAL_RTC_MspDeInit
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 28
+
+
+ 342              		.syntax unified
+ 343              		.thumb
+ 344              		.thumb_func
+ 346              	HAL_RTC_MspDeInit:
+ 347              	.LVL20:
+ 348              	.LFB134:
+ 176:Core/Src/stm32f3xx_hal_msp.c **** 
+ 177:Core/Src/stm32f3xx_hal_msp.c **** /**
+ 178:Core/Src/stm32f3xx_hal_msp.c **** * @brief RTC MSP De-Initialization
+ 179:Core/Src/stm32f3xx_hal_msp.c **** * This function freeze the hardware resources used in this example
+ 180:Core/Src/stm32f3xx_hal_msp.c **** * @param hrtc: RTC handle pointer
+ 181:Core/Src/stm32f3xx_hal_msp.c **** * @retval None
+ 182:Core/Src/stm32f3xx_hal_msp.c **** */
+ 183:Core/Src/stm32f3xx_hal_msp.c **** void HAL_RTC_MspDeInit(RTC_HandleTypeDef* hrtc)
+ 184:Core/Src/stm32f3xx_hal_msp.c **** {
+ 349              		.loc 1 184 1 is_stmt 1 view -0
+ 350              		.cfi_startproc
+ 351              		@ args = 0, pretend = 0, frame = 0
+ 352              		@ frame_needed = 0, uses_anonymous_args = 0
+ 353              		.loc 1 184 1 is_stmt 0 view .LVU73
+ 354 0000 08B5     		push	{r3, lr}
+ 355              	.LCFI8:
+ 356              		.cfi_def_cfa_offset 8
+ 357              		.cfi_offset 3, -8
+ 358              		.cfi_offset 14, -4
+ 185:Core/Src/stm32f3xx_hal_msp.c ****   if(hrtc->Instance==RTC)
+ 359              		.loc 1 185 3 is_stmt 1 view .LVU74
+ 360              		.loc 1 185 10 is_stmt 0 view .LVU75
+ 361 0002 0268     		ldr	r2, [r0]
+ 362              		.loc 1 185 5 view .LVU76
+ 363 0004 094B     		ldr	r3, .L27
+ 364 0006 9A42     		cmp	r2, r3
+ 365 0008 00D0     		beq	.L26
+ 366              	.LVL21:
+ 367              	.L23:
+ 186:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 187:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN RTC_MspDeInit 0 */
+ 188:Core/Src/stm32f3xx_hal_msp.c **** 
+ 189:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END RTC_MspDeInit 0 */
+ 190:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock disable */
+ 191:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_RTC_DISABLE();
+ 192:Core/Src/stm32f3xx_hal_msp.c **** 
+ 193:Core/Src/stm32f3xx_hal_msp.c ****     /* RTC interrupt DeInit */
+ 194:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_DisableIRQ(RTC_Alarm_IRQn);
+ 195:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN RTC_MspDeInit 1 */
+ 196:Core/Src/stm32f3xx_hal_msp.c **** 
+ 197:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END RTC_MspDeInit 1 */
+ 198:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 199:Core/Src/stm32f3xx_hal_msp.c **** 
+ 200:Core/Src/stm32f3xx_hal_msp.c **** }
+ 368              		.loc 1 200 1 view .LVU77
+ 369 000a 08BD     		pop	{r3, pc}
+ 370              	.LVL22:
+ 371              	.L26:
+ 191:Core/Src/stm32f3xx_hal_msp.c **** 
+ 372              		.loc 1 191 5 is_stmt 1 view .LVU78
+ 373              	.LBB12:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 29
+
+
+ 374              	.LBI12:
+ 981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 375              		.loc 2 981 31 view .LVU79
+ 376              	.LBB13:
+ 983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 377              		.loc 2 983 3 view .LVU80
+ 988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
+ 378              		.loc 2 988 4 view .LVU81
+ 379 000c 4FF40042 		mov	r2, #32768
+ 380              		.syntax unified
+ 381              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 382 0010 92FAA2F2 		rbit r2, r2
+ 383              	@ 0 "" 2
+ 384              	.LVL23:
+ 385              		.loc 2 1001 3 view .LVU82
+ 386              		.loc 2 1001 3 is_stmt 0 view .LVU83
+ 387              		.thumb
+ 388              		.syntax unified
+ 389              	.LBE13:
+ 390              	.LBE12:
+ 191:Core/Src/stm32f3xx_hal_msp.c **** 
+ 391              		.loc 1 191 5 view .LVU84
+ 392 0014 B2FA82F2 		clz	r2, r2
+ 393 0018 054B     		ldr	r3, .L27+4
+ 394 001a 1344     		add	r3, r3, r2
+ 395 001c 9B00     		lsls	r3, r3, #2
+ 396 001e 0022     		movs	r2, #0
+ 397 0020 1A60     		str	r2, [r3]
+ 194:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN RTC_MspDeInit 1 */
+ 398              		.loc 1 194 5 is_stmt 1 view .LVU85
+ 399 0022 2920     		movs	r0, #41
+ 400              	.LVL24:
+ 194:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN RTC_MspDeInit 1 */
+ 401              		.loc 1 194 5 is_stmt 0 view .LVU86
+ 402 0024 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 403              	.LVL25:
+ 404              		.loc 1 200 1 view .LVU87
+ 405 0028 EFE7     		b	.L23
+ 406              	.L28:
+ 407 002a 00BF     		.align	2
+ 408              	.L27:
+ 409 002c 00280040 		.word	1073752064
+ 410 0030 00819010 		.word	277905664
+ 411              		.cfi_endproc
+ 412              	.LFE134:
+ 414              		.section	.text.HAL_SPI_MspInit,"ax",%progbits
+ 415              		.align	1
+ 416              		.global	HAL_SPI_MspInit
+ 417              		.syntax unified
+ 418              		.thumb
+ 419              		.thumb_func
+ 421              	HAL_SPI_MspInit:
+ 422              	.LVL26:
+ 423              	.LFB135:
+ 201:Core/Src/stm32f3xx_hal_msp.c **** 
+ 202:Core/Src/stm32f3xx_hal_msp.c **** /**
+ 203:Core/Src/stm32f3xx_hal_msp.c **** * @brief SPI MSP Initialization
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 30
+
+
+ 204:Core/Src/stm32f3xx_hal_msp.c **** * This function configures the hardware resources used in this example
+ 205:Core/Src/stm32f3xx_hal_msp.c **** * @param hspi: SPI handle pointer
+ 206:Core/Src/stm32f3xx_hal_msp.c **** * @retval None
+ 207:Core/Src/stm32f3xx_hal_msp.c **** */
+ 208:Core/Src/stm32f3xx_hal_msp.c **** void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
+ 209:Core/Src/stm32f3xx_hal_msp.c **** {
+ 424              		.loc 1 209 1 is_stmt 1 view -0
+ 425              		.cfi_startproc
+ 426              		@ args = 0, pretend = 0, frame = 32
+ 427              		@ frame_needed = 0, uses_anonymous_args = 0
+ 428              		.loc 1 209 1 is_stmt 0 view .LVU89
+ 429 0000 00B5     		push	{lr}
+ 430              	.LCFI9:
+ 431              		.cfi_def_cfa_offset 4
+ 432              		.cfi_offset 14, -4
+ 433 0002 89B0     		sub	sp, sp, #36
+ 434              	.LCFI10:
+ 435              		.cfi_def_cfa_offset 40
+ 210:Core/Src/stm32f3xx_hal_msp.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 436              		.loc 1 210 3 is_stmt 1 view .LVU90
+ 437              		.loc 1 210 20 is_stmt 0 view .LVU91
+ 438 0004 0023     		movs	r3, #0
+ 439 0006 0393     		str	r3, [sp, #12]
+ 440 0008 0493     		str	r3, [sp, #16]
+ 441 000a 0593     		str	r3, [sp, #20]
+ 442 000c 0693     		str	r3, [sp, #24]
+ 443 000e 0793     		str	r3, [sp, #28]
+ 211:Core/Src/stm32f3xx_hal_msp.c ****   if(hspi->Instance==SPI2)
+ 444              		.loc 1 211 3 is_stmt 1 view .LVU92
+ 445              		.loc 1 211 10 is_stmt 0 view .LVU93
+ 446 0010 0268     		ldr	r2, [r0]
+ 447              		.loc 1 211 5 view .LVU94
+ 448 0012 144B     		ldr	r3, .L33
+ 449 0014 9A42     		cmp	r2, r3
+ 450 0016 02D0     		beq	.L32
+ 451              	.LVL27:
+ 452              	.L29:
+ 212:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 213:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN SPI2_MspInit 0 */
+ 214:Core/Src/stm32f3xx_hal_msp.c **** 
+ 215:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END SPI2_MspInit 0 */
+ 216:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock enable */
+ 217:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_SPI2_CLK_ENABLE();
+ 218:Core/Src/stm32f3xx_hal_msp.c **** 
+ 219:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 220:Core/Src/stm32f3xx_hal_msp.c ****     /**SPI2 GPIO Configuration
+ 221:Core/Src/stm32f3xx_hal_msp.c ****     PB13     ------> SPI2_SCK
+ 222:Core/Src/stm32f3xx_hal_msp.c ****     PB14     ------> SPI2_MISO
+ 223:Core/Src/stm32f3xx_hal_msp.c ****     PB15     ------> SPI2_MOSI
+ 224:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 225:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
+ 226:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 227:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 228:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 229:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 230:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 231:Core/Src/stm32f3xx_hal_msp.c **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 31
+
+
+ 232:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN SPI2_MspInit 1 */
+ 233:Core/Src/stm32f3xx_hal_msp.c **** 
+ 234:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END SPI2_MspInit 1 */
+ 235:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 236:Core/Src/stm32f3xx_hal_msp.c **** 
+ 237:Core/Src/stm32f3xx_hal_msp.c **** }
+ 453              		.loc 1 237 1 view .LVU95
+ 454 0018 09B0     		add	sp, sp, #36
+ 455              	.LCFI11:
+ 456              		.cfi_remember_state
+ 457              		.cfi_def_cfa_offset 4
+ 458              		@ sp needed
+ 459 001a 5DF804FB 		ldr	pc, [sp], #4
+ 460              	.LVL28:
+ 461              	.L32:
+ 462              	.LCFI12:
+ 463              		.cfi_restore_state
+ 217:Core/Src/stm32f3xx_hal_msp.c **** 
+ 464              		.loc 1 217 5 is_stmt 1 view .LVU96
+ 465              	.LBB14:
+ 217:Core/Src/stm32f3xx_hal_msp.c **** 
+ 466              		.loc 1 217 5 view .LVU97
+ 217:Core/Src/stm32f3xx_hal_msp.c **** 
+ 467              		.loc 1 217 5 view .LVU98
+ 468 001e 03F5EC33 		add	r3, r3, #120832
+ 469 0022 DA69     		ldr	r2, [r3, #28]
+ 470 0024 42F48042 		orr	r2, r2, #16384
+ 471 0028 DA61     		str	r2, [r3, #28]
+ 217:Core/Src/stm32f3xx_hal_msp.c **** 
+ 472              		.loc 1 217 5 view .LVU99
+ 473 002a DA69     		ldr	r2, [r3, #28]
+ 474 002c 02F48042 		and	r2, r2, #16384
+ 475 0030 0192     		str	r2, [sp, #4]
+ 217:Core/Src/stm32f3xx_hal_msp.c **** 
+ 476              		.loc 1 217 5 view .LVU100
+ 477 0032 019A     		ldr	r2, [sp, #4]
+ 478              	.LBE14:
+ 217:Core/Src/stm32f3xx_hal_msp.c **** 
+ 479              		.loc 1 217 5 view .LVU101
+ 219:Core/Src/stm32f3xx_hal_msp.c ****     /**SPI2 GPIO Configuration
+ 480              		.loc 1 219 5 view .LVU102
+ 481              	.LBB15:
+ 219:Core/Src/stm32f3xx_hal_msp.c ****     /**SPI2 GPIO Configuration
+ 482              		.loc 1 219 5 view .LVU103
+ 219:Core/Src/stm32f3xx_hal_msp.c ****     /**SPI2 GPIO Configuration
+ 483              		.loc 1 219 5 view .LVU104
+ 484 0034 5A69     		ldr	r2, [r3, #20]
+ 485 0036 42F48022 		orr	r2, r2, #262144
+ 486 003a 5A61     		str	r2, [r3, #20]
+ 219:Core/Src/stm32f3xx_hal_msp.c ****     /**SPI2 GPIO Configuration
+ 487              		.loc 1 219 5 view .LVU105
+ 488 003c 5B69     		ldr	r3, [r3, #20]
+ 489 003e 03F48023 		and	r3, r3, #262144
+ 490 0042 0293     		str	r3, [sp, #8]
+ 219:Core/Src/stm32f3xx_hal_msp.c ****     /**SPI2 GPIO Configuration
+ 491              		.loc 1 219 5 view .LVU106
+ 492 0044 029B     		ldr	r3, [sp, #8]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 32
+
+
+ 493              	.LBE15:
+ 219:Core/Src/stm32f3xx_hal_msp.c ****     /**SPI2 GPIO Configuration
+ 494              		.loc 1 219 5 view .LVU107
+ 225:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 495              		.loc 1 225 5 view .LVU108
+ 225:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 496              		.loc 1 225 25 is_stmt 0 view .LVU109
+ 497 0046 4FF46043 		mov	r3, #57344
+ 498 004a 0393     		str	r3, [sp, #12]
+ 226:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 499              		.loc 1 226 5 is_stmt 1 view .LVU110
+ 226:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 500              		.loc 1 226 26 is_stmt 0 view .LVU111
+ 501 004c 0223     		movs	r3, #2
+ 502 004e 0493     		str	r3, [sp, #16]
+ 227:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 503              		.loc 1 227 5 is_stmt 1 view .LVU112
+ 228:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 504              		.loc 1 228 5 view .LVU113
+ 228:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 505              		.loc 1 228 27 is_stmt 0 view .LVU114
+ 506 0050 0323     		movs	r3, #3
+ 507 0052 0693     		str	r3, [sp, #24]
+ 229:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 508              		.loc 1 229 5 is_stmt 1 view .LVU115
+ 229:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 509              		.loc 1 229 31 is_stmt 0 view .LVU116
+ 510 0054 0523     		movs	r3, #5
+ 511 0056 0793     		str	r3, [sp, #28]
+ 230:Core/Src/stm32f3xx_hal_msp.c **** 
+ 512              		.loc 1 230 5 is_stmt 1 view .LVU117
+ 513 0058 03A9     		add	r1, sp, #12
+ 514 005a 0348     		ldr	r0, .L33+4
+ 515              	.LVL29:
+ 230:Core/Src/stm32f3xx_hal_msp.c **** 
+ 516              		.loc 1 230 5 is_stmt 0 view .LVU118
+ 517 005c FFF7FEFF 		bl	HAL_GPIO_Init
+ 518              	.LVL30:
+ 519              		.loc 1 237 1 view .LVU119
+ 520 0060 DAE7     		b	.L29
+ 521              	.L34:
+ 522 0062 00BF     		.align	2
+ 523              	.L33:
+ 524 0064 00380040 		.word	1073756160
+ 525 0068 00040048 		.word	1207960576
+ 526              		.cfi_endproc
+ 527              	.LFE135:
+ 529              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
+ 530              		.align	1
+ 531              		.global	HAL_SPI_MspDeInit
+ 532              		.syntax unified
+ 533              		.thumb
+ 534              		.thumb_func
+ 536              	HAL_SPI_MspDeInit:
+ 537              	.LVL31:
+ 538              	.LFB136:
+ 238:Core/Src/stm32f3xx_hal_msp.c **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 33
+
+
+ 239:Core/Src/stm32f3xx_hal_msp.c **** /**
+ 240:Core/Src/stm32f3xx_hal_msp.c **** * @brief SPI MSP De-Initialization
+ 241:Core/Src/stm32f3xx_hal_msp.c **** * This function freeze the hardware resources used in this example
+ 242:Core/Src/stm32f3xx_hal_msp.c **** * @param hspi: SPI handle pointer
+ 243:Core/Src/stm32f3xx_hal_msp.c **** * @retval None
+ 244:Core/Src/stm32f3xx_hal_msp.c **** */
+ 245:Core/Src/stm32f3xx_hal_msp.c **** void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
+ 246:Core/Src/stm32f3xx_hal_msp.c **** {
+ 539              		.loc 1 246 1 is_stmt 1 view -0
+ 540              		.cfi_startproc
+ 541              		@ args = 0, pretend = 0, frame = 0
+ 542              		@ frame_needed = 0, uses_anonymous_args = 0
+ 543              		.loc 1 246 1 is_stmt 0 view .LVU121
+ 544 0000 08B5     		push	{r3, lr}
+ 545              	.LCFI13:
+ 546              		.cfi_def_cfa_offset 8
+ 547              		.cfi_offset 3, -8
+ 548              		.cfi_offset 14, -4
+ 247:Core/Src/stm32f3xx_hal_msp.c ****   if(hspi->Instance==SPI2)
+ 549              		.loc 1 247 3 is_stmt 1 view .LVU122
+ 550              		.loc 1 247 10 is_stmt 0 view .LVU123
+ 551 0002 0268     		ldr	r2, [r0]
+ 552              		.loc 1 247 5 view .LVU124
+ 553 0004 074B     		ldr	r3, .L39
+ 554 0006 9A42     		cmp	r2, r3
+ 555 0008 00D0     		beq	.L38
+ 556              	.LVL32:
+ 557              	.L35:
+ 248:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 249:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN SPI2_MspDeInit 0 */
+ 250:Core/Src/stm32f3xx_hal_msp.c **** 
+ 251:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END SPI2_MspDeInit 0 */
+ 252:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock disable */
+ 253:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_SPI2_CLK_DISABLE();
+ 254:Core/Src/stm32f3xx_hal_msp.c **** 
+ 255:Core/Src/stm32f3xx_hal_msp.c ****     /**SPI2 GPIO Configuration
+ 256:Core/Src/stm32f3xx_hal_msp.c ****     PB13     ------> SPI2_SCK
+ 257:Core/Src/stm32f3xx_hal_msp.c ****     PB14     ------> SPI2_MISO
+ 258:Core/Src/stm32f3xx_hal_msp.c ****     PB15     ------> SPI2_MOSI
+ 259:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 260:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15);
+ 261:Core/Src/stm32f3xx_hal_msp.c **** 
+ 262:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN SPI2_MspDeInit 1 */
+ 263:Core/Src/stm32f3xx_hal_msp.c **** 
+ 264:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END SPI2_MspDeInit 1 */
+ 265:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 266:Core/Src/stm32f3xx_hal_msp.c **** 
+ 267:Core/Src/stm32f3xx_hal_msp.c **** }
+ 558              		.loc 1 267 1 view .LVU125
+ 559 000a 08BD     		pop	{r3, pc}
+ 560              	.LVL33:
+ 561              	.L38:
+ 253:Core/Src/stm32f3xx_hal_msp.c **** 
+ 562              		.loc 1 253 5 is_stmt 1 view .LVU126
+ 563 000c 064A     		ldr	r2, .L39+4
+ 564 000e D369     		ldr	r3, [r2, #28]
+ 565 0010 23F48043 		bic	r3, r3, #16384
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 34
+
+
+ 566 0014 D361     		str	r3, [r2, #28]
+ 260:Core/Src/stm32f3xx_hal_msp.c **** 
+ 567              		.loc 1 260 5 view .LVU127
+ 568 0016 4FF46041 		mov	r1, #57344
+ 569 001a 0448     		ldr	r0, .L39+8
+ 570              	.LVL34:
+ 260:Core/Src/stm32f3xx_hal_msp.c **** 
+ 571              		.loc 1 260 5 is_stmt 0 view .LVU128
+ 572 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 573              	.LVL35:
+ 574              		.loc 1 267 1 view .LVU129
+ 575 0020 F3E7     		b	.L35
+ 576              	.L40:
+ 577 0022 00BF     		.align	2
+ 578              	.L39:
+ 579 0024 00380040 		.word	1073756160
+ 580 0028 00100240 		.word	1073876992
+ 581 002c 00040048 		.word	1207960576
+ 582              		.cfi_endproc
+ 583              	.LFE136:
+ 585              		.section	.text.HAL_TIM_PWM_MspInit,"ax",%progbits
+ 586              		.align	1
+ 587              		.global	HAL_TIM_PWM_MspInit
+ 588              		.syntax unified
+ 589              		.thumb
+ 590              		.thumb_func
+ 592              	HAL_TIM_PWM_MspInit:
+ 593              	.LVL36:
+ 594              	.LFB137:
+ 268:Core/Src/stm32f3xx_hal_msp.c **** 
+ 269:Core/Src/stm32f3xx_hal_msp.c **** /**
+ 270:Core/Src/stm32f3xx_hal_msp.c **** * @brief TIM_PWM MSP Initialization
+ 271:Core/Src/stm32f3xx_hal_msp.c **** * This function configures the hardware resources used in this example
+ 272:Core/Src/stm32f3xx_hal_msp.c **** * @param htim_pwm: TIM_PWM handle pointer
+ 273:Core/Src/stm32f3xx_hal_msp.c **** * @retval None
+ 274:Core/Src/stm32f3xx_hal_msp.c **** */
+ 275:Core/Src/stm32f3xx_hal_msp.c **** void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef* htim_pwm)
+ 276:Core/Src/stm32f3xx_hal_msp.c **** {
+ 595              		.loc 1 276 1 is_stmt 1 view -0
+ 596              		.cfi_startproc
+ 597              		@ args = 0, pretend = 0, frame = 8
+ 598              		@ frame_needed = 0, uses_anonymous_args = 0
+ 599              		@ link register save eliminated.
+ 277:Core/Src/stm32f3xx_hal_msp.c ****   if(htim_pwm->Instance==TIM3)
+ 600              		.loc 1 277 3 view .LVU131
+ 601              		.loc 1 277 14 is_stmt 0 view .LVU132
+ 602 0000 0268     		ldr	r2, [r0]
+ 603              		.loc 1 277 5 view .LVU133
+ 604 0002 094B     		ldr	r3, .L48
+ 605 0004 9A42     		cmp	r2, r3
+ 606 0006 00D0     		beq	.L47
+ 607 0008 7047     		bx	lr
+ 608              	.L47:
+ 276:Core/Src/stm32f3xx_hal_msp.c ****   if(htim_pwm->Instance==TIM3)
+ 609              		.loc 1 276 1 view .LVU134
+ 610 000a 82B0     		sub	sp, sp, #8
+ 611              	.LCFI14:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 35
+
+
+ 612              		.cfi_def_cfa_offset 8
+ 278:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 279:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN TIM3_MspInit 0 */
+ 280:Core/Src/stm32f3xx_hal_msp.c **** 
+ 281:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END TIM3_MspInit 0 */
+ 282:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock enable */
+ 283:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_TIM3_CLK_ENABLE();
+ 613              		.loc 1 283 5 is_stmt 1 view .LVU135
+ 614              	.LBB16:
+ 615              		.loc 1 283 5 view .LVU136
+ 616              		.loc 1 283 5 view .LVU137
+ 617 000c 03F50333 		add	r3, r3, #134144
+ 618 0010 DA69     		ldr	r2, [r3, #28]
+ 619 0012 42F00202 		orr	r2, r2, #2
+ 620 0016 DA61     		str	r2, [r3, #28]
+ 621              		.loc 1 283 5 view .LVU138
+ 622 0018 DB69     		ldr	r3, [r3, #28]
+ 623 001a 03F00203 		and	r3, r3, #2
+ 624 001e 0193     		str	r3, [sp, #4]
+ 625              		.loc 1 283 5 view .LVU139
+ 626 0020 019B     		ldr	r3, [sp, #4]
+ 627              	.LBE16:
+ 628              		.loc 1 283 5 view .LVU140
+ 284:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN TIM3_MspInit 1 */
+ 285:Core/Src/stm32f3xx_hal_msp.c **** 
+ 286:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END TIM3_MspInit 1 */
+ 287:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 288:Core/Src/stm32f3xx_hal_msp.c **** 
+ 289:Core/Src/stm32f3xx_hal_msp.c **** }
+ 629              		.loc 1 289 1 is_stmt 0 view .LVU141
+ 630 0022 02B0     		add	sp, sp, #8
+ 631              	.LCFI15:
+ 632              		.cfi_def_cfa_offset 0
+ 633              		@ sp needed
+ 634 0024 7047     		bx	lr
+ 635              	.L49:
+ 636 0026 00BF     		.align	2
+ 637              	.L48:
+ 638 0028 00040040 		.word	1073742848
+ 639              		.cfi_endproc
+ 640              	.LFE137:
+ 642              		.section	.text.HAL_TIM_MspPostInit,"ax",%progbits
+ 643              		.align	1
+ 644              		.global	HAL_TIM_MspPostInit
+ 645              		.syntax unified
+ 646              		.thumb
+ 647              		.thumb_func
+ 649              	HAL_TIM_MspPostInit:
+ 650              	.LVL37:
+ 651              	.LFB138:
+ 290:Core/Src/stm32f3xx_hal_msp.c **** 
+ 291:Core/Src/stm32f3xx_hal_msp.c **** void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
+ 292:Core/Src/stm32f3xx_hal_msp.c **** {
+ 652              		.loc 1 292 1 is_stmt 1 view -0
+ 653              		.cfi_startproc
+ 654              		@ args = 0, pretend = 0, frame = 24
+ 655              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 36
+
+
+ 656              		.loc 1 292 1 is_stmt 0 view .LVU143
+ 657 0000 00B5     		push	{lr}
+ 658              	.LCFI16:
+ 659              		.cfi_def_cfa_offset 4
+ 660              		.cfi_offset 14, -4
+ 661 0002 87B0     		sub	sp, sp, #28
+ 662              	.LCFI17:
+ 663              		.cfi_def_cfa_offset 32
+ 293:Core/Src/stm32f3xx_hal_msp.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 664              		.loc 1 293 3 is_stmt 1 view .LVU144
+ 665              		.loc 1 293 20 is_stmt 0 view .LVU145
+ 666 0004 0023     		movs	r3, #0
+ 667 0006 0193     		str	r3, [sp, #4]
+ 668 0008 0293     		str	r3, [sp, #8]
+ 669 000a 0393     		str	r3, [sp, #12]
+ 670 000c 0493     		str	r3, [sp, #16]
+ 671 000e 0593     		str	r3, [sp, #20]
+ 294:Core/Src/stm32f3xx_hal_msp.c ****   if(htim->Instance==TIM3)
+ 672              		.loc 1 294 3 is_stmt 1 view .LVU146
+ 673              		.loc 1 294 10 is_stmt 0 view .LVU147
+ 674 0010 0268     		ldr	r2, [r0]
+ 675              		.loc 1 294 5 view .LVU148
+ 676 0012 0D4B     		ldr	r3, .L54
+ 677 0014 9A42     		cmp	r2, r3
+ 678 0016 02D0     		beq	.L53
+ 679              	.LVL38:
+ 680              	.L50:
+ 295:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 296:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN TIM3_MspPostInit 0 */
+ 297:Core/Src/stm32f3xx_hal_msp.c **** 
+ 298:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END TIM3_MspPostInit 0 */
+ 299:Core/Src/stm32f3xx_hal_msp.c **** 
+ 300:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 301:Core/Src/stm32f3xx_hal_msp.c ****     /**TIM3 GPIO Configuration
+ 302:Core/Src/stm32f3xx_hal_msp.c ****     PB0     ------> TIM3_CH3
+ 303:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 304:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pin = BUZZER_Pin;
+ 305:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 306:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 307:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 308:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF2_TIM3;
+ 309:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(BUZZER_GPIO_Port, &GPIO_InitStruct);
+ 310:Core/Src/stm32f3xx_hal_msp.c **** 
+ 311:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN TIM3_MspPostInit 1 */
+ 312:Core/Src/stm32f3xx_hal_msp.c **** 
+ 313:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END TIM3_MspPostInit 1 */
+ 314:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 315:Core/Src/stm32f3xx_hal_msp.c **** 
+ 316:Core/Src/stm32f3xx_hal_msp.c **** }
+ 681              		.loc 1 316 1 view .LVU149
+ 682 0018 07B0     		add	sp, sp, #28
+ 683              	.LCFI18:
+ 684              		.cfi_remember_state
+ 685              		.cfi_def_cfa_offset 4
+ 686              		@ sp needed
+ 687 001a 5DF804FB 		ldr	pc, [sp], #4
+ 688              	.LVL39:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 37
+
+
+ 689              	.L53:
+ 690              	.LCFI19:
+ 691              		.cfi_restore_state
+ 300:Core/Src/stm32f3xx_hal_msp.c ****     /**TIM3 GPIO Configuration
+ 692              		.loc 1 300 5 is_stmt 1 view .LVU150
+ 693              	.LBB17:
+ 300:Core/Src/stm32f3xx_hal_msp.c ****     /**TIM3 GPIO Configuration
+ 694              		.loc 1 300 5 view .LVU151
+ 300:Core/Src/stm32f3xx_hal_msp.c ****     /**TIM3 GPIO Configuration
+ 695              		.loc 1 300 5 view .LVU152
+ 696 001e 03F50333 		add	r3, r3, #134144
+ 697 0022 5A69     		ldr	r2, [r3, #20]
+ 698 0024 42F48022 		orr	r2, r2, #262144
+ 699 0028 5A61     		str	r2, [r3, #20]
+ 300:Core/Src/stm32f3xx_hal_msp.c ****     /**TIM3 GPIO Configuration
+ 700              		.loc 1 300 5 view .LVU153
+ 701 002a 5B69     		ldr	r3, [r3, #20]
+ 702 002c 03F48023 		and	r3, r3, #262144
+ 703 0030 0093     		str	r3, [sp]
+ 300:Core/Src/stm32f3xx_hal_msp.c ****     /**TIM3 GPIO Configuration
+ 704              		.loc 1 300 5 view .LVU154
+ 705 0032 009B     		ldr	r3, [sp]
+ 706              	.LBE17:
+ 300:Core/Src/stm32f3xx_hal_msp.c ****     /**TIM3 GPIO Configuration
+ 707              		.loc 1 300 5 view .LVU155
+ 304:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 708              		.loc 1 304 5 view .LVU156
+ 304:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 709              		.loc 1 304 25 is_stmt 0 view .LVU157
+ 710 0034 0123     		movs	r3, #1
+ 711 0036 0193     		str	r3, [sp, #4]
+ 305:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 712              		.loc 1 305 5 is_stmt 1 view .LVU158
+ 305:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 713              		.loc 1 305 26 is_stmt 0 view .LVU159
+ 714 0038 0223     		movs	r3, #2
+ 715 003a 0293     		str	r3, [sp, #8]
+ 306:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 716              		.loc 1 306 5 is_stmt 1 view .LVU160
+ 307:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF2_TIM3;
+ 717              		.loc 1 307 5 view .LVU161
+ 308:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(BUZZER_GPIO_Port, &GPIO_InitStruct);
+ 718              		.loc 1 308 5 view .LVU162
+ 308:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(BUZZER_GPIO_Port, &GPIO_InitStruct);
+ 719              		.loc 1 308 31 is_stmt 0 view .LVU163
+ 720 003c 0593     		str	r3, [sp, #20]
+ 309:Core/Src/stm32f3xx_hal_msp.c **** 
+ 721              		.loc 1 309 5 is_stmt 1 view .LVU164
+ 722 003e 01A9     		add	r1, sp, #4
+ 723 0040 0248     		ldr	r0, .L54+4
+ 724              	.LVL40:
+ 309:Core/Src/stm32f3xx_hal_msp.c **** 
+ 725              		.loc 1 309 5 is_stmt 0 view .LVU165
+ 726 0042 FFF7FEFF 		bl	HAL_GPIO_Init
+ 727              	.LVL41:
+ 728              		.loc 1 316 1 view .LVU166
+ 729 0046 E7E7     		b	.L50
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 38
+
+
+ 730              	.L55:
+ 731              		.align	2
+ 732              	.L54:
+ 733 0048 00040040 		.word	1073742848
+ 734 004c 00040048 		.word	1207960576
+ 735              		.cfi_endproc
+ 736              	.LFE138:
+ 738              		.section	.text.HAL_TIM_PWM_MspDeInit,"ax",%progbits
+ 739              		.align	1
+ 740              		.global	HAL_TIM_PWM_MspDeInit
+ 741              		.syntax unified
+ 742              		.thumb
+ 743              		.thumb_func
+ 745              	HAL_TIM_PWM_MspDeInit:
+ 746              	.LVL42:
+ 747              	.LFB139:
+ 317:Core/Src/stm32f3xx_hal_msp.c **** /**
+ 318:Core/Src/stm32f3xx_hal_msp.c **** * @brief TIM_PWM MSP De-Initialization
+ 319:Core/Src/stm32f3xx_hal_msp.c **** * This function freeze the hardware resources used in this example
+ 320:Core/Src/stm32f3xx_hal_msp.c **** * @param htim_pwm: TIM_PWM handle pointer
+ 321:Core/Src/stm32f3xx_hal_msp.c **** * @retval None
+ 322:Core/Src/stm32f3xx_hal_msp.c **** */
+ 323:Core/Src/stm32f3xx_hal_msp.c **** void HAL_TIM_PWM_MspDeInit(TIM_HandleTypeDef* htim_pwm)
+ 324:Core/Src/stm32f3xx_hal_msp.c **** {
+ 748              		.loc 1 324 1 is_stmt 1 view -0
+ 749              		.cfi_startproc
+ 750              		@ args = 0, pretend = 0, frame = 0
+ 751              		@ frame_needed = 0, uses_anonymous_args = 0
+ 752              		@ link register save eliminated.
+ 325:Core/Src/stm32f3xx_hal_msp.c ****   if(htim_pwm->Instance==TIM3)
+ 753              		.loc 1 325 3 view .LVU168
+ 754              		.loc 1 325 14 is_stmt 0 view .LVU169
+ 755 0000 0268     		ldr	r2, [r0]
+ 756              		.loc 1 325 5 view .LVU170
+ 757 0002 054B     		ldr	r3, .L59
+ 758 0004 9A42     		cmp	r2, r3
+ 759 0006 00D0     		beq	.L58
+ 760              	.L56:
+ 326:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 327:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN TIM3_MspDeInit 0 */
+ 328:Core/Src/stm32f3xx_hal_msp.c **** 
+ 329:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END TIM3_MspDeInit 0 */
+ 330:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock disable */
+ 331:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_TIM3_CLK_DISABLE();
+ 332:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN TIM3_MspDeInit 1 */
+ 333:Core/Src/stm32f3xx_hal_msp.c **** 
+ 334:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END TIM3_MspDeInit 1 */
+ 335:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 336:Core/Src/stm32f3xx_hal_msp.c **** 
+ 337:Core/Src/stm32f3xx_hal_msp.c **** }
+ 761              		.loc 1 337 1 view .LVU171
+ 762 0008 7047     		bx	lr
+ 763              	.L58:
+ 331:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN TIM3_MspDeInit 1 */
+ 764              		.loc 1 331 5 is_stmt 1 view .LVU172
+ 765 000a 044A     		ldr	r2, .L59+4
+ 766 000c D369     		ldr	r3, [r2, #28]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 39
+
+
+ 767 000e 23F00203 		bic	r3, r3, #2
+ 768 0012 D361     		str	r3, [r2, #28]
+ 769              		.loc 1 337 1 is_stmt 0 view .LVU173
+ 770 0014 F8E7     		b	.L56
+ 771              	.L60:
+ 772 0016 00BF     		.align	2
+ 773              	.L59:
+ 774 0018 00040040 		.word	1073742848
+ 775 001c 00100240 		.word	1073876992
+ 776              		.cfi_endproc
+ 777              	.LFE139:
+ 779              		.section	.text.HAL_UART_MspInit,"ax",%progbits
+ 780              		.align	1
+ 781              		.global	HAL_UART_MspInit
+ 782              		.syntax unified
+ 783              		.thumb
+ 784              		.thumb_func
+ 786              	HAL_UART_MspInit:
+ 787              	.LVL43:
+ 788              	.LFB140:
+ 338:Core/Src/stm32f3xx_hal_msp.c **** 
+ 339:Core/Src/stm32f3xx_hal_msp.c **** /**
+ 340:Core/Src/stm32f3xx_hal_msp.c **** * @brief UART MSP Initialization
+ 341:Core/Src/stm32f3xx_hal_msp.c **** * This function configures the hardware resources used in this example
+ 342:Core/Src/stm32f3xx_hal_msp.c **** * @param huart: UART handle pointer
+ 343:Core/Src/stm32f3xx_hal_msp.c **** * @retval None
+ 344:Core/Src/stm32f3xx_hal_msp.c **** */
+ 345:Core/Src/stm32f3xx_hal_msp.c **** void HAL_UART_MspInit(UART_HandleTypeDef* huart)
+ 346:Core/Src/stm32f3xx_hal_msp.c **** {
+ 789              		.loc 1 346 1 is_stmt 1 view -0
+ 790              		.cfi_startproc
+ 791              		@ args = 0, pretend = 0, frame = 48
+ 792              		@ frame_needed = 0, uses_anonymous_args = 0
+ 793              		.loc 1 346 1 is_stmt 0 view .LVU175
+ 794 0000 10B5     		push	{r4, lr}
+ 795              	.LCFI20:
+ 796              		.cfi_def_cfa_offset 8
+ 797              		.cfi_offset 4, -8
+ 798              		.cfi_offset 14, -4
+ 799 0002 8CB0     		sub	sp, sp, #48
+ 800              	.LCFI21:
+ 801              		.cfi_def_cfa_offset 56
+ 802 0004 0446     		mov	r4, r0
+ 347:Core/Src/stm32f3xx_hal_msp.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 803              		.loc 1 347 3 is_stmt 1 view .LVU176
+ 804              		.loc 1 347 20 is_stmt 0 view .LVU177
+ 805 0006 0023     		movs	r3, #0
+ 806 0008 0793     		str	r3, [sp, #28]
+ 807 000a 0893     		str	r3, [sp, #32]
+ 808 000c 0993     		str	r3, [sp, #36]
+ 809 000e 0A93     		str	r3, [sp, #40]
+ 810 0010 0B93     		str	r3, [sp, #44]
+ 348:Core/Src/stm32f3xx_hal_msp.c ****   if(huart->Instance==USART1)
+ 811              		.loc 1 348 3 is_stmt 1 view .LVU178
+ 812              		.loc 1 348 11 is_stmt 0 view .LVU179
+ 813 0012 0368     		ldr	r3, [r0]
+ 814              		.loc 1 348 5 view .LVU180
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 40
+
+
+ 815 0014 644A     		ldr	r2, .L75
+ 816 0016 9342     		cmp	r3, r2
+ 817 0018 08D0     		beq	.L69
+ 349:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 350:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART1_MspInit 0 */
+ 351:Core/Src/stm32f3xx_hal_msp.c **** 
+ 352:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART1_MspInit 0 */
+ 353:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock enable */
+ 354:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_USART1_CLK_ENABLE();
+ 355:Core/Src/stm32f3xx_hal_msp.c **** 
+ 356:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 357:Core/Src/stm32f3xx_hal_msp.c ****     /**USART1 GPIO Configuration
+ 358:Core/Src/stm32f3xx_hal_msp.c ****     PA9     ------> USART1_TX
+ 359:Core/Src/stm32f3xx_hal_msp.c ****     PA10     ------> USART1_RX
+ 360:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 361:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
+ 362:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 363:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 364:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 365:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+ 366:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 367:Core/Src/stm32f3xx_hal_msp.c **** 
+ 368:Core/Src/stm32f3xx_hal_msp.c ****     /* USART1 DMA Init */
+ 369:Core/Src/stm32f3xx_hal_msp.c ****     /* USART1_RX Init */
+ 370:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Instance = DMA1_Channel5;
+ 371:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 372:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 373:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 374:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 375:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 376:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.Mode = DMA_CIRCULAR;
+ 377:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 378:Core/Src/stm32f3xx_hal_msp.c ****     if (HAL_DMA_Init(&hdma_usart1_rx) != HAL_OK)
+ 379:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 380:Core/Src/stm32f3xx_hal_msp.c ****       Error_Handler();
+ 381:Core/Src/stm32f3xx_hal_msp.c ****     }
+ 382:Core/Src/stm32f3xx_hal_msp.c **** 
+ 383:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_LINKDMA(huart,hdmarx,hdma_usart1_rx);
+ 384:Core/Src/stm32f3xx_hal_msp.c **** 
+ 385:Core/Src/stm32f3xx_hal_msp.c ****     /* USART1 interrupt Init */
+ 386:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_SetPriority(USART1_IRQn, 2, 0);
+ 387:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(USART1_IRQn);
+ 388:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART1_MspInit 1 */
+ 389:Core/Src/stm32f3xx_hal_msp.c **** 
+ 390:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART1_MspInit 1 */
+ 391:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 392:Core/Src/stm32f3xx_hal_msp.c ****   else if(huart->Instance==USART2)
+ 818              		.loc 1 392 8 is_stmt 1 view .LVU181
+ 819              		.loc 1 392 10 is_stmt 0 view .LVU182
+ 820 001a 644A     		ldr	r2, .L75+4
+ 821 001c 9342     		cmp	r3, r2
+ 822 001e 45D0     		beq	.L70
+ 393:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 394:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART2_MspInit 0 */
+ 395:Core/Src/stm32f3xx_hal_msp.c **** 
+ 396:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART2_MspInit 0 */
+ 397:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock enable */
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 41
+
+
+ 398:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_USART2_CLK_ENABLE();
+ 399:Core/Src/stm32f3xx_hal_msp.c **** 
+ 400:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 401:Core/Src/stm32f3xx_hal_msp.c ****     /**USART2 GPIO Configuration
+ 402:Core/Src/stm32f3xx_hal_msp.c ****     PA2     ------> USART2_TX
+ 403:Core/Src/stm32f3xx_hal_msp.c ****     PA3     ------> USART2_RX
+ 404:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 405:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3;
+ 406:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 407:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 408:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 409:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+ 410:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 411:Core/Src/stm32f3xx_hal_msp.c **** 
+ 412:Core/Src/stm32f3xx_hal_msp.c ****     /* USART2 DMA Init */
+ 413:Core/Src/stm32f3xx_hal_msp.c ****     /* USART2_RX Init */
+ 414:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Instance = DMA1_Channel6;
+ 415:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 416:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 417:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 418:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 419:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 420:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.Mode = DMA_CIRCULAR;
+ 421:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 422:Core/Src/stm32f3xx_hal_msp.c ****     if (HAL_DMA_Init(&hdma_usart2_rx) != HAL_OK)
+ 423:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 424:Core/Src/stm32f3xx_hal_msp.c ****       Error_Handler();
+ 425:Core/Src/stm32f3xx_hal_msp.c ****     }
+ 426:Core/Src/stm32f3xx_hal_msp.c **** 
+ 427:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_LINKDMA(huart,hdmarx,hdma_usart2_rx);
+ 428:Core/Src/stm32f3xx_hal_msp.c **** 
+ 429:Core/Src/stm32f3xx_hal_msp.c ****     /* USART2 interrupt Init */
+ 430:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_SetPriority(USART2_IRQn, 3, 0);
+ 431:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(USART2_IRQn);
+ 432:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART2_MspInit 1 */
+ 433:Core/Src/stm32f3xx_hal_msp.c **** 
+ 434:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART2_MspInit 1 */
+ 435:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 436:Core/Src/stm32f3xx_hal_msp.c ****   else if(huart->Instance==USART3)
+ 823              		.loc 1 436 8 is_stmt 1 view .LVU183
+ 824              		.loc 1 436 10 is_stmt 0 view .LVU184
+ 825 0020 634A     		ldr	r2, .L75+8
+ 826 0022 9342     		cmp	r3, r2
+ 827 0024 00F08180 		beq	.L71
+ 828              	.LVL44:
+ 829              	.L61:
+ 437:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 438:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 0 */
+ 439:Core/Src/stm32f3xx_hal_msp.c **** 
+ 440:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART3_MspInit 0 */
+ 441:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock enable */
+ 442:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_USART3_CLK_ENABLE();
+ 443:Core/Src/stm32f3xx_hal_msp.c **** 
+ 444:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 445:Core/Src/stm32f3xx_hal_msp.c ****     /**USART3 GPIO Configuration
+ 446:Core/Src/stm32f3xx_hal_msp.c ****     PB10     ------> USART3_TX
+ 447:Core/Src/stm32f3xx_hal_msp.c ****     PB11     ------> USART3_RX
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 42
+
+
+ 448:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 449:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
+ 450:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 451:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 452:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 453:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ 454:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 455:Core/Src/stm32f3xx_hal_msp.c **** 
+ 456:Core/Src/stm32f3xx_hal_msp.c ****     /* USART3 DMA Init */
+ 457:Core/Src/stm32f3xx_hal_msp.c ****     /* USART3_RX Init */
+ 458:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Instance = DMA1_Channel3;
+ 459:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 460:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 461:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 462:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 463:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 464:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.Mode = DMA_CIRCULAR;
+ 465:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 466:Core/Src/stm32f3xx_hal_msp.c ****     if (HAL_DMA_Init(&hdma_usart3_rx) != HAL_OK)
+ 467:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 468:Core/Src/stm32f3xx_hal_msp.c ****       Error_Handler();
+ 469:Core/Src/stm32f3xx_hal_msp.c ****     }
+ 470:Core/Src/stm32f3xx_hal_msp.c **** 
+ 471:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_LINKDMA(huart,hdmarx,hdma_usart3_rx);
+ 472:Core/Src/stm32f3xx_hal_msp.c **** 
+ 473:Core/Src/stm32f3xx_hal_msp.c ****     /* USART3 interrupt Init */
+ 474:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_SetPriority(USART3_IRQn, 4, 0);
+ 475:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(USART3_IRQn);
+ 476:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 477:Core/Src/stm32f3xx_hal_msp.c **** 
+ 478:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART3_MspInit 1 */
+ 479:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 480:Core/Src/stm32f3xx_hal_msp.c **** 
+ 481:Core/Src/stm32f3xx_hal_msp.c **** }
+ 830              		.loc 1 481 1 view .LVU185
+ 831 0028 0CB0     		add	sp, sp, #48
+ 832              	.LCFI22:
+ 833              		.cfi_remember_state
+ 834              		.cfi_def_cfa_offset 8
+ 835              		@ sp needed
+ 836 002a 10BD     		pop	{r4, pc}
+ 837              	.LVL45:
+ 838              	.L69:
+ 839              	.LCFI23:
+ 840              		.cfi_restore_state
+ 354:Core/Src/stm32f3xx_hal_msp.c **** 
+ 841              		.loc 1 354 5 is_stmt 1 view .LVU186
+ 842              	.LBB18:
+ 354:Core/Src/stm32f3xx_hal_msp.c **** 
+ 843              		.loc 1 354 5 view .LVU187
+ 354:Core/Src/stm32f3xx_hal_msp.c **** 
+ 844              		.loc 1 354 5 view .LVU188
+ 845 002c 614B     		ldr	r3, .L75+12
+ 846 002e 9A69     		ldr	r2, [r3, #24]
+ 847 0030 42F48042 		orr	r2, r2, #16384
+ 848 0034 9A61     		str	r2, [r3, #24]
+ 354:Core/Src/stm32f3xx_hal_msp.c **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 43
+
+
+ 849              		.loc 1 354 5 view .LVU189
+ 850 0036 9A69     		ldr	r2, [r3, #24]
+ 851 0038 02F48042 		and	r2, r2, #16384
+ 852 003c 0192     		str	r2, [sp, #4]
+ 354:Core/Src/stm32f3xx_hal_msp.c **** 
+ 853              		.loc 1 354 5 view .LVU190
+ 854 003e 019A     		ldr	r2, [sp, #4]
+ 855              	.LBE18:
+ 354:Core/Src/stm32f3xx_hal_msp.c **** 
+ 856              		.loc 1 354 5 view .LVU191
+ 356:Core/Src/stm32f3xx_hal_msp.c ****     /**USART1 GPIO Configuration
+ 857              		.loc 1 356 5 view .LVU192
+ 858              	.LBB19:
+ 356:Core/Src/stm32f3xx_hal_msp.c ****     /**USART1 GPIO Configuration
+ 859              		.loc 1 356 5 view .LVU193
+ 356:Core/Src/stm32f3xx_hal_msp.c ****     /**USART1 GPIO Configuration
+ 860              		.loc 1 356 5 view .LVU194
+ 861 0040 5A69     		ldr	r2, [r3, #20]
+ 862 0042 42F40032 		orr	r2, r2, #131072
+ 863 0046 5A61     		str	r2, [r3, #20]
+ 356:Core/Src/stm32f3xx_hal_msp.c ****     /**USART1 GPIO Configuration
+ 864              		.loc 1 356 5 view .LVU195
+ 865 0048 5B69     		ldr	r3, [r3, #20]
+ 866 004a 03F40033 		and	r3, r3, #131072
+ 867 004e 0293     		str	r3, [sp, #8]
+ 356:Core/Src/stm32f3xx_hal_msp.c ****     /**USART1 GPIO Configuration
+ 868              		.loc 1 356 5 view .LVU196
+ 869 0050 029B     		ldr	r3, [sp, #8]
+ 870              	.LBE19:
+ 356:Core/Src/stm32f3xx_hal_msp.c ****     /**USART1 GPIO Configuration
+ 871              		.loc 1 356 5 view .LVU197
+ 361:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 872              		.loc 1 361 5 view .LVU198
+ 361:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 873              		.loc 1 361 25 is_stmt 0 view .LVU199
+ 874 0052 4FF4C063 		mov	r3, #1536
+ 875 0056 0793     		str	r3, [sp, #28]
+ 362:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 876              		.loc 1 362 5 is_stmt 1 view .LVU200
+ 362:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 877              		.loc 1 362 26 is_stmt 0 view .LVU201
+ 878 0058 0223     		movs	r3, #2
+ 879 005a 0893     		str	r3, [sp, #32]
+ 363:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 880              		.loc 1 363 5 is_stmt 1 view .LVU202
+ 364:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+ 881              		.loc 1 364 5 view .LVU203
+ 364:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+ 882              		.loc 1 364 27 is_stmt 0 view .LVU204
+ 883 005c 0323     		movs	r3, #3
+ 884 005e 0A93     		str	r3, [sp, #40]
+ 365:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 885              		.loc 1 365 5 is_stmt 1 view .LVU205
+ 365:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 886              		.loc 1 365 31 is_stmt 0 view .LVU206
+ 887 0060 0723     		movs	r3, #7
+ 888 0062 0B93     		str	r3, [sp, #44]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 44
+
+
+ 366:Core/Src/stm32f3xx_hal_msp.c **** 
+ 889              		.loc 1 366 5 is_stmt 1 view .LVU207
+ 890 0064 07A9     		add	r1, sp, #28
+ 891 0066 4FF09040 		mov	r0, #1207959552
+ 892              	.LVL46:
+ 366:Core/Src/stm32f3xx_hal_msp.c **** 
+ 893              		.loc 1 366 5 is_stmt 0 view .LVU208
+ 894 006a FFF7FEFF 		bl	HAL_GPIO_Init
+ 895              	.LVL47:
+ 370:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 896              		.loc 1 370 5 is_stmt 1 view .LVU209
+ 370:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 897              		.loc 1 370 29 is_stmt 0 view .LVU210
+ 898 006e 5248     		ldr	r0, .L75+16
+ 899 0070 524B     		ldr	r3, .L75+20
+ 900 0072 0360     		str	r3, [r0]
+ 371:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 901              		.loc 1 371 5 is_stmt 1 view .LVU211
+ 371:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 902              		.loc 1 371 35 is_stmt 0 view .LVU212
+ 903 0074 0023     		movs	r3, #0
+ 904 0076 4360     		str	r3, [r0, #4]
+ 372:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 905              		.loc 1 372 5 is_stmt 1 view .LVU213
+ 372:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 906              		.loc 1 372 35 is_stmt 0 view .LVU214
+ 907 0078 8360     		str	r3, [r0, #8]
+ 373:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 908              		.loc 1 373 5 is_stmt 1 view .LVU215
+ 373:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 909              		.loc 1 373 32 is_stmt 0 view .LVU216
+ 910 007a 8022     		movs	r2, #128
+ 911 007c C260     		str	r2, [r0, #12]
+ 374:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 912              		.loc 1 374 5 is_stmt 1 view .LVU217
+ 374:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 913              		.loc 1 374 45 is_stmt 0 view .LVU218
+ 914 007e 0361     		str	r3, [r0, #16]
+ 375:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.Mode = DMA_CIRCULAR;
+ 915              		.loc 1 375 5 is_stmt 1 view .LVU219
+ 375:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.Mode = DMA_CIRCULAR;
+ 916              		.loc 1 375 42 is_stmt 0 view .LVU220
+ 917 0080 4361     		str	r3, [r0, #20]
+ 376:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 918              		.loc 1 376 5 is_stmt 1 view .LVU221
+ 376:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart1_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 919              		.loc 1 376 30 is_stmt 0 view .LVU222
+ 920 0082 2022     		movs	r2, #32
+ 921 0084 8261     		str	r2, [r0, #24]
+ 377:Core/Src/stm32f3xx_hal_msp.c ****     if (HAL_DMA_Init(&hdma_usart1_rx) != HAL_OK)
+ 922              		.loc 1 377 5 is_stmt 1 view .LVU223
+ 377:Core/Src/stm32f3xx_hal_msp.c ****     if (HAL_DMA_Init(&hdma_usart1_rx) != HAL_OK)
+ 923              		.loc 1 377 34 is_stmt 0 view .LVU224
+ 924 0086 C361     		str	r3, [r0, #28]
+ 378:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 925              		.loc 1 378 5 is_stmt 1 view .LVU225
+ 378:Core/Src/stm32f3xx_hal_msp.c ****     {
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 45
+
+
+ 926              		.loc 1 378 9 is_stmt 0 view .LVU226
+ 927 0088 FFF7FEFF 		bl	HAL_DMA_Init
+ 928              	.LVL48:
+ 378:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 929              		.loc 1 378 8 view .LVU227
+ 930 008c 58B9     		cbnz	r0, .L72
+ 931              	.L63:
+ 383:Core/Src/stm32f3xx_hal_msp.c **** 
+ 932              		.loc 1 383 5 is_stmt 1 view .LVU228
+ 383:Core/Src/stm32f3xx_hal_msp.c **** 
+ 933              		.loc 1 383 5 view .LVU229
+ 934 008e 4A4B     		ldr	r3, .L75+16
+ 935 0090 2367     		str	r3, [r4, #112]
+ 383:Core/Src/stm32f3xx_hal_msp.c **** 
+ 936              		.loc 1 383 5 view .LVU230
+ 937 0092 5C62     		str	r4, [r3, #36]
+ 383:Core/Src/stm32f3xx_hal_msp.c **** 
+ 938              		.loc 1 383 5 view .LVU231
+ 386:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(USART1_IRQn);
+ 939              		.loc 1 386 5 view .LVU232
+ 940 0094 0022     		movs	r2, #0
+ 941 0096 0221     		movs	r1, #2
+ 942 0098 2520     		movs	r0, #37
+ 943 009a FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 944              	.LVL49:
+ 387:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART1_MspInit 1 */
+ 945              		.loc 1 387 5 view .LVU233
+ 946 009e 2520     		movs	r0, #37
+ 947 00a0 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 948              	.LVL50:
+ 949 00a4 C0E7     		b	.L61
+ 950              	.L72:
+ 380:Core/Src/stm32f3xx_hal_msp.c ****     }
+ 951              		.loc 1 380 7 view .LVU234
+ 952 00a6 FFF7FEFF 		bl	Error_Handler
+ 953              	.LVL51:
+ 954 00aa F0E7     		b	.L63
+ 955              	.LVL52:
+ 956              	.L70:
+ 398:Core/Src/stm32f3xx_hal_msp.c **** 
+ 957              		.loc 1 398 5 view .LVU235
+ 958              	.LBB20:
+ 398:Core/Src/stm32f3xx_hal_msp.c **** 
+ 959              		.loc 1 398 5 view .LVU236
+ 398:Core/Src/stm32f3xx_hal_msp.c **** 
+ 960              		.loc 1 398 5 view .LVU237
+ 961 00ac 414B     		ldr	r3, .L75+12
+ 962 00ae DA69     		ldr	r2, [r3, #28]
+ 963 00b0 42F40032 		orr	r2, r2, #131072
+ 964 00b4 DA61     		str	r2, [r3, #28]
+ 398:Core/Src/stm32f3xx_hal_msp.c **** 
+ 965              		.loc 1 398 5 view .LVU238
+ 966 00b6 DA69     		ldr	r2, [r3, #28]
+ 967 00b8 02F40032 		and	r2, r2, #131072
+ 968 00bc 0392     		str	r2, [sp, #12]
+ 398:Core/Src/stm32f3xx_hal_msp.c **** 
+ 969              		.loc 1 398 5 view .LVU239
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 46
+
+
+ 970 00be 039A     		ldr	r2, [sp, #12]
+ 971              	.LBE20:
+ 398:Core/Src/stm32f3xx_hal_msp.c **** 
+ 972              		.loc 1 398 5 view .LVU240
+ 400:Core/Src/stm32f3xx_hal_msp.c ****     /**USART2 GPIO Configuration
+ 973              		.loc 1 400 5 view .LVU241
+ 974              	.LBB21:
+ 400:Core/Src/stm32f3xx_hal_msp.c ****     /**USART2 GPIO Configuration
+ 975              		.loc 1 400 5 view .LVU242
+ 400:Core/Src/stm32f3xx_hal_msp.c ****     /**USART2 GPIO Configuration
+ 976              		.loc 1 400 5 view .LVU243
+ 977 00c0 5A69     		ldr	r2, [r3, #20]
+ 978 00c2 42F40032 		orr	r2, r2, #131072
+ 979 00c6 5A61     		str	r2, [r3, #20]
+ 400:Core/Src/stm32f3xx_hal_msp.c ****     /**USART2 GPIO Configuration
+ 980              		.loc 1 400 5 view .LVU244
+ 981 00c8 5B69     		ldr	r3, [r3, #20]
+ 982 00ca 03F40033 		and	r3, r3, #131072
+ 983 00ce 0493     		str	r3, [sp, #16]
+ 400:Core/Src/stm32f3xx_hal_msp.c ****     /**USART2 GPIO Configuration
+ 984              		.loc 1 400 5 view .LVU245
+ 985 00d0 049B     		ldr	r3, [sp, #16]
+ 986              	.LBE21:
+ 400:Core/Src/stm32f3xx_hal_msp.c ****     /**USART2 GPIO Configuration
+ 987              		.loc 1 400 5 view .LVU246
+ 405:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 988              		.loc 1 405 5 view .LVU247
+ 405:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 989              		.loc 1 405 25 is_stmt 0 view .LVU248
+ 990 00d2 0C23     		movs	r3, #12
+ 991 00d4 0793     		str	r3, [sp, #28]
+ 406:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 992              		.loc 1 406 5 is_stmt 1 view .LVU249
+ 406:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 993              		.loc 1 406 26 is_stmt 0 view .LVU250
+ 994 00d6 0223     		movs	r3, #2
+ 995 00d8 0893     		str	r3, [sp, #32]
+ 407:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 996              		.loc 1 407 5 is_stmt 1 view .LVU251
+ 408:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+ 997              		.loc 1 408 5 view .LVU252
+ 408:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+ 998              		.loc 1 408 27 is_stmt 0 view .LVU253
+ 999 00da 0323     		movs	r3, #3
+ 1000 00dc 0A93     		str	r3, [sp, #40]
+ 409:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 1001              		.loc 1 409 5 is_stmt 1 view .LVU254
+ 409:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 1002              		.loc 1 409 31 is_stmt 0 view .LVU255
+ 1003 00de 0723     		movs	r3, #7
+ 1004 00e0 0B93     		str	r3, [sp, #44]
+ 410:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1005              		.loc 1 410 5 is_stmt 1 view .LVU256
+ 1006 00e2 07A9     		add	r1, sp, #28
+ 1007 00e4 4FF09040 		mov	r0, #1207959552
+ 1008              	.LVL53:
+ 410:Core/Src/stm32f3xx_hal_msp.c **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 47
+
+
+ 1009              		.loc 1 410 5 is_stmt 0 view .LVU257
+ 1010 00e8 FFF7FEFF 		bl	HAL_GPIO_Init
+ 1011              	.LVL54:
+ 414:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 1012              		.loc 1 414 5 is_stmt 1 view .LVU258
+ 414:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 1013              		.loc 1 414 29 is_stmt 0 view .LVU259
+ 1014 00ec 3448     		ldr	r0, .L75+24
+ 1015 00ee 354B     		ldr	r3, .L75+28
+ 1016 00f0 0360     		str	r3, [r0]
+ 415:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 1017              		.loc 1 415 5 is_stmt 1 view .LVU260
+ 415:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 1018              		.loc 1 415 35 is_stmt 0 view .LVU261
+ 1019 00f2 0023     		movs	r3, #0
+ 1020 00f4 4360     		str	r3, [r0, #4]
+ 416:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 1021              		.loc 1 416 5 is_stmt 1 view .LVU262
+ 416:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 1022              		.loc 1 416 35 is_stmt 0 view .LVU263
+ 1023 00f6 8360     		str	r3, [r0, #8]
+ 417:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 1024              		.loc 1 417 5 is_stmt 1 view .LVU264
+ 417:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 1025              		.loc 1 417 32 is_stmt 0 view .LVU265
+ 1026 00f8 8022     		movs	r2, #128
+ 1027 00fa C260     		str	r2, [r0, #12]
+ 418:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 1028              		.loc 1 418 5 is_stmt 1 view .LVU266
+ 418:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 1029              		.loc 1 418 45 is_stmt 0 view .LVU267
+ 1030 00fc 0361     		str	r3, [r0, #16]
+ 419:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.Mode = DMA_CIRCULAR;
+ 1031              		.loc 1 419 5 is_stmt 1 view .LVU268
+ 419:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.Mode = DMA_CIRCULAR;
+ 1032              		.loc 1 419 42 is_stmt 0 view .LVU269
+ 1033 00fe 4361     		str	r3, [r0, #20]
+ 420:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 1034              		.loc 1 420 5 is_stmt 1 view .LVU270
+ 420:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart2_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 1035              		.loc 1 420 30 is_stmt 0 view .LVU271
+ 1036 0100 2022     		movs	r2, #32
+ 1037 0102 8261     		str	r2, [r0, #24]
+ 421:Core/Src/stm32f3xx_hal_msp.c ****     if (HAL_DMA_Init(&hdma_usart2_rx) != HAL_OK)
+ 1038              		.loc 1 421 5 is_stmt 1 view .LVU272
+ 421:Core/Src/stm32f3xx_hal_msp.c ****     if (HAL_DMA_Init(&hdma_usart2_rx) != HAL_OK)
+ 1039              		.loc 1 421 34 is_stmt 0 view .LVU273
+ 1040 0104 C361     		str	r3, [r0, #28]
+ 422:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 1041              		.loc 1 422 5 is_stmt 1 view .LVU274
+ 422:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 1042              		.loc 1 422 9 is_stmt 0 view .LVU275
+ 1043 0106 FFF7FEFF 		bl	HAL_DMA_Init
+ 1044              	.LVL55:
+ 422:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 1045              		.loc 1 422 8 view .LVU276
+ 1046 010a 58B9     		cbnz	r0, .L73
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 48
+
+
+ 1047              	.L66:
+ 427:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1048              		.loc 1 427 5 is_stmt 1 view .LVU277
+ 427:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1049              		.loc 1 427 5 view .LVU278
+ 1050 010c 2C4B     		ldr	r3, .L75+24
+ 1051 010e 2367     		str	r3, [r4, #112]
+ 427:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1052              		.loc 1 427 5 view .LVU279
+ 1053 0110 5C62     		str	r4, [r3, #36]
+ 427:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1054              		.loc 1 427 5 view .LVU280
+ 430:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(USART2_IRQn);
+ 1055              		.loc 1 430 5 view .LVU281
+ 1056 0112 0022     		movs	r2, #0
+ 1057 0114 0321     		movs	r1, #3
+ 1058 0116 2620     		movs	r0, #38
+ 1059 0118 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 1060              	.LVL56:
+ 431:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART2_MspInit 1 */
+ 1061              		.loc 1 431 5 view .LVU282
+ 1062 011c 2620     		movs	r0, #38
+ 1063 011e FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 1064              	.LVL57:
+ 1065 0122 81E7     		b	.L61
+ 1066              	.L73:
+ 424:Core/Src/stm32f3xx_hal_msp.c ****     }
+ 1067              		.loc 1 424 7 view .LVU283
+ 1068 0124 FFF7FEFF 		bl	Error_Handler
+ 1069              	.LVL58:
+ 1070 0128 F0E7     		b	.L66
+ 1071              	.LVL59:
+ 1072              	.L71:
+ 442:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1073              		.loc 1 442 5 view .LVU284
+ 1074              	.LBB22:
+ 442:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1075              		.loc 1 442 5 view .LVU285
+ 442:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1076              		.loc 1 442 5 view .LVU286
+ 1077 012a 224B     		ldr	r3, .L75+12
+ 1078 012c DA69     		ldr	r2, [r3, #28]
+ 1079 012e 42F48022 		orr	r2, r2, #262144
+ 1080 0132 DA61     		str	r2, [r3, #28]
+ 442:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1081              		.loc 1 442 5 view .LVU287
+ 1082 0134 DA69     		ldr	r2, [r3, #28]
+ 1083 0136 02F48022 		and	r2, r2, #262144
+ 1084 013a 0592     		str	r2, [sp, #20]
+ 442:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1085              		.loc 1 442 5 view .LVU288
+ 1086 013c 059A     		ldr	r2, [sp, #20]
+ 1087              	.LBE22:
+ 442:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1088              		.loc 1 442 5 view .LVU289
+ 444:Core/Src/stm32f3xx_hal_msp.c ****     /**USART3 GPIO Configuration
+ 1089              		.loc 1 444 5 view .LVU290
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 49
+
+
+ 1090              	.LBB23:
+ 444:Core/Src/stm32f3xx_hal_msp.c ****     /**USART3 GPIO Configuration
+ 1091              		.loc 1 444 5 view .LVU291
+ 444:Core/Src/stm32f3xx_hal_msp.c ****     /**USART3 GPIO Configuration
+ 1092              		.loc 1 444 5 view .LVU292
+ 1093 013e 5A69     		ldr	r2, [r3, #20]
+ 1094 0140 42F48022 		orr	r2, r2, #262144
+ 1095 0144 5A61     		str	r2, [r3, #20]
+ 444:Core/Src/stm32f3xx_hal_msp.c ****     /**USART3 GPIO Configuration
+ 1096              		.loc 1 444 5 view .LVU293
+ 1097 0146 5B69     		ldr	r3, [r3, #20]
+ 1098 0148 03F48023 		and	r3, r3, #262144
+ 1099 014c 0693     		str	r3, [sp, #24]
+ 444:Core/Src/stm32f3xx_hal_msp.c ****     /**USART3 GPIO Configuration
+ 1100              		.loc 1 444 5 view .LVU294
+ 1101 014e 069B     		ldr	r3, [sp, #24]
+ 1102              	.LBE23:
+ 444:Core/Src/stm32f3xx_hal_msp.c ****     /**USART3 GPIO Configuration
+ 1103              		.loc 1 444 5 view .LVU295
+ 449:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 1104              		.loc 1 449 5 view .LVU296
+ 449:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 1105              		.loc 1 449 25 is_stmt 0 view .LVU297
+ 1106 0150 4FF44063 		mov	r3, #3072
+ 1107 0154 0793     		str	r3, [sp, #28]
+ 450:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 1108              		.loc 1 450 5 is_stmt 1 view .LVU298
+ 450:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 1109              		.loc 1 450 26 is_stmt 0 view .LVU299
+ 1110 0156 0223     		movs	r3, #2
+ 1111 0158 0893     		str	r3, [sp, #32]
+ 451:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 1112              		.loc 1 451 5 is_stmt 1 view .LVU300
+ 452:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ 1113              		.loc 1 452 5 view .LVU301
+ 452:Core/Src/stm32f3xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ 1114              		.loc 1 452 27 is_stmt 0 view .LVU302
+ 1115 015a 0323     		movs	r3, #3
+ 1116 015c 0A93     		str	r3, [sp, #40]
+ 453:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 1117              		.loc 1 453 5 is_stmt 1 view .LVU303
+ 453:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 1118              		.loc 1 453 31 is_stmt 0 view .LVU304
+ 1119 015e 0723     		movs	r3, #7
+ 1120 0160 0B93     		str	r3, [sp, #44]
+ 454:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1121              		.loc 1 454 5 is_stmt 1 view .LVU305
+ 1122 0162 07A9     		add	r1, sp, #28
+ 1123 0164 1848     		ldr	r0, .L75+32
+ 1124              	.LVL60:
+ 454:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1125              		.loc 1 454 5 is_stmt 0 view .LVU306
+ 1126 0166 FFF7FEFF 		bl	HAL_GPIO_Init
+ 1127              	.LVL61:
+ 458:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 1128              		.loc 1 458 5 is_stmt 1 view .LVU307
+ 458:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 50
+
+
+ 1129              		.loc 1 458 29 is_stmt 0 view .LVU308
+ 1130 016a 1848     		ldr	r0, .L75+36
+ 1131 016c 184B     		ldr	r3, .L75+40
+ 1132 016e 0360     		str	r3, [r0]
+ 459:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 1133              		.loc 1 459 5 is_stmt 1 view .LVU309
+ 459:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+ 1134              		.loc 1 459 35 is_stmt 0 view .LVU310
+ 1135 0170 0023     		movs	r3, #0
+ 1136 0172 4360     		str	r3, [r0, #4]
+ 460:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 1137              		.loc 1 460 5 is_stmt 1 view .LVU311
+ 460:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.MemInc = DMA_MINC_ENABLE;
+ 1138              		.loc 1 460 35 is_stmt 0 view .LVU312
+ 1139 0174 8360     		str	r3, [r0, #8]
+ 461:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 1140              		.loc 1 461 5 is_stmt 1 view .LVU313
+ 461:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+ 1141              		.loc 1 461 32 is_stmt 0 view .LVU314
+ 1142 0176 8022     		movs	r2, #128
+ 1143 0178 C260     		str	r2, [r0, #12]
+ 462:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 1144              		.loc 1 462 5 is_stmt 1 view .LVU315
+ 462:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+ 1145              		.loc 1 462 45 is_stmt 0 view .LVU316
+ 1146 017a 0361     		str	r3, [r0, #16]
+ 463:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.Mode = DMA_CIRCULAR;
+ 1147              		.loc 1 463 5 is_stmt 1 view .LVU317
+ 463:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.Mode = DMA_CIRCULAR;
+ 1148              		.loc 1 463 42 is_stmt 0 view .LVU318
+ 1149 017c 4361     		str	r3, [r0, #20]
+ 464:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 1150              		.loc 1 464 5 is_stmt 1 view .LVU319
+ 464:Core/Src/stm32f3xx_hal_msp.c ****     hdma_usart3_rx.Init.Priority = DMA_PRIORITY_LOW;
+ 1151              		.loc 1 464 30 is_stmt 0 view .LVU320
+ 1152 017e 2022     		movs	r2, #32
+ 1153 0180 8261     		str	r2, [r0, #24]
+ 465:Core/Src/stm32f3xx_hal_msp.c ****     if (HAL_DMA_Init(&hdma_usart3_rx) != HAL_OK)
+ 1154              		.loc 1 465 5 is_stmt 1 view .LVU321
+ 465:Core/Src/stm32f3xx_hal_msp.c ****     if (HAL_DMA_Init(&hdma_usart3_rx) != HAL_OK)
+ 1155              		.loc 1 465 34 is_stmt 0 view .LVU322
+ 1156 0182 C361     		str	r3, [r0, #28]
+ 466:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 1157              		.loc 1 466 5 is_stmt 1 view .LVU323
+ 466:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 1158              		.loc 1 466 9 is_stmt 0 view .LVU324
+ 1159 0184 FFF7FEFF 		bl	HAL_DMA_Init
+ 1160              	.LVL62:
+ 466:Core/Src/stm32f3xx_hal_msp.c ****     {
+ 1161              		.loc 1 466 8 view .LVU325
+ 1162 0188 58B9     		cbnz	r0, .L74
+ 1163              	.L67:
+ 471:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1164              		.loc 1 471 5 is_stmt 1 view .LVU326
+ 471:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1165              		.loc 1 471 5 view .LVU327
+ 1166 018a 104B     		ldr	r3, .L75+36
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 51
+
+
+ 1167 018c 2367     		str	r3, [r4, #112]
+ 471:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1168              		.loc 1 471 5 view .LVU328
+ 1169 018e 5C62     		str	r4, [r3, #36]
+ 471:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1170              		.loc 1 471 5 view .LVU329
+ 474:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_EnableIRQ(USART3_IRQn);
+ 1171              		.loc 1 474 5 view .LVU330
+ 1172 0190 0022     		movs	r2, #0
+ 1173 0192 0421     		movs	r1, #4
+ 1174 0194 2720     		movs	r0, #39
+ 1175 0196 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 1176              	.LVL63:
+ 475:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 1177              		.loc 1 475 5 view .LVU331
+ 1178 019a 2720     		movs	r0, #39
+ 1179 019c FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 1180              	.LVL64:
+ 1181              		.loc 1 481 1 is_stmt 0 view .LVU332
+ 1182 01a0 42E7     		b	.L61
+ 1183              	.L74:
+ 468:Core/Src/stm32f3xx_hal_msp.c ****     }
+ 1184              		.loc 1 468 7 is_stmt 1 view .LVU333
+ 1185 01a2 FFF7FEFF 		bl	Error_Handler
+ 1186              	.LVL65:
+ 1187 01a6 F0E7     		b	.L67
+ 1188              	.L76:
+ 1189              		.align	2
+ 1190              	.L75:
+ 1191 01a8 00380140 		.word	1073821696
+ 1192 01ac 00440040 		.word	1073759232
+ 1193 01b0 00480040 		.word	1073760256
+ 1194 01b4 00100240 		.word	1073876992
+ 1195 01b8 00000000 		.word	hdma_usart1_rx
+ 1196 01bc 58000240 		.word	1073872984
+ 1197 01c0 00000000 		.word	hdma_usart2_rx
+ 1198 01c4 6C000240 		.word	1073873004
+ 1199 01c8 00040048 		.word	1207960576
+ 1200 01cc 00000000 		.word	hdma_usart3_rx
+ 1201 01d0 30000240 		.word	1073872944
+ 1202              		.cfi_endproc
+ 1203              	.LFE140:
+ 1205              		.section	.text.HAL_UART_MspDeInit,"ax",%progbits
+ 1206              		.align	1
+ 1207              		.global	HAL_UART_MspDeInit
+ 1208              		.syntax unified
+ 1209              		.thumb
+ 1210              		.thumb_func
+ 1212              	HAL_UART_MspDeInit:
+ 1213              	.LVL66:
+ 1214              	.LFB141:
+ 482:Core/Src/stm32f3xx_hal_msp.c **** 
+ 483:Core/Src/stm32f3xx_hal_msp.c **** /**
+ 484:Core/Src/stm32f3xx_hal_msp.c **** * @brief UART MSP De-Initialization
+ 485:Core/Src/stm32f3xx_hal_msp.c **** * This function freeze the hardware resources used in this example
+ 486:Core/Src/stm32f3xx_hal_msp.c **** * @param huart: UART handle pointer
+ 487:Core/Src/stm32f3xx_hal_msp.c **** * @retval None
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 52
+
+
+ 488:Core/Src/stm32f3xx_hal_msp.c **** */
+ 489:Core/Src/stm32f3xx_hal_msp.c **** void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
+ 490:Core/Src/stm32f3xx_hal_msp.c **** {
+ 1215              		.loc 1 490 1 view -0
+ 1216              		.cfi_startproc
+ 1217              		@ args = 0, pretend = 0, frame = 0
+ 1218              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1219              		.loc 1 490 1 is_stmt 0 view .LVU335
+ 1220 0000 10B5     		push	{r4, lr}
+ 1221              	.LCFI24:
+ 1222              		.cfi_def_cfa_offset 8
+ 1223              		.cfi_offset 4, -8
+ 1224              		.cfi_offset 14, -4
+ 1225 0002 0446     		mov	r4, r0
+ 491:Core/Src/stm32f3xx_hal_msp.c ****   if(huart->Instance==USART1)
+ 1226              		.loc 1 491 3 is_stmt 1 view .LVU336
+ 1227              		.loc 1 491 11 is_stmt 0 view .LVU337
+ 1228 0004 0368     		ldr	r3, [r0]
+ 1229              		.loc 1 491 5 view .LVU338
+ 1230 0006 204A     		ldr	r2, .L85
+ 1231 0008 9342     		cmp	r3, r2
+ 1232 000a 06D0     		beq	.L82
+ 492:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 493:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART1_MspDeInit 0 */
+ 494:Core/Src/stm32f3xx_hal_msp.c **** 
+ 495:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART1_MspDeInit 0 */
+ 496:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock disable */
+ 497:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_USART1_CLK_DISABLE();
+ 498:Core/Src/stm32f3xx_hal_msp.c **** 
+ 499:Core/Src/stm32f3xx_hal_msp.c ****     /**USART1 GPIO Configuration
+ 500:Core/Src/stm32f3xx_hal_msp.c ****     PA9     ------> USART1_TX
+ 501:Core/Src/stm32f3xx_hal_msp.c ****     PA10     ------> USART1_RX
+ 502:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 503:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9|GPIO_PIN_10);
+ 504:Core/Src/stm32f3xx_hal_msp.c **** 
+ 505:Core/Src/stm32f3xx_hal_msp.c ****     /* USART1 DMA DeInit */
+ 506:Core/Src/stm32f3xx_hal_msp.c ****     HAL_DMA_DeInit(huart->hdmarx);
+ 507:Core/Src/stm32f3xx_hal_msp.c **** 
+ 508:Core/Src/stm32f3xx_hal_msp.c ****     /* USART1 interrupt DeInit */
+ 509:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_DisableIRQ(USART1_IRQn);
+ 510:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART1_MspDeInit 1 */
+ 511:Core/Src/stm32f3xx_hal_msp.c **** 
+ 512:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART1_MspDeInit 1 */
+ 513:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 514:Core/Src/stm32f3xx_hal_msp.c ****   else if(huart->Instance==USART2)
+ 1233              		.loc 1 514 8 is_stmt 1 view .LVU339
+ 1234              		.loc 1 514 10 is_stmt 0 view .LVU340
+ 1235 000c 1F4A     		ldr	r2, .L85+4
+ 1236 000e 9342     		cmp	r3, r2
+ 1237 0010 16D0     		beq	.L83
+ 515:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 516:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART2_MspDeInit 0 */
+ 517:Core/Src/stm32f3xx_hal_msp.c **** 
+ 518:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART2_MspDeInit 0 */
+ 519:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock disable */
+ 520:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_USART2_CLK_DISABLE();
+ 521:Core/Src/stm32f3xx_hal_msp.c **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 53
+
+
+ 522:Core/Src/stm32f3xx_hal_msp.c ****     /**USART2 GPIO Configuration
+ 523:Core/Src/stm32f3xx_hal_msp.c ****     PA2     ------> USART2_TX
+ 524:Core/Src/stm32f3xx_hal_msp.c ****     PA3     ------> USART2_RX
+ 525:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 526:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2|GPIO_PIN_3);
+ 527:Core/Src/stm32f3xx_hal_msp.c **** 
+ 528:Core/Src/stm32f3xx_hal_msp.c ****     /* USART2 DMA DeInit */
+ 529:Core/Src/stm32f3xx_hal_msp.c ****     HAL_DMA_DeInit(huart->hdmarx);
+ 530:Core/Src/stm32f3xx_hal_msp.c **** 
+ 531:Core/Src/stm32f3xx_hal_msp.c ****     /* USART2 interrupt DeInit */
+ 532:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_DisableIRQ(USART2_IRQn);
+ 533:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART2_MspDeInit 1 */
+ 534:Core/Src/stm32f3xx_hal_msp.c **** 
+ 535:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART2_MspDeInit 1 */
+ 536:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 537:Core/Src/stm32f3xx_hal_msp.c ****   else if(huart->Instance==USART3)
+ 1238              		.loc 1 537 8 is_stmt 1 view .LVU341
+ 1239              		.loc 1 537 10 is_stmt 0 view .LVU342
+ 1240 0012 1F4A     		ldr	r2, .L85+8
+ 1241 0014 9342     		cmp	r3, r2
+ 1242 0016 25D0     		beq	.L84
+ 1243              	.LVL67:
+ 1244              	.L77:
+ 538:Core/Src/stm32f3xx_hal_msp.c ****   {
+ 539:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspDeInit 0 */
+ 540:Core/Src/stm32f3xx_hal_msp.c **** 
+ 541:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART3_MspDeInit 0 */
+ 542:Core/Src/stm32f3xx_hal_msp.c ****     /* Peripheral clock disable */
+ 543:Core/Src/stm32f3xx_hal_msp.c ****     __HAL_RCC_USART3_CLK_DISABLE();
+ 544:Core/Src/stm32f3xx_hal_msp.c **** 
+ 545:Core/Src/stm32f3xx_hal_msp.c ****     /**USART3 GPIO Configuration
+ 546:Core/Src/stm32f3xx_hal_msp.c ****     PB10     ------> USART3_TX
+ 547:Core/Src/stm32f3xx_hal_msp.c ****     PB11     ------> USART3_RX
+ 548:Core/Src/stm32f3xx_hal_msp.c ****     */
+ 549:Core/Src/stm32f3xx_hal_msp.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10|GPIO_PIN_11);
+ 550:Core/Src/stm32f3xx_hal_msp.c **** 
+ 551:Core/Src/stm32f3xx_hal_msp.c ****     /* USART3 DMA DeInit */
+ 552:Core/Src/stm32f3xx_hal_msp.c ****     HAL_DMA_DeInit(huart->hdmarx);
+ 553:Core/Src/stm32f3xx_hal_msp.c **** 
+ 554:Core/Src/stm32f3xx_hal_msp.c ****     /* USART3 interrupt DeInit */
+ 555:Core/Src/stm32f3xx_hal_msp.c ****     HAL_NVIC_DisableIRQ(USART3_IRQn);
+ 556:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
+ 557:Core/Src/stm32f3xx_hal_msp.c **** 
+ 558:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE END USART3_MspDeInit 1 */
+ 559:Core/Src/stm32f3xx_hal_msp.c ****   }
+ 560:Core/Src/stm32f3xx_hal_msp.c **** 
+ 561:Core/Src/stm32f3xx_hal_msp.c **** }
+ 1245              		.loc 1 561 1 view .LVU343
+ 1246 0018 10BD     		pop	{r4, pc}
+ 1247              	.LVL68:
+ 1248              	.L82:
+ 497:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1249              		.loc 1 497 5 is_stmt 1 view .LVU344
+ 1250 001a 02F55842 		add	r2, r2, #55296
+ 1251 001e 9369     		ldr	r3, [r2, #24]
+ 1252 0020 23F48043 		bic	r3, r3, #16384
+ 1253 0024 9361     		str	r3, [r2, #24]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 54
+
+
+ 503:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1254              		.loc 1 503 5 view .LVU345
+ 1255 0026 4FF4C061 		mov	r1, #1536
+ 1256 002a 4FF09040 		mov	r0, #1207959552
+ 1257              	.LVL69:
+ 503:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1258              		.loc 1 503 5 is_stmt 0 view .LVU346
+ 1259 002e FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 1260              	.LVL70:
+ 506:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1261              		.loc 1 506 5 is_stmt 1 view .LVU347
+ 1262 0032 206F     		ldr	r0, [r4, #112]
+ 1263 0034 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 1264              	.LVL71:
+ 509:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART1_MspDeInit 1 */
+ 1265              		.loc 1 509 5 view .LVU348
+ 1266 0038 2520     		movs	r0, #37
+ 1267 003a FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 1268              	.LVL72:
+ 1269 003e EBE7     		b	.L77
+ 1270              	.LVL73:
+ 1271              	.L83:
+ 520:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1272              		.loc 1 520 5 view .LVU349
+ 1273 0040 02F5E632 		add	r2, r2, #117760
+ 1274 0044 D369     		ldr	r3, [r2, #28]
+ 1275 0046 23F40033 		bic	r3, r3, #131072
+ 1276 004a D361     		str	r3, [r2, #28]
+ 526:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1277              		.loc 1 526 5 view .LVU350
+ 1278 004c 0C21     		movs	r1, #12
+ 1279 004e 4FF09040 		mov	r0, #1207959552
+ 1280              	.LVL74:
+ 526:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1281              		.loc 1 526 5 is_stmt 0 view .LVU351
+ 1282 0052 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 1283              	.LVL75:
+ 529:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1284              		.loc 1 529 5 is_stmt 1 view .LVU352
+ 1285 0056 206F     		ldr	r0, [r4, #112]
+ 1286 0058 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 1287              	.LVL76:
+ 532:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART2_MspDeInit 1 */
+ 1288              		.loc 1 532 5 view .LVU353
+ 1289 005c 2620     		movs	r0, #38
+ 1290 005e FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 1291              	.LVL77:
+ 1292 0062 D9E7     		b	.L77
+ 1293              	.LVL78:
+ 1294              	.L84:
+ 543:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1295              		.loc 1 543 5 view .LVU354
+ 1296 0064 02F5E432 		add	r2, r2, #116736
+ 1297 0068 D369     		ldr	r3, [r2, #28]
+ 1298 006a 23F48023 		bic	r3, r3, #262144
+ 1299 006e D361     		str	r3, [r2, #28]
+ 549:Core/Src/stm32f3xx_hal_msp.c **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 55
+
+
+ 1300              		.loc 1 549 5 view .LVU355
+ 1301 0070 4FF44061 		mov	r1, #3072
+ 1302 0074 0748     		ldr	r0, .L85+12
+ 1303              	.LVL79:
+ 549:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1304              		.loc 1 549 5 is_stmt 0 view .LVU356
+ 1305 0076 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 1306              	.LVL80:
+ 552:Core/Src/stm32f3xx_hal_msp.c **** 
+ 1307              		.loc 1 552 5 is_stmt 1 view .LVU357
+ 1308 007a 206F     		ldr	r0, [r4, #112]
+ 1309 007c FFF7FEFF 		bl	HAL_DMA_DeInit
+ 1310              	.LVL81:
+ 555:Core/Src/stm32f3xx_hal_msp.c ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
+ 1311              		.loc 1 555 5 view .LVU358
+ 1312 0080 2720     		movs	r0, #39
+ 1313 0082 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 1314              	.LVL82:
+ 1315              		.loc 1 561 1 is_stmt 0 view .LVU359
+ 1316 0086 C7E7     		b	.L77
+ 1317              	.L86:
+ 1318              		.align	2
+ 1319              	.L85:
+ 1320 0088 00380140 		.word	1073821696
+ 1321 008c 00440040 		.word	1073759232
+ 1322 0090 00480040 		.word	1073760256
+ 1323 0094 00040048 		.word	1207960576
+ 1324              		.cfi_endproc
+ 1325              	.LFE141:
+ 1327              		.text
+ 1328              	.Letext0:
+ 1329              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1330              		.file 4 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1331              		.file 5 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 1332              		.file 6 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f3xx.h"
+ 1333              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 1334              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
+ 1335              		.file 9 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 1336              		.file 10 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
+ 1337              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
+ 1338              		.file 12 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rtc.h"
+ 1339              		.file 13 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_spi.h"
+ 1340              		.file 14 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
+ 1341              		.file 15 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 1342              		.file 16 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_cortex.h"
+ 1343              		.file 17 "Core/Inc/main.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s 			page 56
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f3xx_hal_msp.c
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:20     .text.HAL_MspInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:26     .text.HAL_MspInit:00000000 HAL_MspInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:77     .text.HAL_MspInit:0000002c $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:82     .text.HAL_ADC_MspInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:88     .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:193    .text.HAL_ADC_MspInit:00000068 $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:199    .text.HAL_ADC_MspDeInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:205    .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:252    .text.HAL_ADC_MspDeInit:00000028 $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:258    .text.HAL_RTC_MspInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:264    .text.HAL_RTC_MspInit:00000000 HAL_RTC_MspInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:334    .text.HAL_RTC_MspInit:00000034 $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:340    .text.HAL_RTC_MspDeInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:346    .text.HAL_RTC_MspDeInit:00000000 HAL_RTC_MspDeInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:409    .text.HAL_RTC_MspDeInit:0000002c $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:415    .text.HAL_SPI_MspInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:421    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:524    .text.HAL_SPI_MspInit:00000064 $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:530    .text.HAL_SPI_MspDeInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:536    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:579    .text.HAL_SPI_MspDeInit:00000024 $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:586    .text.HAL_TIM_PWM_MspInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:592    .text.HAL_TIM_PWM_MspInit:00000000 HAL_TIM_PWM_MspInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:638    .text.HAL_TIM_PWM_MspInit:00000028 $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:643    .text.HAL_TIM_MspPostInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:649    .text.HAL_TIM_MspPostInit:00000000 HAL_TIM_MspPostInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:733    .text.HAL_TIM_MspPostInit:00000048 $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:739    .text.HAL_TIM_PWM_MspDeInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:745    .text.HAL_TIM_PWM_MspDeInit:00000000 HAL_TIM_PWM_MspDeInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:774    .text.HAL_TIM_PWM_MspDeInit:00000018 $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:780    .text.HAL_UART_MspInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:786    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:1191   .text.HAL_UART_MspInit:000001a8 $d
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:1206   .text.HAL_UART_MspDeInit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:1212   .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
+C:\Users\jisu8\AppData\Local\Temp\ccSqrFPh.s:1320   .text.HAL_UART_MspDeInit:00000088 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_GPIO_DeInit
+HAL_NVIC_DisableIRQ
+HAL_DMA_Init
+Error_Handler
+hdma_usart1_rx
+hdma_usart2_rx
+hdma_usart3_rx
+HAL_DMA_DeInit
