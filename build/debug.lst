@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -32,52 +32,54 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s 			page 1
    1:Core/Src/debug.c **** #include "debug.h"
    2:Core/Src/debug.c **** #include "string.h"
    3:Core/Src/debug.c **** #include "uart.h"
-   4:Core/Src/debug.c **** 
-   5:Core/Src/debug.c **** uint8_t Debug_Tx_buffer[100];
-   6:Core/Src/debug.c **** 
-   7:Core/Src/debug.c **** void Debug_Init(void)
-   8:Core/Src/debug.c **** {
-   9:Core/Src/debug.c ****     if (HAL_UART_Receive_DMA(&DEBUG_MODULE, Debug_Tx_buffer, UART_RX_BUFFER_SIZE) != HAL_OK)
-  10:Core/Src/debug.c **** 	{
-  11:Core/Src/debug.c **** 		Error_Handler();
-  12:Core/Src/debug.c **** 	}
-  13:Core/Src/debug.c ****     Debug_Message_Transmit("\n=======>>Silo Test F/W 20220628_002\n");
-  14:Core/Src/debug.c **** }
-  15:Core/Src/debug.c **** 
-  16:Core/Src/debug.c **** void Debug_Message_Transmit(uint8_t * buf)
-  17:Core/Src/debug.c **** {
-  30              		.loc 1 17 1 view -0
+   4:Core/Src/debug.c **** #include "lte.h"
+   5:Core/Src/debug.c **** 
+   6:Core/Src/debug.c **** uint8_t Debug_Rx_buffer[1024];
+   7:Core/Src/debug.c **** uint16_t Debug_Rx_Count;
+   8:Core/Src/debug.c **** uint8_t debug_dummy;
+   9:Core/Src/debug.c **** void Debug_Init(void)
+  10:Core/Src/debug.c **** {
+  11:Core/Src/debug.c ****     if ( HAL_UART_Receive_IT(&DEBUG_MODULE, &debug_dummy, 1) != HAL_OK)
+  12:Core/Src/debug.c **** 	{
+  13:Core/Src/debug.c **** 		Error_Handler();
+  14:Core/Src/debug.c **** 	}
+  15:Core/Src/debug.c ****     Debug_Message_Transmit("\n=======>>Silo Test F/W 20220628_002\n");
+  16:Core/Src/debug.c **** }
+  17:Core/Src/debug.c **** 
+  18:Core/Src/debug.c **** void Debug_Message_Transmit(uint8_t * buf)
+  19:Core/Src/debug.c **** {
+  30              		.loc 1 19 1 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		.loc 1 17 1 is_stmt 0 view .LVU1
+  34              		.loc 1 19 1 is_stmt 0 view .LVU1
   35 0000 10B5     		push	{r4, lr}
   36              	.LCFI0:
   37              		.cfi_def_cfa_offset 8
   38              		.cfi_offset 4, -8
   39              		.cfi_offset 14, -4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s 			page 2
+
+
   40 0002 0446     		mov	r4, r0
-  18:Core/Src/debug.c ****     HAL_UART_Transmit(&DEBUG_MODULE,buf,strlen(buf),100);
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s 			page 2
-
-
-  41              		.loc 1 18 5 is_stmt 1 view .LVU2
-  42              		.loc 1 18 41 is_stmt 0 view .LVU3
+  20:Core/Src/debug.c ****     HAL_UART_Transmit(&DEBUG_MODULE,buf,strlen(buf),100);
+  41              		.loc 1 20 5 is_stmt 1 view .LVU2
+  42              		.loc 1 20 41 is_stmt 0 view .LVU3
   43 0004 FFF7FEFF 		bl	strlen
   44              	.LVL1:
-  45              		.loc 1 18 5 view .LVU4
+  45              		.loc 1 20 5 view .LVU4
   46 0008 6423     		movs	r3, #100
   47 000a 82B2     		uxth	r2, r0
   48 000c 2146     		mov	r1, r4
   49 000e 0248     		ldr	r0, .L3
   50 0010 FFF7FEFF 		bl	HAL_UART_Transmit
   51              	.LVL2:
-  19:Core/Src/debug.c **** }...
-  52              		.loc 1 19 1 view .LVU5
+  21:Core/Src/debug.c **** }
+  52              		.loc 1 21 1 view .LVU5
   53 0014 10BD     		pop	{r4, pc}
   54              	.LVL3:
   55              	.L4:
-  56              		.loc 1 19 1 view .LVU6
+  56              		.loc 1 21 1 view .LVU6
   57 0016 00BF     		.align	2
   58              	.L3:
   59 0018 00000000 		.word	huart3
@@ -99,8 +101,8 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s 			page 1
   72              		.thumb_func
   74              	Debug_Init:
   75              	.LFB133:
-   8:Core/Src/debug.c **** {
-  76              		.loc 1 8 1 is_stmt 1 view -0
+  10:Core/Src/debug.c ****     if ( HAL_UART_Receive_IT(&DEBUG_MODULE, &debug_dummy, 1) != HAL_OK)
+  76              		.loc 1 10 1 is_stmt 1 view -0
   77              		.cfi_startproc
   78              		@ args = 0, pretend = 0, frame = 0
   79              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -109,82 +111,173 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s 			page 1
   82              		.cfi_def_cfa_offset 8
   83              		.cfi_offset 3, -8
   84              		.cfi_offset 14, -4
-   9:Core/Src/debug.c ****     if (HAL_UART_Receive_DMA(&DEBUG_MODULE, Debug_Tx_buffer, UART_RX_BUFFER_SIZE) != HAL_OK)
-  85              		.loc 1 9 5 view .LVU8
-   9:Core/Src/debug.c ****     if (HAL_UART_Receive_DMA(&DEBUG_MODULE, Debug_Tx_buffer, UART_RX_BUFFER_SIZE) != HAL_OK)
-  86              		.loc 1 9 9 is_stmt 0 view .LVU9
-  87 0002 4FF48062 		mov	r2, #1024
-  88 0006 0649     		ldr	r1, .L9
-  89 0008 0648     		ldr	r0, .L9+4
-  90 000a FFF7FEFF 		bl	HAL_UART_Receive_DMA
+  11:Core/Src/debug.c **** 	{
+  85              		.loc 1 11 5 view .LVU8
+  11:Core/Src/debug.c **** 	{
+  86              		.loc 1 11 10 is_stmt 0 view .LVU9
+  87 0002 0122     		movs	r2, #1
+  88 0004 0549     		ldr	r1, .L9
+  89 0006 0648     		ldr	r0, .L9+4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s 			page 3
+
+
+  90 0008 FFF7FEFF 		bl	HAL_UART_Receive_IT
   91              	.LVL4:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s 			page 3
-
-
-   9:Core/Src/debug.c ****     if (HAL_UART_Receive_DMA(&DEBUG_MODULE, Debug_Tx_buffer, UART_RX_BUFFER_SIZE) != HAL_OK)
-  92              		.loc 1 9 8 view .LVU10
-  93 000e 18B9     		cbnz	r0, .L8
+  11:Core/Src/debug.c **** 	{
+  92              		.loc 1 11 8 view .LVU10
+  93 000c 18B9     		cbnz	r0, .L8
   94              	.L6:
-  13:Core/Src/debug.c ****     Debug_Message_Transmit("\n=======>>Silo Test F/W 20220628_002\n");
-  95              		.loc 1 13 5 is_stmt 1 view .LVU11
-  96 0010 0548     		ldr	r0, .L9+8
-  97 0012 FFF7FEFF 		bl	Debug_Message_Transmit
+  15:Core/Src/debug.c **** }
+  95              		.loc 1 15 5 is_stmt 1 view .LVU11
+  96 000e 0548     		ldr	r0, .L9+8
+  97 0010 FFF7FEFF 		bl	Debug_Message_Transmit
   98              	.LVL5:
-  14:Core/Src/debug.c **** }
-  99              		.loc 1 14 1 is_stmt 0 view .LVU12
- 100 0016 08BD     		pop	{r3, pc}
+  16:Core/Src/debug.c **** 
+  99              		.loc 1 16 1 is_stmt 0 view .LVU12
+ 100 0014 08BD     		pop	{r3, pc}
  101              	.L8:
-  11:Core/Src/debug.c **** 		Error_Handler();
- 102              		.loc 1 11 3 is_stmt 1 view .LVU13
- 103 0018 FFF7FEFF 		bl	Error_Handler
+  13:Core/Src/debug.c **** 	}
+ 102              		.loc 1 13 3 is_stmt 1 view .LVU13
+ 103 0016 FFF7FEFF 		bl	Error_Handler
  104              	.LVL6:
- 105 001c F8E7     		b	.L6
+ 105 001a F8E7     		b	.L6
  106              	.L10:
- 107 001e 00BF     		.align	2
+ 107              		.align	2
  108              	.L9:
- 109 0020 00000000 		.word	.LANCHOR0
- 110 0024 00000000 		.word	huart3
- 111 0028 00000000 		.word	.LC0
+ 109 001c 00000000 		.word	.LANCHOR0
+ 110 0020 00000000 		.word	huart3
+ 111 0024 00000000 		.word	.LC0
  112              		.cfi_endproc
  113              	.LFE133:
- 115              		.global	Debug_Tx_buffer
- 116              		.section	.bss.Debug_Tx_buffer,"aw",%nobits
- 117              		.align	2
- 118              		.set	.LANCHOR0,. + 0
- 121              	Debug_Tx_buffer:
- 122 0000 00000000 		.space	100
- 122      00000000 
- 122      00000000 
- 122      00000000 
- 122      00000000 
- 123              		.text
- 124              	.Letext0:
- 125              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
- 126              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
- 127              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
- 128              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
- 129              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
- 130              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
- 131              		.file 8 "Core/Inc/main.h"
- 132              		.file 9 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\string.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s 			page 4
+ 115              		.section	.text.Test_Debug,"ax",%progbits
+ 116              		.align	1
+ 117              		.global	Test_Debug
+ 118              		.syntax unified
+ 119              		.thumb
+ 120              		.thumb_func
+ 122              	Test_Debug:
+ 123              	.LFB135:
+  22:Core/Src/debug.c **** 
+  23:Core/Src/debug.c **** void Test_Debug(void)
+  24:Core/Src/debug.c **** {
+ 124              		.loc 1 24 1 view -0
+ 125              		.cfi_startproc
+ 126              		@ args = 0, pretend = 0, frame = 0
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 128 0000 70B5     		push	{r4, r5, r6, lr}
+ 129              	.LCFI2:
+ 130              		.cfi_def_cfa_offset 16
+ 131              		.cfi_offset 4, -16
+ 132              		.cfi_offset 5, -12
+ 133              		.cfi_offset 6, -8
+ 134              		.cfi_offset 14, -4
+  25:Core/Src/debug.c ****     HAL_UART_Transmit(&huart3,LTE_Rx_Buffer,LTE_Rx_Counter,100);
+ 135              		.loc 1 25 5 view .LVU15
+ 136 0002 094C     		ldr	r4, .L13
+ 137 0004 094E     		ldr	r6, .L13+4
+ 138 0006 6423     		movs	r3, #100
+ 139 0008 2288     		ldrh	r2, [r4]
+ 140 000a 0949     		ldr	r1, .L13+8
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s 			page 4
+
+
+ 141 000c 3046     		mov	r0, r6
+ 142 000e FFF7FEFF 		bl	HAL_UART_Transmit
+ 143              	.LVL7:
+  26:Core/Src/debug.c ****     HAL_UART_Transmit(&huart3,Debug_Rx_buffer,Debug_Rx_Count,100);
+ 144              		.loc 1 26 5 view .LVU16
+ 145 0012 084D     		ldr	r5, .L13+12
+ 146 0014 6423     		movs	r3, #100
+ 147 0016 2A88     		ldrh	r2, [r5]
+ 148 0018 0749     		ldr	r1, .L13+16
+ 149 001a 3046     		mov	r0, r6
+ 150 001c FFF7FEFF 		bl	HAL_UART_Transmit
+ 151              	.LVL8:
+  27:Core/Src/debug.c ****     Debug_Rx_Count = 0;
+ 152              		.loc 1 27 5 view .LVU17
+ 153              		.loc 1 27 20 is_stmt 0 view .LVU18
+ 154 0020 0023     		movs	r3, #0
+ 155 0022 2B80     		strh	r3, [r5]	@ movhi
+  28:Core/Src/debug.c ****     LTE_Rx_Counter = 0;
+ 156              		.loc 1 28 5 is_stmt 1 view .LVU19
+ 157              		.loc 1 28 20 is_stmt 0 view .LVU20
+ 158 0024 2380     		strh	r3, [r4]	@ movhi
+  29:Core/Src/debug.c **** }...
+ 159              		.loc 1 29 1 view .LVU21
+ 160 0026 70BD     		pop	{r4, r5, r6, pc}
+ 161              	.L14:
+ 162              		.align	2
+ 163              	.L13:
+ 164 0028 00000000 		.word	LTE_Rx_Counter
+ 165 002c 00000000 		.word	huart3
+ 166 0030 00000000 		.word	LTE_Rx_Buffer
+ 167 0034 00000000 		.word	.LANCHOR1
+ 168 0038 00000000 		.word	.LANCHOR2
+ 169              		.cfi_endproc
+ 170              	.LFE135:
+ 172              		.global	debug_dummy
+ 173              		.global	Debug_Rx_Count
+ 174              		.global	Debug_Rx_buffer
+ 175              		.section	.bss.Debug_Rx_Count,"aw",%nobits
+ 176              		.align	1
+ 177              		.set	.LANCHOR1,. + 0
+ 180              	Debug_Rx_Count:
+ 181 0000 0000     		.space	2
+ 182              		.section	.bss.Debug_Rx_buffer,"aw",%nobits
+ 183              		.align	2
+ 184              		.set	.LANCHOR2,. + 0
+ 187              	Debug_Rx_buffer:
+ 188 0000 00000000 		.space	1024
+ 188      00000000 
+ 188      00000000 
+ 188      00000000 
+ 188      00000000 
+ 189              		.section	.bss.debug_dummy,"aw",%nobits
+ 190              		.set	.LANCHOR0,. + 0
+ 193              	debug_dummy:
+ 194 0000 00       		.space	1
+ 195              		.text
+ 196              	.Letext0:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s 			page 5
+
+
+ 197              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 198              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 199              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 200              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 201              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 202              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 203              		.file 8 "Core/Inc/main.h"
+ 204              		.file 9 "Core/Inc/debug.h"
+ 205              		.file 10 "Core/Inc/lte.h"
+ 206              		.file 11 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\string.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 debug.c
-C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s:20     .text.Debug_Message_Transmit:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s:26     .text.Debug_Message_Transmit:00000000 Debug_Message_Transmit
-C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s:59     .text.Debug_Message_Transmit:00000018 $d
-C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s:64     .rodata.Debug_Init.str1.4:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s:68     .text.Debug_Init:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s:74     .text.Debug_Init:00000000 Debug_Init
-C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s:109    .text.Debug_Init:00000020 $d
-C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s:121    .bss.Debug_Tx_buffer:00000000 Debug_Tx_buffer
-C:\Users\jisu8\AppData\Local\Temp\ccv2VkWt.s:117    .bss.Debug_Tx_buffer:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:20     .text.Debug_Message_Transmit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:26     .text.Debug_Message_Transmit:00000000 Debug_Message_Transmit
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:59     .text.Debug_Message_Transmit:00000018 $d
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:64     .rodata.Debug_Init.str1.4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:68     .text.Debug_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:74     .text.Debug_Init:00000000 Debug_Init
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:109    .text.Debug_Init:0000001c $d
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:116    .text.Test_Debug:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:122    .text.Test_Debug:00000000 Test_Debug
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:164    .text.Test_Debug:00000028 $d
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:193    .bss.debug_dummy:00000000 debug_dummy
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:180    .bss.Debug_Rx_Count:00000000 Debug_Rx_Count
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:187    .bss.Debug_Rx_buffer:00000000 Debug_Rx_buffer
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:176    .bss.Debug_Rx_Count:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:183    .bss.Debug_Rx_buffer:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cc6tEW8a.s:194    .bss.debug_dummy:00000000 $d
 
 UNDEFINED SYMBOLS
 strlen
 HAL_UART_Transmit
 huart3
-HAL_UART_Receive_DMA
+HAL_UART_Receive_IT
 Error_Handler
+LTE_Rx_Counter
+LTE_Rx_Buffer

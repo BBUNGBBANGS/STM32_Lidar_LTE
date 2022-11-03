@@ -157,22 +157,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles DMA1 channel3 global interrupt.
-  */
-void DMA1_Channel3_IRQHandler(void)
-{
-    HAL_DMA_IRQHandler(&hdma_usart3_rx);
-}
-
-/**
-  * @brief This function handles DMA1 channel5 global interrupt.
-  */
-void DMA1_Channel5_IRQHandler(void)
-{
-    HAL_DMA_IRQHandler(&hdma_usart1_rx);
-}
-
-/**
   * @brief This function handles DMA1 channel6 global interrupt.
   */
 void DMA1_Channel6_IRQHandler(void)
@@ -219,15 +203,13 @@ void TIM1_TRG_COM_TIM17_IRQHandler(void)
   */
 void USART1_IRQHandler(void)
 {
-  HAL_UART_IRQHandler(&huart1);
-}
+  /* USER CODE BEGIN USART1_IRQn 0 */
 
-/**
-  * @brief This function handles USART2 global interrupt / USART2 wake-up interrupt through EXTI line 26.
-  */
-void USART2_IRQHandler(void)
-{
-    HAL_UART_IRQHandler(&huart2);
+  /* USER CODE END USART1_IRQn 0 */
+  HAL_UART_IRQHandler(&huart1);
+  /* USER CODE BEGIN USART1_IRQn 1 */
+
+  /* USER CODE END USART1_IRQn 1 */
 }
 
 /**

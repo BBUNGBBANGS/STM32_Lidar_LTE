@@ -571,16 +571,10 @@ static void MX_DMA_Init(void)
 {
 
   /* DMA controller clock enable */
-  __HAL_RCC_DMA1_CLK_ENABLE();
   __HAL_RCC_DMA2_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
 
   /* DMA interrupt init */
-  /* DMA1_Channel3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 5, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Channel3_IRQn);
-  /* DMA1_Channel5_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel5_IRQn, 6, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Channel5_IRQn);
   /* DMA1_Channel6_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Channel6_IRQn, 7, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel6_IRQn);
@@ -610,6 +604,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, TEMP_ONOFF_Pin|SPI2_CS_Pin|POWER_KEY_Pin|RESET_ONOFF_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, POWER_KEY_Pin|RESET_ONOFF_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : LTE_STATUS_Pin Lidar_ONOFF_Pin DHT_INOUT_Pin */
   GPIO_InitStruct.Pin = LTE_STATUS_Pin|Lidar_ONOFF_Pin|DHT_INOUT_Pin;

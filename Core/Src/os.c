@@ -52,9 +52,10 @@ static void Os_100ms_Task(void)
     temperature = (uint16_t)data.Temperature;
     humidity = (uint16_t)data.Humidity;
 	Lidar_Receive_Data();
-    sprintf(tx_data,"Time: %d:%d:%d, Temperature : %d, Humidity : %d, Battery : %d, Lidar Distance : %d, Lidar Strength : %d, Lidar Temp : %d, Sensor_Signal : %d\n",RTC_hours,RTC_minutes,RTC_seconds,temperature,humidity,Device_Batt_Voltage,Lidar_Distance,Lidar_Strength,Lidar_Temperature,Device_Sensor_Signal);
-    Debug_Message_Transmit(tx_data);
-	memset(tx_data,0x00,150);
+	Test_Debug();
+    //sprintf(tx_data,"Time: %d:%d:%d, Temperature : %d, Humidity : %d, Battery : %d, Lidar Distance : %d, Lidar Strength : %d, Lidar Temp : %d, Sensor_Signal : %d\n",RTC_hours,RTC_minutes,RTC_seconds,temperature,humidity,Device_Batt_Voltage,Lidar_Distance,Lidar_Strength,Lidar_Temperature,Device_Sensor_Signal);
+    //Debug_Message_Transmit(tx_data);
+	//memset(tx_data,0x00,150);
 }
 
 static void Os_Background_Task(void)

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccm4yTqU.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -30,84 +30,129 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccm4yTqU.s 			page 1
   28              		.file 1 "Core/Src/lte.c"
    1:Core/Src/lte.c **** #include "lte.h"
    2:Core/Src/lte.c **** 
-   3:Core/Src/lte.c **** uint8_t LTE_Rx_Buffer[100];
-   4:Core/Src/lte.c **** 
-   5:Core/Src/lte.c **** void LTE_Init(void)
-   6:Core/Src/lte.c **** {
-  29              		.loc 1 6 1 view -0
+   3:Core/Src/lte.c **** uint8_t LTE_Rx_Buffer[1024];
+   4:Core/Src/lte.c **** uint16_t LTE_Rx_Counter;
+   5:Core/Src/lte.c **** uint8_t dummy_lte;
+   6:Core/Src/lte.c **** void LTE_Init(void)
+   7:Core/Src/lte.c **** {
+  29              		.loc 1 7 1 view -0
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 0, uses_anonymous_args = 0
-  33 0000 08B5     		push	{r3, lr}
+  33 0000 10B5     		push	{r4, lr}
   34              	.LCFI0:
   35              		.cfi_def_cfa_offset 8
-  36              		.cfi_offset 3, -8
+  36              		.cfi_offset 4, -8
   37              		.cfi_offset 14, -4
-   7:Core/Src/lte.c ****     if (HAL_UART_Receive_DMA(&huart1, LTE_Rx_Buffer, 100) != HAL_OK)
-  38              		.loc 1 7 5 view .LVU1
-  39              		.loc 1 7 9 is_stmt 0 view .LVU2
-  40 0002 6422     		movs	r2, #100
-  41 0004 0449     		ldr	r1, .L5
-  42 0006 0548     		ldr	r0, .L5+4
-  43 0008 FFF7FEFF 		bl	HAL_UART_Receive_DMA
+   8:Core/Src/lte.c ****     if ( HAL_UART_Receive_IT(&huart1, &dummy_lte, 1) != HAL_OK)
+  38              		.loc 1 8 5 view .LVU1
+  39              		.loc 1 8 10 is_stmt 0 view .LVU2
+  40 0002 0122     		movs	r2, #1
+  41 0004 0B49     		ldr	r1, .L5
+  42 0006 0C48     		ldr	r0, .L5+4
+  43 0008 FFF7FEFF 		bl	HAL_UART_Receive_IT
   44              	.LVL0:
-  45              		.loc 1 7 8 view .LVU3
-  46 000c 00B9     		cbnz	r0, .L4
-  47              	.L1:
-   8:Core/Src/lte.c ****     {
-   9:Core/Src/lte.c ****       Error_Handler();
-  10:Core/Src/lte.c ****     }
-  11:Core/Src/lte.c **** }...
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccm4yTqU.s 			page 2
+  45              		.loc 1 8 8 view .LVU3
+  46 000c 78B9     		cbnz	r0, .L4
+  47              	.L2:
+   9:Core/Src/lte.c ****     {
+  10:Core/Src/lte.c ****         Error_Handler();
+  11:Core/Src/lte.c ****     }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s 			page 2
 
 
-  48              		.loc 1 11 1 view .LVU4
-  49 000e 08BD     		pop	{r3, pc}
-  50              	.L4:
-   9:Core/Src/lte.c ****       Error_Handler();
-  51              		.loc 1 9 7 is_stmt 1 view .LVU5
-  52 0010 FFF7FEFF 		bl	Error_Handler
-  53              	.LVL1:
-  54              		.loc 1 11 1 is_stmt 0 view .LVU6
-  55 0014 FBE7     		b	.L1
-  56              	.L6:
-  57 0016 00BF     		.align	2
-  58              	.L5:
-  59 0018 00000000 		.word	.LANCHOR0
-  60 001c 00000000 		.word	huart1
-  61              		.cfi_endproc
-  62              	.LFE133:
-  64              		.global	LTE_Rx_Buffer
-  65              		.section	.bss.LTE_Rx_Buffer,"aw",%nobits
-  66              		.align	2
-  67              		.set	.LANCHOR0,. + 0
-  70              	LTE_Rx_Buffer:
-  71 0000 00000000 		.space	100
-  71      00000000 
-  71      00000000 
-  71      00000000 
-  71      00000000 
-  72              		.text
-  73              	.Letext0:
-  74              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
-  75              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
-  76              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
-  77              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
-  78              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
-  79              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
-  80              		.file 8 "Core/Inc/main.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccm4yTqU.s 			page 3
+  12:Core/Src/lte.c ****     
+  13:Core/Src/lte.c **** 	//SARA Power On
+  14:Core/Src/lte.c **** 	HAL_GPIO_WritePin(POWER_KEY_GPIO_Port, POWER_KEY_Pin, GPIO_PIN_RESET);
+  48              		.loc 1 14 2 is_stmt 1 view .LVU4
+  49 000e 0B4C     		ldr	r4, .L5+8
+  50 0010 0022     		movs	r2, #0
+  51 0012 2021     		movs	r1, #32
+  52 0014 2046     		mov	r0, r4
+  53 0016 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  54              	.LVL1:
+  15:Core/Src/lte.c ****     HAL_Delay(2000);
+  55              		.loc 1 15 5 view .LVU5
+  56 001a 4FF4FA60 		mov	r0, #2000
+  57 001e FFF7FEFF 		bl	HAL_Delay
+  58              	.LVL2:
+  16:Core/Src/lte.c **** 	//SARA Reset Off
+  17:Core/Src/lte.c **** 	HAL_GPIO_WritePin(RESET_ONOFF_GPIO_Port, RESET_ONOFF_Pin, GPIO_PIN_RESET);
+  59              		.loc 1 17 2 view .LVU6
+  60 0022 0022     		movs	r2, #0
+  61 0024 4021     		movs	r1, #64
+  62 0026 2046     		mov	r0, r4
+  63 0028 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  64              	.LVL3:
+  18:Core/Src/lte.c **** }...
+  65              		.loc 1 18 1 is_stmt 0 view .LVU7
+  66 002c 10BD     		pop	{r4, pc}
+  67              	.L4:
+  10:Core/Src/lte.c ****         Error_Handler();
+  68              		.loc 1 10 9 is_stmt 1 view .LVU8
+  69 002e FFF7FEFF 		bl	Error_Handler
+  70              	.LVL4:
+  71 0032 ECE7     		b	.L2
+  72              	.L6:
+  73              		.align	2
+  74              	.L5:
+  75 0034 00000000 		.word	.LANCHOR0
+  76 0038 00000000 		.word	huart1
+  77 003c 00040048 		.word	1207960576
+  78              		.cfi_endproc
+  79              	.LFE133:
+  81              		.global	dummy_lte
+  82              		.global	LTE_Rx_Counter
+  83              		.global	LTE_Rx_Buffer
+  84              		.section	.bss.LTE_Rx_Buffer,"aw",%nobits
+  85              		.align	2
+  88              	LTE_Rx_Buffer:
+  89 0000 00000000 		.space	1024
+  89      00000000 
+  89      00000000 
+  89      00000000 
+  89      00000000 
+  90              		.section	.bss.LTE_Rx_Counter,"aw",%nobits
+  91              		.align	1
+  94              	LTE_Rx_Counter:
+  95 0000 0000     		.space	2
+  96              		.section	.bss.dummy_lte,"aw",%nobits
+  97              		.set	.LANCHOR0,. + 0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s 			page 3
+
+
+ 100              	dummy_lte:
+ 101 0000 00       		.space	1
+ 102              		.text
+ 103              	.Letext0:
+ 104              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 105              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 106              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 107              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 108              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
+ 109              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 110              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 111              		.file 9 "Core/Inc/main.h"
+ 112              		.file 10 "Core/Inc/lte.h"
+ 113              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 lte.c
-C:\Users\jisu8\AppData\Local\Temp\ccm4yTqU.s:20     .text.LTE_Init:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccm4yTqU.s:26     .text.LTE_Init:00000000 LTE_Init
-C:\Users\jisu8\AppData\Local\Temp\ccm4yTqU.s:59     .text.LTE_Init:00000018 $d
-C:\Users\jisu8\AppData\Local\Temp\ccm4yTqU.s:70     .bss.LTE_Rx_Buffer:00000000 LTE_Rx_Buffer
-C:\Users\jisu8\AppData\Local\Temp\ccm4yTqU.s:66     .bss.LTE_Rx_Buffer:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:20     .text.LTE_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:26     .text.LTE_Init:00000000 LTE_Init
+C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:75     .text.LTE_Init:00000034 $d
+C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:100    .bss.dummy_lte:00000000 dummy_lte
+C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:94     .bss.LTE_Rx_Counter:00000000 LTE_Rx_Counter
+C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:88     .bss.LTE_Rx_Buffer:00000000 LTE_Rx_Buffer
+C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:85     .bss.LTE_Rx_Buffer:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:91     .bss.LTE_Rx_Counter:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:101    .bss.dummy_lte:00000000 $d
 
 UNDEFINED SYMBOLS
-HAL_UART_Receive_DMA
+HAL_UART_Receive_IT
+HAL_GPIO_WritePin
+HAL_Delay
 Error_Handler
 huart1

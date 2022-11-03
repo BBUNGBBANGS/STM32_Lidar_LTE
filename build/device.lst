@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
   29:Drivers/CMSIS/Include/core_cm4.h **** #endif
   30:Drivers/CMSIS/Include/core_cm4.h **** 
   31:Drivers/CMSIS/Include/core_cm4.h **** #ifndef __CORE_CM4_H_GENERIC
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 2
 
 
   32:Drivers/CMSIS/Include/core_cm4.h **** #define __CORE_CM4_H_GENERIC
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
   86:Drivers/CMSIS/Include/core_cm4.h ****   #endif
   87:Drivers/CMSIS/Include/core_cm4.h **** 
   88:Drivers/CMSIS/Include/core_cm4.h **** #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 3
 
 
   89:Drivers/CMSIS/Include/core_cm4.h ****   #if defined __ARM_PCS_VFP
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  143:Drivers/CMSIS/Include/core_cm4.h ****     #endif
  144:Drivers/CMSIS/Include/core_cm4.h ****   #else
  145:Drivers/CMSIS/Include/core_cm4.h ****     #define __FPU_USED         0U
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 4
 
 
  146:Drivers/CMSIS/Include/core_cm4.h ****   #endif
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  200:Drivers/CMSIS/Include/core_cm4.h ****   #endif
  201:Drivers/CMSIS/Include/core_cm4.h **** 
  202:Drivers/CMSIS/Include/core_cm4.h ****   #ifndef __Vendor_SysTickConfig
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 5
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 5
 
 
  203:Drivers/CMSIS/Include/core_cm4.h ****     #define __Vendor_SysTickConfig    0U
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  257:Drivers/CMSIS/Include/core_cm4.h ****   \brief  Union type to access the Application Program Status Register (APSR).
  258:Drivers/CMSIS/Include/core_cm4.h ****  */
  259:Drivers/CMSIS/Include/core_cm4.h **** typedef union
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 6
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 6
 
 
  260:Drivers/CMSIS/Include/core_cm4.h **** {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  314:Drivers/CMSIS/Include/core_cm4.h ****   \brief  Union type to access the Special-Purpose Program Status Registers (xPSR).
  315:Drivers/CMSIS/Include/core_cm4.h ****  */
  316:Drivers/CMSIS/Include/core_cm4.h **** typedef union
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 7
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 7
 
 
  317:Drivers/CMSIS/Include/core_cm4.h **** {
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  371:Drivers/CMSIS/Include/core_cm4.h **** typedef union
  372:Drivers/CMSIS/Include/core_cm4.h **** {
  373:Drivers/CMSIS/Include/core_cm4.h ****   struct
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 8
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 8
 
 
  374:Drivers/CMSIS/Include/core_cm4.h ****   {
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  428:Drivers/CMSIS/Include/core_cm4.h **** 
  429:Drivers/CMSIS/Include/core_cm4.h **** 
  430:Drivers/CMSIS/Include/core_cm4.h **** /**
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 9
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 9
 
 
  431:Drivers/CMSIS/Include/core_cm4.h ****   \ingroup  CMSIS_core_register
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  485:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSVSET_Pos             28U                                            /*!< SCB 
  486:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSVSET_Msk             (1UL << SCB_ICSR_PENDSVSET_Pos)                /*!< SCB 
  487:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 10
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 10
 
 
  488:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSVCLR_Pos             27U                                            /*!< SCB 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  542:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SLEEPDEEP_Pos               2U                                            /*!< SCB 
  543:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SLEEPDEEP_Msk              (1UL << SCB_SCR_SLEEPDEEP_Pos)                 /*!< SCB 
  544:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 11
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 11
 
 
  545:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SLEEPONEXIT_Pos             1U                                            /*!< SCB 
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  599:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_SVCALLACT_Msk            (1UL << SCB_SHCSR_SVCALLACT_Pos)               /*!< SCB 
  600:Drivers/CMSIS/Include/core_cm4.h **** 
  601:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_USGFAULTACT_Pos           3U                                            /*!< SCB 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 12
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 12
 
 
  602:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_USGFAULTACT_Msk          (1UL << SCB_SHCSR_USGFAULTACT_Pos)             /*!< SCB 
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  656:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CFSR_PRECISERR_Msk            (1UL << SCB_CFSR_PRECISERR_Pos)                 /*!< SCB 
  657:Drivers/CMSIS/Include/core_cm4.h **** 
  658:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CFSR_IBUSERR_Pos              (SCB_CFSR_BUSFAULTSR_Pos + 0U)                  /*!< SCB 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 13
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 13
 
 
  659:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_CFSR_IBUSERR_Msk              (1UL << SCB_CFSR_IBUSERR_Pos)                   /*!< SCB 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  713:Drivers/CMSIS/Include/core_cm4.h ****   @{
  714:Drivers/CMSIS/Include/core_cm4.h ****  */
  715:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 14
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 14
 
 
  716:Drivers/CMSIS/Include/core_cm4.h **** /**
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  770:Drivers/CMSIS/Include/core_cm4.h **** 
  771:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_CLKSOURCE_Pos          2U                                            /*!< SysT
  772:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_CLKSOURCE_Msk         (1UL << SysTick_CTRL_CLKSOURCE_Pos)            /*!< SysT
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 15
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 15
 
 
  773:Drivers/CMSIS/Include/core_cm4.h **** 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  827:Drivers/CMSIS/Include/core_cm4.h ****   __IM  uint32_t IRR;                    /*!< Offset: 0xEFC (R/ )  ITM Integration Read Register */
  828:Drivers/CMSIS/Include/core_cm4.h ****   __IOM uint32_t IMCR;                   /*!< Offset: 0xF00 (R/W)  ITM Integration Mode Control Reg
  829:Drivers/CMSIS/Include/core_cm4.h ****         uint32_t RESERVED4[43U];
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 16
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 16
 
 
  830:Drivers/CMSIS/Include/core_cm4.h ****   __OM  uint32_t LAR;                    /*!< Offset: 0xFB0 ( /W)  ITM Lock Access Register */
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  884:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_IRR_ATREADYM_Pos                0U                                            /*!< ITM 
  885:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_IRR_ATREADYM_Msk               (1UL /*<< ITM_IRR_ATREADYM_Pos*/)              /*!< ITM 
  886:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 17
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 17
 
 
  887:Drivers/CMSIS/Include/core_cm4.h **** /* ITM Integration Mode Control Register Definitions */
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  941:Drivers/CMSIS/Include/core_cm4.h **** /* DWT Control Register Definitions */
  942:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NUMCOMP_Pos               28U                                         /*!< DWT CTR
  943:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NUMCOMP_Msk               (0xFUL << DWT_CTRL_NUMCOMP_Pos)             /*!< DWT CTR
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 18
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 18
 
 
  944:Drivers/CMSIS/Include/core_cm4.h **** 
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  998:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CPICNT_CPICNT_Msk              (0xFFUL /*<< DWT_CPICNT_CPICNT_Pos*/)       /*!< DWT CPI
  999:Drivers/CMSIS/Include/core_cm4.h **** 
 1000:Drivers/CMSIS/Include/core_cm4.h **** /* DWT Exception Overhead Count Register Definitions */
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 19
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 19
 
 
 1001:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_EXCCNT_EXCCNT_Pos               0U                                         /*!< DWT EXC
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1055:Drivers/CMSIS/Include/core_cm4.h ****   @{
 1056:Drivers/CMSIS/Include/core_cm4.h ****  */
 1057:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 20
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 20
 
 
 1058:Drivers/CMSIS/Include/core_cm4.h **** /**
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1112:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFCR_TrigIn_Msk                (0x1UL << TPI_FFCR_TrigIn_Pos)              /*!< TPI FFC
 1113:Drivers/CMSIS/Include/core_cm4.h **** 
 1114:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFCR_EnFCont_Pos                1U                                         /*!< TPI FFC
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 21
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 21
 
 
 1115:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFCR_EnFCont_Msk               (0x1UL << TPI_FFCR_EnFCont_Pos)             /*!< TPI FFC
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1169:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM0_Pos                  0U                                         /*!< TPI FIF
 1170:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FIFO1_ITM0_Msk                 (0xFFUL /*<< TPI_FIFO1_ITM0_Pos*/)          /*!< TPI FIF
 1171:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 22
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 22
 
 
 1172:Drivers/CMSIS/Include/core_cm4.h **** /* TPI ITATBCTR0 Register Definitions */
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1226:Drivers/CMSIS/Include/core_cm4.h ****   __IOM uint32_t CTRL;                   /*!< Offset: 0x004 (R/W)  MPU Control Register */
 1227:Drivers/CMSIS/Include/core_cm4.h ****   __IOM uint32_t RNR;                    /*!< Offset: 0x008 (R/W)  MPU Region RNRber Register */
 1228:Drivers/CMSIS/Include/core_cm4.h ****   __IOM uint32_t RBAR;                   /*!< Offset: 0x00C (R/W)  MPU Region Base Address Register
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 23
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 23
 
 
 1229:Drivers/CMSIS/Include/core_cm4.h ****   __IOM uint32_t RASR;                   /*!< Offset: 0x010 (R/W)  MPU Region Attribute and Size Re
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1283:Drivers/CMSIS/Include/core_cm4.h **** 
 1284:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_TEX_Pos                   19U                                            /*!< MPU 
 1285:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_TEX_Msk                   (0x7UL << MPU_RASR_TEX_Pos)                    /*!< MPU 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 24
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 24
 
 
 1286:Drivers/CMSIS/Include/core_cm4.h **** 
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1340:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_BFRDY_Msk                (1UL << FPU_FPCCR_BFRDY_Pos)                   /*!< FPCC
 1341:Drivers/CMSIS/Include/core_cm4.h **** 
 1342:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_MMRDY_Pos                 5U                                            /*!< FPCC
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 25
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 25
 
 
 1343:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_MMRDY_Msk                (1UL << FPU_FPCCR_MMRDY_Pos)                   /*!< FPCC
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1397:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR0_A_SIMD_registers_Msk     (0xFUL /*<< FPU_MVFR0_A_SIMD_registers_Pos*/)  /*!< MVFR
 1398:Drivers/CMSIS/Include/core_cm4.h **** 
 1399:Drivers/CMSIS/Include/core_cm4.h **** /* Media and FP Feature Register 1 Definitions */
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 26
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 26
 
 
 1400:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_FP_fused_MAC_Pos         28U                                            /*!< MVFR
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1454:Drivers/CMSIS/Include/core_cm4.h **** 
 1455:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_SNAPSTALL_Pos     5U                                            /*!< Core
 1456:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_SNAPSTALL_Msk    (1UL << CoreDebug_DHCSR_C_SNAPSTALL_Pos)       /*!< Core
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 27
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 27
 
 
 1457:Drivers/CMSIS/Include/core_cm4.h **** 
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1511:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_MMERR_Pos        4U                                            /*!< Core
 1512:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_MMERR_Msk       (1UL << CoreDebug_DEMCR_VC_MMERR_Pos)          /*!< Core
 1513:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 28
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 28
 
 
 1514:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DEMCR_VC_CORERESET_Pos    0U                                            /*!< Core
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1568:Drivers/CMSIS/Include/core_cm4.h **** #define DWT                 ((DWT_Type       *)     DWT_BASE      )   /*!< DWT configuration struct
 1569:Drivers/CMSIS/Include/core_cm4.h **** #define TPI                 ((TPI_Type       *)     TPI_BASE      )   /*!< TPI configuration struct
 1570:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug           ((CoreDebug_Type *)     CoreDebug_BASE)   /*!< Core Debug configuration
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 29
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 29
 
 
 1571:Drivers/CMSIS/Include/core_cm4.h **** 
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1625:Drivers/CMSIS/Include/core_cm4.h **** 
 1626:Drivers/CMSIS/Include/core_cm4.h **** #ifdef CMSIS_VECTAB_VIRTUAL
 1627:Drivers/CMSIS/Include/core_cm4.h ****   #ifndef CMSIS_VECTAB_VIRTUAL_HEADER_FILE
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 30
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 30
 
 
 1628:Drivers/CMSIS/Include/core_cm4.h ****    #define CMSIS_VECTAB_VIRTUAL_HEADER_FILE "cmsis_vectab_virtual.h"
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1682:Drivers/CMSIS/Include/core_cm4.h **** /**
 1683:Drivers/CMSIS/Include/core_cm4.h ****   \brief   Enable Interrupt
 1684:Drivers/CMSIS/Include/core_cm4.h ****   \details Enables a device specific interrupt in the NVIC interrupt controller.
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 31
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 31
 
 
 1685:Drivers/CMSIS/Include/core_cm4.h ****   \param [in]      IRQn  Device specific interrupt number.
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1739:Drivers/CMSIS/Include/core_cm4.h ****   \return             0  Interrupt status is not pending.
 1740:Drivers/CMSIS/Include/core_cm4.h ****   \return             1  Interrupt status is pending.
 1741:Drivers/CMSIS/Include/core_cm4.h ****   \note    IRQn must not be negative.
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 32
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 32
 
 
 1742:Drivers/CMSIS/Include/core_cm4.h ****  */
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1796:Drivers/CMSIS/Include/core_cm4.h ****   if ((int32_t)(IRQn) >= 0)
 1797:Drivers/CMSIS/Include/core_cm4.h ****   {
 1798:Drivers/CMSIS/Include/core_cm4.h ****     return((uint32_t)(((NVIC->IABR[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 33
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 33
 
 
 1799:Drivers/CMSIS/Include/core_cm4.h ****   }
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1853:Drivers/CMSIS/Include/core_cm4.h ****   \brief   Encode Priority
 1854:Drivers/CMSIS/Include/core_cm4.h ****   \details Encodes the priority for an interrupt with the given priority group,
 1855:Drivers/CMSIS/Include/core_cm4.h ****            preemptive priority value, and subpriority value.
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 34
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 34
 
 
 1856:Drivers/CMSIS/Include/core_cm4.h ****            In case of a conflict between priority grouping and available
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1910:Drivers/CMSIS/Include/core_cm4.h ****   \param [in]   IRQn      Interrupt number
 1911:Drivers/CMSIS/Include/core_cm4.h ****   \param [in]   vector    Address of interrupt handler function
 1912:Drivers/CMSIS/Include/core_cm4.h ****  */
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 35
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 35
 
 
 1913:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE void __NVIC_SetVector(IRQn_Type IRQn, uint32_t vector)
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
   16:Drivers/CMSIS/Include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
   17:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
   18:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 36
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 36
 
 
   19:Drivers/CMSIS/Include/cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
   73:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   74:Drivers/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
   75:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 37
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 37
 
 
   76:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  130:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  131:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
  132:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 38
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 38
 
 
  133:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  187:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
  188:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  189:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Set Control Register (non-secure)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 39
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 39
 
 
  190:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Writes the given value to the non-secure Control Register when in secure state.
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  244:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Process Stack Pointer (PSP).
  245:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               PSP Register value
  246:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 40
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 40
 
 
  247:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_PSP(void)
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  301:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_MSP(void)
  302:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  303:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 41
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 41
 
 
  304:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  358:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
  359:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  360:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, sp_ns" : "=r" (result) );
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 42
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 42
 
 
  361:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  415:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  416:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  417:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 43
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 43
 
 
  418:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  472:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Get Base Priority (non-secure)
  473:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the non-secure Base Priority register when in secure state.
  474:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Base Priority register value
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 44
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 44
 
 
  475:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  529:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
  530:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  531:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MRS %0, faultmask" : "=r" (result) );
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 45
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 45
 
 
  532:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  586:Drivers/CMSIS/Include/cmsis_gcc.h ****   Stack Pointer Limit register hence zero is returned always in non-secure
  587:Drivers/CMSIS/Include/cmsis_gcc.h ****   mode.
  588:Drivers/CMSIS/Include/cmsis_gcc.h ****   
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 46
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 46
 
 
  589:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Returns the current value of the Process Stack Pointer Limit (PSPLIM).
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  643:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
  644:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("MSR psplim, %0" : : "r" (ProcStackPtrLimit));
  645:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 47
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 47
 
 
  646:Drivers/CMSIS/Include/cmsis_gcc.h **** }
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  700:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               MSPLIM Register value
  701:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  702:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_MSPLIM_NS(void)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 48
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 48
 
 
  703:Drivers/CMSIS/Include/cmsis_gcc.h **** {
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  757:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif /* ((defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) || \
  758:Drivers/CMSIS/Include/cmsis_gcc.h ****            (defined (__ARM_ARCH_8M_BASE__ ) && (__ARM_ARCH_8M_BASE__ == 1))    ) */
  759:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 49
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 49
 
 
  760:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  814:Drivers/CMSIS/Include/cmsis_gcc.h **** /** \defgroup CMSIS_Core_InstructionInterface CMSIS Core Instruction Interface
  815:Drivers/CMSIS/Include/cmsis_gcc.h ****   Access to dedicated instructions
  816:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 50
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 50
 
 
  817:Drivers/CMSIS/Include/cmsis_gcc.h **** */
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  871:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  872:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  873:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Data Synchronization Barrier
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 51
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 51
 
 
  874:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Acts as a special kind of Data Memory Barrier.
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
 1949:Drivers/CMSIS/Include/core_cm4.h ****   {
 1950:Drivers/CMSIS/Include/core_cm4.h ****     __NOP();
   76              		.loc 1 1950 5 discriminator 1 view .LVU13
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 52
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 52
 
 
   77              		.syntax unified
@@ -3112,75 +3112,64 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  112              		.loc 3 14 2 view .LVU16
  113              		.loc 3 14 6 is_stmt 0 view .LVU17
  114 0002 0122     		movs	r2, #1
- 115 0004 0649     		ldr	r1, .L9
- 116 0006 0748     		ldr	r0, .L9+4
+ 115 0004 0449     		ldr	r1, .L9
+ 116 0006 0548     		ldr	r0, .L9+4
  117 0008 FFF7FEFF 		bl	HAL_ADC_Start_DMA
  118              	.LVL0:
  119              		.loc 3 14 5 view .LVU18
- 120 000c 28B9     		cbnz	r0, .L8
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 53
+ 120 000c 00B9     		cbnz	r0, .L8
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 53
 
 
- 121              	.L6:
+ 121              	.L5:
   15:Core/Src/device.c **** 	{
   16:Core/Src/device.c **** 		Error_Handler();
   17:Core/Src/device.c **** 	}
   18:Core/Src/device.c **** 	 
-  19:Core/Src/device.c **** 	//LM5 Reset On
-  20:Core/Src/device.c **** 	HAL_GPIO_WritePin(RESET_ONOFF_GPIO_Port, RESET_ONOFF_Pin, GPIO_PIN_SET);
- 122              		.loc 3 20 2 is_stmt 1 view .LVU19
- 123 000e 0122     		movs	r2, #1
- 124 0010 4021     		movs	r1, #64
- 125 0012 0548     		ldr	r0, .L9+8
- 126 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 127              	.LVL1:
-  21:Core/Src/device.c **** }
- 128              		.loc 3 21 1 is_stmt 0 view .LVU20
- 129 0018 08BD     		pop	{r3, pc}
- 130              	.L8:
+  19:Core/Src/device.c **** }
+ 122              		.loc 3 19 1 view .LVU19
+ 123 000e 08BD     		pop	{r3, pc}
+ 124              	.L8:
   16:Core/Src/device.c **** 	}
- 131              		.loc 3 16 3 is_stmt 1 view .LVU21
- 132 001a FFF7FEFF 		bl	Error_Handler
- 133              	.LVL2:
- 134 001e F6E7     		b	.L6
- 135              	.L10:
- 136              		.align	2
- 137              	.L9:
- 138 0020 00000000 		.word	.LANCHOR0
- 139 0024 00000000 		.word	hadc2
- 140 0028 00040048 		.word	1207960576
- 141              		.cfi_endproc
- 142              	.LFE133:
- 144              		.section	.text.Device_Reset_Init,"ax",%progbits
- 145              		.align	1
- 146              		.global	Device_Reset_Init
- 147              		.syntax unified
- 148              		.thumb
- 149              		.thumb_func
- 151              	Device_Reset_Init:
- 152              	.LFB134:
-  22:Core/Src/device.c **** 
-  23:Core/Src/device.c **** void Device_Reset_Init(void)
-  24:Core/Src/device.c **** {
- 153              		.loc 3 24 1 view -0
- 154              		.cfi_startproc
- 155              		@ args = 0, pretend = 0, frame = 0
- 156              		@ frame_needed = 0, uses_anonymous_args = 0
- 157 0000 08B5     		push	{r3, lr}
- 158              	.LCFI1:
- 159              		.cfi_def_cfa_offset 8
- 160              		.cfi_offset 3, -8
- 161              		.cfi_offset 14, -4
-  25:Core/Src/device.c ****     if (__HAL_RCC_GET_FLAG(RCC_FLAG_LPWRRST))
- 162              		.loc 3 25 5 view .LVU23
- 163              	.LVL3:
- 164              	.LBB66:
- 165              	.LBI66:
+ 125              		.loc 3 16 3 is_stmt 1 view .LVU20
+ 126 0010 FFF7FEFF 		bl	Error_Handler
+ 127              	.LVL1:
+ 128              		.loc 3 19 1 is_stmt 0 view .LVU21
+ 129 0014 FBE7     		b	.L5
+ 130              	.L10:
+ 131 0016 00BF     		.align	2
+ 132              	.L9:
+ 133 0018 00000000 		.word	.LANCHOR0
+ 134 001c 00000000 		.word	hadc2
+ 135              		.cfi_endproc
+ 136              	.LFE133:
+ 138              		.section	.text.Device_Reset_Init,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	Device_Reset_Init
+ 141              		.syntax unified
+ 142              		.thumb
+ 143              		.thumb_func
+ 145              	Device_Reset_Init:
+ 146              	.LFB134:
+  20:Core/Src/device.c **** 
+  21:Core/Src/device.c **** void Device_Reset_Init(void)
+  22:Core/Src/device.c **** {
+ 147              		.loc 3 22 1 is_stmt 1 view -0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151 0000 08B5     		push	{r3, lr}
+ 152              	.LCFI1:
+ 153              		.cfi_def_cfa_offset 8
+ 154              		.cfi_offset 3, -8
+ 155              		.cfi_offset 14, -4
+  23:Core/Src/device.c ****     if (__HAL_RCC_GET_FLAG(RCC_FLAG_LPWRRST))
+ 156              		.loc 3 23 5 view .LVU23
+ 157              	.LVL2:
+ 158              	.LBB66:
+ 159              	.LBI66:
  880:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  881:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 54
-
-
  882:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  883:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  884:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Data Memory Barrier
@@ -3189,6 +3178,9 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  887:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  888:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __DMB(void)
  889:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 54
+
+
  890:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("dmb 0xF":::"memory");
  891:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  892:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -3238,9 +3230,6 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  936:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (__GNUC__ > 4) || (__GNUC__ == 4 && __GNUC_MINOR__ >= 8)
  937:Drivers/CMSIS/Include/cmsis_gcc.h ****   return (int16_t)__builtin_bswap16(value);
  938:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 55
-
-
  939:Drivers/CMSIS/Include/cmsis_gcc.h ****   int16_t result;
  940:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  941:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("revsh %0, %1" : __CMSIS_GCC_OUT_REG (result) : __CMSIS_GCC_USE_REG (value) );
@@ -3249,6 +3238,9 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  944:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  945:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  946:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 55
+
+
  947:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  948:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Rotate Right in unsigned value (32 bit)
  949:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Rotate Right (immediate) provides the value of the contents of a register rotated by a v
@@ -3284,31 +3276,31 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  979:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Reversed value
  980:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __RBIT(uint32_t value)
- 166              		.loc 2 981 31 view .LVU24
- 167              	.LBB67:
+ 160              		.loc 2 981 31 view .LVU24
+ 161              	.LBB67:
  982:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  983:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
- 168              		.loc 2 983 3 view .LVU25
+ 162              		.loc 2 983 3 view .LVU25
  984:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  985:Drivers/CMSIS/Include/cmsis_gcc.h **** #if ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
  986:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
  987:Drivers/CMSIS/Include/cmsis_gcc.h ****      (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    )
  988:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("rbit %0, %1" : "=r" (result) : "r" (value) );
- 169              		.loc 2 988 4 view .LVU26
- 170 0002 4FF00043 		mov	r3, #-2147483648
- 171              		.syntax unified
- 172              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 56
-
-
- 173 0006 93FAA3F2 		rbit r2, r3
- 174              	@ 0 "" 2
- 175              	.LVL4:
+ 163              		.loc 2 988 4 view .LVU26
+ 164 0002 4FF00043 		mov	r3, #-2147483648
+ 165              		.syntax unified
+ 166              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 167 0006 93FAA3F2 		rbit r2, r3
+ 168              	@ 0 "" 2
+ 169              	.LVL3:
  989:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
  990:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t s = (4U /*sizeof(v)*/ * 8U) - 1U; /* extra shift needed at end */
  991:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  992:Drivers/CMSIS/Include/cmsis_gcc.h ****   result = value;                      /* r will be reversed bits of v; first get LSB of v */
  993:Drivers/CMSIS/Include/cmsis_gcc.h ****   for (value >>= 1U; value != 0U; value >>= 1U)
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 56
+
+
  994:Drivers/CMSIS/Include/cmsis_gcc.h ****   {
  995:Drivers/CMSIS/Include/cmsis_gcc.h ****     result <<= 1U;
  996:Drivers/CMSIS/Include/cmsis_gcc.h ****     result |= value & 1U;
@@ -3317,1286 +3309,1280 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 1
  999:Drivers/CMSIS/Include/cmsis_gcc.h ****   result <<= s;                        /* shift when v's highest bits are zero */
 1000:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
 1001:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
- 176              		.loc 2 1001 3 view .LVU27
- 177              		.loc 2 1001 3 is_stmt 0 view .LVU28
- 178              		.thumb
- 179              		.syntax unified
- 180              	.LBE67:
- 181              	.LBE66:
- 182              	.LBB68:
- 183              	.LBI68:
+ 170              		.loc 2 1001 3 view .LVU27
+ 171              		.loc 2 1001 3 is_stmt 0 view .LVU28
+ 172              		.thumb
+ 173              		.syntax unified
+ 174              	.LBE67:
+ 175              	.LBE66:
+ 176              	.LBB68:
+ 177              	.LBI68:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 184              		.loc 2 981 31 is_stmt 1 view .LVU29
- 185              	.LBB69:
+ 178              		.loc 2 981 31 is_stmt 1 view .LVU29
+ 179              	.LBB69:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 186              		.loc 2 983 3 view .LVU30
+ 180              		.loc 2 983 3 view .LVU30
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 187              		.loc 2 988 4 view .LVU31
- 188              		.syntax unified
- 189              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 190 000a 93FAA3F2 		rbit r2, r3
- 191              	@ 0 "" 2
- 192              	.LVL5:
- 193              		.loc 2 1001 3 view .LVU32
- 194              		.loc 2 1001 3 is_stmt 0 view .LVU33
- 195              		.thumb
- 196              		.syntax unified
- 197              	.LBE69:
- 198              	.LBE68:
- 199              	.LBB70:
- 200              	.LBI70:
+ 181              		.loc 2 988 4 view .LVU31
+ 182              		.syntax unified
+ 183              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 184 000a 93FAA3F2 		rbit r2, r3
+ 185              	@ 0 "" 2
+ 186              	.LVL4:
+ 187              		.loc 2 1001 3 view .LVU32
+ 188              		.loc 2 1001 3 is_stmt 0 view .LVU33
+ 189              		.thumb
+ 190              		.syntax unified
+ 191              	.LBE69:
+ 192              	.LBE68:
+ 193              	.LBB70:
+ 194              	.LBI70:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 201              		.loc 2 981 31 is_stmt 1 view .LVU34
- 202              	.LBB71:
+ 195              		.loc 2 981 31 is_stmt 1 view .LVU34
+ 196              	.LBB71:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 203              		.loc 2 983 3 view .LVU35
+ 197              		.loc 2 983 3 view .LVU35
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 204              		.loc 2 988 4 view .LVU36
- 205              		.syntax unified
- 206              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 207 000e 93FAA3F2 		rbit r2, r3
- 208              	@ 0 "" 2
- 209              	.LVL6:
- 210              		.loc 2 1001 3 view .LVU37
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 57
+ 198              		.loc 2 988 4 view .LVU36
+ 199              		.syntax unified
+ 200              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 201 000e 93FAA3F2 		rbit r2, r3
+ 202              	@ 0 "" 2
+ 203              	.LVL5:
+ 204              		.loc 2 1001 3 view .LVU37
+ 205              		.loc 2 1001 3 is_stmt 0 view .LVU38
+ 206              		.thumb
+ 207              		.syntax unified
+ 208              	.LBE71:
+ 209              	.LBE70:
+ 210              		.loc 3 23 9 view .LVU39
+ 211 0012 5B4A     		ldr	r2, .L26
+ 212 0014 516A     		ldr	r1, [r2, #36]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 57
 
 
- 211              		.loc 2 1001 3 is_stmt 0 view .LVU38
- 212              		.thumb
- 213              		.syntax unified
- 214              	.LBE71:
- 215              	.LBE70:
- 216              		.loc 3 25 9 view .LVU39
- 217 0012 5B4A     		ldr	r2, .L26
- 218 0014 516A     		ldr	r1, [r2, #36]
- 219              	.LVL7:
- 220              	.LBB72:
- 221              	.LBI72:
+ 213              	.LVL6:
+ 214              	.LBB72:
+ 215              	.LBI72:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 222              		.loc 2 981 31 is_stmt 1 view .LVU40
- 223              	.LBB73:
+ 216              		.loc 2 981 31 is_stmt 1 view .LVU40
+ 217              	.LBB73:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 224              		.loc 2 983 3 view .LVU41
+ 218              		.loc 2 983 3 view .LVU41
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 225              		.loc 2 988 4 view .LVU42
- 226              		.syntax unified
- 227              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 228 0016 93FAA3F3 		rbit r3, r3
- 229              	@ 0 "" 2
- 230              	.LVL8:
- 231              		.loc 2 1001 3 view .LVU43
- 232              		.loc 2 1001 3 is_stmt 0 view .LVU44
- 233              		.thumb
- 234              		.syntax unified
- 235              	.LBE73:
- 236              	.LBE72:
- 237              		.loc 3 25 9 view .LVU45
- 238 001a B3FA83F3 		clz	r3, r3
- 239 001e 03F01F03 		and	r3, r3, #31
- 240 0022 0122     		movs	r2, #1
- 241 0024 02FA03F3 		lsl	r3, r2, r3
- 242              		.loc 3 25 8 view .LVU46
- 243 0028 0B42     		tst	r3, r1
- 244 002a 0DD0     		beq	.L12
-  26:Core/Src/device.c ****     {
-  27:Core/Src/device.c ****         reset_cause = RESET_CAUSE_LOW_POWER_RESET;
- 245              		.loc 3 27 9 is_stmt 1 view .LVU47
- 246              		.loc 3 27 21 is_stmt 0 view .LVU48
- 247 002c 554B     		ldr	r3, .L26+4
- 248 002e 1A70     		strb	r2, [r3]
- 249              	.L13:
-  28:Core/Src/device.c ****     } 
-  29:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_WWDGRST))
-  30:Core/Src/device.c ****     {
-  31:Core/Src/device.c ****         reset_cause = RESET_CAUSE_WINDOW_WATCHDOG_RESET;
-  32:Core/Src/device.c ****     } 
-  33:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_IWDGRST))
-  34:Core/Src/device.c ****     {
-  35:Core/Src/device.c ****         reset_cause = RESET_CAUSE_INDEPENDENT_WATCHDOG_RESET;  
-  36:Core/Src/device.c ****     }
-  37:Core/Src/device.c ****     
-  38:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_SFTRST))
-  39:Core/Src/device.c ****     {
-  40:Core/Src/device.c ****         reset_cause = RESET_CAUSE_SOFTWARE_RESET; // This reset is induced by calling the ARM CMSIS
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 58
+ 219              		.loc 2 988 4 view .LVU42
+ 220              		.syntax unified
+ 221              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 222 0016 93FAA3F3 		rbit r3, r3
+ 223              	@ 0 "" 2
+ 224              	.LVL7:
+ 225              		.loc 2 1001 3 view .LVU43
+ 226              		.loc 2 1001 3 is_stmt 0 view .LVU44
+ 227              		.thumb
+ 228              		.syntax unified
+ 229              	.LBE73:
+ 230              	.LBE72:
+ 231              		.loc 3 23 9 view .LVU45
+ 232 001a B3FA83F3 		clz	r3, r3
+ 233 001e 03F01F03 		and	r3, r3, #31
+ 234 0022 0122     		movs	r2, #1
+ 235 0024 02FA03F3 		lsl	r3, r2, r3
+ 236              		.loc 3 23 8 view .LVU46
+ 237 0028 0B42     		tst	r3, r1
+ 238 002a 0DD0     		beq	.L12
+  24:Core/Src/device.c ****     {
+  25:Core/Src/device.c ****         reset_cause = RESET_CAUSE_LOW_POWER_RESET;
+ 239              		.loc 3 25 9 is_stmt 1 view .LVU47
+ 240              		.loc 3 25 21 is_stmt 0 view .LVU48
+ 241 002c 554B     		ldr	r3, .L26+4
+ 242 002e 1A70     		strb	r2, [r3]
+ 243              	.L13:
+  26:Core/Src/device.c ****     } 
+  27:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_WWDGRST))
+  28:Core/Src/device.c ****     {
+  29:Core/Src/device.c ****         reset_cause = RESET_CAUSE_WINDOW_WATCHDOG_RESET;
+  30:Core/Src/device.c ****     } 
+  31:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_IWDGRST))
+  32:Core/Src/device.c ****     {
+  33:Core/Src/device.c ****         reset_cause = RESET_CAUSE_INDEPENDENT_WATCHDOG_RESET;  
+  34:Core/Src/device.c ****     }
+  35:Core/Src/device.c ****     
+  36:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_SFTRST))
+  37:Core/Src/device.c ****     {
+  38:Core/Src/device.c ****         reset_cause = RESET_CAUSE_SOFTWARE_RESET; // This reset is induced by calling the ARM CMSIS
+  39:Core/Src/device.c ****     }  
+  40:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_PORRST))
+  41:Core/Src/device.c ****     {
+  42:Core/Src/device.c ****         reset_cause = RESET_CAUSE_POWER_ON_POWER_DOWN_RESET;
+  43:Core/Src/device.c ****     }  
+  44:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_PINRST))
+  45:Core/Src/device.c ****     {
+  46:Core/Src/device.c ****         reset_cause = RESET_CAUSE_EXTERNAL_RESET_PIN_RESET;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 58
 
 
-  41:Core/Src/device.c ****     }  
-  42:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_PORRST))
-  43:Core/Src/device.c ****     {
-  44:Core/Src/device.c ****         reset_cause = RESET_CAUSE_POWER_ON_POWER_DOWN_RESET;
-  45:Core/Src/device.c ****     }  
-  46:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_PINRST))
-  47:Core/Src/device.c ****     {
-  48:Core/Src/device.c ****         reset_cause = RESET_CAUSE_EXTERNAL_RESET_PIN_RESET;
-  49:Core/Src/device.c ****     }  
-  50:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_LSIRDY))
-  51:Core/Src/device.c ****     {
-  52:Core/Src/device.c ****         reset_cause = RESET_CAUSE_LS_OSC_READY;
-  53:Core/Src/device.c ****     }  
-  54:Core/Src/device.c **** 	
-  55:Core/Src/device.c ****     if (reset_cause == RESET_CAUSE_POWER_ON_POWER_DOWN_RESET)
- 250              		.loc 3 55 5 is_stmt 1 view .LVU49
- 251              		.loc 3 55 21 is_stmt 0 view .LVU50
- 252 0030 544B     		ldr	r3, .L26+4
- 253 0032 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 254              		.loc 3 55 8 view .LVU51
- 255 0034 052B     		cmp	r3, #5
- 256 0036 00F09D80 		beq	.L23
-  56:Core/Src/device.c ****     {
-  57:Core/Src/device.c ****         NVIC_SystemReset();
-  58:Core/Src/device.c ****     }
-  59:Core/Src/device.c ****     if (reset_cause == RESET_CAUSE_EXTERNAL_RESET_PIN_RESET)
- 257              		.loc 3 59 5 is_stmt 1 view .LVU52
- 258              		.loc 3 59 8 is_stmt 0 view .LVU53
- 259 003a 062B     		cmp	r3, #6
- 260 003c 00F09C80 		beq	.L24
-  60:Core/Src/device.c ****     {
-  61:Core/Src/device.c ****         NVIC_SystemReset();
-  62:Core/Src/device.c ****     }
-  63:Core/Src/device.c ****     if (reset_cause == RESET_CAUSE_LS_OSC_READY)
- 261              		.loc 3 63 5 is_stmt 1 view .LVU54
- 262              		.loc 3 63 8 is_stmt 0 view .LVU55
- 263 0040 072B     		cmp	r3, #7
- 264 0042 00F09B80 		beq	.L25
-  64:Core/Src/device.c ****     {
-  65:Core/Src/device.c ****         NVIC_SystemReset();
-  66:Core/Src/device.c ****     }
-  67:Core/Src/device.c **** }
- 265              		.loc 3 67 1 view .LVU56
- 266 0046 08BD     		pop	{r3, pc}
- 267              	.L12:
-  29:Core/Src/device.c ****     {
- 268              		.loc 3 29 10 is_stmt 1 view .LVU57
- 269              	.LVL9:
- 270              	.LBB74:
- 271              	.LBI74:
+  47:Core/Src/device.c ****     }  
+  48:Core/Src/device.c ****     else if (__HAL_RCC_GET_FLAG(RCC_FLAG_LSIRDY))
+  49:Core/Src/device.c ****     {
+  50:Core/Src/device.c ****         reset_cause = RESET_CAUSE_LS_OSC_READY;
+  51:Core/Src/device.c ****     }  
+  52:Core/Src/device.c **** 	
+  53:Core/Src/device.c ****     if (reset_cause == RESET_CAUSE_POWER_ON_POWER_DOWN_RESET)
+ 244              		.loc 3 53 5 is_stmt 1 view .LVU49
+ 245              		.loc 3 53 21 is_stmt 0 view .LVU50
+ 246 0030 544B     		ldr	r3, .L26+4
+ 247 0032 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 248              		.loc 3 53 8 view .LVU51
+ 249 0034 052B     		cmp	r3, #5
+ 250 0036 00F09D80 		beq	.L23
+  54:Core/Src/device.c ****     {
+  55:Core/Src/device.c ****         NVIC_SystemReset();
+  56:Core/Src/device.c ****     }
+  57:Core/Src/device.c ****     if (reset_cause == RESET_CAUSE_EXTERNAL_RESET_PIN_RESET)
+ 251              		.loc 3 57 5 is_stmt 1 view .LVU52
+ 252              		.loc 3 57 8 is_stmt 0 view .LVU53
+ 253 003a 062B     		cmp	r3, #6
+ 254 003c 00F09C80 		beq	.L24
+  58:Core/Src/device.c ****     {
+  59:Core/Src/device.c ****         NVIC_SystemReset();
+  60:Core/Src/device.c ****     }
+  61:Core/Src/device.c ****     if (reset_cause == RESET_CAUSE_LS_OSC_READY)
+ 255              		.loc 3 61 5 is_stmt 1 view .LVU54
+ 256              		.loc 3 61 8 is_stmt 0 view .LVU55
+ 257 0040 072B     		cmp	r3, #7
+ 258 0042 00F09B80 		beq	.L25
+  62:Core/Src/device.c ****     {
+  63:Core/Src/device.c ****         NVIC_SystemReset();
+  64:Core/Src/device.c ****     }
+  65:Core/Src/device.c **** }
+ 259              		.loc 3 65 1 view .LVU56
+ 260 0046 08BD     		pop	{r3, pc}
+ 261              	.L12:
+  27:Core/Src/device.c ****     {
+ 262              		.loc 3 27 10 is_stmt 1 view .LVU57
+ 263              	.LVL8:
+ 264              	.LBB74:
+ 265              	.LBI74:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 272              		.loc 2 981 31 view .LVU58
- 273              	.LBB75:
+ 266              		.loc 2 981 31 view .LVU58
+ 267              	.LBB75:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 274              		.loc 2 983 3 view .LVU59
+ 268              		.loc 2 983 3 view .LVU59
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 275              		.loc 2 988 4 view .LVU60
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 59
+ 269              		.loc 2 988 4 view .LVU60
+ 270 0048 4FF08043 		mov	r3, #1073741824
+ 271              		.syntax unified
+ 272              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 273 004c 93FAA3F2 		rbit r2, r3
+ 274              	@ 0 "" 2
+ 275              	.LVL9:
+ 276              		.loc 2 1001 3 view .LVU61
+ 277              		.loc 2 1001 3 is_stmt 0 view .LVU62
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 59
 
 
- 276 0048 4FF08043 		mov	r3, #1073741824
- 277              		.syntax unified
- 278              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 279 004c 93FAA3F2 		rbit r2, r3
- 280              	@ 0 "" 2
- 281              	.LVL10:
- 282              		.loc 2 1001 3 view .LVU61
- 283              		.loc 2 1001 3 is_stmt 0 view .LVU62
- 284              		.thumb
- 285              		.syntax unified
- 286              	.LBE75:
- 287              	.LBE74:
- 288              	.LBB76:
- 289              	.LBI76:
+ 278              		.thumb
+ 279              		.syntax unified
+ 280              	.LBE75:
+ 281              	.LBE74:
+ 282              	.LBB76:
+ 283              	.LBI76:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 290              		.loc 2 981 31 is_stmt 1 view .LVU63
- 291              	.LBB77:
+ 284              		.loc 2 981 31 is_stmt 1 view .LVU63
+ 285              	.LBB77:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 292              		.loc 2 983 3 view .LVU64
+ 286              		.loc 2 983 3 view .LVU64
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 293              		.loc 2 988 4 view .LVU65
- 294              		.syntax unified
- 295              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 296 0050 93FAA3F2 		rbit r2, r3
- 297              	@ 0 "" 2
- 298              	.LVL11:
- 299              		.loc 2 1001 3 view .LVU66
- 300              		.loc 2 1001 3 is_stmt 0 view .LVU67
- 301              		.thumb
- 302              		.syntax unified
- 303              	.LBE77:
- 304              	.LBE76:
- 305              	.LBB78:
- 306              	.LBI78:
+ 287              		.loc 2 988 4 view .LVU65
+ 288              		.syntax unified
+ 289              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 290 0050 93FAA3F2 		rbit r2, r3
+ 291              	@ 0 "" 2
+ 292              	.LVL10:
+ 293              		.loc 2 1001 3 view .LVU66
+ 294              		.loc 2 1001 3 is_stmt 0 view .LVU67
+ 295              		.thumb
+ 296              		.syntax unified
+ 297              	.LBE77:
+ 298              	.LBE76:
+ 299              	.LBB78:
+ 300              	.LBI78:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 307              		.loc 2 981 31 is_stmt 1 view .LVU68
- 308              	.LBB79:
+ 301              		.loc 2 981 31 is_stmt 1 view .LVU68
+ 302              	.LBB79:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 309              		.loc 2 983 3 view .LVU69
+ 303              		.loc 2 983 3 view .LVU69
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 310              		.loc 2 988 4 view .LVU70
- 311              		.syntax unified
- 312              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 313 0054 93FAA3F2 		rbit r2, r3
- 314              	@ 0 "" 2
- 315              	.LVL12:
- 316              		.loc 2 1001 3 view .LVU71
- 317              		.loc 2 1001 3 is_stmt 0 view .LVU72
- 318              		.thumb
- 319              		.syntax unified
- 320              	.LBE79:
- 321              	.LBE78:
-  29:Core/Src/device.c ****     {
- 322              		.loc 3 29 14 view .LVU73
- 323 0058 494A     		ldr	r2, .L26
- 324 005a 516A     		ldr	r1, [r2, #36]
- 325              	.LVL13:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 60
-
-
- 326              	.LBB80:
- 327              	.LBI80:
+ 304              		.loc 2 988 4 view .LVU70
+ 305              		.syntax unified
+ 306              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 307 0054 93FAA3F2 		rbit r2, r3
+ 308              	@ 0 "" 2
+ 309              	.LVL11:
+ 310              		.loc 2 1001 3 view .LVU71
+ 311              		.loc 2 1001 3 is_stmt 0 view .LVU72
+ 312              		.thumb
+ 313              		.syntax unified
+ 314              	.LBE79:
+ 315              	.LBE78:
+  27:Core/Src/device.c ****     {
+ 316              		.loc 3 27 14 view .LVU73
+ 317 0058 494A     		ldr	r2, .L26
+ 318 005a 516A     		ldr	r1, [r2, #36]
+ 319              	.LVL12:
+ 320              	.LBB80:
+ 321              	.LBI80:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 328              		.loc 2 981 31 is_stmt 1 view .LVU74
- 329              	.LBB81:
+ 322              		.loc 2 981 31 is_stmt 1 view .LVU74
+ 323              	.LBB81:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 330              		.loc 2 983 3 view .LVU75
+ 324              		.loc 2 983 3 view .LVU75
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 331              		.loc 2 988 4 view .LVU76
- 332              		.syntax unified
- 333              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 334 005c 93FAA3F3 		rbit r3, r3
- 335              	@ 0 "" 2
- 336              	.LVL14:
- 337              		.loc 2 1001 3 view .LVU77
- 338              		.loc 2 1001 3 is_stmt 0 view .LVU78
- 339              		.thumb
- 340              		.syntax unified
- 341              	.LBE81:
- 342              	.LBE80:
-  29:Core/Src/device.c ****     {
- 343              		.loc 3 29 14 view .LVU79
- 344 0060 B3FA83F3 		clz	r3, r3
- 345 0064 03F01F03 		and	r3, r3, #31
- 346 0068 0122     		movs	r2, #1
- 347 006a 02FA03F3 		lsl	r3, r2, r3
-  29:Core/Src/device.c ****     {
- 348              		.loc 3 29 13 view .LVU80
- 349 006e 0B42     		tst	r3, r1
- 350 0070 03D0     		beq	.L14
-  31:Core/Src/device.c ****     } 
- 351              		.loc 3 31 9 is_stmt 1 view .LVU81
-  31:Core/Src/device.c ****     } 
- 352              		.loc 3 31 21 is_stmt 0 view .LVU82
- 353 0072 444B     		ldr	r3, .L26+4
- 354 0074 0222     		movs	r2, #2
- 355 0076 1A70     		strb	r2, [r3]
- 356 0078 DAE7     		b	.L13
- 357              	.L14:
-  33:Core/Src/device.c ****     {
- 358              		.loc 3 33 10 is_stmt 1 view .LVU83
- 359              	.LVL15:
- 360              	.LBB82:
- 361              	.LBI82:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 60
+
+
+ 325              		.loc 2 988 4 view .LVU76
+ 326              		.syntax unified
+ 327              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 328 005c 93FAA3F3 		rbit r3, r3
+ 329              	@ 0 "" 2
+ 330              	.LVL13:
+ 331              		.loc 2 1001 3 view .LVU77
+ 332              		.loc 2 1001 3 is_stmt 0 view .LVU78
+ 333              		.thumb
+ 334              		.syntax unified
+ 335              	.LBE81:
+ 336              	.LBE80:
+  27:Core/Src/device.c ****     {
+ 337              		.loc 3 27 14 view .LVU79
+ 338 0060 B3FA83F3 		clz	r3, r3
+ 339 0064 03F01F03 		and	r3, r3, #31
+ 340 0068 0122     		movs	r2, #1
+ 341 006a 02FA03F3 		lsl	r3, r2, r3
+  27:Core/Src/device.c ****     {
+ 342              		.loc 3 27 13 view .LVU80
+ 343 006e 0B42     		tst	r3, r1
+ 344 0070 03D0     		beq	.L14
+  29:Core/Src/device.c ****     } 
+ 345              		.loc 3 29 9 is_stmt 1 view .LVU81
+  29:Core/Src/device.c ****     } 
+ 346              		.loc 3 29 21 is_stmt 0 view .LVU82
+ 347 0072 444B     		ldr	r3, .L26+4
+ 348 0074 0222     		movs	r2, #2
+ 349 0076 1A70     		strb	r2, [r3]
+ 350 0078 DAE7     		b	.L13
+ 351              	.L14:
+  31:Core/Src/device.c ****     {
+ 352              		.loc 3 31 10 is_stmt 1 view .LVU83
+ 353              	.LVL14:
+ 354              	.LBB82:
+ 355              	.LBI82:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 362              		.loc 2 981 31 view .LVU84
- 363              	.LBB83:
+ 356              		.loc 2 981 31 view .LVU84
+ 357              	.LBB83:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 364              		.loc 2 983 3 view .LVU85
+ 358              		.loc 2 983 3 view .LVU85
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 365              		.loc 2 988 4 view .LVU86
- 366 007a 4FF00053 		mov	r3, #536870912
- 367              		.syntax unified
- 368              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 369 007e 93FAA3F2 		rbit r2, r3
- 370              	@ 0 "" 2
- 371              	.LVL16:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 61
+ 359              		.loc 2 988 4 view .LVU86
+ 360 007a 4FF00053 		mov	r3, #536870912
+ 361              		.syntax unified
+ 362              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 363 007e 93FAA3F2 		rbit r2, r3
+ 364              	@ 0 "" 2
+ 365              	.LVL15:
+ 366              		.loc 2 1001 3 view .LVU87
+ 367              		.loc 2 1001 3 is_stmt 0 view .LVU88
+ 368              		.thumb
+ 369              		.syntax unified
+ 370              	.LBE83:
+ 371              	.LBE82:
+ 372              	.LBB84:
+ 373              	.LBI84:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 61
 
 
- 372              		.loc 2 1001 3 view .LVU87
- 373              		.loc 2 1001 3 is_stmt 0 view .LVU88
- 374              		.thumb
- 375              		.syntax unified
- 376              	.LBE83:
- 377              	.LBE82:
- 378              	.LBB84:
- 379              	.LBI84:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 380              		.loc 2 981 31 is_stmt 1 view .LVU89
- 381              	.LBB85:
+ 374              		.loc 2 981 31 is_stmt 1 view .LVU89
+ 375              	.LBB85:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 382              		.loc 2 983 3 view .LVU90
+ 376              		.loc 2 983 3 view .LVU90
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 383              		.loc 2 988 4 view .LVU91
- 384              		.syntax unified
- 385              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 386 0082 93FAA3F2 		rbit r2, r3
- 387              	@ 0 "" 2
- 388              	.LVL17:
- 389              		.loc 2 1001 3 view .LVU92
- 390              		.loc 2 1001 3 is_stmt 0 view .LVU93
- 391              		.thumb
- 392              		.syntax unified
- 393              	.LBE85:
- 394              	.LBE84:
- 395              	.LBB86:
- 396              	.LBI86:
+ 377              		.loc 2 988 4 view .LVU91
+ 378              		.syntax unified
+ 379              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 380 0082 93FAA3F2 		rbit r2, r3
+ 381              	@ 0 "" 2
+ 382              	.LVL16:
+ 383              		.loc 2 1001 3 view .LVU92
+ 384              		.loc 2 1001 3 is_stmt 0 view .LVU93
+ 385              		.thumb
+ 386              		.syntax unified
+ 387              	.LBE85:
+ 388              	.LBE84:
+ 389              	.LBB86:
+ 390              	.LBI86:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 397              		.loc 2 981 31 is_stmt 1 view .LVU94
- 398              	.LBB87:
+ 391              		.loc 2 981 31 is_stmt 1 view .LVU94
+ 392              	.LBB87:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 399              		.loc 2 983 3 view .LVU95
+ 393              		.loc 2 983 3 view .LVU95
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 400              		.loc 2 988 4 view .LVU96
- 401              		.syntax unified
- 402              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 403 0086 93FAA3F2 		rbit r2, r3
- 404              	@ 0 "" 2
- 405              	.LVL18:
- 406              		.loc 2 1001 3 view .LVU97
- 407              		.loc 2 1001 3 is_stmt 0 view .LVU98
- 408              		.thumb
- 409              		.syntax unified
- 410              	.LBE87:
- 411              	.LBE86:
-  33:Core/Src/device.c ****     {
- 412              		.loc 3 33 14 view .LVU99
- 413 008a 3D4A     		ldr	r2, .L26
- 414 008c 516A     		ldr	r1, [r2, #36]
- 415              	.LVL19:
- 416              	.LBB88:
- 417              	.LBI88:
+ 394              		.loc 2 988 4 view .LVU96
+ 395              		.syntax unified
+ 396              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 397 0086 93FAA3F2 		rbit r2, r3
+ 398              	@ 0 "" 2
+ 399              	.LVL17:
+ 400              		.loc 2 1001 3 view .LVU97
+ 401              		.loc 2 1001 3 is_stmt 0 view .LVU98
+ 402              		.thumb
+ 403              		.syntax unified
+ 404              	.LBE87:
+ 405              	.LBE86:
+  31:Core/Src/device.c ****     {
+ 406              		.loc 3 31 14 view .LVU99
+ 407 008a 3D4A     		ldr	r2, .L26
+ 408 008c 516A     		ldr	r1, [r2, #36]
+ 409              	.LVL18:
+ 410              	.LBB88:
+ 411              	.LBI88:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 418              		.loc 2 981 31 is_stmt 1 view .LVU100
- 419              	.LBB89:
+ 412              		.loc 2 981 31 is_stmt 1 view .LVU100
+ 413              	.LBB89:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 62
-
-
- 420              		.loc 2 983 3 view .LVU101
+ 414              		.loc 2 983 3 view .LVU101
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 421              		.loc 2 988 4 view .LVU102
- 422              		.syntax unified
- 423              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 424 008e 93FAA3F3 		rbit r3, r3
- 425              	@ 0 "" 2
- 426              	.LVL20:
- 427              		.loc 2 1001 3 view .LVU103
- 428              		.loc 2 1001 3 is_stmt 0 view .LVU104
- 429              		.thumb
- 430              		.syntax unified
- 431              	.LBE89:
- 432              	.LBE88:
-  33:Core/Src/device.c ****     {
- 433              		.loc 3 33 14 view .LVU105
- 434 0092 B3FA83F3 		clz	r3, r3
- 435 0096 03F01F03 		and	r3, r3, #31
- 436 009a 0122     		movs	r2, #1
- 437 009c 02FA03F3 		lsl	r3, r2, r3
-  33:Core/Src/device.c ****     {
- 438              		.loc 3 33 13 view .LVU106
- 439 00a0 1942     		tst	r1, r3
- 440 00a2 03D0     		beq	.L15
-  35:Core/Src/device.c ****     }
- 441              		.loc 3 35 9 is_stmt 1 view .LVU107
-  35:Core/Src/device.c ****     }
- 442              		.loc 3 35 21 is_stmt 0 view .LVU108
- 443 00a4 374B     		ldr	r3, .L26+4
- 444 00a6 0322     		movs	r2, #3
- 445 00a8 1A70     		strb	r2, [r3]
- 446 00aa C1E7     		b	.L13
- 447              	.L15:
-  38:Core/Src/device.c ****     {
- 448              		.loc 3 38 10 is_stmt 1 view .LVU109
- 449              	.LVL21:
- 450              	.LBB90:
- 451              	.LBI90:
+ 415              		.loc 2 988 4 view .LVU102
+ 416              		.syntax unified
+ 417              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 418 008e 93FAA3F3 		rbit r3, r3
+ 419              	@ 0 "" 2
+ 420              	.LVL19:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 62
+
+
+ 421              		.loc 2 1001 3 view .LVU103
+ 422              		.loc 2 1001 3 is_stmt 0 view .LVU104
+ 423              		.thumb
+ 424              		.syntax unified
+ 425              	.LBE89:
+ 426              	.LBE88:
+  31:Core/Src/device.c ****     {
+ 427              		.loc 3 31 14 view .LVU105
+ 428 0092 B3FA83F3 		clz	r3, r3
+ 429 0096 03F01F03 		and	r3, r3, #31
+ 430 009a 0122     		movs	r2, #1
+ 431 009c 02FA03F3 		lsl	r3, r2, r3
+  31:Core/Src/device.c ****     {
+ 432              		.loc 3 31 13 view .LVU106
+ 433 00a0 1942     		tst	r1, r3
+ 434 00a2 03D0     		beq	.L15
+  33:Core/Src/device.c ****     }
+ 435              		.loc 3 33 9 is_stmt 1 view .LVU107
+  33:Core/Src/device.c ****     }
+ 436              		.loc 3 33 21 is_stmt 0 view .LVU108
+ 437 00a4 374B     		ldr	r3, .L26+4
+ 438 00a6 0322     		movs	r2, #3
+ 439 00a8 1A70     		strb	r2, [r3]
+ 440 00aa C1E7     		b	.L13
+ 441              	.L15:
+  36:Core/Src/device.c ****     {
+ 442              		.loc 3 36 10 is_stmt 1 view .LVU109
+ 443              	.LVL20:
+ 444              	.LBB90:
+ 445              	.LBI90:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 452              		.loc 2 981 31 view .LVU110
- 453              	.LBB91:
+ 446              		.loc 2 981 31 view .LVU110
+ 447              	.LBB91:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 454              		.loc 2 983 3 view .LVU111
+ 448              		.loc 2 983 3 view .LVU111
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 455              		.loc 2 988 4 view .LVU112
- 456 00ac 4FF08053 		mov	r3, #268435456
- 457              		.syntax unified
- 458              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 459 00b0 93FAA3F2 		rbit r2, r3
- 460              	@ 0 "" 2
- 461              	.LVL22:
- 462              		.loc 2 1001 3 view .LVU113
- 463              		.loc 2 1001 3 is_stmt 0 view .LVU114
- 464              		.thumb
- 465              		.syntax unified
- 466              	.LBE91:
- 467              	.LBE90:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 63
-
-
- 468              	.LBB92:
- 469              	.LBI92:
+ 449              		.loc 2 988 4 view .LVU112
+ 450 00ac 4FF08053 		mov	r3, #268435456
+ 451              		.syntax unified
+ 452              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 453 00b0 93FAA3F2 		rbit r2, r3
+ 454              	@ 0 "" 2
+ 455              	.LVL21:
+ 456              		.loc 2 1001 3 view .LVU113
+ 457              		.loc 2 1001 3 is_stmt 0 view .LVU114
+ 458              		.thumb
+ 459              		.syntax unified
+ 460              	.LBE91:
+ 461              	.LBE90:
+ 462              	.LBB92:
+ 463              	.LBI92:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 470              		.loc 2 981 31 is_stmt 1 view .LVU115
- 471              	.LBB93:
+ 464              		.loc 2 981 31 is_stmt 1 view .LVU115
+ 465              	.LBB93:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 472              		.loc 2 983 3 view .LVU116
+ 466              		.loc 2 983 3 view .LVU116
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 473              		.loc 2 988 4 view .LVU117
- 474              		.syntax unified
- 475              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 476 00b4 93FAA3F2 		rbit r2, r3
- 477              	@ 0 "" 2
- 478              	.LVL23:
- 479              		.loc 2 1001 3 view .LVU118
- 480              		.loc 2 1001 3 is_stmt 0 view .LVU119
- 481              		.thumb
- 482              		.syntax unified
- 483              	.LBE93:
- 484              	.LBE92:
- 485              	.LBB94:
- 486              	.LBI94:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 63
+
+
+ 467              		.loc 2 988 4 view .LVU117
+ 468              		.syntax unified
+ 469              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 470 00b4 93FAA3F2 		rbit r2, r3
+ 471              	@ 0 "" 2
+ 472              	.LVL22:
+ 473              		.loc 2 1001 3 view .LVU118
+ 474              		.loc 2 1001 3 is_stmt 0 view .LVU119
+ 475              		.thumb
+ 476              		.syntax unified
+ 477              	.LBE93:
+ 478              	.LBE92:
+ 479              	.LBB94:
+ 480              	.LBI94:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 487              		.loc 2 981 31 is_stmt 1 view .LVU120
- 488              	.LBB95:
+ 481              		.loc 2 981 31 is_stmt 1 view .LVU120
+ 482              	.LBB95:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 489              		.loc 2 983 3 view .LVU121
+ 483              		.loc 2 983 3 view .LVU121
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 490              		.loc 2 988 4 view .LVU122
- 491              		.syntax unified
- 492              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 493 00b8 93FAA3F2 		rbit r2, r3
- 494              	@ 0 "" 2
- 495              	.LVL24:
- 496              		.loc 2 1001 3 view .LVU123
- 497              		.loc 2 1001 3 is_stmt 0 view .LVU124
- 498              		.thumb
- 499              		.syntax unified
- 500              	.LBE95:
- 501              	.LBE94:
-  38:Core/Src/device.c ****     {
- 502              		.loc 3 38 14 view .LVU125
- 503 00bc 304A     		ldr	r2, .L26
- 504 00be 516A     		ldr	r1, [r2, #36]
- 505              	.LVL25:
- 506              	.LBB96:
- 507              	.LBI96:
+ 484              		.loc 2 988 4 view .LVU122
+ 485              		.syntax unified
+ 486              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 487 00b8 93FAA3F2 		rbit r2, r3
+ 488              	@ 0 "" 2
+ 489              	.LVL23:
+ 490              		.loc 2 1001 3 view .LVU123
+ 491              		.loc 2 1001 3 is_stmt 0 view .LVU124
+ 492              		.thumb
+ 493              		.syntax unified
+ 494              	.LBE95:
+ 495              	.LBE94:
+  36:Core/Src/device.c ****     {
+ 496              		.loc 3 36 14 view .LVU125
+ 497 00bc 304A     		ldr	r2, .L26
+ 498 00be 516A     		ldr	r1, [r2, #36]
+ 499              	.LVL24:
+ 500              	.LBB96:
+ 501              	.LBI96:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 508              		.loc 2 981 31 is_stmt 1 view .LVU126
- 509              	.LBB97:
+ 502              		.loc 2 981 31 is_stmt 1 view .LVU126
+ 503              	.LBB97:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 510              		.loc 2 983 3 view .LVU127
+ 504              		.loc 2 983 3 view .LVU127
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 511              		.loc 2 988 4 view .LVU128
- 512              		.syntax unified
- 513              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 514 00c0 93FAA3F3 		rbit r3, r3
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 64
+ 505              		.loc 2 988 4 view .LVU128
+ 506              		.syntax unified
+ 507              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 508 00c0 93FAA3F3 		rbit r3, r3
+ 509              	@ 0 "" 2
+ 510              	.LVL25:
+ 511              		.loc 2 1001 3 view .LVU129
+ 512              		.loc 2 1001 3 is_stmt 0 view .LVU130
+ 513              		.thumb
+ 514              		.syntax unified
+ 515              	.LBE97:
+ 516              	.LBE96:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 64
 
 
- 515              	@ 0 "" 2
- 516              	.LVL26:
- 517              		.loc 2 1001 3 view .LVU129
- 518              		.loc 2 1001 3 is_stmt 0 view .LVU130
- 519              		.thumb
- 520              		.syntax unified
- 521              	.LBE97:
- 522              	.LBE96:
-  38:Core/Src/device.c ****     {
- 523              		.loc 3 38 14 view .LVU131
- 524 00c4 B3FA83F3 		clz	r3, r3
- 525 00c8 03F01F03 		and	r3, r3, #31
- 526 00cc 0122     		movs	r2, #1
- 527 00ce 02FA03F3 		lsl	r3, r2, r3
-  38:Core/Src/device.c ****     {
- 528              		.loc 3 38 13 view .LVU132
- 529 00d2 0B42     		tst	r3, r1
- 530 00d4 03D0     		beq	.L16
-  40:Core/Src/device.c ****     }  
- 531              		.loc 3 40 9 is_stmt 1 view .LVU133
-  40:Core/Src/device.c ****     }  
- 532              		.loc 3 40 21 is_stmt 0 view .LVU134
- 533 00d6 2B4B     		ldr	r3, .L26+4
- 534 00d8 0422     		movs	r2, #4
- 535 00da 1A70     		strb	r2, [r3]
- 536 00dc A8E7     		b	.L13
- 537              	.L16:
-  42:Core/Src/device.c ****     {
- 538              		.loc 3 42 10 is_stmt 1 view .LVU135
- 539              	.LVL27:
- 540              	.LBB98:
- 541              	.LBI98:
+  36:Core/Src/device.c ****     {
+ 517              		.loc 3 36 14 view .LVU131
+ 518 00c4 B3FA83F3 		clz	r3, r3
+ 519 00c8 03F01F03 		and	r3, r3, #31
+ 520 00cc 0122     		movs	r2, #1
+ 521 00ce 02FA03F3 		lsl	r3, r2, r3
+  36:Core/Src/device.c ****     {
+ 522              		.loc 3 36 13 view .LVU132
+ 523 00d2 0B42     		tst	r3, r1
+ 524 00d4 03D0     		beq	.L16
+  38:Core/Src/device.c ****     }  
+ 525              		.loc 3 38 9 is_stmt 1 view .LVU133
+  38:Core/Src/device.c ****     }  
+ 526              		.loc 3 38 21 is_stmt 0 view .LVU134
+ 527 00d6 2B4B     		ldr	r3, .L26+4
+ 528 00d8 0422     		movs	r2, #4
+ 529 00da 1A70     		strb	r2, [r3]
+ 530 00dc A8E7     		b	.L13
+ 531              	.L16:
+  40:Core/Src/device.c ****     {
+ 532              		.loc 3 40 10 is_stmt 1 view .LVU135
+ 533              	.LVL26:
+ 534              	.LBB98:
+ 535              	.LBI98:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 542              		.loc 2 981 31 view .LVU136
- 543              	.LBB99:
+ 536              		.loc 2 981 31 view .LVU136
+ 537              	.LBB99:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 544              		.loc 2 983 3 view .LVU137
+ 538              		.loc 2 983 3 view .LVU137
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 545              		.loc 2 988 4 view .LVU138
- 546 00de 4FF00063 		mov	r3, #134217728
- 547              		.syntax unified
- 548              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 549 00e2 93FAA3F2 		rbit r2, r3
- 550              	@ 0 "" 2
- 551              	.LVL28:
- 552              		.loc 2 1001 3 view .LVU139
- 553              		.loc 2 1001 3 is_stmt 0 view .LVU140
- 554              		.thumb
- 555              		.syntax unified
- 556              	.LBE99:
- 557              	.LBE98:
- 558              	.LBB100:
- 559              	.LBI100:
+ 539              		.loc 2 988 4 view .LVU138
+ 540 00de 4FF00063 		mov	r3, #134217728
+ 541              		.syntax unified
+ 542              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 543 00e2 93FAA3F2 		rbit r2, r3
+ 544              	@ 0 "" 2
+ 545              	.LVL27:
+ 546              		.loc 2 1001 3 view .LVU139
+ 547              		.loc 2 1001 3 is_stmt 0 view .LVU140
+ 548              		.thumb
+ 549              		.syntax unified
+ 550              	.LBE99:
+ 551              	.LBE98:
+ 552              	.LBB100:
+ 553              	.LBI100:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 560              		.loc 2 981 31 is_stmt 1 view .LVU141
- 561              	.LBB101:
+ 554              		.loc 2 981 31 is_stmt 1 view .LVU141
+ 555              	.LBB101:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 65
-
-
- 562              		.loc 2 983 3 view .LVU142
+ 556              		.loc 2 983 3 view .LVU142
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 563              		.loc 2 988 4 view .LVU143
- 564              		.syntax unified
- 565              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 566 00e6 93FAA3F2 		rbit r2, r3
- 567              	@ 0 "" 2
- 568              	.LVL29:
- 569              		.loc 2 1001 3 view .LVU144
- 570              		.loc 2 1001 3 is_stmt 0 view .LVU145
- 571              		.thumb
- 572              		.syntax unified
- 573              	.LBE101:
- 574              	.LBE100:
- 575              	.LBB102:
- 576              	.LBI102:
+ 557              		.loc 2 988 4 view .LVU143
+ 558              		.syntax unified
+ 559              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 560 00e6 93FAA3F2 		rbit r2, r3
+ 561              	@ 0 "" 2
+ 562              	.LVL28:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 65
+
+
+ 563              		.loc 2 1001 3 view .LVU144
+ 564              		.loc 2 1001 3 is_stmt 0 view .LVU145
+ 565              		.thumb
+ 566              		.syntax unified
+ 567              	.LBE101:
+ 568              	.LBE100:
+ 569              	.LBB102:
+ 570              	.LBI102:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 577              		.loc 2 981 31 is_stmt 1 view .LVU146
- 578              	.LBB103:
+ 571              		.loc 2 981 31 is_stmt 1 view .LVU146
+ 572              	.LBB103:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 579              		.loc 2 983 3 view .LVU147
+ 573              		.loc 2 983 3 view .LVU147
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 580              		.loc 2 988 4 view .LVU148
- 581              		.syntax unified
- 582              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 583 00ea 93FAA3F2 		rbit r2, r3
- 584              	@ 0 "" 2
- 585              	.LVL30:
- 586              		.loc 2 1001 3 view .LVU149
- 587              		.loc 2 1001 3 is_stmt 0 view .LVU150
- 588              		.thumb
- 589              		.syntax unified
- 590              	.LBE103:
- 591              	.LBE102:
-  42:Core/Src/device.c ****     {
- 592              		.loc 3 42 14 view .LVU151
- 593 00ee 244A     		ldr	r2, .L26
- 594 00f0 516A     		ldr	r1, [r2, #36]
- 595              	.LVL31:
- 596              	.LBB104:
- 597              	.LBI104:
+ 574              		.loc 2 988 4 view .LVU148
+ 575              		.syntax unified
+ 576              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 577 00ea 93FAA3F2 		rbit r2, r3
+ 578              	@ 0 "" 2
+ 579              	.LVL29:
+ 580              		.loc 2 1001 3 view .LVU149
+ 581              		.loc 2 1001 3 is_stmt 0 view .LVU150
+ 582              		.thumb
+ 583              		.syntax unified
+ 584              	.LBE103:
+ 585              	.LBE102:
+  40:Core/Src/device.c ****     {
+ 586              		.loc 3 40 14 view .LVU151
+ 587 00ee 244A     		ldr	r2, .L26
+ 588 00f0 516A     		ldr	r1, [r2, #36]
+ 589              	.LVL30:
+ 590              	.LBB104:
+ 591              	.LBI104:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 598              		.loc 2 981 31 is_stmt 1 view .LVU152
- 599              	.LBB105:
+ 592              		.loc 2 981 31 is_stmt 1 view .LVU152
+ 593              	.LBB105:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 600              		.loc 2 983 3 view .LVU153
+ 594              		.loc 2 983 3 view .LVU153
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 601              		.loc 2 988 4 view .LVU154
- 602              		.syntax unified
- 603              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 604 00f2 93FAA3F3 		rbit r3, r3
- 605              	@ 0 "" 2
- 606              	.LVL32:
- 607              		.loc 2 1001 3 view .LVU155
- 608              		.loc 2 1001 3 is_stmt 0 view .LVU156
- 609              		.thumb
- 610              		.syntax unified
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 66
+ 595              		.loc 2 988 4 view .LVU154
+ 596              		.syntax unified
+ 597              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 598 00f2 93FAA3F3 		rbit r3, r3
+ 599              	@ 0 "" 2
+ 600              	.LVL31:
+ 601              		.loc 2 1001 3 view .LVU155
+ 602              		.loc 2 1001 3 is_stmt 0 view .LVU156
+ 603              		.thumb
+ 604              		.syntax unified
+ 605              	.LBE105:
+ 606              	.LBE104:
+  40:Core/Src/device.c ****     {
+ 607              		.loc 3 40 14 view .LVU157
+ 608 00f6 B3FA83F3 		clz	r3, r3
+ 609 00fa 03F01F03 		and	r3, r3, #31
+ 610 00fe 0122     		movs	r2, #1
+ 611 0100 02FA03F3 		lsl	r3, r2, r3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 66
 
 
- 611              	.LBE105:
- 612              	.LBE104:
-  42:Core/Src/device.c ****     {
- 613              		.loc 3 42 14 view .LVU157
- 614 00f6 B3FA83F3 		clz	r3, r3
- 615 00fa 03F01F03 		and	r3, r3, #31
- 616 00fe 0122     		movs	r2, #1
- 617 0100 02FA03F3 		lsl	r3, r2, r3
-  42:Core/Src/device.c ****     {
- 618              		.loc 3 42 13 view .LVU158
- 619 0104 0B42     		tst	r3, r1
- 620 0106 03D0     		beq	.L17
-  44:Core/Src/device.c ****     }  
- 621              		.loc 3 44 9 is_stmt 1 view .LVU159
-  44:Core/Src/device.c ****     }  
- 622              		.loc 3 44 21 is_stmt 0 view .LVU160
- 623 0108 1E4B     		ldr	r3, .L26+4
- 624 010a 0522     		movs	r2, #5
- 625 010c 1A70     		strb	r2, [r3]
- 626 010e 8FE7     		b	.L13
- 627              	.L17:
-  46:Core/Src/device.c ****     {
- 628              		.loc 3 46 10 is_stmt 1 view .LVU161
- 629              	.LVL33:
- 630              	.LBB106:
- 631              	.LBI106:
+  40:Core/Src/device.c ****     {
+ 612              		.loc 3 40 13 view .LVU158
+ 613 0104 0B42     		tst	r3, r1
+ 614 0106 03D0     		beq	.L17
+  42:Core/Src/device.c ****     }  
+ 615              		.loc 3 42 9 is_stmt 1 view .LVU159
+  42:Core/Src/device.c ****     }  
+ 616              		.loc 3 42 21 is_stmt 0 view .LVU160
+ 617 0108 1E4B     		ldr	r3, .L26+4
+ 618 010a 0522     		movs	r2, #5
+ 619 010c 1A70     		strb	r2, [r3]
+ 620 010e 8FE7     		b	.L13
+ 621              	.L17:
+  44:Core/Src/device.c ****     {
+ 622              		.loc 3 44 10 is_stmt 1 view .LVU161
+ 623              	.LVL32:
+ 624              	.LBB106:
+ 625              	.LBI106:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 632              		.loc 2 981 31 view .LVU162
- 633              	.LBB107:
+ 626              		.loc 2 981 31 view .LVU162
+ 627              	.LBB107:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 634              		.loc 2 983 3 view .LVU163
+ 628              		.loc 2 983 3 view .LVU163
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 635              		.loc 2 988 4 view .LVU164
- 636 0110 4FF08063 		mov	r3, #67108864
- 637              		.syntax unified
- 638              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 639 0114 93FAA3F2 		rbit r2, r3
- 640              	@ 0 "" 2
- 641              	.LVL34:
- 642              		.loc 2 1001 3 view .LVU165
- 643              		.loc 2 1001 3 is_stmt 0 view .LVU166
- 644              		.thumb
- 645              		.syntax unified
- 646              	.LBE107:
- 647              	.LBE106:
- 648              	.LBB108:
- 649              	.LBI108:
+ 629              		.loc 2 988 4 view .LVU164
+ 630 0110 4FF08063 		mov	r3, #67108864
+ 631              		.syntax unified
+ 632              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 633 0114 93FAA3F2 		rbit r2, r3
+ 634              	@ 0 "" 2
+ 635              	.LVL33:
+ 636              		.loc 2 1001 3 view .LVU165
+ 637              		.loc 2 1001 3 is_stmt 0 view .LVU166
+ 638              		.thumb
+ 639              		.syntax unified
+ 640              	.LBE107:
+ 641              	.LBE106:
+ 642              	.LBB108:
+ 643              	.LBI108:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 650              		.loc 2 981 31 is_stmt 1 view .LVU167
- 651              	.LBB109:
+ 644              		.loc 2 981 31 is_stmt 1 view .LVU167
+ 645              	.LBB109:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 652              		.loc 2 983 3 view .LVU168
+ 646              		.loc 2 983 3 view .LVU168
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 653              		.loc 2 988 4 view .LVU169
- 654              		.syntax unified
- 655              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 656 0118 93FAA3F2 		rbit r2, r3
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 67
+ 647              		.loc 2 988 4 view .LVU169
+ 648              		.syntax unified
+ 649              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 650 0118 93FAA3F2 		rbit r2, r3
+ 651              	@ 0 "" 2
+ 652              	.LVL34:
+ 653              		.loc 2 1001 3 view .LVU170
+ 654              		.loc 2 1001 3 is_stmt 0 view .LVU171
+ 655              		.thumb
+ 656              		.syntax unified
+ 657              	.LBE109:
+ 658              	.LBE108:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 67
 
 
- 657              	@ 0 "" 2
- 658              	.LVL35:
- 659              		.loc 2 1001 3 view .LVU170
- 660              		.loc 2 1001 3 is_stmt 0 view .LVU171
- 661              		.thumb
- 662              		.syntax unified
- 663              	.LBE109:
- 664              	.LBE108:
- 665              	.LBB110:
- 666              	.LBI110:
+ 659              	.LBB110:
+ 660              	.LBI110:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 667              		.loc 2 981 31 is_stmt 1 view .LVU172
- 668              	.LBB111:
+ 661              		.loc 2 981 31 is_stmt 1 view .LVU172
+ 662              	.LBB111:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 669              		.loc 2 983 3 view .LVU173
+ 663              		.loc 2 983 3 view .LVU173
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 670              		.loc 2 988 4 view .LVU174
- 671              		.syntax unified
- 672              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 673 011c 93FAA3F2 		rbit r2, r3
- 674              	@ 0 "" 2
- 675              	.LVL36:
- 676              		.loc 2 1001 3 view .LVU175
- 677              		.loc 2 1001 3 is_stmt 0 view .LVU176
- 678              		.thumb
- 679              		.syntax unified
- 680              	.LBE111:
- 681              	.LBE110:
-  46:Core/Src/device.c ****     {
- 682              		.loc 3 46 14 view .LVU177
- 683 0120 174A     		ldr	r2, .L26
- 684 0122 516A     		ldr	r1, [r2, #36]
- 685              	.LVL37:
- 686              	.LBB112:
- 687              	.LBI112:
+ 664              		.loc 2 988 4 view .LVU174
+ 665              		.syntax unified
+ 666              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 667 011c 93FAA3F2 		rbit r2, r3
+ 668              	@ 0 "" 2
+ 669              	.LVL35:
+ 670              		.loc 2 1001 3 view .LVU175
+ 671              		.loc 2 1001 3 is_stmt 0 view .LVU176
+ 672              		.thumb
+ 673              		.syntax unified
+ 674              	.LBE111:
+ 675              	.LBE110:
+  44:Core/Src/device.c ****     {
+ 676              		.loc 3 44 14 view .LVU177
+ 677 0120 174A     		ldr	r2, .L26
+ 678 0122 516A     		ldr	r1, [r2, #36]
+ 679              	.LVL36:
+ 680              	.LBB112:
+ 681              	.LBI112:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 688              		.loc 2 981 31 is_stmt 1 view .LVU178
- 689              	.LBB113:
+ 682              		.loc 2 981 31 is_stmt 1 view .LVU178
+ 683              	.LBB113:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 690              		.loc 2 983 3 view .LVU179
+ 684              		.loc 2 983 3 view .LVU179
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 691              		.loc 2 988 4 view .LVU180
- 692              		.syntax unified
- 693              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 694 0124 93FAA3F3 		rbit r3, r3
- 695              	@ 0 "" 2
- 696              	.LVL38:
- 697              		.loc 2 1001 3 view .LVU181
- 698              		.loc 2 1001 3 is_stmt 0 view .LVU182
- 699              		.thumb
- 700              		.syntax unified
- 701              	.LBE113:
- 702              	.LBE112:
-  46:Core/Src/device.c ****     {
- 703              		.loc 3 46 14 view .LVU183
- 704 0128 B3FA83F3 		clz	r3, r3
- 705 012c 03F01F03 		and	r3, r3, #31
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 68
+ 685              		.loc 2 988 4 view .LVU180
+ 686              		.syntax unified
+ 687              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 688 0124 93FAA3F3 		rbit r3, r3
+ 689              	@ 0 "" 2
+ 690              	.LVL37:
+ 691              		.loc 2 1001 3 view .LVU181
+ 692              		.loc 2 1001 3 is_stmt 0 view .LVU182
+ 693              		.thumb
+ 694              		.syntax unified
+ 695              	.LBE113:
+ 696              	.LBE112:
+  44:Core/Src/device.c ****     {
+ 697              		.loc 3 44 14 view .LVU183
+ 698 0128 B3FA83F3 		clz	r3, r3
+ 699 012c 03F01F03 		and	r3, r3, #31
+ 700 0130 0122     		movs	r2, #1
+ 701 0132 02FA03F3 		lsl	r3, r2, r3
+  44:Core/Src/device.c ****     {
+ 702              		.loc 3 44 13 view .LVU184
+ 703 0136 0B42     		tst	r3, r1
+ 704 0138 03D0     		beq	.L18
+  46:Core/Src/device.c ****     }  
+ 705              		.loc 3 46 9 is_stmt 1 view .LVU185
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 68
 
 
- 706 0130 0122     		movs	r2, #1
- 707 0132 02FA03F3 		lsl	r3, r2, r3
-  46:Core/Src/device.c ****     {
- 708              		.loc 3 46 13 view .LVU184
- 709 0136 0B42     		tst	r3, r1
- 710 0138 03D0     		beq	.L18
-  48:Core/Src/device.c ****     }  
- 711              		.loc 3 48 9 is_stmt 1 view .LVU185
-  48:Core/Src/device.c ****     }  
- 712              		.loc 3 48 21 is_stmt 0 view .LVU186
- 713 013a 124B     		ldr	r3, .L26+4
- 714 013c 0622     		movs	r2, #6
- 715 013e 1A70     		strb	r2, [r3]
- 716 0140 76E7     		b	.L13
- 717              	.L18:
-  50:Core/Src/device.c ****     {
- 718              		.loc 3 50 10 is_stmt 1 view .LVU187
- 719              	.LVL39:
- 720              	.LBB114:
- 721              	.LBI114:
+  46:Core/Src/device.c ****     }  
+ 706              		.loc 3 46 21 is_stmt 0 view .LVU186
+ 707 013a 124B     		ldr	r3, .L26+4
+ 708 013c 0622     		movs	r2, #6
+ 709 013e 1A70     		strb	r2, [r3]
+ 710 0140 76E7     		b	.L13
+ 711              	.L18:
+  48:Core/Src/device.c ****     {
+ 712              		.loc 3 48 10 is_stmt 1 view .LVU187
+ 713              	.LVL38:
+ 714              	.LBB114:
+ 715              	.LBI114:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 722              		.loc 2 981 31 view .LVU188
- 723              	.LBB115:
+ 716              		.loc 2 981 31 view .LVU188
+ 717              	.LBB115:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 724              		.loc 2 983 3 view .LVU189
+ 718              		.loc 2 983 3 view .LVU189
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 725              		.loc 2 988 4 view .LVU190
- 726 0142 0223     		movs	r3, #2
- 727              		.syntax unified
- 728              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 729 0144 93FAA3F2 		rbit r2, r3
- 730              	@ 0 "" 2
- 731              	.LVL40:
- 732              		.loc 2 1001 3 view .LVU191
- 733              		.loc 2 1001 3 is_stmt 0 view .LVU192
- 734              		.thumb
- 735              		.syntax unified
- 736              	.LBE115:
- 737              	.LBE114:
- 738              	.LBB116:
- 739              	.LBI116:
+ 719              		.loc 2 988 4 view .LVU190
+ 720 0142 0223     		movs	r3, #2
+ 721              		.syntax unified
+ 722              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 723 0144 93FAA3F2 		rbit r2, r3
+ 724              	@ 0 "" 2
+ 725              	.LVL39:
+ 726              		.loc 2 1001 3 view .LVU191
+ 727              		.loc 2 1001 3 is_stmt 0 view .LVU192
+ 728              		.thumb
+ 729              		.syntax unified
+ 730              	.LBE115:
+ 731              	.LBE114:
+ 732              	.LBB116:
+ 733              	.LBI116:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 740              		.loc 2 981 31 is_stmt 1 view .LVU193
- 741              	.LBB117:
+ 734              		.loc 2 981 31 is_stmt 1 view .LVU193
+ 735              	.LBB117:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 742              		.loc 2 983 3 view .LVU194
+ 736              		.loc 2 983 3 view .LVU194
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 743              		.loc 2 988 4 view .LVU195
- 744              		.syntax unified
- 745              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 746 0148 93FAA3F2 		rbit r2, r3
- 747              	@ 0 "" 2
- 748              	.LVL41:
- 749              		.loc 2 1001 3 view .LVU196
- 750              		.loc 2 1001 3 is_stmt 0 view .LVU197
- 751              		.thumb
- 752              		.syntax unified
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 69
-
-
- 753              	.LBE117:
- 754              	.LBE116:
- 755              	.LBB118:
- 756              	.LBI118:
+ 737              		.loc 2 988 4 view .LVU195
+ 738              		.syntax unified
+ 739              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 740 0148 93FAA3F2 		rbit r2, r3
+ 741              	@ 0 "" 2
+ 742              	.LVL40:
+ 743              		.loc 2 1001 3 view .LVU196
+ 744              		.loc 2 1001 3 is_stmt 0 view .LVU197
+ 745              		.thumb
+ 746              		.syntax unified
+ 747              	.LBE117:
+ 748              	.LBE116:
+ 749              	.LBB118:
+ 750              	.LBI118:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 757              		.loc 2 981 31 is_stmt 1 view .LVU198
- 758              	.LBB119:
+ 751              		.loc 2 981 31 is_stmt 1 view .LVU198
+ 752              	.LBB119:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 759              		.loc 2 983 3 view .LVU199
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 69
+
+
+ 753              		.loc 2 983 3 view .LVU199
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 760              		.loc 2 988 4 view .LVU200
- 761              		.syntax unified
- 762              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 763 014c 93FAA3F2 		rbit r2, r3
- 764              	@ 0 "" 2
- 765              	.LVL42:
- 766              		.loc 2 1001 3 view .LVU201
- 767              		.loc 2 1001 3 is_stmt 0 view .LVU202
- 768              		.thumb
- 769              		.syntax unified
- 770              	.LBE119:
- 771              	.LBE118:
-  50:Core/Src/device.c ****     {
- 772              		.loc 3 50 14 view .LVU203
- 773 0150 0B4A     		ldr	r2, .L26
- 774 0152 516A     		ldr	r1, [r2, #36]
- 775              	.LVL43:
- 776              	.LBB120:
- 777              	.LBI120:
+ 754              		.loc 2 988 4 view .LVU200
+ 755              		.syntax unified
+ 756              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 757 014c 93FAA3F2 		rbit r2, r3
+ 758              	@ 0 "" 2
+ 759              	.LVL41:
+ 760              		.loc 2 1001 3 view .LVU201
+ 761              		.loc 2 1001 3 is_stmt 0 view .LVU202
+ 762              		.thumb
+ 763              		.syntax unified
+ 764              	.LBE119:
+ 765              	.LBE118:
+  48:Core/Src/device.c ****     {
+ 766              		.loc 3 48 14 view .LVU203
+ 767 0150 0B4A     		ldr	r2, .L26
+ 768 0152 516A     		ldr	r1, [r2, #36]
+ 769              	.LVL42:
+ 770              	.LBB120:
+ 771              	.LBI120:
  981:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 778              		.loc 2 981 31 is_stmt 1 view .LVU204
- 779              	.LBB121:
+ 772              		.loc 2 981 31 is_stmt 1 view .LVU204
+ 773              	.LBB121:
  983:Drivers/CMSIS/Include/cmsis_gcc.h **** 
- 780              		.loc 2 983 3 view .LVU205
+ 774              		.loc 2 983 3 view .LVU205
  988:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
- 781              		.loc 2 988 4 view .LVU206
- 782              		.syntax unified
- 783              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 784 0154 93FAA3F3 		rbit r3, r3
- 785              	@ 0 "" 2
- 786              	.LVL44:
- 787              		.loc 2 1001 3 view .LVU207
- 788              		.loc 2 1001 3 is_stmt 0 view .LVU208
- 789              		.thumb
- 790              		.syntax unified
- 791              	.LBE121:
- 792              	.LBE120:
-  50:Core/Src/device.c ****     {
- 793              		.loc 3 50 14 view .LVU209
- 794 0158 B3FA83F3 		clz	r3, r3
- 795 015c 03F01F03 		and	r3, r3, #31
- 796 0160 0122     		movs	r2, #1
- 797 0162 02FA03F3 		lsl	r3, r2, r3
-  50:Core/Src/device.c ****     {
- 798              		.loc 3 50 13 view .LVU210
- 799 0166 0B42     		tst	r3, r1
- 800 0168 3FF462AF 		beq	.L13
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 70
+ 775              		.loc 2 988 4 view .LVU206
+ 776              		.syntax unified
+ 777              	@ 988 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 778 0154 93FAA3F3 		rbit r3, r3
+ 779              	@ 0 "" 2
+ 780              	.LVL43:
+ 781              		.loc 2 1001 3 view .LVU207
+ 782              		.loc 2 1001 3 is_stmt 0 view .LVU208
+ 783              		.thumb
+ 784              		.syntax unified
+ 785              	.LBE121:
+ 786              	.LBE120:
+  48:Core/Src/device.c ****     {
+ 787              		.loc 3 48 14 view .LVU209
+ 788 0158 B3FA83F3 		clz	r3, r3
+ 789 015c 03F01F03 		and	r3, r3, #31
+ 790 0160 0122     		movs	r2, #1
+ 791 0162 02FA03F3 		lsl	r3, r2, r3
+  48:Core/Src/device.c ****     {
+ 792              		.loc 3 48 13 view .LVU210
+ 793 0166 0B42     		tst	r3, r1
+ 794 0168 3FF462AF 		beq	.L13
+  50:Core/Src/device.c ****     }  
+ 795              		.loc 3 50 9 is_stmt 1 view .LVU211
+  50:Core/Src/device.c ****     }  
+ 796              		.loc 3 50 21 is_stmt 0 view .LVU212
+ 797 016c 054B     		ldr	r3, .L26+4
+ 798 016e 0722     		movs	r2, #7
+ 799 0170 1A70     		strb	r2, [r3]
+ 800 0172 5DE7     		b	.L13
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 70
 
 
-  52:Core/Src/device.c ****     }  
- 801              		.loc 3 52 9 is_stmt 1 view .LVU211
-  52:Core/Src/device.c ****     }  
- 802              		.loc 3 52 21 is_stmt 0 view .LVU212
- 803 016c 054B     		ldr	r3, .L26+4
- 804 016e 0722     		movs	r2, #7
- 805 0170 1A70     		strb	r2, [r3]
- 806 0172 5DE7     		b	.L13
- 807              	.L23:
-  57:Core/Src/device.c ****     }
- 808              		.loc 3 57 9 is_stmt 1 view .LVU213
- 809 0174 FFF7FEFF 		bl	__NVIC_SystemReset
- 810              	.LVL45:
- 811              	.L24:
-  61:Core/Src/device.c ****     }
- 812              		.loc 3 61 9 view .LVU214
- 813 0178 FFF7FEFF 		bl	__NVIC_SystemReset
- 814              	.LVL46:
- 815              	.L25:
-  65:Core/Src/device.c ****     }
- 816              		.loc 3 65 9 view .LVU215
- 817 017c FFF7FEFF 		bl	__NVIC_SystemReset
- 818              	.LVL47:
- 819              	.L27:
- 820              		.align	2
- 821              	.L26:
- 822 0180 00100240 		.word	1073876992
- 823 0184 00000000 		.word	.LANCHOR1
- 824              		.cfi_endproc
- 825              	.LFE134:
- 827              		.section	.text.Device_Battery_Voltage_Read,"ax",%progbits
- 828              		.align	1
- 829              		.global	Device_Battery_Voltage_Read
- 830              		.syntax unified
- 831              		.thumb
- 832              		.thumb_func
- 834              	Device_Battery_Voltage_Read:
- 835              	.LFB135:
-  68:Core/Src/device.c **** 
-  69:Core/Src/device.c **** void Device_Battery_Voltage_Read(void)
-  70:Core/Src/device.c **** {
- 836              		.loc 3 70 1 view -0
- 837              		.cfi_startproc
- 838              		@ args = 0, pretend = 0, frame = 0
- 839              		@ frame_needed = 0, uses_anonymous_args = 0
- 840 0000 08B5     		push	{r3, lr}
- 841              	.LCFI2:
- 842              		.cfi_def_cfa_offset 8
- 843              		.cfi_offset 3, -8
- 844              		.cfi_offset 14, -4
-  71:Core/Src/device.c ****     float AdcVoltLoc = 0.0f;
- 845              		.loc 3 71 5 view .LVU217
- 846              	.LVL48:
-  72:Core/Src/device.c **** 	// Battery ADC
-  73:Core/Src/device.c **** 	if (HAL_ADC_Start_DMA(&DEVICE_BATTERY_MODULE, &Device_Batt_DMA, 1) != HAL_OK)
- 847              		.loc 3 73 2 view .LVU218
- 848              		.loc 3 73 6 is_stmt 0 view .LVU219
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 71
+ 801              	.L23:
+  55:Core/Src/device.c ****     }
+ 802              		.loc 3 55 9 is_stmt 1 view .LVU213
+ 803 0174 FFF7FEFF 		bl	__NVIC_SystemReset
+ 804              	.LVL44:
+ 805              	.L24:
+  59:Core/Src/device.c ****     }
+ 806              		.loc 3 59 9 view .LVU214
+ 807 0178 FFF7FEFF 		bl	__NVIC_SystemReset
+ 808              	.LVL45:
+ 809              	.L25:
+  63:Core/Src/device.c ****     }
+ 810              		.loc 3 63 9 view .LVU215
+ 811 017c FFF7FEFF 		bl	__NVIC_SystemReset
+ 812              	.LVL46:
+ 813              	.L27:
+ 814              		.align	2
+ 815              	.L26:
+ 816 0180 00100240 		.word	1073876992
+ 817 0184 00000000 		.word	.LANCHOR1
+ 818              		.cfi_endproc
+ 819              	.LFE134:
+ 821              		.section	.text.Device_Battery_Voltage_Read,"ax",%progbits
+ 822              		.align	1
+ 823              		.global	Device_Battery_Voltage_Read
+ 824              		.syntax unified
+ 825              		.thumb
+ 826              		.thumb_func
+ 828              	Device_Battery_Voltage_Read:
+ 829              	.LFB135:
+  66:Core/Src/device.c **** 
+  67:Core/Src/device.c **** void Device_Battery_Voltage_Read(void)
+  68:Core/Src/device.c **** {
+ 830              		.loc 3 68 1 view -0
+ 831              		.cfi_startproc
+ 832              		@ args = 0, pretend = 0, frame = 0
+ 833              		@ frame_needed = 0, uses_anonymous_args = 0
+ 834 0000 08B5     		push	{r3, lr}
+ 835              	.LCFI2:
+ 836              		.cfi_def_cfa_offset 8
+ 837              		.cfi_offset 3, -8
+ 838              		.cfi_offset 14, -4
+  69:Core/Src/device.c ****     float AdcVoltLoc = 0.0f;
+ 839              		.loc 3 69 5 view .LVU217
+ 840              	.LVL47:
+  70:Core/Src/device.c **** 	// Battery ADC
+  71:Core/Src/device.c **** 	if (HAL_ADC_Start_DMA(&DEVICE_BATTERY_MODULE, &Device_Batt_DMA, 1) != HAL_OK)
+ 841              		.loc 3 71 2 view .LVU218
+ 842              		.loc 3 71 6 is_stmt 0 view .LVU219
+ 843 0002 0122     		movs	r2, #1
+ 844 0004 1249     		ldr	r1, .L32
+ 845 0006 1348     		ldr	r0, .L32+4
+ 846 0008 FFF7FEFF 		bl	HAL_ADC_Start_DMA
+ 847              	.LVL48:
+ 848              		.loc 3 71 5 view .LVU220
+ 849 000c E0B9     		cbnz	r0, .L31
+ 850              	.L29:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 71
 
 
- 849 0002 0122     		movs	r2, #1
- 850 0004 1249     		ldr	r1, .L32
- 851 0006 1348     		ldr	r0, .L32+4
- 852 0008 FFF7FEFF 		bl	HAL_ADC_Start_DMA
- 853              	.LVL49:
- 854              		.loc 3 73 5 view .LVU220
- 855 000c E0B9     		cbnz	r0, .L31
- 856              	.L29:
-  74:Core/Src/device.c **** 	{
-  75:Core/Src/device.c **** 		Error_Handler();
-  76:Core/Src/device.c **** 	}    
-  77:Core/Src/device.c ****     /* Convert ADC Value To MCU Sensing Voltage*/
-  78:Core/Src/device.c ****     /* ADC Has 12-bit Resolution(2^12 = 4096) */
-  79:Core/Src/device.c ****     AdcVoltLoc = ((float)Device_Batt_DMA * 3300.0f / 4096.0f);
- 857              		.loc 3 79 5 is_stmt 1 view .LVU221
- 858              		.loc 3 79 19 is_stmt 0 view .LVU222
- 859 000e 104B     		ldr	r3, .L32
- 860 0010 1B88     		ldrh	r3, [r3]
- 861 0012 07EE903A 		vmov	s15, r3	@ int
- 862 0016 F8EE677A 		vcvt.f32.u32	s15, s15
- 863              		.loc 3 79 42 view .LVU223
- 864 001a 9FED0F7A 		vldr.32	s14, .L32+8
- 865 001e 67EE877A 		vmul.f32	s15, s15, s14
- 866              		.loc 3 79 16 view .LVU224
- 867 0022 9FED0E7A 		vldr.32	s14, .L32+12
- 868 0026 67EE877A 		vmul.f32	s15, s15, s14
- 869              	.LVL50:
-  80:Core/Src/device.c ****     /* Convert MCU Sensing Voltage To Actual Input Voltage */
-  81:Core/Src/device.c ****     Device_Batt_Voltage = (uint16_t)(AdcVoltLoc * (22000.0f + 10000.0f) / (10000.0f));
- 870              		.loc 3 81 5 is_stmt 1 view .LVU225
- 871              		.loc 3 81 49 is_stmt 0 view .LVU226
- 872 002a 9FED0D7A 		vldr.32	s14, .L32+16
- 873 002e 67EE877A 		vmul.f32	s15, s15, s14
- 874              	.LVL51:
- 875              		.loc 3 81 73 view .LVU227
- 876 0032 DFED0C6A 		vldr.32	s13, .L32+20
- 877 0036 87EEA67A 		vdiv.f32	s14, s15, s13
- 878              		.loc 3 81 27 view .LVU228
- 879 003a BCEEC77A 		vcvt.u32.f32	s14, s14
- 880              		.loc 3 81 25 view .LVU229
- 881 003e 0A4B     		ldr	r3, .L32+24
+  72:Core/Src/device.c **** 	{
+  73:Core/Src/device.c **** 		Error_Handler();
+  74:Core/Src/device.c **** 	}    
+  75:Core/Src/device.c ****     /* Convert ADC Value To MCU Sensing Voltage*/
+  76:Core/Src/device.c ****     /* ADC Has 12-bit Resolution(2^12 = 4096) */
+  77:Core/Src/device.c ****     AdcVoltLoc = ((float)Device_Batt_DMA * 3300.0f / 4096.0f);
+ 851              		.loc 3 77 5 is_stmt 1 view .LVU221
+ 852              		.loc 3 77 19 is_stmt 0 view .LVU222
+ 853 000e 104B     		ldr	r3, .L32
+ 854 0010 1B88     		ldrh	r3, [r3]
+ 855 0012 07EE903A 		vmov	s15, r3	@ int
+ 856 0016 F8EE677A 		vcvt.f32.u32	s15, s15
+ 857              		.loc 3 77 42 view .LVU223
+ 858 001a 9FED0F7A 		vldr.32	s14, .L32+8
+ 859 001e 67EE877A 		vmul.f32	s15, s15, s14
+ 860              		.loc 3 77 16 view .LVU224
+ 861 0022 9FED0E7A 		vldr.32	s14, .L32+12
+ 862 0026 67EE877A 		vmul.f32	s15, s15, s14
+ 863              	.LVL49:
+  78:Core/Src/device.c ****     /* Convert MCU Sensing Voltage To Actual Input Voltage */
+  79:Core/Src/device.c ****     Device_Batt_Voltage = (uint16_t)(AdcVoltLoc * (22000.0f + 10000.0f) / (10000.0f));
+ 864              		.loc 3 79 5 is_stmt 1 view .LVU225
+ 865              		.loc 3 79 49 is_stmt 0 view .LVU226
+ 866 002a 9FED0D7A 		vldr.32	s14, .L32+16
+ 867 002e 67EE877A 		vmul.f32	s15, s15, s14
+ 868              	.LVL50:
+ 869              		.loc 3 79 73 view .LVU227
+ 870 0032 DFED0C6A 		vldr.32	s13, .L32+20
+ 871 0036 87EEA67A 		vdiv.f32	s14, s15, s13
+ 872              		.loc 3 79 27 view .LVU228
+ 873 003a BCEEC77A 		vcvt.u32.f32	s14, s14
+ 874              		.loc 3 79 25 view .LVU229
+ 875 003e 0A4B     		ldr	r3, .L32+24
+ 876              	.LVL51:
+ 877              		.loc 3 79 25 view .LVU230
+ 878 0040 17EE102A 		vmov	r2, s14	@ int
+ 879 0044 1A80     		strh	r2, [r3]	@ movhi
+  80:Core/Src/device.c **** }
+ 880              		.loc 3 80 1 view .LVU231
+ 881 0046 08BD     		pop	{r3, pc}
  882              	.LVL52:
- 883              		.loc 3 81 25 view .LVU230
- 884 0040 17EE102A 		vmov	r2, s14	@ int
- 885 0044 1A80     		strh	r2, [r3]	@ movhi
-  82:Core/Src/device.c **** }
- 886              		.loc 3 82 1 view .LVU231
- 887 0046 08BD     		pop	{r3, pc}
- 888              	.LVL53:
- 889              	.L31:
-  75:Core/Src/device.c **** 	}    
- 890              		.loc 3 75 3 is_stmt 1 view .LVU232
- 891 0048 FFF7FEFF 		bl	Error_Handler
- 892              	.LVL54:
- 893 004c DFE7     		b	.L29
- 894              	.L33:
- 895 004e 00BF     		.align	2
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 72
+ 883              	.L31:
+  73:Core/Src/device.c **** 	}    
+ 884              		.loc 3 73 3 is_stmt 1 view .LVU232
+ 885 0048 FFF7FEFF 		bl	Error_Handler
+ 886              	.LVL53:
+ 887 004c DFE7     		b	.L29
+ 888              	.L33:
+ 889 004e 00BF     		.align	2
+ 890              	.L32:
+ 891 0050 00000000 		.word	.LANCHOR0
+ 892 0054 00000000 		.word	hadc2
+ 893 0058 00404E45 		.word	1162756096
+ 894 005c 00008039 		.word	964689920
+ 895 0060 0000FA46 		.word	1190789120
+ 896 0064 00401C46 		.word	1176256512
+ 897 0068 00000000 		.word	.LANCHOR2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 72
 
 
- 896              	.L32:
- 897 0050 00000000 		.word	.LANCHOR0
- 898 0054 00000000 		.word	hadc2
- 899 0058 00404E45 		.word	1162756096
- 900 005c 00008039 		.word	964689920
- 901 0060 0000FA46 		.word	1190789120
- 902 0064 00401C46 		.word	1176256512
- 903 0068 00000000 		.word	.LANCHOR2
- 904              		.cfi_endproc
- 905              	.LFE135:
- 907              		.section	.text.Device_Detect_SensorSignal,"ax",%progbits
- 908              		.align	1
- 909              		.global	Device_Detect_SensorSignal
- 910              		.syntax unified
- 911              		.thumb
- 912              		.thumb_func
- 914              	Device_Detect_SensorSignal:
- 915              	.LFB136:
-  83:Core/Src/device.c **** 
-  84:Core/Src/device.c **** void Device_Detect_SensorSignal(void)
-  85:Core/Src/device.c **** {
- 916              		.loc 3 85 1 view -0
- 917              		.cfi_startproc
- 918              		@ args = 0, pretend = 0, frame = 0
- 919              		@ frame_needed = 0, uses_anonymous_args = 0
- 920              		@ link register save eliminated.
-  86:Core/Src/device.c ****     static uint8_t ti10msOn;
- 921              		.loc 3 86 5 view .LVU234
-  87:Core/Src/device.c ****     static uint8_t ti10msOff;
- 922              		.loc 3 87 5 view .LVU235
-  88:Core/Src/device.c ****     if(1 == Device_Sensor_Detect)
- 923              		.loc 3 88 5 view .LVU236
- 924              		.loc 3 88 10 is_stmt 0 view .LVU237
- 925 0000 154B     		ldr	r3, .L40
- 926 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 927              		.loc 3 88 7 view .LVU238
- 928 0004 012B     		cmp	r3, #1
- 929 0006 04D0     		beq	.L38
- 930              	.L35:
-  89:Core/Src/device.c ****     {
-  90:Core/Src/device.c ****         ti10msOn++;
-  91:Core/Src/device.c ****         if(ti10msOn>= 10)
-  92:Core/Src/device.c ****         {
-  93:Core/Src/device.c ****             ti10msOn = 0;
-  94:Core/Src/device.c ****             if(Device_Sensor_Counter>=3)
-  95:Core/Src/device.c ****             {
-  96:Core/Src/device.c ****                 Device_Sensor_Signal = DEVICE_SENSOR_ON;
-  97:Core/Src/device.c ****             }
-  98:Core/Src/device.c ****             Device_Sensor_Counter = 0;
-  99:Core/Src/device.c ****             Device_Sensor_Detect = 0;
- 100:Core/Src/device.c ****         }
- 101:Core/Src/device.c ****     }
- 102:Core/Src/device.c **** 
- 103:Core/Src/device.c ****     if(Device_Sensor_Signal == DEVICE_SENSOR_ON)
- 931              		.loc 3 103 5 is_stmt 1 view .LVU239
- 932              		.loc 3 103 29 is_stmt 0 view .LVU240
- 933 0008 144B     		ldr	r3, .L40+4
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 73
-
-
- 934 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 935              		.loc 3 103 7 view .LVU241
- 936 000c 012B     		cmp	r3, #1
- 937 000e 17D0     		beq	.L39
- 938              	.L34:
- 104:Core/Src/device.c ****     {
- 105:Core/Src/device.c ****         ti10msOff++;
- 106:Core/Src/device.c ****         if(ti10msOff >= 100)
- 107:Core/Src/device.c ****         {
- 108:Core/Src/device.c ****             ti10msOff = 0;
- 109:Core/Src/device.c ****             Device_Sensor_Signal = DEVICE_SENSOR_OFF;
- 110:Core/Src/device.c ****         }
- 111:Core/Src/device.c ****     }
- 112:Core/Src/device.c **** }
- 939              		.loc 3 112 1 view .LVU242
- 940 0010 7047     		bx	lr
- 941              	.L38:
-  90:Core/Src/device.c ****         if(ti10msOn>= 10)
- 942              		.loc 3 90 9 is_stmt 1 view .LVU243
-  90:Core/Src/device.c ****         if(ti10msOn>= 10)
- 943              		.loc 3 90 17 is_stmt 0 view .LVU244
- 944 0012 134A     		ldr	r2, .L40+8
- 945 0014 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 946 0016 0133     		adds	r3, r3, #1
- 947 0018 DBB2     		uxtb	r3, r3
- 948 001a 1370     		strb	r3, [r2]
-  91:Core/Src/device.c ****         {
- 949              		.loc 3 91 9 is_stmt 1 view .LVU245
-  91:Core/Src/device.c ****         {
- 950              		.loc 3 91 11 is_stmt 0 view .LVU246
- 951 001c 092B     		cmp	r3, #9
- 952 001e F3D9     		bls	.L35
-  93:Core/Src/device.c ****             if(Device_Sensor_Counter>=3)
- 953              		.loc 3 93 13 is_stmt 1 view .LVU247
-  93:Core/Src/device.c ****             if(Device_Sensor_Counter>=3)
- 954              		.loc 3 93 22 is_stmt 0 view .LVU248
- 955 0020 1346     		mov	r3, r2
- 956 0022 0022     		movs	r2, #0
- 957 0024 1A70     		strb	r2, [r3]
+ 898              		.cfi_endproc
+ 899              	.LFE135:
+ 901              		.section	.text.Device_Detect_SensorSignal,"ax",%progbits
+ 902              		.align	1
+ 903              		.global	Device_Detect_SensorSignal
+ 904              		.syntax unified
+ 905              		.thumb
+ 906              		.thumb_func
+ 908              	Device_Detect_SensorSignal:
+ 909              	.LFB136:
+  81:Core/Src/device.c **** 
+  82:Core/Src/device.c **** void Device_Detect_SensorSignal(void)
+  83:Core/Src/device.c **** {
+ 910              		.loc 3 83 1 view -0
+ 911              		.cfi_startproc
+ 912              		@ args = 0, pretend = 0, frame = 0
+ 913              		@ frame_needed = 0, uses_anonymous_args = 0
+ 914              		@ link register save eliminated.
+  84:Core/Src/device.c ****     static uint8_t ti10msOn;
+ 915              		.loc 3 84 5 view .LVU234
+  85:Core/Src/device.c ****     static uint8_t ti10msOff;
+ 916              		.loc 3 85 5 view .LVU235
+  86:Core/Src/device.c ****     if(DEVICE_SENSOR_DETECTED == Device_Sensor_Detect)
+ 917              		.loc 3 86 5 view .LVU236
+ 918              		.loc 3 86 31 is_stmt 0 view .LVU237
+ 919 0000 154B     		ldr	r3, .L40
+ 920 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 921              		.loc 3 86 7 view .LVU238
+ 922 0004 012B     		cmp	r3, #1
+ 923 0006 04D0     		beq	.L38
+ 924              	.L35:
+  87:Core/Src/device.c ****     {
+  88:Core/Src/device.c ****         ti10msOn++;
+  89:Core/Src/device.c ****         if(ti10msOn>= DEVICE_SENSOR_OFF_DEBOUNCE_TIME)
+  90:Core/Src/device.c ****         {
+  91:Core/Src/device.c ****             ti10msOn = 0;
+  92:Core/Src/device.c ****             /* Prevent Glitch Signal Detect */
+  93:Core/Src/device.c ****             if(Device_Sensor_Counter >= DEVICE_SENSOR_ON_COUNT)
   94:Core/Src/device.c ****             {
- 958              		.loc 3 94 13 is_stmt 1 view .LVU249
-  94:Core/Src/device.c ****             {
- 959              		.loc 3 94 37 is_stmt 0 view .LVU250
- 960 0026 0F4B     		ldr	r3, .L40+12
- 961 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  94:Core/Src/device.c ****             {
- 962              		.loc 3 94 15 view .LVU251
- 963 002a 022B     		cmp	r3, #2
- 964 002c 02D9     		bls	.L36
+  95:Core/Src/device.c ****                 Device_Sensor_Signal = DEVICE_SENSOR_ON;
   96:Core/Src/device.c ****             }
- 965              		.loc 3 96 17 is_stmt 1 view .LVU252
-  96:Core/Src/device.c ****             }
- 966              		.loc 3 96 38 is_stmt 0 view .LVU253
- 967 002e 0B4B     		ldr	r3, .L40+4
- 968 0030 0122     		movs	r2, #1
- 969 0032 1A70     		strb	r2, [r3]
- 970              	.L36:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 74
-
-
+  97:Core/Src/device.c ****             Device_Sensor_Counter = 0;
   98:Core/Src/device.c ****             Device_Sensor_Detect = 0;
- 971              		.loc 3 98 13 is_stmt 1 view .LVU254
-  98:Core/Src/device.c ****             Device_Sensor_Detect = 0;
- 972              		.loc 3 98 35 is_stmt 0 view .LVU255
- 973 0034 0023     		movs	r3, #0
- 974 0036 0B4A     		ldr	r2, .L40+12
- 975 0038 1370     		strb	r3, [r2]
   99:Core/Src/device.c ****         }
- 976              		.loc 3 99 13 is_stmt 1 view .LVU256
-  99:Core/Src/device.c ****         }
- 977              		.loc 3 99 34 is_stmt 0 view .LVU257
- 978 003a 074A     		ldr	r2, .L40
- 979 003c 1370     		strb	r3, [r2]
- 980 003e E3E7     		b	.L35
- 981              	.L39:
- 105:Core/Src/device.c ****         if(ti10msOff >= 100)
- 982              		.loc 3 105 9 is_stmt 1 view .LVU258
- 105:Core/Src/device.c ****         if(ti10msOff >= 100)
- 983              		.loc 3 105 18 is_stmt 0 view .LVU259
- 984 0040 094A     		ldr	r2, .L40+16
- 985 0042 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 986 0044 0133     		adds	r3, r3, #1
- 987 0046 DBB2     		uxtb	r3, r3
- 988 0048 1370     		strb	r3, [r2]
+ 100:Core/Src/device.c ****     }
+ 101:Core/Src/device.c **** 
+ 102:Core/Src/device.c ****     if(DEVICE_SENSOR_ON == Device_Sensor_Signal)
+ 925              		.loc 3 102 5 is_stmt 1 view .LVU239
+ 926              		.loc 3 102 25 is_stmt 0 view .LVU240
+ 927 0008 144B     		ldr	r3, .L40+4
+ 928 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 929              		.loc 3 102 7 view .LVU241
+ 930 000c 012B     		cmp	r3, #1
+ 931 000e 17D0     		beq	.L39
+ 932              	.L34:
+ 103:Core/Src/device.c ****     {
+ 104:Core/Src/device.c ****         ti10msOff++;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 73
+
+
+ 105:Core/Src/device.c ****         if(ti10msOff >= DEVICE_SENSOR_ON_DEBOUNCE_TIME)
  106:Core/Src/device.c ****         {
- 989              		.loc 3 106 9 is_stmt 1 view .LVU260
- 106:Core/Src/device.c ****         {
- 990              		.loc 3 106 11 is_stmt 0 view .LVU261
- 991 004a 632B     		cmp	r3, #99
- 992 004c E0D9     		bls	.L34
+ 107:Core/Src/device.c ****             ti10msOff = 0;
  108:Core/Src/device.c ****             Device_Sensor_Signal = DEVICE_SENSOR_OFF;
- 993              		.loc 3 108 13 is_stmt 1 view .LVU262
- 108:Core/Src/device.c ****             Device_Sensor_Signal = DEVICE_SENSOR_OFF;
- 994              		.loc 3 108 23 is_stmt 0 view .LVU263
- 995 004e 0023     		movs	r3, #0
- 996 0050 1370     		strb	r3, [r2]
  109:Core/Src/device.c ****         }
- 997              		.loc 3 109 13 is_stmt 1 view .LVU264
- 109:Core/Src/device.c ****         }
- 998              		.loc 3 109 34 is_stmt 0 view .LVU265
- 999 0052 024A     		ldr	r2, .L40+4
- 1000 0054 1370     		strb	r3, [r2]
- 1001              		.loc 3 112 1 view .LVU266
- 1002 0056 DBE7     		b	.L34
- 1003              	.L41:
- 1004              		.align	2
- 1005              	.L40:
- 1006 0058 00000000 		.word	.LANCHOR3
- 1007 005c 00000000 		.word	.LANCHOR6
- 1008 0060 00000000 		.word	.LANCHOR4
- 1009 0064 00000000 		.word	.LANCHOR5
- 1010 0068 00000000 		.word	.LANCHOR7
- 1011              		.cfi_endproc
- 1012              	.LFE136:
- 1014              		.section	.text.HAL_GPIO_EXTI_Callback,"ax",%progbits
- 1015              		.align	1
- 1016              		.global	HAL_GPIO_EXTI_Callback
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 75
+ 110:Core/Src/device.c ****     }
+ 111:Core/Src/device.c **** }
+ 933              		.loc 3 111 1 view .LVU242
+ 934 0010 7047     		bx	lr
+ 935              	.L38:
+  88:Core/Src/device.c ****         if(ti10msOn>= DEVICE_SENSOR_OFF_DEBOUNCE_TIME)
+ 936              		.loc 3 88 9 is_stmt 1 view .LVU243
+  88:Core/Src/device.c ****         if(ti10msOn>= DEVICE_SENSOR_OFF_DEBOUNCE_TIME)
+ 937              		.loc 3 88 17 is_stmt 0 view .LVU244
+ 938 0012 134A     		ldr	r2, .L40+8
+ 939 0014 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 940 0016 0133     		adds	r3, r3, #1
+ 941 0018 DBB2     		uxtb	r3, r3
+ 942 001a 1370     		strb	r3, [r2]
+  89:Core/Src/device.c ****         {
+ 943              		.loc 3 89 9 is_stmt 1 view .LVU245
+  89:Core/Src/device.c ****         {
+ 944              		.loc 3 89 11 is_stmt 0 view .LVU246
+ 945 001c 092B     		cmp	r3, #9
+ 946 001e F3D9     		bls	.L35
+  91:Core/Src/device.c ****             /* Prevent Glitch Signal Detect */
+ 947              		.loc 3 91 13 is_stmt 1 view .LVU247
+  91:Core/Src/device.c ****             /* Prevent Glitch Signal Detect */
+ 948              		.loc 3 91 22 is_stmt 0 view .LVU248
+ 949 0020 1346     		mov	r3, r2
+ 950 0022 0022     		movs	r2, #0
+ 951 0024 1A70     		strb	r2, [r3]
+  93:Core/Src/device.c ****             {
+ 952              		.loc 3 93 13 is_stmt 1 view .LVU249
+  93:Core/Src/device.c ****             {
+ 953              		.loc 3 93 38 is_stmt 0 view .LVU250
+ 954 0026 0F4B     		ldr	r3, .L40+12
+ 955 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  93:Core/Src/device.c ****             {
+ 956              		.loc 3 93 15 view .LVU251
+ 957 002a 022B     		cmp	r3, #2
+ 958 002c 02D9     		bls	.L36
+  95:Core/Src/device.c ****             }
+ 959              		.loc 3 95 17 is_stmt 1 view .LVU252
+  95:Core/Src/device.c ****             }
+ 960              		.loc 3 95 38 is_stmt 0 view .LVU253
+ 961 002e 0B4B     		ldr	r3, .L40+4
+ 962 0030 0122     		movs	r2, #1
+ 963 0032 1A70     		strb	r2, [r3]
+ 964              	.L36:
+  97:Core/Src/device.c ****             Device_Sensor_Detect = 0;
+ 965              		.loc 3 97 13 is_stmt 1 view .LVU254
+  97:Core/Src/device.c ****             Device_Sensor_Detect = 0;
+ 966              		.loc 3 97 35 is_stmt 0 view .LVU255
+ 967 0034 0023     		movs	r3, #0
+ 968 0036 0B4A     		ldr	r2, .L40+12
+ 969 0038 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 74
 
 
- 1017              		.syntax unified
- 1018              		.thumb
- 1019              		.thumb_func
- 1021              	HAL_GPIO_EXTI_Callback:
- 1022              	.LVL55:
- 1023              	.LFB137:
- 113:Core/Src/device.c **** 
- 114:Core/Src/device.c **** void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
- 115:Core/Src/device.c **** {
- 1024              		.loc 3 115 1 is_stmt 1 view -0
- 1025              		.cfi_startproc
- 1026              		@ args = 0, pretend = 0, frame = 0
- 1027              		@ frame_needed = 0, uses_anonymous_args = 0
- 1028              		@ link register save eliminated.
- 116:Core/Src/device.c ****     if(GPIO_Pin == DOOR_INT_Pin)
- 1029              		.loc 3 116 5 view .LVU268
- 1030              		.loc 3 116 7 is_stmt 0 view .LVU269
- 1031 0000 2028     		cmp	r0, #32
- 1032 0002 00D0     		beq	.L44
- 1033              	.L42:
- 117:Core/Src/device.c ****     {
- 118:Core/Src/device.c ****         Device_Sensor_Detect = 1;
- 119:Core/Src/device.c ****         Device_Sensor_Counter++;// = DEVICE_SENSOR_ON;
- 120:Core/Src/device.c ****     }
- 121:Core/Src/device.c ****     else
- 122:Core/Src/device.c ****     {
- 123:Core/Src/device.c ****         //Device_Sensor_Signal = DEVICE_SENSOR_OFF;        
- 124:Core/Src/device.c ****     }
- 125:Core/Src/device.c **** }...
- 1034              		.loc 3 125 1 view .LVU270
- 1035 0004 7047     		bx	lr
- 1036              	.L44:
- 118:Core/Src/device.c ****         Device_Sensor_Detect = 1;
- 1037              		.loc 3 118 9 is_stmt 1 view .LVU271
- 118:Core/Src/device.c ****         Device_Sensor_Detect = 1;
- 1038              		.loc 3 118 30 is_stmt 0 view .LVU272
- 1039 0006 044B     		ldr	r3, .L45
- 1040 0008 0122     		movs	r2, #1
- 1041 000a 1A70     		strb	r2, [r3]
- 119:Core/Src/device.c ****         Device_Sensor_Counter++;// = DEVICE_SENSOR_ON;
- 1042              		.loc 3 119 9 is_stmt 1 view .LVU273
- 119:Core/Src/device.c ****         Device_Sensor_Counter++;// = DEVICE_SENSOR_ON;
- 1043              		.loc 3 119 30 is_stmt 0 view .LVU274
- 1044 000c 034A     		ldr	r2, .L45+4
- 1045 000e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 1046 0010 0133     		adds	r3, r3, #1
- 1047 0012 1370     		strb	r3, [r2]
- 124:Core/Src/device.c ****     }
- 1048              		.loc 3 124 5 is_stmt 1 view .LVU275
- 1049              		.loc 3 125 1 is_stmt 0 view .LVU276
- 1050 0014 F6E7     		b	.L42
- 1051              	.L46:
- 1052 0016 00BF     		.align	2
- 1053              	.L45:
- 1054 0018 00000000 		.word	.LANCHOR3
- 1055 001c 00000000 		.word	.LANCHOR5
- 1056              		.cfi_endproc
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 76
+  98:Core/Src/device.c ****         }
+ 970              		.loc 3 98 13 is_stmt 1 view .LVU256
+  98:Core/Src/device.c ****         }
+ 971              		.loc 3 98 34 is_stmt 0 view .LVU257
+ 972 003a 074A     		ldr	r2, .L40
+ 973 003c 1370     		strb	r3, [r2]
+ 974 003e E3E7     		b	.L35
+ 975              	.L39:
+ 104:Core/Src/device.c ****         if(ti10msOff >= DEVICE_SENSOR_ON_DEBOUNCE_TIME)
+ 976              		.loc 3 104 9 is_stmt 1 view .LVU258
+ 104:Core/Src/device.c ****         if(ti10msOff >= DEVICE_SENSOR_ON_DEBOUNCE_TIME)
+ 977              		.loc 3 104 18 is_stmt 0 view .LVU259
+ 978 0040 094A     		ldr	r2, .L40+16
+ 979 0042 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 980 0044 0133     		adds	r3, r3, #1
+ 981 0046 DBB2     		uxtb	r3, r3
+ 982 0048 1370     		strb	r3, [r2]
+ 105:Core/Src/device.c ****         {
+ 983              		.loc 3 105 9 is_stmt 1 view .LVU260
+ 105:Core/Src/device.c ****         {
+ 984              		.loc 3 105 11 is_stmt 0 view .LVU261
+ 985 004a 632B     		cmp	r3, #99
+ 986 004c E0D9     		bls	.L34
+ 107:Core/Src/device.c ****             Device_Sensor_Signal = DEVICE_SENSOR_OFF;
+ 987              		.loc 3 107 13 is_stmt 1 view .LVU262
+ 107:Core/Src/device.c ****             Device_Sensor_Signal = DEVICE_SENSOR_OFF;
+ 988              		.loc 3 107 23 is_stmt 0 view .LVU263
+ 989 004e 0023     		movs	r3, #0
+ 990 0050 1370     		strb	r3, [r2]
+ 108:Core/Src/device.c ****         }
+ 991              		.loc 3 108 13 is_stmt 1 view .LVU264
+ 108:Core/Src/device.c ****         }
+ 992              		.loc 3 108 34 is_stmt 0 view .LVU265
+ 993 0052 024A     		ldr	r2, .L40+4
+ 994 0054 1370     		strb	r3, [r2]
+ 995              		.loc 3 111 1 view .LVU266
+ 996 0056 DBE7     		b	.L34
+ 997              	.L41:
+ 998              		.align	2
+ 999              	.L40:
+ 1000 0058 00000000 		.word	.LANCHOR3
+ 1001 005c 00000000 		.word	.LANCHOR6
+ 1002 0060 00000000 		.word	.LANCHOR4
+ 1003 0064 00000000 		.word	.LANCHOR5
+ 1004 0068 00000000 		.word	.LANCHOR7
+ 1005              		.cfi_endproc
+ 1006              	.LFE136:
+ 1008              		.section	.text.HAL_GPIO_EXTI_Callback,"ax",%progbits
+ 1009              		.align	1
+ 1010              		.global	HAL_GPIO_EXTI_Callback
+ 1011              		.syntax unified
+ 1012              		.thumb
+ 1013              		.thumb_func
+ 1015              	HAL_GPIO_EXTI_Callback:
+ 1016              	.LVL54:
+ 1017              	.LFB137:
+ 112:Core/Src/device.c **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 75
 
 
- 1057              	.LFE137:
- 1059              		.global	reset_cause
- 1060              		.global	Device_Sensor_Counter
- 1061              		.global	Device_Sensor_Detect
- 1062              		.global	Device_Sensor_Signal
- 1063              		.global	Device_Batt_Voltage
- 1064              		.global	Device_Batt_DMA
- 1065              		.section	.bss.Device_Batt_DMA,"aw",%nobits
+ 113:Core/Src/device.c **** void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+ 114:Core/Src/device.c **** {
+ 1018              		.loc 3 114 1 is_stmt 1 view -0
+ 1019              		.cfi_startproc
+ 1020              		@ args = 0, pretend = 0, frame = 0
+ 1021              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1022              		@ link register save eliminated.
+ 115:Core/Src/device.c ****     if(GPIO_Pin == DOOR_INT_Pin)
+ 1023              		.loc 3 115 5 view .LVU268
+ 1024              		.loc 3 115 7 is_stmt 0 view .LVU269
+ 1025 0000 2028     		cmp	r0, #32
+ 1026 0002 00D0     		beq	.L44
+ 1027              	.L42:
+ 116:Core/Src/device.c ****     {
+ 117:Core/Src/device.c ****         Device_Sensor_Detect = DEVICE_SENSOR_DETECTED;
+ 118:Core/Src/device.c ****         Device_Sensor_Counter++;
+ 119:Core/Src/device.c ****     }
+ 120:Core/Src/device.c **** 
+ 121:Core/Src/device.c **** }...
+ 1028              		.loc 3 121 1 view .LVU270
+ 1029 0004 7047     		bx	lr
+ 1030              	.L44:
+ 117:Core/Src/device.c ****         Device_Sensor_Detect = DEVICE_SENSOR_DETECTED;
+ 1031              		.loc 3 117 9 is_stmt 1 view .LVU271
+ 117:Core/Src/device.c ****         Device_Sensor_Detect = DEVICE_SENSOR_DETECTED;
+ 1032              		.loc 3 117 30 is_stmt 0 view .LVU272
+ 1033 0006 044B     		ldr	r3, .L45
+ 1034 0008 0122     		movs	r2, #1
+ 1035 000a 1A70     		strb	r2, [r3]
+ 118:Core/Src/device.c ****         Device_Sensor_Counter++;
+ 1036              		.loc 3 118 9 is_stmt 1 view .LVU273
+ 118:Core/Src/device.c ****         Device_Sensor_Counter++;
+ 1037              		.loc 3 118 30 is_stmt 0 view .LVU274
+ 1038 000c 034A     		ldr	r2, .L45+4
+ 1039 000e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 1040 0010 0133     		adds	r3, r3, #1
+ 1041 0012 1370     		strb	r3, [r2]
+ 1042              		.loc 3 121 1 view .LVU275
+ 1043 0014 F6E7     		b	.L42
+ 1044              	.L46:
+ 1045 0016 00BF     		.align	2
+ 1046              	.L45:
+ 1047 0018 00000000 		.word	.LANCHOR3
+ 1048 001c 00000000 		.word	.LANCHOR5
+ 1049              		.cfi_endproc
+ 1050              	.LFE137:
+ 1052              		.global	reset_cause
+ 1053              		.global	Device_Sensor_Counter
+ 1054              		.global	Device_Sensor_Detect
+ 1055              		.global	Device_Sensor_Signal
+ 1056              		.global	Device_Batt_Voltage
+ 1057              		.global	Device_Batt_DMA
+ 1058              		.section	.bss.Device_Batt_DMA,"aw",%nobits
+ 1059              		.align	1
+ 1060              		.set	.LANCHOR0,. + 0
+ 1063              	Device_Batt_DMA:
+ 1064 0000 0000     		.space	2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 76
+
+
+ 1065              		.section	.bss.Device_Batt_Voltage,"aw",%nobits
  1066              		.align	1
- 1067              		.set	.LANCHOR0,. + 0
- 1070              	Device_Batt_DMA:
+ 1067              		.set	.LANCHOR2,. + 0
+ 1070              	Device_Batt_Voltage:
  1071 0000 0000     		.space	2
- 1072              		.section	.bss.Device_Batt_Voltage,"aw",%nobits
- 1073              		.align	1
- 1074              		.set	.LANCHOR2,. + 0
- 1077              	Device_Batt_Voltage:
- 1078 0000 0000     		.space	2
- 1079              		.section	.bss.Device_Sensor_Counter,"aw",%nobits
- 1080              		.set	.LANCHOR5,. + 0
- 1083              	Device_Sensor_Counter:
- 1084 0000 00       		.space	1
- 1085              		.section	.bss.Device_Sensor_Detect,"aw",%nobits
- 1086              		.set	.LANCHOR3,. + 0
- 1089              	Device_Sensor_Detect:
- 1090 0000 00       		.space	1
- 1091              		.section	.bss.Device_Sensor_Signal,"aw",%nobits
- 1092              		.set	.LANCHOR6,. + 0
- 1095              	Device_Sensor_Signal:
- 1096 0000 00       		.space	1
- 1097              		.section	.bss.reset_cause,"aw",%nobits
- 1098              		.set	.LANCHOR1,. + 0
- 1101              	reset_cause:
- 1102 0000 00       		.space	1
- 1103              		.section	.bss.ti10msOff.0,"aw",%nobits
- 1104              		.set	.LANCHOR7,. + 0
- 1107              	ti10msOff.0:
- 1108 0000 00       		.space	1
- 1109              		.section	.bss.ti10msOn.1,"aw",%nobits
- 1110              		.set	.LANCHOR4,. + 0
- 1113              	ti10msOn.1:
- 1114 0000 00       		.space	1
- 1115              		.text
- 1116              	.Letext0:
- 1117              		.file 4 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
- 1118              		.file 5 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
- 1119              		.file 6 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
- 1120              		.file 7 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f3xx.h"
- 1121              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
- 1122              		.file 9 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
- 1123              		.file 10 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
- 1124              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
- 1125              		.file 12 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
- 1126              		.file 13 "Core/Inc/device.h"
- 1127              		.file 14 "Core/Inc/main.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s 			page 77
+ 1072              		.section	.bss.Device_Sensor_Counter,"aw",%nobits
+ 1073              		.set	.LANCHOR5,. + 0
+ 1076              	Device_Sensor_Counter:
+ 1077 0000 00       		.space	1
+ 1078              		.section	.bss.Device_Sensor_Detect,"aw",%nobits
+ 1079              		.set	.LANCHOR3,. + 0
+ 1082              	Device_Sensor_Detect:
+ 1083 0000 00       		.space	1
+ 1084              		.section	.bss.Device_Sensor_Signal,"aw",%nobits
+ 1085              		.set	.LANCHOR6,. + 0
+ 1088              	Device_Sensor_Signal:
+ 1089 0000 00       		.space	1
+ 1090              		.section	.bss.reset_cause,"aw",%nobits
+ 1091              		.set	.LANCHOR1,. + 0
+ 1094              	reset_cause:
+ 1095 0000 00       		.space	1
+ 1096              		.section	.bss.ti10msOff.0,"aw",%nobits
+ 1097              		.set	.LANCHOR7,. + 0
+ 1100              	ti10msOff.0:
+ 1101 0000 00       		.space	1
+ 1102              		.section	.bss.ti10msOn.1,"aw",%nobits
+ 1103              		.set	.LANCHOR4,. + 0
+ 1106              	ti10msOn.1:
+ 1107 0000 00       		.space	1
+ 1108              		.text
+ 1109              	.Letext0:
+ 1110              		.file 4 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1111              		.file 5 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1112              		.file 6 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 1113              		.file 7 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f3xx.h"
+ 1114              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 1115              		.file 9 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 1116              		.file 10 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
+ 1117              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
+ 1118              		.file 12 "Core/Inc/device.h"
+ 1119              		.file 13 "Core/Inc/main.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s 			page 77
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 device.c
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:20     .text.__NVIC_SystemReset:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:25     .text.__NVIC_SystemReset:00000000 __NVIC_SystemReset
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:88     .text.__NVIC_SystemReset:0000001c $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:94     .text.Device_Init:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:100    .text.Device_Init:00000000 Device_Init
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:138    .text.Device_Init:00000020 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:145    .text.Device_Reset_Init:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:151    .text.Device_Reset_Init:00000000 Device_Reset_Init
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:822    .text.Device_Reset_Init:00000180 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:828    .text.Device_Battery_Voltage_Read:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:834    .text.Device_Battery_Voltage_Read:00000000 Device_Battery_Voltage_Read
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:897    .text.Device_Battery_Voltage_Read:00000050 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:908    .text.Device_Detect_SensorSignal:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:914    .text.Device_Detect_SensorSignal:00000000 Device_Detect_SensorSignal
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1006   .text.Device_Detect_SensorSignal:00000058 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1015   .text.HAL_GPIO_EXTI_Callback:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1021   .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1054   .text.HAL_GPIO_EXTI_Callback:00000018 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1101   .bss.reset_cause:00000000 reset_cause
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1083   .bss.Device_Sensor_Counter:00000000 Device_Sensor_Counter
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1089   .bss.Device_Sensor_Detect:00000000 Device_Sensor_Detect
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1095   .bss.Device_Sensor_Signal:00000000 Device_Sensor_Signal
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1077   .bss.Device_Batt_Voltage:00000000 Device_Batt_Voltage
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1070   .bss.Device_Batt_DMA:00000000 Device_Batt_DMA
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1066   .bss.Device_Batt_DMA:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1073   .bss.Device_Batt_Voltage:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1084   .bss.Device_Sensor_Counter:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1090   .bss.Device_Sensor_Detect:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1096   .bss.Device_Sensor_Signal:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1102   .bss.reset_cause:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1107   .bss.ti10msOff.0:00000000 ti10msOff.0
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1108   .bss.ti10msOff.0:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1113   .bss.ti10msOn.1:00000000 ti10msOn.1
-C:\Users\jisu8\AppData\Local\Temp\cc6ObcQh.s:1114   .bss.ti10msOn.1:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:20     .text.__NVIC_SystemReset:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:25     .text.__NVIC_SystemReset:00000000 __NVIC_SystemReset
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:88     .text.__NVIC_SystemReset:0000001c $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:94     .text.Device_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:100    .text.Device_Init:00000000 Device_Init
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:133    .text.Device_Init:00000018 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:139    .text.Device_Reset_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:145    .text.Device_Reset_Init:00000000 Device_Reset_Init
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:816    .text.Device_Reset_Init:00000180 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:822    .text.Device_Battery_Voltage_Read:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:828    .text.Device_Battery_Voltage_Read:00000000 Device_Battery_Voltage_Read
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:891    .text.Device_Battery_Voltage_Read:00000050 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:902    .text.Device_Detect_SensorSignal:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:908    .text.Device_Detect_SensorSignal:00000000 Device_Detect_SensorSignal
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1000   .text.Device_Detect_SensorSignal:00000058 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1009   .text.HAL_GPIO_EXTI_Callback:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1015   .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1047   .text.HAL_GPIO_EXTI_Callback:00000018 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1094   .bss.reset_cause:00000000 reset_cause
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1076   .bss.Device_Sensor_Counter:00000000 Device_Sensor_Counter
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1082   .bss.Device_Sensor_Detect:00000000 Device_Sensor_Detect
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1088   .bss.Device_Sensor_Signal:00000000 Device_Sensor_Signal
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1070   .bss.Device_Batt_Voltage:00000000 Device_Batt_Voltage
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1063   .bss.Device_Batt_DMA:00000000 Device_Batt_DMA
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1059   .bss.Device_Batt_DMA:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1066   .bss.Device_Batt_Voltage:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1077   .bss.Device_Sensor_Counter:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1083   .bss.Device_Sensor_Detect:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1089   .bss.Device_Sensor_Signal:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1095   .bss.reset_cause:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1100   .bss.ti10msOff.0:00000000 ti10msOff.0
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1101   .bss.ti10msOff.0:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1106   .bss.ti10msOn.1:00000000 ti10msOn.1
+C:\Users\jisu8\AppData\Local\Temp\ccpDWZzl.s:1107   .bss.ti10msOn.1:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_ADC_Start_DMA
-HAL_GPIO_WritePin
 Error_Handler
 hadc2

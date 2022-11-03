@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -30,138 +30,210 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s 			page 1
   28              	.LFB133:
   29              		.file 1 "Core/Src/uart.c"
    1:Core/Src/uart.c **** #include "uart.h"
-   2:Core/Src/uart.c **** #include "lidar.h"
-   3:Core/Src/uart.c **** 
-   4:Core/Src/uart.c **** uint32_t uart1_counter,uart2_counter,uart3_counter;
-   5:Core/Src/uart.c **** void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-   6:Core/Src/uart.c **** {
-  30              		.loc 1 6 1 view -0
+   2:Core/Src/uart.c **** #include "lte.h"
+   3:Core/Src/uart.c **** #include "debug.h"
+   4:Core/Src/uart.c **** uint8_t dummy;
+   5:Core/Src/uart.c **** uint32_t uart1_counter,uart2_counter,uart3_counter;
+   6:Core/Src/uart.c **** void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+   7:Core/Src/uart.c **** {
+  30              		.loc 1 7 1 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		@ link register save eliminated.
-   7:Core/Src/uart.c ****     if(huart->Instance == USART1)
-  35              		.loc 1 7 5 view .LVU1
-  36              		.loc 1 7 13 is_stmt 0 view .LVU2
-  37 0000 0368     		ldr	r3, [r0]
-  38              		.loc 1 7 7 view .LVU3
-  39 0002 0C4A     		ldr	r2, .L8
-  40 0004 9342     		cmp	r3, r2
-  41 0006 06D0     		beq	.L5
-   8:Core/Src/uart.c ****     {
-   9:Core/Src/uart.c ****         uart1_counter++;
-  10:Core/Src/uart.c ****         //HAL_UART_Transmit(&huart3,&huart->Instance->RDR,1,10);
-  11:Core/Src/uart.c ****     }
-  12:Core/Src/uart.c ****     else if(huart->Instance == USART2)
-  42              		.loc 1 12 10 is_stmt 1 view .LVU4
-  43              		.loc 1 12 12 is_stmt 0 view .LVU5
-  44 0008 0B4A     		ldr	r2, .L8+4
-  45 000a 9342     		cmp	r3, r2
-  46 000c 08D0     		beq	.L6
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s 			page 2
+  34              		.loc 1 7 1 is_stmt 0 view .LVU1
+  35 0000 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+   8:Core/Src/uart.c ****     if(huart->Instance == USART1)
+  40              		.loc 1 8 5 is_stmt 1 view .LVU2
+  41              		.loc 1 8 13 is_stmt 0 view .LVU3
+  42 0002 0368     		ldr	r3, [r0]
+  43              		.loc 1 8 7 view .LVU4
+  44 0004 144A     		ldr	r2, .L9
+  45 0006 9342     		cmp	r3, r2
+  46 0008 06D0     		beq	.L6
+   9:Core/Src/uart.c ****     {
+  10:Core/Src/uart.c ****         LTE_Rx_Buffer[LTE_Rx_Counter] = huart->Instance->RDR;
+  11:Core/Src/uart.c ****         LTE_Rx_Counter++;
+  12:Core/Src/uart.c ****         HAL_UART_Receive_IT(&huart1,&dummy,1);
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s 			page 2
 
 
-  13:Core/Src/uart.c ****     {
-  14:Core/Src/uart.c ****         uart2_counter++;
-  15:Core/Src/uart.c ****         //HAL_UART_Transmit(&huart3,&huart->Instance->RDR,1,10);
-  16:Core/Src/uart.c ****     }
-  17:Core/Src/uart.c ****     else if(huart->Instance == USART3)
-  47              		.loc 1 17 10 is_stmt 1 view .LVU6
-  48              		.loc 1 17 12 is_stmt 0 view .LVU7
-  49 000e 0B4A     		ldr	r2, .L8+8
-  50 0010 9342     		cmp	r3, r2
-  51 0012 0AD0     		beq	.L7
-  52              	.L1:
-  18:Core/Src/uart.c ****     {
-  19:Core/Src/uart.c ****         uart3_counter++;
-  20:Core/Src/uart.c ****     }
-  21:Core/Src/uart.c **** }...
-  53              		.loc 1 21 1 view .LVU8
-  54 0014 7047     		bx	lr
-  55              	.L5:
-   9:Core/Src/uart.c ****         uart1_counter++;
-  56              		.loc 1 9 9 is_stmt 1 view .LVU9
-   9:Core/Src/uart.c ****         uart1_counter++;
-  57              		.loc 1 9 22 is_stmt 0 view .LVU10
-  58 0016 0A4A     		ldr	r2, .L8+12
-  59 0018 1368     		ldr	r3, [r2]
-  60 001a 0133     		adds	r3, r3, #1
-  61 001c 1360     		str	r3, [r2]
-  62 001e 7047     		bx	lr
-  63              	.L6:
-  14:Core/Src/uart.c ****         uart2_counter++;
-  64              		.loc 1 14 9 is_stmt 1 view .LVU11
-  14:Core/Src/uart.c ****         uart2_counter++;
-  65              		.loc 1 14 22 is_stmt 0 view .LVU12
-  66 0020 084A     		ldr	r2, .L8+16
-  67 0022 1368     		ldr	r3, [r2]
-  68 0024 0133     		adds	r3, r3, #1
-  69 0026 1360     		str	r3, [r2]
-  70 0028 7047     		bx	lr
-  71              	.L7:
-  19:Core/Src/uart.c ****         uart3_counter++;
-  72              		.loc 1 19 9 is_stmt 1 view .LVU13
-  19:Core/Src/uart.c ****         uart3_counter++;
-  73              		.loc 1 19 22 is_stmt 0 view .LVU14
-  74 002a 074A     		ldr	r2, .L8+20
-  75 002c 1368     		ldr	r3, [r2]
-  76 002e 0133     		adds	r3, r3, #1
-  77 0030 1360     		str	r3, [r2]
-  78              		.loc 1 21 1 view .LVU15
-  79 0032 EFE7     		b	.L1
-  80              	.L9:
-  81              		.align	2
-  82              	.L8:
-  83 0034 00380140 		.word	1073821696
-  84 0038 00440040 		.word	1073759232
-  85 003c 00480040 		.word	1073760256
-  86 0040 00000000 		.word	.LANCHOR0
-  87 0044 00000000 		.word	.LANCHOR1
-  88 0048 00000000 		.word	.LANCHOR2
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s 			page 3
+  13:Core/Src/uart.c ****     }
+  14:Core/Src/uart.c ****     else if(huart->Instance == USART2)
+  47              		.loc 1 14 10 is_stmt 1 view .LVU5
+  48              		.loc 1 14 12 is_stmt 0 view .LVU6
+  49 000a 144A     		ldr	r2, .L9+4
+  50 000c 9342     		cmp	r3, r2
+  51 000e 10D0     		beq	.L7
+  15:Core/Src/uart.c ****     {
+  16:Core/Src/uart.c ****         uart2_counter++;
+  17:Core/Src/uart.c ****     }
+  18:Core/Src/uart.c ****     else if(huart->Instance == USART3)
+  52              		.loc 1 18 10 is_stmt 1 view .LVU7
+  53              		.loc 1 18 12 is_stmt 0 view .LVU8
+  54 0010 134A     		ldr	r2, .L9+8
+  55 0012 9342     		cmp	r3, r2
+  56 0014 12D0     		beq	.L8
+  57              	.LVL1:
+  58              	.L1:
+  19:Core/Src/uart.c ****     {
+  20:Core/Src/uart.c ****         Debug_Rx_buffer[Debug_Rx_Count] = huart->Instance->RDR;
+  21:Core/Src/uart.c ****         Debug_Rx_Count++;
+  22:Core/Src/uart.c ****         HAL_UART_Receive_IT(&huart3,&dummy,1);
+  23:Core/Src/uart.c ****     }
+  24:Core/Src/uart.c **** }...
+  59              		.loc 1 24 1 view .LVU9
+  60 0016 08BD     		pop	{r3, pc}
+  61              	.LVL2:
+  62              	.L6:
+  10:Core/Src/uart.c ****         LTE_Rx_Buffer[LTE_Rx_Counter] = huart->Instance->RDR;
+  63              		.loc 1 10 9 is_stmt 1 view .LVU10
+  10:Core/Src/uart.c ****         LTE_Rx_Buffer[LTE_Rx_Counter] = huart->Instance->RDR;
+  64              		.loc 1 10 56 is_stmt 0 view .LVU11
+  65 0018 988C     		ldrh	r0, [r3, #36]
+  66              	.LVL3:
+  10:Core/Src/uart.c ****         LTE_Rx_Buffer[LTE_Rx_Counter] = huart->Instance->RDR;
+  67              		.loc 1 10 22 view .LVU12
+  68 001a 124A     		ldr	r2, .L9+12
+  69 001c 1388     		ldrh	r3, [r2]
+  10:Core/Src/uart.c ****         LTE_Rx_Buffer[LTE_Rx_Counter] = huart->Instance->RDR;
+  70              		.loc 1 10 39 view .LVU13
+  71 001e 1249     		ldr	r1, .L9+16
+  72 0020 C854     		strb	r0, [r1, r3]
+  11:Core/Src/uart.c ****         LTE_Rx_Counter++;
+  73              		.loc 1 11 9 is_stmt 1 view .LVU14
+  11:Core/Src/uart.c ****         LTE_Rx_Counter++;
+  74              		.loc 1 11 23 is_stmt 0 view .LVU15
+  75 0022 0133     		adds	r3, r3, #1
+  76 0024 1380     		strh	r3, [r2]	@ movhi
+  12:Core/Src/uart.c ****         HAL_UART_Receive_IT(&huart1,&dummy,1);
+  77              		.loc 1 12 9 is_stmt 1 view .LVU16
+  78 0026 0122     		movs	r2, #1
+  79 0028 1049     		ldr	r1, .L9+20
+  80 002a 1148     		ldr	r0, .L9+24
+  81 002c FFF7FEFF 		bl	HAL_UART_Receive_IT
+  82              	.LVL4:
+  83 0030 F1E7     		b	.L1
+  84              	.LVL5:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s 			page 3
 
 
-  89              		.cfi_endproc
-  90              	.LFE133:
-  92              		.global	uart3_counter
-  93              		.global	uart2_counter
-  94              		.global	uart1_counter
-  95              		.section	.bss.uart1_counter,"aw",%nobits
-  96              		.align	2
-  97              		.set	.LANCHOR0,. + 0
- 100              	uart1_counter:
- 101 0000 00000000 		.space	4
- 102              		.section	.bss.uart2_counter,"aw",%nobits
- 103              		.align	2
- 104              		.set	.LANCHOR1,. + 0
- 107              	uart2_counter:
- 108 0000 00000000 		.space	4
- 109              		.section	.bss.uart3_counter,"aw",%nobits
- 110              		.align	2
- 111              		.set	.LANCHOR2,. + 0
- 114              	uart3_counter:
- 115 0000 00000000 		.space	4
- 116              		.text
- 117              	.Letext0:
- 118              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
- 119              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
- 120              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
- 121              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
- 122              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
- 123              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s 			page 4
+  85              	.L7:
+  16:Core/Src/uart.c ****         uart2_counter++;
+  86              		.loc 1 16 9 view .LVU17
+  16:Core/Src/uart.c ****         uart2_counter++;
+  87              		.loc 1 16 22 is_stmt 0 view .LVU18
+  88 0032 104A     		ldr	r2, .L9+28
+  89 0034 1368     		ldr	r3, [r2]
+  90 0036 0133     		adds	r3, r3, #1
+  91 0038 1360     		str	r3, [r2]
+  92 003a ECE7     		b	.L1
+  93              	.L8:
+  20:Core/Src/uart.c ****         Debug_Rx_buffer[Debug_Rx_Count] = huart->Instance->RDR;
+  94              		.loc 1 20 9 is_stmt 1 view .LVU19
+  20:Core/Src/uart.c ****         Debug_Rx_buffer[Debug_Rx_Count] = huart->Instance->RDR;
+  95              		.loc 1 20 58 is_stmt 0 view .LVU20
+  96 003c 988C     		ldrh	r0, [r3, #36]
+  97              	.LVL6:
+  20:Core/Src/uart.c ****         Debug_Rx_buffer[Debug_Rx_Count] = huart->Instance->RDR;
+  98              		.loc 1 20 24 view .LVU21
+  99 003e 0E4A     		ldr	r2, .L9+32
+ 100 0040 1388     		ldrh	r3, [r2]
+  20:Core/Src/uart.c ****         Debug_Rx_buffer[Debug_Rx_Count] = huart->Instance->RDR;
+ 101              		.loc 1 20 41 view .LVU22
+ 102 0042 0E49     		ldr	r1, .L9+36
+ 103 0044 C854     		strb	r0, [r1, r3]
+  21:Core/Src/uart.c ****         Debug_Rx_Count++;
+ 104              		.loc 1 21 9 is_stmt 1 view .LVU23
+  21:Core/Src/uart.c ****         Debug_Rx_Count++;
+ 105              		.loc 1 21 23 is_stmt 0 view .LVU24
+ 106 0046 0133     		adds	r3, r3, #1
+ 107 0048 1380     		strh	r3, [r2]	@ movhi
+  22:Core/Src/uart.c ****         HAL_UART_Receive_IT(&huart3,&dummy,1);
+ 108              		.loc 1 22 9 is_stmt 1 view .LVU25
+ 109 004a 0122     		movs	r2, #1
+ 110 004c 0749     		ldr	r1, .L9+20
+ 111 004e 0C48     		ldr	r0, .L9+40
+ 112 0050 FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 113              	.LVL7:
+ 114              		.loc 1 24 1 is_stmt 0 view .LVU26
+ 115 0054 DFE7     		b	.L1
+ 116              	.L10:
+ 117 0056 00BF     		.align	2
+ 118              	.L9:
+ 119 0058 00380140 		.word	1073821696
+ 120 005c 00440040 		.word	1073759232
+ 121 0060 00480040 		.word	1073760256
+ 122 0064 00000000 		.word	LTE_Rx_Counter
+ 123 0068 00000000 		.word	LTE_Rx_Buffer
+ 124 006c 00000000 		.word	.LANCHOR0
+ 125 0070 00000000 		.word	huart1
+ 126 0074 00000000 		.word	.LANCHOR1
+ 127 0078 00000000 		.word	Debug_Rx_Count
+ 128 007c 00000000 		.word	Debug_Rx_buffer
+ 129 0080 00000000 		.word	huart3
+ 130              		.cfi_endproc
+ 131              	.LFE133:
+ 133              		.global	uart3_counter
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s 			page 4
+
+
+ 134              		.global	uart2_counter
+ 135              		.global	uart1_counter
+ 136              		.global	dummy
+ 137              		.section	.bss.dummy,"aw",%nobits
+ 138              		.set	.LANCHOR0,. + 0
+ 141              	dummy:
+ 142 0000 00       		.space	1
+ 143              		.section	.bss.uart1_counter,"aw",%nobits
+ 144              		.align	2
+ 147              	uart1_counter:
+ 148 0000 00000000 		.space	4
+ 149              		.section	.bss.uart2_counter,"aw",%nobits
+ 150              		.align	2
+ 151              		.set	.LANCHOR1,. + 0
+ 154              	uart2_counter:
+ 155 0000 00000000 		.space	4
+ 156              		.section	.bss.uart3_counter,"aw",%nobits
+ 157              		.align	2
+ 160              	uart3_counter:
+ 161 0000 00000000 		.space	4
+ 162              		.text
+ 163              	.Letext0:
+ 164              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 165              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 166              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 167              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 168              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 169              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 170              		.file 8 "Core/Inc/main.h"
+ 171              		.file 9 "Core/Inc/lte.h"
+ 172              		.file 10 "Core/Inc/debug.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 uart.c
-C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s:20     .text.HAL_UART_RxCpltCallback:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s:26     .text.HAL_UART_RxCpltCallback:00000000 HAL_UART_RxCpltCallback
-C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s:83     .text.HAL_UART_RxCpltCallback:00000034 $d
-C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s:114    .bss.uart3_counter:00000000 uart3_counter
-C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s:107    .bss.uart2_counter:00000000 uart2_counter
-C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s:100    .bss.uart1_counter:00000000 uart1_counter
-C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s:96     .bss.uart1_counter:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s:103    .bss.uart2_counter:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc10Ux4h.s:110    .bss.uart3_counter:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:20     .text.HAL_UART_RxCpltCallback:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:26     .text.HAL_UART_RxCpltCallback:00000000 HAL_UART_RxCpltCallback
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:119    .text.HAL_UART_RxCpltCallback:00000058 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:160    .bss.uart3_counter:00000000 uart3_counter
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:154    .bss.uart2_counter:00000000 uart2_counter
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:147    .bss.uart1_counter:00000000 uart1_counter
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:141    .bss.dummy:00000000 dummy
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:142    .bss.dummy:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:144    .bss.uart1_counter:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:150    .bss.uart2_counter:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLasCej.s:157    .bss.uart3_counter:00000000 $d
 
-NO UNDEFINED SYMBOLS
+UNDEFINED SYMBOLS
+HAL_UART_Receive_IT
+LTE_Rx_Counter
+LTE_Rx_Buffer
+huart1
+Debug_Rx_Count
+Debug_Rx_buffer
+huart3

@@ -16,8 +16,6 @@ void Device_Init(void)
 		Error_Handler();
 	}
 	 
-	//LM5 Reset On
-	HAL_GPIO_WritePin(RESET_ONOFF_GPIO_Port, RESET_ONOFF_Pin, GPIO_PIN_SET);
 }
 
 void Device_Reset_Init(void)
