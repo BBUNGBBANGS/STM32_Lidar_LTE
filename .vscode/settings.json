@@ -10,7 +10,11 @@
         "oled.h": "c",
         "string.h": "c",
         "stm32f1xx_hal.h": "c",
-        "eeprom.h": "c"
+        "eeprom.h": "c",
+        "stm32f3xx_hal_cortex.h": "c",
+        "stm32f3xx_hal.h": "c",
+        "dht11.h": "c",
+        "buzzer.h": "c"
     },
     "cortex-debug.showRTOS": false
 }

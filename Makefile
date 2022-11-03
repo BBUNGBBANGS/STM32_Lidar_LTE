@@ -39,6 +39,16 @@ C_SOURCES =  \
 Core/Src/main.c \
 Core/Src/stm32f3xx_it.c \
 Core/Src/stm32f3xx_hal_msp.c \
+Core/Src/buzzer.c \
+Core/Src/debug.c \
+Core/Src/device.c \
+Core/Src/dht11.c \
+Core/Src/lidar.c \
+Core/Src/lte.c \
+Core/Src/os.c \
+Core/Src/uart.c \
+Core/Src/nvram.c \
+Core/Src/rtc.c \
 Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c \
 Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc_ex.c \
 Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c \

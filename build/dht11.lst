@@ -1,0 +1,1083 @@
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"dht11.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.DHT11_ModeSelection,"ax",%progbits
+  20              		.align	1
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	DHT11_ModeSelection:
+  26              	.LVL0:
+  27              	.LFB135:
+  28              		.file 1 "Core/Src/dht11.c"
+   1:Core/Src/dht11.c **** #include "dht11.h"
+   2:Core/Src/dht11.c **** 
+   3:Core/Src/dht11.c **** static void DHT11_ModeSelection(DHT_Mode_t mode);
+   4:Core/Src/dht11.c **** 
+   5:Core/Src/dht11.c **** void DHT11_Init(void)
+   6:Core/Src/dht11.c **** {
+   7:Core/Src/dht11.c ****     /* DHT11 Sensor ON */
+   8:Core/Src/dht11.c **** 	HAL_GPIO_WritePin(TEMP_ONOFF_GPIO_Port, TEMP_ONOFF_Pin, GPIO_PIN_SET);
+   9:Core/Src/dht11.c **** }
+  10:Core/Src/dht11.c **** 
+  11:Core/Src/dht11.c **** DHT_Data_t DHT_getData(DHT_type_t type) 
+  12:Core/Src/dht11.c **** {
+  13:Core/Src/dht11.c **** 	DHT_Data_t data = {0.0f,};
+  14:Core/Src/dht11.c ****     static DHT_Data_t stored_data;
+  15:Core/Src/dht11.c ****     static uint32_t lastPollingTime;
+  16:Core/Src/dht11.c ****     static uint8_t bFirstcall;
+  17:Core/Src/dht11.c **** 	uint32_t timeout = 0;
+  18:Core/Src/dht11.c **** 	uint16_t pollingInterval;
+  19:Core/Src/dht11.c **** 
+  20:Core/Src/dht11.c **** 	if (type == DHT11) 
+  21:Core/Src/dht11.c ****     {
+  22:Core/Src/dht11.c **** 		pollingInterval = DHT_POLLING_INTERVAL_DHT11;
+  23:Core/Src/dht11.c **** 	} 
+  24:Core/Src/dht11.c ****     else 
+  25:Core/Src/dht11.c ****     {
+  26:Core/Src/dht11.c **** 		pollingInterval = DHT_POLLING_INTERVAL_DHT22;
+  27:Core/Src/dht11.c **** 	}
+  28:Core/Src/dht11.c ****     if(bFirstcall == 1)
+  29:Core/Src/dht11.c ****     {
+  30:Core/Src/dht11.c ****         if ((HAL_GetTick()-lastPollingTime) < pollingInterval) 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 2
+
+
+  31:Core/Src/dht11.c ****         {
+  32:Core/Src/dht11.c ****             data.Temperature = stored_data.Temperature;
+  33:Core/Src/dht11.c ****             data.Humidity = stored_data.Humidity;
+  34:Core/Src/dht11.c ****             return data;
+  35:Core/Src/dht11.c ****         }
+  36:Core/Src/dht11.c ****     }
+  37:Core/Src/dht11.c ****     if(bFirstcall == 0)
+  38:Core/Src/dht11.c ****     {
+  39:Core/Src/dht11.c ****         bFirstcall = 1; 
+  40:Core/Src/dht11.c ****     }
+  41:Core/Src/dht11.c **** 
+  42:Core/Src/dht11.c **** 	lastPollingTime = HAL_GetTick();
+  43:Core/Src/dht11.c **** 
+  44:Core/Src/dht11.c ****     /* Read Sensor Data*/
+  45:Core/Src/dht11.c ****     DHT11_ModeSelection(OUTPUT_MODE);
+  46:Core/Src/dht11.c ****     HAL_GPIO_WritePin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin, GPIO_PIN_RESET);
+  47:Core/Src/dht11.c **** 	HAL_Delay(10);
+  48:Core/Src/dht11.c ****     HAL_GPIO_WritePin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin, GPIO_PIN_SET);
+  49:Core/Src/dht11.c ****     DHT11_ModeSelection(INPUT_MODE);
+  50:Core/Src/dht11.c **** 
+  51:Core/Src/dht11.c **** 	while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET) 
+  52:Core/Src/dht11.c ****     {
+  53:Core/Src/dht11.c **** 		timeout++;
+  54:Core/Src/dht11.c **** 		if (timeout > DHT_TIMEOUT)
+  55:Core/Src/dht11.c ****         {
+  56:Core/Src/dht11.c ****             return data;
+  57:Core/Src/dht11.c ****         } 
+  58:Core/Src/dht11.c **** 	}
+  59:Core/Src/dht11.c ****   
+  60:Core/Src/dht11.c **** 	timeout = 0;
+  61:Core/Src/dht11.c **** 	while(!(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET)) 
+  62:Core/Src/dht11.c ****     {
+  63:Core/Src/dht11.c **** 		timeout++;
+  64:Core/Src/dht11.c **** 		if (timeout > DHT_TIMEOUT)
+  65:Core/Src/dht11.c ****         {
+  66:Core/Src/dht11.c ****             return data;
+  67:Core/Src/dht11.c ****         }
+  68:Core/Src/dht11.c **** 	}
+  69:Core/Src/dht11.c ****   
+  70:Core/Src/dht11.c **** 	timeout = 0;
+  71:Core/Src/dht11.c **** 	while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET) 
+  72:Core/Src/dht11.c ****     {
+  73:Core/Src/dht11.c **** 		timeout++;
+  74:Core/Src/dht11.c **** 		if (timeout > DHT_TIMEOUT) 
+  75:Core/Src/dht11.c ****         {
+  76:Core/Src/dht11.c ****             return data;
+  77:Core/Src/dht11.c ****         }
+  78:Core/Src/dht11.c **** 	}
+  79:Core/Src/dht11.c **** 
+  80:Core/Src/dht11.c ****  	uint8_t rawData[5] = {0,0,0,0,0};
+  81:Core/Src/dht11.c **** 	for(uint8_t a = 0; a < 5; a++) 
+  82:Core/Src/dht11.c ****     {
+  83:Core/Src/dht11.c **** 		for(uint8_t b = 7; b != 255; b--) 
+  84:Core/Src/dht11.c ****         {
+  85:Core/Src/dht11.c **** 			uint32_t hT = 0, lT = 0;
+  86:Core/Src/dht11.c ****             timeout = 0;
+  87:Core/Src/dht11.c **** 			while(!(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET))
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 3
+
+
+  88:Core/Src/dht11.c ****             {
+  89:Core/Src/dht11.c ****                 lT++;
+  90:Core/Src/dht11.c ****                 timeout++;
+  91:Core/Src/dht11.c **** 		        if (timeout > DHT_TIMEOUT2) 
+  92:Core/Src/dht11.c ****                 {
+  93:Core/Src/dht11.c ****                     break;
+  94:Core/Src/dht11.c ****                 }
+  95:Core/Src/dht11.c ****             }
+  96:Core/Src/dht11.c **** 			timeout = 0;
+  97:Core/Src/dht11.c **** 			while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET)
+  98:Core/Src/dht11.c ****             {
+  99:Core/Src/dht11.c ****                 hT++;
+ 100:Core/Src/dht11.c ****                 timeout++;
+ 101:Core/Src/dht11.c **** 		        if (timeout > DHT_TIMEOUT2) 
+ 102:Core/Src/dht11.c ****                 {
+ 103:Core/Src/dht11.c ****                     break;
+ 104:Core/Src/dht11.c ****                 }
+ 105:Core/Src/dht11.c ****             }
+ 106:Core/Src/dht11.c **** 			if(hT > lT) 
+ 107:Core/Src/dht11.c ****             {
+ 108:Core/Src/dht11.c ****                 rawData[a] |= (1<<b);
+ 109:Core/Src/dht11.c ****             }
+ 110:Core/Src/dht11.c **** 		}
+ 111:Core/Src/dht11.c **** 	}
+ 112:Core/Src/dht11.c ****  
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 114:Core/Src/dht11.c ****     {
+ 115:Core/Src/dht11.c **** 		if (type == DHT22) 
+ 116:Core/Src/dht11.c ****         {
+ 117:Core/Src/dht11.c **** 			data.Humidity = (float)(((uint16_t)rawData[0]<<8) | rawData[1])*0.1f;
+ 118:Core/Src/dht11.c **** 
+ 119:Core/Src/dht11.c **** 			if(!(rawData[2] & (1<<7))) 
+ 120:Core/Src/dht11.c ****             {
+ 121:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*0.1f;
+ 122:Core/Src/dht11.c **** 			}	
+ 123:Core/Src/dht11.c ****             else 
+ 124:Core/Src/dht11.c ****             {
+ 125:Core/Src/dht11.c **** 				rawData[2] &= ~(1<<7);
+ 126:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*-0.1f;
+ 127:Core/Src/dht11.c **** 			}
+ 128:Core/Src/dht11.c **** 		}
+ 129:Core/Src/dht11.c **** 		if (type == DHT11) 
+ 130:Core/Src/dht11.c ****         {
+ 131:Core/Src/dht11.c **** 			data.Humidity = (float)rawData[0];
+ 132:Core/Src/dht11.c **** 			data.Temperature = (float)rawData[2];;
+ 133:Core/Src/dht11.c **** 		}
+ 134:Core/Src/dht11.c **** 	}
+ 135:Core/Src/dht11.c **** 	
+ 136:Core/Src/dht11.c **** 	stored_data.Humidity = data.Humidity;
+ 137:Core/Src/dht11.c **** 	stored_data.Temperature = data.Temperature;
+ 138:Core/Src/dht11.c **** 
+ 139:Core/Src/dht11.c **** 	return data;	
+ 140:Core/Src/dht11.c **** }
+ 141:Core/Src/dht11.c **** 
+ 142:Core/Src/dht11.c **** static void DHT11_ModeSelection(DHT_Mode_t mode) 
+ 143:Core/Src/dht11.c **** {
+  29              		.loc 1 143 1 view -0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 4
+
+
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 24
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 143 1 is_stmt 0 view .LVU1
+  34 0000 00B5     		push	{lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 14, -4
+  38 0002 87B0     		sub	sp, sp, #28
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 32
+ 144:Core/Src/dht11.c ****     GPIO_InitTypeDef GPIO_InitStruct = {0};
+  41              		.loc 1 144 5 is_stmt 1 view .LVU2
+  42              		.loc 1 144 22 is_stmt 0 view .LVU3
+  43 0004 0023     		movs	r3, #0
+  44 0006 0193     		str	r3, [sp, #4]
+  45 0008 0293     		str	r3, [sp, #8]
+  46 000a 0393     		str	r3, [sp, #12]
+  47 000c 0493     		str	r3, [sp, #16]
+  48 000e 0593     		str	r3, [sp, #20]
+ 145:Core/Src/dht11.c ****     if(mode == OUTPUT_MODE)
+  49              		.loc 1 145 5 is_stmt 1 view .LVU4
+  50              		.loc 1 145 7 is_stmt 0 view .LVU5
+  51 0010 A8B9     		cbnz	r0, .L2
+ 146:Core/Src/dht11.c ****     {
+ 147:Core/Src/dht11.c ****         HAL_GPIO_WritePin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin, GPIO_PIN_SET);
+  52              		.loc 1 147 9 is_stmt 1 view .LVU6
+  53 0012 0122     		movs	r2, #1
+  54 0014 8021     		movs	r1, #128
+  55 0016 4FF09040 		mov	r0, #1207959552
+  56              	.LVL1:
+  57              		.loc 1 147 9 is_stmt 0 view .LVU7
+  58 001a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  59              	.LVL2:
+ 148:Core/Src/dht11.c ****         GPIO_InitStruct.Pin = DHT_INOUT_Pin;
+  60              		.loc 1 148 9 is_stmt 1 view .LVU8
+  61              		.loc 1 148 29 is_stmt 0 view .LVU9
+  62 001e 8023     		movs	r3, #128
+  63 0020 0193     		str	r3, [sp, #4]
+ 149:Core/Src/dht11.c ****         GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD; 	
+  64              		.loc 1 149 9 is_stmt 1 view .LVU10
+  65              		.loc 1 149 30 is_stmt 0 view .LVU11
+  66 0022 1123     		movs	r3, #17
+  67 0024 0293     		str	r3, [sp, #8]
+ 150:Core/Src/dht11.c ****         GPIO_InitStruct.Pull = GPIO_NOPULL;		
+  68              		.loc 1 150 9 is_stmt 1 view .LVU12
+  69              		.loc 1 150 30 is_stmt 0 view .LVU13
+  70 0026 0023     		movs	r3, #0
+  71 0028 0393     		str	r3, [sp, #12]
+ 151:Core/Src/dht11.c ****         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  72              		.loc 1 151 9 is_stmt 1 view .LVU14
+  73              		.loc 1 151 31 is_stmt 0 view .LVU15
+  74 002a 0323     		movs	r3, #3
+  75 002c 0493     		str	r3, [sp, #16]
+ 152:Core/Src/dht11.c ****         HAL_GPIO_Init(DHT_INOUT_GPIO_Port, &GPIO_InitStruct);
+  76              		.loc 1 152 9 is_stmt 1 view .LVU16
+  77 002e 01A9     		add	r1, sp, #4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 5
+
+
+  78 0030 4FF09040 		mov	r0, #1207959552
+  79 0034 FFF7FEFF 		bl	HAL_GPIO_Init
+  80              	.LVL3:
+  81              	.L1:
+ 153:Core/Src/dht11.c ****     }
+ 154:Core/Src/dht11.c ****     else
+ 155:Core/Src/dht11.c ****     {
+ 156:Core/Src/dht11.c ****         GPIO_InitStruct.Pin = DHT_INOUT_Pin;
+ 157:Core/Src/dht11.c ****         GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 158:Core/Src/dht11.c ****         GPIO_InitStruct.Pull = GPIO_NOPULL;				
+ 159:Core/Src/dht11.c ****         HAL_GPIO_Init(DHT_INOUT_GPIO_Port, &GPIO_InitStruct);
+ 160:Core/Src/dht11.c ****     }
+ 161:Core/Src/dht11.c **** }...
+  82              		.loc 1 161 1 is_stmt 0 view .LVU17
+  83 0038 07B0     		add	sp, sp, #28
+  84              	.LCFI2:
+  85              		.cfi_remember_state
+  86              		.cfi_def_cfa_offset 4
+  87              		@ sp needed
+  88 003a 5DF804FB 		ldr	pc, [sp], #4
+  89              	.LVL4:
+  90              	.L2:
+  91              	.LCFI3:
+  92              		.cfi_restore_state
+ 156:Core/Src/dht11.c ****         GPIO_InitStruct.Pin = DHT_INOUT_Pin;
+  93              		.loc 1 156 9 is_stmt 1 view .LVU18
+ 156:Core/Src/dht11.c ****         GPIO_InitStruct.Pin = DHT_INOUT_Pin;
+  94              		.loc 1 156 29 is_stmt 0 view .LVU19
+  95 003e 8023     		movs	r3, #128
+  96 0040 0193     		str	r3, [sp, #4]
+ 157:Core/Src/dht11.c ****         GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  97              		.loc 1 157 9 is_stmt 1 view .LVU20
+ 158:Core/Src/dht11.c ****         GPIO_InitStruct.Pull = GPIO_NOPULL;				
+  98              		.loc 1 158 9 view .LVU21
+ 159:Core/Src/dht11.c ****         HAL_GPIO_Init(DHT_INOUT_GPIO_Port, &GPIO_InitStruct);
+  99              		.loc 1 159 9 view .LVU22
+ 100 0042 01A9     		add	r1, sp, #4
+ 101 0044 4FF09040 		mov	r0, #1207959552
+ 102              	.LVL5:
+ 159:Core/Src/dht11.c ****         HAL_GPIO_Init(DHT_INOUT_GPIO_Port, &GPIO_InitStruct);
+ 103              		.loc 1 159 9 is_stmt 0 view .LVU23
+ 104 0048 FFF7FEFF 		bl	HAL_GPIO_Init
+ 105              	.LVL6:
+ 106              		.loc 1 161 1 view .LVU24
+ 107 004c F4E7     		b	.L1
+ 108              		.cfi_endproc
+ 109              	.LFE135:
+ 111              		.section	.text.DHT11_Init,"ax",%progbits
+ 112              		.align	1
+ 113              		.global	DHT11_Init
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 118              	DHT11_Init:
+ 119              	.LFB133:
+   6:Core/Src/dht11.c **** {
+ 120              		.loc 1 6 1 is_stmt 1 view -0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 6
+
+
+ 121              		.cfi_startproc
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124 0000 08B5     		push	{r3, lr}
+ 125              	.LCFI4:
+ 126              		.cfi_def_cfa_offset 8
+ 127              		.cfi_offset 3, -8
+ 128              		.cfi_offset 14, -4
+   8:Core/Src/dht11.c **** 	HAL_GPIO_WritePin(TEMP_ONOFF_GPIO_Port, TEMP_ONOFF_Pin, GPIO_PIN_SET);
+ 129              		.loc 1 8 2 view .LVU26
+ 130 0002 0122     		movs	r2, #1
+ 131 0004 0221     		movs	r1, #2
+ 132 0006 0248     		ldr	r0, .L7
+ 133 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 134              	.LVL7:
+   9:Core/Src/dht11.c **** }
+ 135              		.loc 1 9 1 is_stmt 0 view .LVU27
+ 136 000c 08BD     		pop	{r3, pc}
+ 137              	.L8:
+ 138 000e 00BF     		.align	2
+ 139              	.L7:
+ 140 0010 00040048 		.word	1207960576
+ 141              		.cfi_endproc
+ 142              	.LFE133:
+ 144              		.section	.text.DHT_getData,"ax",%progbits
+ 145              		.align	1
+ 146              		.global	DHT_getData
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 151              	DHT_getData:
+ 152              	.LVL8:
+ 153              	.LFB134:
+  12:Core/Src/dht11.c **** {
+ 154              		.loc 1 12 1 is_stmt 1 view -0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 32
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+  12:Core/Src/dht11.c **** {
+ 158              		.loc 1 12 1 is_stmt 0 view .LVU29
+ 159 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 160              	.LCFI5:
+ 161              		.cfi_def_cfa_offset 28
+ 162              		.cfi_offset 4, -28
+ 163              		.cfi_offset 5, -24
+ 164              		.cfi_offset 6, -20
+ 165              		.cfi_offset 7, -16
+ 166              		.cfi_offset 8, -12
+ 167              		.cfi_offset 9, -8
+ 168              		.cfi_offset 14, -4
+ 169 0004 89B0     		sub	sp, sp, #36
+ 170              	.LCFI6:
+ 171              		.cfi_def_cfa_offset 64
+  13:Core/Src/dht11.c **** 	DHT_Data_t data = {0.0f,};
+ 172              		.loc 1 13 2 is_stmt 1 view .LVU30
+  13:Core/Src/dht11.c **** 	DHT_Data_t data = {0.0f,};
+ 173              		.loc 1 13 13 is_stmt 0 view .LVU31
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 7
+
+
+ 174 0006 0023     		movs	r3, #0
+ 175 0008 0493     		str	r3, [sp, #16]
+ 176 000a 0593     		str	r3, [sp, #20]
+  14:Core/Src/dht11.c ****     static DHT_Data_t stored_data;
+ 177              		.loc 1 14 5 is_stmt 1 view .LVU32
+  15:Core/Src/dht11.c ****     static uint32_t lastPollingTime;
+ 178              		.loc 1 15 5 view .LVU33
+  16:Core/Src/dht11.c ****     static uint8_t bFirstcall;
+ 179              		.loc 1 16 5 view .LVU34
+  17:Core/Src/dht11.c **** 	uint32_t timeout = 0;
+ 180              		.loc 1 17 2 view .LVU35
+ 181              	.LVL9:
+  18:Core/Src/dht11.c **** 	uint16_t pollingInterval;
+ 182              		.loc 1 18 2 view .LVU36
+  20:Core/Src/dht11.c **** 	if (type == DHT11) 
+ 183              		.loc 1 20 2 view .LVU37
+  20:Core/Src/dht11.c **** 	if (type == DHT11) 
+ 184              		.loc 1 20 5 is_stmt 0 view .LVU38
+ 185 000c 8146     		mov	r9, r0
+ 186 000e 0028     		cmp	r0, #0
+ 187 0010 38D1     		bne	.L32
+  22:Core/Src/dht11.c **** 		pollingInterval = DHT_POLLING_INTERVAL_DHT11;
+ 188              		.loc 1 22 19 view .LVU39
+ 189 0012 4FF4FA64 		mov	r4, #2000
+ 190              	.L10:
+ 191              	.LVL10:
+  28:Core/Src/dht11.c ****     if(bFirstcall == 1)
+ 192              		.loc 1 28 5 is_stmt 1 view .LVU40
+  28:Core/Src/dht11.c ****     if(bFirstcall == 1)
+ 193              		.loc 1 28 19 is_stmt 0 view .LVU41
+ 194 0016 8D4B     		ldr	r3, .L44
+ 195 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  28:Core/Src/dht11.c ****     if(bFirstcall == 1)
+ 196              		.loc 1 28 7 view .LVU42
+ 197 001a 012B     		cmp	r3, #1
+ 198 001c 35D0     		beq	.L36
+ 199              	.LVL11:
+ 200              	.L11:
+  37:Core/Src/dht11.c ****     if(bFirstcall == 0)
+ 201              		.loc 1 37 5 is_stmt 1 view .LVU43
+  37:Core/Src/dht11.c ****     if(bFirstcall == 0)
+ 202              		.loc 1 37 19 is_stmt 0 view .LVU44
+ 203 001e 8B4B     		ldr	r3, .L44
+ 204 0020 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  37:Core/Src/dht11.c ****     if(bFirstcall == 0)
+ 205              		.loc 1 37 7 view .LVU45
+ 206 0022 13B9     		cbnz	r3, .L13
+  39:Core/Src/dht11.c ****         bFirstcall = 1; 
+ 207              		.loc 1 39 9 is_stmt 1 view .LVU46
+  39:Core/Src/dht11.c ****         bFirstcall = 1; 
+ 208              		.loc 1 39 20 is_stmt 0 view .LVU47
+ 209 0024 894B     		ldr	r3, .L44
+ 210 0026 0122     		movs	r2, #1
+ 211 0028 1A70     		strb	r2, [r3]
+ 212              	.L13:
+  42:Core/Src/dht11.c **** 	lastPollingTime = HAL_GetTick();
+ 213              		.loc 1 42 2 is_stmt 1 view .LVU48
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 8
+
+
+  42:Core/Src/dht11.c **** 	lastPollingTime = HAL_GetTick();
+ 214              		.loc 1 42 20 is_stmt 0 view .LVU49
+ 215 002a FFF7FEFF 		bl	HAL_GetTick
+ 216              	.LVL12:
+  42:Core/Src/dht11.c **** 	lastPollingTime = HAL_GetTick();
+ 217              		.loc 1 42 18 view .LVU50
+ 218 002e 884B     		ldr	r3, .L44+4
+ 219 0030 1860     		str	r0, [r3]
+  45:Core/Src/dht11.c ****     DHT11_ModeSelection(OUTPUT_MODE);
+ 220              		.loc 1 45 5 is_stmt 1 view .LVU51
+ 221 0032 0020     		movs	r0, #0
+ 222 0034 FFF7FEFF 		bl	DHT11_ModeSelection
+ 223              	.LVL13:
+  46:Core/Src/dht11.c ****     HAL_GPIO_WritePin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin, GPIO_PIN_RESET);
+ 224              		.loc 1 46 5 view .LVU52
+ 225 0038 0022     		movs	r2, #0
+ 226 003a 8021     		movs	r1, #128
+ 227 003c 4FF09040 		mov	r0, #1207959552
+ 228 0040 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 229              	.LVL14:
+  47:Core/Src/dht11.c **** 	HAL_Delay(10);
+ 230              		.loc 1 47 2 view .LVU53
+ 231 0044 0A20     		movs	r0, #10
+ 232 0046 FFF7FEFF 		bl	HAL_Delay
+ 233              	.LVL15:
+  48:Core/Src/dht11.c ****     HAL_GPIO_WritePin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin, GPIO_PIN_SET);
+ 234              		.loc 1 48 5 view .LVU54
+ 235 004a 0122     		movs	r2, #1
+ 236 004c 8021     		movs	r1, #128
+ 237 004e 4FF09040 		mov	r0, #1207959552
+ 238 0052 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 239              	.LVL16:
+  49:Core/Src/dht11.c ****     DHT11_ModeSelection(INPUT_MODE);
+ 240              		.loc 1 49 5 view .LVU55
+ 241 0056 0120     		movs	r0, #1
+ 242 0058 FFF7FEFF 		bl	DHT11_ModeSelection
+ 243              	.LVL17:
+  51:Core/Src/dht11.c **** 	while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET) 
+ 244              		.loc 1 51 2 view .LVU56
+  17:Core/Src/dht11.c **** 	uint32_t timeout = 0;
+ 245              		.loc 1 17 11 is_stmt 0 view .LVU57
+ 246 005c 0024     		movs	r4, #0
+ 247              	.LVL18:
+ 248              	.L14:
+  51:Core/Src/dht11.c **** 	while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET) 
+ 249              		.loc 1 51 7 is_stmt 1 view .LVU58
+  51:Core/Src/dht11.c **** 	while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET) 
+ 250              		.loc 1 51 8 is_stmt 0 view .LVU59
+ 251 005e 8021     		movs	r1, #128
+ 252 0060 4FF09040 		mov	r0, #1207959552
+ 253 0064 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 254              	.LVL19:
+  51:Core/Src/dht11.c **** 	while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET) 
+ 255              		.loc 1 51 7 view .LVU60
+ 256 0068 0128     		cmp	r0, #1
+ 257 006a 21D1     		bne	.L37
+  53:Core/Src/dht11.c **** 		timeout++;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 9
+
+
+ 258              		.loc 1 53 3 is_stmt 1 view .LVU61
+  53:Core/Src/dht11.c **** 		timeout++;
+ 259              		.loc 1 53 10 is_stmt 0 view .LVU62
+ 260 006c 0134     		adds	r4, r4, #1
+ 261              	.LVL20:
+  54:Core/Src/dht11.c **** 		if (timeout > DHT_TIMEOUT)
+ 262              		.loc 1 54 3 is_stmt 1 view .LVU63
+  54:Core/Src/dht11.c **** 		if (timeout > DHT_TIMEOUT)
+ 263              		.loc 1 54 6 is_stmt 0 view .LVU64
+ 264 006e 42F21073 		movw	r3, #10000
+ 265 0072 9C42     		cmp	r4, r3
+ 266 0074 F3D9     		bls	.L14
+  56:Core/Src/dht11.c ****             return data;
+ 267              		.loc 1 56 13 is_stmt 1 view .LVU65
+  56:Core/Src/dht11.c ****             return data;
+ 268              		.loc 1 56 20 is_stmt 0 view .LVU66
+ 269 0076 04AB     		add	r3, sp, #16
+ 270 0078 93E80300 		ldm	r3, {r0, r1}
+ 271 007c 08AB     		add	r3, sp, #32
+ 272 007e 03E90300 		stmdb	r3, {r0, r1}
+ 273 0082 9BE0     		b	.L12
+ 274              	.LVL21:
+ 275              	.L32:
+  26:Core/Src/dht11.c **** 		pollingInterval = DHT_POLLING_INTERVAL_DHT22;
+ 276              		.loc 1 26 19 view .LVU67
+ 277 0084 4FF47A74 		mov	r4, #1000
+ 278 0088 C5E7     		b	.L10
+ 279              	.LVL22:
+ 280              	.L36:
+  30:Core/Src/dht11.c ****         if ((HAL_GetTick()-lastPollingTime) < pollingInterval) 
+ 281              		.loc 1 30 9 is_stmt 1 view .LVU68
+  30:Core/Src/dht11.c ****         if ((HAL_GetTick()-lastPollingTime) < pollingInterval) 
+ 282              		.loc 1 30 14 is_stmt 0 view .LVU69
+ 283 008a FFF7FEFF 		bl	HAL_GetTick
+ 284              	.LVL23:
+  30:Core/Src/dht11.c ****         if ((HAL_GetTick()-lastPollingTime) < pollingInterval) 
+ 285              		.loc 1 30 27 view .LVU70
+ 286 008e 704B     		ldr	r3, .L44+4
+ 287 0090 1B68     		ldr	r3, [r3]
+ 288 0092 C31A     		subs	r3, r0, r3
+  30:Core/Src/dht11.c ****         if ((HAL_GetTick()-lastPollingTime) < pollingInterval) 
+ 289              		.loc 1 30 12 view .LVU71
+ 290 0094 A342     		cmp	r3, r4
+ 291 0096 C2D2     		bcs	.L11
+  32:Core/Src/dht11.c ****             data.Temperature = stored_data.Temperature;
+ 292              		.loc 1 32 13 is_stmt 1 view .LVU72
+  32:Core/Src/dht11.c ****             data.Temperature = stored_data.Temperature;
+ 293              		.loc 1 32 43 is_stmt 0 view .LVU73
+ 294 0098 6E4B     		ldr	r3, .L44+8
+ 295 009a 5A68     		ldr	r2, [r3, #4]	@ float
+  32:Core/Src/dht11.c ****             data.Temperature = stored_data.Temperature;
+ 296              		.loc 1 32 30 view .LVU74
+ 297 009c 0592     		str	r2, [sp, #20]	@ float
+  33:Core/Src/dht11.c ****             data.Humidity = stored_data.Humidity;
+ 298              		.loc 1 33 13 is_stmt 1 view .LVU75
+  33:Core/Src/dht11.c ****             data.Humidity = stored_data.Humidity;
+ 299              		.loc 1 33 40 is_stmt 0 view .LVU76
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 10
+
+
+ 300 009e 1B68     		ldr	r3, [r3]	@ float
+  33:Core/Src/dht11.c ****             data.Humidity = stored_data.Humidity;
+ 301              		.loc 1 33 27 view .LVU77
+ 302 00a0 0493     		str	r3, [sp, #16]	@ float
+  34:Core/Src/dht11.c ****             return data;
+ 303              		.loc 1 34 13 is_stmt 1 view .LVU78
+  34:Core/Src/dht11.c ****             return data;
+ 304              		.loc 1 34 20 is_stmt 0 view .LVU79
+ 305 00a2 04AB     		add	r3, sp, #16
+ 306 00a4 93E80300 		ldm	r3, {r0, r1}
+ 307 00a8 08AB     		add	r3, sp, #32
+ 308 00aa 03E90300 		stmdb	r3, {r0, r1}
+ 309 00ae 85E0     		b	.L12
+ 310              	.LVL24:
+ 311              	.L37:
+  60:Core/Src/dht11.c **** 	timeout = 0;
+ 312              		.loc 1 60 10 view .LVU80
+ 313 00b0 0024     		movs	r4, #0
+ 314              	.LVL25:
+ 315              	.L16:
+  61:Core/Src/dht11.c **** 	while(!(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET)) 
+ 316              		.loc 1 61 7 is_stmt 1 view .LVU81
+  61:Core/Src/dht11.c **** 	while(!(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET)) 
+ 317              		.loc 1 61 10 is_stmt 0 view .LVU82
+ 318 00b2 8021     		movs	r1, #128
+ 319 00b4 4FF09040 		mov	r0, #1207959552
+ 320 00b8 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 321              	.LVL26:
+  61:Core/Src/dht11.c **** 	while(!(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET)) 
+ 322              		.loc 1 61 7 view .LVU83
+ 323 00bc 0128     		cmp	r0, #1
+ 324 00be 0BD0     		beq	.L38
+  63:Core/Src/dht11.c **** 		timeout++;
+ 325              		.loc 1 63 3 is_stmt 1 view .LVU84
+  63:Core/Src/dht11.c **** 		timeout++;
+ 326              		.loc 1 63 10 is_stmt 0 view .LVU85
+ 327 00c0 0134     		adds	r4, r4, #1
+ 328              	.LVL27:
+  64:Core/Src/dht11.c **** 		if (timeout > DHT_TIMEOUT)
+ 329              		.loc 1 64 3 is_stmt 1 view .LVU86
+  64:Core/Src/dht11.c **** 		if (timeout > DHT_TIMEOUT)
+ 330              		.loc 1 64 6 is_stmt 0 view .LVU87
+ 331 00c2 42F21073 		movw	r3, #10000
+ 332 00c6 9C42     		cmp	r4, r3
+ 333 00c8 F3D9     		bls	.L16
+  66:Core/Src/dht11.c ****             return data;
+ 334              		.loc 1 66 13 is_stmt 1 view .LVU88
+  66:Core/Src/dht11.c ****             return data;
+ 335              		.loc 1 66 20 is_stmt 0 view .LVU89
+ 336 00ca 04AB     		add	r3, sp, #16
+ 337 00cc 93E80300 		ldm	r3, {r0, r1}
+ 338 00d0 08AB     		add	r3, sp, #32
+ 339 00d2 03E90300 		stmdb	r3, {r0, r1}
+ 340 00d6 71E0     		b	.L12
+ 341              	.L38:
+  70:Core/Src/dht11.c **** 	timeout = 0;
+ 342              		.loc 1 70 10 view .LVU90
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 11
+
+
+ 343 00d8 0024     		movs	r4, #0
+ 344              	.LVL28:
+ 345              	.L18:
+  71:Core/Src/dht11.c **** 	while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET) 
+ 346              		.loc 1 71 7 is_stmt 1 view .LVU91
+  71:Core/Src/dht11.c **** 	while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET) 
+ 347              		.loc 1 71 8 is_stmt 0 view .LVU92
+ 348 00da 8021     		movs	r1, #128
+ 349 00dc 4FF09040 		mov	r0, #1207959552
+ 350 00e0 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 351              	.LVL29:
+  71:Core/Src/dht11.c **** 	while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET) 
+ 352              		.loc 1 71 7 view .LVU93
+ 353 00e4 0128     		cmp	r0, #1
+ 354 00e6 0BD1     		bne	.L39
+  73:Core/Src/dht11.c **** 		timeout++;
+ 355              		.loc 1 73 3 is_stmt 1 view .LVU94
+  73:Core/Src/dht11.c **** 		timeout++;
+ 356              		.loc 1 73 10 is_stmt 0 view .LVU95
+ 357 00e8 0134     		adds	r4, r4, #1
+ 358              	.LVL30:
+  74:Core/Src/dht11.c **** 		if (timeout > DHT_TIMEOUT) 
+ 359              		.loc 1 74 3 is_stmt 1 view .LVU96
+  74:Core/Src/dht11.c **** 		if (timeout > DHT_TIMEOUT) 
+ 360              		.loc 1 74 6 is_stmt 0 view .LVU97
+ 361 00ea 42F21073 		movw	r3, #10000
+ 362 00ee 9C42     		cmp	r4, r3
+ 363 00f0 F3D9     		bls	.L18
+  76:Core/Src/dht11.c ****             return data;
+ 364              		.loc 1 76 13 is_stmt 1 view .LVU98
+  76:Core/Src/dht11.c ****             return data;
+ 365              		.loc 1 76 20 is_stmt 0 view .LVU99
+ 366 00f2 04AB     		add	r3, sp, #16
+ 367 00f4 93E80300 		ldm	r3, {r0, r1}
+ 368 00f8 08AB     		add	r3, sp, #32
+ 369 00fa 03E90300 		stmdb	r3, {r0, r1}
+ 370 00fe 5DE0     		b	.L12
+ 371              	.L39:
+  80:Core/Src/dht11.c ****  	uint8_t rawData[5] = {0,0,0,0,0};
+ 372              		.loc 1 80 3 is_stmt 1 view .LVU100
+  80:Core/Src/dht11.c ****  	uint8_t rawData[5] = {0,0,0,0,0};
+ 373              		.loc 1 80 11 is_stmt 0 view .LVU101
+ 374 0100 554B     		ldr	r3, .L44+12
+ 375 0102 93E80300 		ldm	r3, {r0, r1}
+ 376 0106 0290     		str	r0, [sp, #8]
+ 377 0108 8DF80C10 		strb	r1, [sp, #12]
+  81:Core/Src/dht11.c **** 	for(uint8_t a = 0; a < 5; a++) 
+ 378              		.loc 1 81 2 is_stmt 1 view .LVU102
+ 379              	.LBB2:
+  81:Core/Src/dht11.c **** 	for(uint8_t a = 0; a < 5; a++) 
+ 380              		.loc 1 81 6 view .LVU103
+ 381              	.LVL31:
+  81:Core/Src/dht11.c **** 	for(uint8_t a = 0; a < 5; a++) 
+ 382              		.loc 1 81 14 is_stmt 0 view .LVU104
+ 383 010c 4FF00008 		mov	r8, #0
+  81:Core/Src/dht11.c **** 	for(uint8_t a = 0; a < 5; a++) 
+ 384              		.loc 1 81 2 view .LVU105
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 12
+
+
+ 385 0110 32E0     		b	.L20
+ 386              	.LVL32:
+ 387              	.L24:
+ 388              	.LBB3:
+ 389              	.LBB4:
+ 106:Core/Src/dht11.c **** 			if(hT > lT) 
+ 390              		.loc 1 106 4 is_stmt 1 view .LVU106
+ 106:Core/Src/dht11.c **** 			if(hT > lT) 
+ 391              		.loc 1 106 6 is_stmt 0 view .LVU107
+ 392 0112 AE42     		cmp	r6, r5
+ 393 0114 0BD9     		bls	.L26
+ 108:Core/Src/dht11.c ****                 rawData[a] |= (1<<b);
+ 394              		.loc 1 108 17 is_stmt 1 view .LVU108
+ 108:Core/Src/dht11.c ****                 rawData[a] |= (1<<b);
+ 395              		.loc 1 108 33 is_stmt 0 view .LVU109
+ 396 0116 0123     		movs	r3, #1
+ 397 0118 03FA07F2 		lsl	r2, r3, r7
+ 108:Core/Src/dht11.c ****                 rawData[a] |= (1<<b);
+ 398              		.loc 1 108 28 view .LVU110
+ 399 011c 08F12003 		add	r3, r8, #32
+ 400 0120 0DEB0301 		add	r1, sp, r3
+ 401 0124 11F8183C 		ldrb	r3, [r1, #-24]	@ zero_extendqisi2
+ 402 0128 1343     		orrs	r3, r3, r2
+ 403 012a 01F8183C 		strb	r3, [r1, #-24]
+ 404              	.L26:
+ 108:Core/Src/dht11.c ****                 rawData[a] |= (1<<b);
+ 405              		.loc 1 108 28 view .LVU111
+ 406              	.LBE4:
+  83:Core/Src/dht11.c **** 		for(uint8_t b = 7; b != 255; b--) 
+ 407              		.loc 1 83 32 is_stmt 1 discriminator 2 view .LVU112
+  83:Core/Src/dht11.c **** 		for(uint8_t b = 7; b != 255; b--) 
+ 408              		.loc 1 83 33 is_stmt 0 discriminator 2 view .LVU113
+ 409 012e 013F     		subs	r7, r7, #1
+ 410              	.LVL33:
+  83:Core/Src/dht11.c **** 		for(uint8_t b = 7; b != 255; b--) 
+ 411              		.loc 1 83 33 discriminator 2 view .LVU114
+ 412 0130 FFB2     		uxtb	r7, r7
+ 413              	.LVL34:
+ 414              	.L28:
+  83:Core/Src/dht11.c **** 		for(uint8_t b = 7; b != 255; b--) 
+ 415              		.loc 1 83 22 is_stmt 1 discriminator 1 view .LVU115
+  83:Core/Src/dht11.c **** 		for(uint8_t b = 7; b != 255; b--) 
+ 416              		.loc 1 83 3 is_stmt 0 discriminator 1 view .LVU116
+ 417 0132 FF2F     		cmp	r7, #255
+ 418 0134 1CD0     		beq	.L40
+ 419              	.LBB5:
+  85:Core/Src/dht11.c **** 			uint32_t hT = 0, lT = 0;
+ 420              		.loc 1 85 21 view .LVU117
+ 421 0136 0025     		movs	r5, #0
+  86:Core/Src/dht11.c ****             timeout = 0;
+ 422              		.loc 1 86 21 view .LVU118
+ 423 0138 2C46     		mov	r4, r5
+ 424              	.LVL35:
+ 425              	.L27:
+  87:Core/Src/dht11.c **** 			while(!(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET))
+ 426              		.loc 1 87 9 is_stmt 1 view .LVU119
+  87:Core/Src/dht11.c **** 			while(!(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET))
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 13
+
+
+ 427              		.loc 1 87 12 is_stmt 0 view .LVU120
+ 428 013a 8021     		movs	r1, #128
+ 429 013c 4FF09040 		mov	r0, #1207959552
+ 430 0140 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 431              	.LVL36:
+  87:Core/Src/dht11.c **** 			while(!(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET))
+ 432              		.loc 1 87 9 view .LVU121
+ 433 0144 0128     		cmp	r0, #1
+ 434 0146 04D0     		beq	.L21
+  89:Core/Src/dht11.c ****                 lT++;
+ 435              		.loc 1 89 17 is_stmt 1 view .LVU122
+  89:Core/Src/dht11.c ****                 lT++;
+ 436              		.loc 1 89 19 is_stmt 0 view .LVU123
+ 437 0148 0135     		adds	r5, r5, #1
+ 438              	.LVL37:
+  90:Core/Src/dht11.c ****                 timeout++;
+ 439              		.loc 1 90 17 is_stmt 1 view .LVU124
+  90:Core/Src/dht11.c ****                 timeout++;
+ 440              		.loc 1 90 24 is_stmt 0 view .LVU125
+ 441 014a 0134     		adds	r4, r4, #1
+ 442              	.LVL38:
+  91:Core/Src/dht11.c **** 		        if (timeout > DHT_TIMEOUT2) 
+ 443              		.loc 1 91 11 is_stmt 1 view .LVU126
+  91:Core/Src/dht11.c **** 		        if (timeout > DHT_TIMEOUT2) 
+ 444              		.loc 1 91 14 is_stmt 0 view .LVU127
+ 445 014c 434B     		ldr	r3, .L44+16
+ 446 014e 9C42     		cmp	r4, r3
+ 447 0150 F3D9     		bls	.L27
+ 448              	.L21:
+  96:Core/Src/dht11.c **** 			timeout = 0;
+ 449              		.loc 1 96 4 is_stmt 1 view .LVU128
+ 450              	.LVL39:
+  97:Core/Src/dht11.c **** 			while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET)
+ 451              		.loc 1 97 4 view .LVU129
+  85:Core/Src/dht11.c **** 			uint32_t hT = 0, lT = 0;
+ 452              		.loc 1 85 13 is_stmt 0 view .LVU130
+ 453 0152 0026     		movs	r6, #0
+  96:Core/Src/dht11.c **** 			timeout = 0;
+ 454              		.loc 1 96 12 view .LVU131
+ 455 0154 3446     		mov	r4, r6
+ 456              	.LVL40:
+ 457              	.L23:
+  97:Core/Src/dht11.c **** 			while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET)
+ 458              		.loc 1 97 9 is_stmt 1 view .LVU132
+  97:Core/Src/dht11.c **** 			while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET)
+ 459              		.loc 1 97 10 is_stmt 0 view .LVU133
+ 460 0156 8021     		movs	r1, #128
+ 461 0158 4FF09040 		mov	r0, #1207959552
+ 462 015c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 463              	.LVL41:
+  97:Core/Src/dht11.c **** 			while(HAL_GPIO_ReadPin(DHT_INOUT_GPIO_Port, DHT_INOUT_Pin) == GPIO_PIN_SET)
+ 464              		.loc 1 97 9 view .LVU134
+ 465 0160 0128     		cmp	r0, #1
+ 466 0162 D6D1     		bne	.L24
+  99:Core/Src/dht11.c ****                 hT++;
+ 467              		.loc 1 99 17 is_stmt 1 view .LVU135
+  99:Core/Src/dht11.c ****                 hT++;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 14
+
+
+ 468              		.loc 1 99 19 is_stmt 0 view .LVU136
+ 469 0164 0136     		adds	r6, r6, #1
+ 470              	.LVL42:
+ 100:Core/Src/dht11.c ****                 timeout++;
+ 471              		.loc 1 100 17 is_stmt 1 view .LVU137
+ 100:Core/Src/dht11.c ****                 timeout++;
+ 472              		.loc 1 100 24 is_stmt 0 view .LVU138
+ 473 0166 0134     		adds	r4, r4, #1
+ 474              	.LVL43:
+ 101:Core/Src/dht11.c **** 		        if (timeout > DHT_TIMEOUT2) 
+ 475              		.loc 1 101 11 is_stmt 1 view .LVU139
+ 101:Core/Src/dht11.c **** 		        if (timeout > DHT_TIMEOUT2) 
+ 476              		.loc 1 101 14 is_stmt 0 view .LVU140
+ 477 0168 3C4B     		ldr	r3, .L44+16
+ 478 016a 9C42     		cmp	r4, r3
+ 479 016c F3D9     		bls	.L23
+ 480 016e D0E7     		b	.L24
+ 481              	.LVL44:
+ 482              	.L40:
+ 101:Core/Src/dht11.c **** 		        if (timeout > DHT_TIMEOUT2) 
+ 483              		.loc 1 101 14 view .LVU141
+ 484              	.LBE5:
+ 485              	.LBE3:
+  81:Core/Src/dht11.c **** 	for(uint8_t a = 0; a < 5; a++) 
+ 486              		.loc 1 81 28 is_stmt 1 discriminator 2 view .LVU142
+  81:Core/Src/dht11.c **** 	for(uint8_t a = 0; a < 5; a++) 
+ 487              		.loc 1 81 29 is_stmt 0 discriminator 2 view .LVU143
+ 488 0170 08F10108 		add	r8, r8, #1
+ 489              	.LVL45:
+  81:Core/Src/dht11.c **** 	for(uint8_t a = 0; a < 5; a++) 
+ 490              		.loc 1 81 29 discriminator 2 view .LVU144
+ 491 0174 5FFA88F8 		uxtb	r8, r8
+ 492              	.LVL46:
+ 493              	.L20:
+  81:Core/Src/dht11.c **** 	for(uint8_t a = 0; a < 5; a++) 
+ 494              		.loc 1 81 21 is_stmt 1 discriminator 1 view .LVU145
+  81:Core/Src/dht11.c **** 	for(uint8_t a = 0; a < 5; a++) 
+ 495              		.loc 1 81 2 is_stmt 0 discriminator 1 view .LVU146
+ 496 0178 B8F1040F 		cmp	r8, #4
+ 497 017c 01D8     		bhi	.L41
+ 498              	.LBB6:
+  83:Core/Src/dht11.c **** 		for(uint8_t b = 7; b != 255; b--) 
+ 499              		.loc 1 83 15 view .LVU147
+ 500 017e 0727     		movs	r7, #7
+ 501 0180 D7E7     		b	.L28
+ 502              	.L41:
+ 503              	.LBE6:
+ 504              	.LBE2:
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 505              		.loc 1 113 2 is_stmt 1 view .LVU148
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 506              		.loc 1 113 22 is_stmt 0 view .LVU149
+ 507 0182 9DF80840 		ldrb	r4, [sp, #8]	@ zero_extendqisi2
+ 508              	.LVL47:
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 509              		.loc 1 113 35 view .LVU150
+ 510 0186 9DF80920 		ldrb	r2, [sp, #9]	@ zero_extendqisi2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 15
+
+
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 511              		.loc 1 113 26 view .LVU151
+ 512 018a A018     		adds	r0, r4, r2
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 513              		.loc 1 113 48 view .LVU152
+ 514 018c 9DF80A10 		ldrb	r1, [sp, #10]	@ zero_extendqisi2
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 515              		.loc 1 113 39 view .LVU153
+ 516 0190 51FA80F0 		uxtab	r0, r1, r0
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 517              		.loc 1 113 61 view .LVU154
+ 518 0194 9DF80B30 		ldrb	r3, [sp, #11]	@ zero_extendqisi2
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 519              		.loc 1 113 5 view .LVU155
+ 520 0198 53FA80F0 		uxtab	r0, r3, r0
+ 521 019c C0B2     		uxtb	r0, r0
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 522              		.loc 1 113 76 view .LVU156
+ 523 019e 9DF80C50 		ldrb	r5, [sp, #12]	@ zero_extendqisi2
+ 113:Core/Src/dht11.c **** 	if((uint8_t)(rawData[0] + rawData[1] + rawData[2] + rawData[3]) == rawData[4]) 
+ 524              		.loc 1 113 4 view .LVU157
+ 525 01a2 A842     		cmp	r0, r5
+ 526 01a4 11D0     		beq	.L42
+ 527              	.L29:
+ 132:Core/Src/dht11.c **** 			data.Temperature = (float)rawData[2];;
+ 528              		.loc 1 132 41 is_stmt 1 discriminator 1 view .LVU158
+ 136:Core/Src/dht11.c **** 	stored_data.Humidity = data.Humidity;
+ 529              		.loc 1 136 2 discriminator 1 view .LVU159
+ 136:Core/Src/dht11.c **** 	stored_data.Humidity = data.Humidity;
+ 530              		.loc 1 136 23 is_stmt 0 discriminator 1 view .LVU160
+ 531 01a6 2B4B     		ldr	r3, .L44+8
+ 532 01a8 049A     		ldr	r2, [sp, #16]	@ float
+ 533 01aa 1A60     		str	r2, [r3]	@ float
+ 137:Core/Src/dht11.c **** 	stored_data.Temperature = data.Temperature;
+ 534              		.loc 1 137 2 is_stmt 1 discriminator 1 view .LVU161
+ 137:Core/Src/dht11.c **** 	stored_data.Temperature = data.Temperature;
+ 535              		.loc 1 137 32 is_stmt 0 discriminator 1 view .LVU162
+ 536 01ac 059A     		ldr	r2, [sp, #20]	@ float
+ 137:Core/Src/dht11.c **** 	stored_data.Temperature = data.Temperature;
+ 537              		.loc 1 137 26 discriminator 1 view .LVU163
+ 538 01ae 5A60     		str	r2, [r3, #4]	@ float
+ 139:Core/Src/dht11.c **** 	return data;	
+ 539              		.loc 1 139 2 is_stmt 1 discriminator 1 view .LVU164
+ 139:Core/Src/dht11.c **** 	return data;	
+ 540              		.loc 1 139 9 is_stmt 0 discriminator 1 view .LVU165
+ 541 01b0 04AB     		add	r3, sp, #16
+ 542 01b2 93E80300 		ldm	r3, {r0, r1}
+ 543 01b6 08AB     		add	r3, sp, #32
+ 544 01b8 03E90300 		stmdb	r3, {r0, r1}
+ 545              	.LVL48:
+ 546              	.L12:
+ 140:Core/Src/dht11.c **** }
+ 547              		.loc 1 140 1 view .LVU166
+ 548 01bc 9DED060A 		vldr.32	s0, [sp, #24]
+ 549 01c0 DDED070A 		vldr.32	s1, [sp, #28]
+ 550 01c4 09B0     		add	sp, sp, #36
+ 551              	.LCFI7:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 16
+
+
+ 552              		.cfi_remember_state
+ 553              		.cfi_def_cfa_offset 28
+ 554              		@ sp needed
+ 555 01c6 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 556              	.LVL49:
+ 557              	.L42:
+ 558              	.LCFI8:
+ 559              		.cfi_restore_state
+ 115:Core/Src/dht11.c **** 		if (type == DHT22) 
+ 560              		.loc 1 115 3 is_stmt 1 view .LVU167
+ 115:Core/Src/dht11.c **** 		if (type == DHT22) 
+ 561              		.loc 1 115 6 is_stmt 0 view .LVU168
+ 562 01ca B9F1010F 		cmp	r9, #1
+ 563 01ce 11D0     		beq	.L43
+ 564              	.L30:
+ 129:Core/Src/dht11.c **** 		if (type == DHT11) 
+ 565              		.loc 1 129 3 is_stmt 1 view .LVU169
+ 129:Core/Src/dht11.c **** 		if (type == DHT11) 
+ 566              		.loc 1 129 6 is_stmt 0 view .LVU170
+ 567 01d0 B9F1000F 		cmp	r9, #0
+ 568 01d4 E7D1     		bne	.L29
+ 131:Core/Src/dht11.c **** 			data.Humidity = (float)rawData[0];
+ 569              		.loc 1 131 4 is_stmt 1 view .LVU171
+ 131:Core/Src/dht11.c **** 			data.Humidity = (float)rawData[0];
+ 570              		.loc 1 131 20 is_stmt 0 view .LVU172
+ 571 01d6 07EE904A 		vmov	s15, r4	@ int
+ 572 01da F8EE677A 		vcvt.f32.u32	s15, s15
+ 131:Core/Src/dht11.c **** 			data.Humidity = (float)rawData[0];
+ 573              		.loc 1 131 18 view .LVU173
+ 574 01de CDED047A 		vstr.32	s15, [sp, #16]
+ 132:Core/Src/dht11.c **** 			data.Temperature = (float)rawData[2];;
+ 575              		.loc 1 132 4 is_stmt 1 view .LVU174
+ 132:Core/Src/dht11.c **** 			data.Temperature = (float)rawData[2];;
+ 576              		.loc 1 132 37 is_stmt 0 view .LVU175
+ 577 01e2 9DF80A30 		ldrb	r3, [sp, #10]	@ zero_extendqisi2
+ 578 01e6 07EE903A 		vmov	s15, r3	@ int
+ 132:Core/Src/dht11.c **** 			data.Temperature = (float)rawData[2];;
+ 579              		.loc 1 132 23 view .LVU176
+ 580 01ea F8EE677A 		vcvt.f32.u32	s15, s15
+ 132:Core/Src/dht11.c **** 			data.Temperature = (float)rawData[2];;
+ 581              		.loc 1 132 21 view .LVU177
+ 582 01ee CDED057A 		vstr.32	s15, [sp, #20]
+ 583 01f2 D8E7     		b	.L29
+ 584              	.L43:
+ 117:Core/Src/dht11.c **** 			data.Humidity = (float)(((uint16_t)rawData[0]<<8) | rawData[1])*0.1f;
+ 585              		.loc 1 117 4 is_stmt 1 view .LVU178
+ 117:Core/Src/dht11.c **** 			data.Humidity = (float)(((uint16_t)rawData[0]<<8) | rawData[1])*0.1f;
+ 586              		.loc 1 117 54 is_stmt 0 view .LVU179
+ 587 01f4 42EA0422 		orr	r2, r2, r4, lsl #8
+ 588 01f8 07EE902A 		vmov	s15, r2	@ int
+ 117:Core/Src/dht11.c **** 			data.Humidity = (float)(((uint16_t)rawData[0]<<8) | rawData[1])*0.1f;
+ 589              		.loc 1 117 20 view .LVU180
+ 590 01fc F8EEE77A 		vcvt.f32.s32	s15, s15
+ 117:Core/Src/dht11.c **** 			data.Humidity = (float)(((uint16_t)rawData[0]<<8) | rawData[1])*0.1f;
+ 591              		.loc 1 117 67 view .LVU181
+ 592 0200 9FED177A 		vldr.32	s14, .L44+20
+ 593 0204 67EE877A 		vmul.f32	s15, s15, s14
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 17
+
+
+ 117:Core/Src/dht11.c **** 			data.Humidity = (float)(((uint16_t)rawData[0]<<8) | rawData[1])*0.1f;
+ 594              		.loc 1 117 18 view .LVU182
+ 595 0208 CDED047A 		vstr.32	s15, [sp, #16]
+ 119:Core/Src/dht11.c **** 			if(!(rawData[2] & (1<<7))) 
+ 596              		.loc 1 119 4 is_stmt 1 view .LVU183
+ 119:Core/Src/dht11.c **** 			if(!(rawData[2] & (1<<7))) 
+ 597              		.loc 1 119 6 is_stmt 0 view .LVU184
+ 598 020c 11F0800F 		tst	r1, #128
+ 599 0210 0AD1     		bne	.L31
+ 121:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*0.1f;
+ 600              		.loc 1 121 5 is_stmt 1 view .LVU185
+ 121:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*0.1f;
+ 601              		.loc 1 121 58 is_stmt 0 view .LVU186
+ 602 0212 43EA0123 		orr	r3, r3, r1, lsl #8
+ 603 0216 07EE903A 		vmov	s15, r3	@ int
+ 121:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*0.1f;
+ 604              		.loc 1 121 24 view .LVU187
+ 605 021a F8EEE77A 		vcvt.f32.s32	s15, s15
+ 121:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*0.1f;
+ 606              		.loc 1 121 71 view .LVU188
+ 607 021e 67EE877A 		vmul.f32	s15, s15, s14
+ 121:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*0.1f;
+ 608              		.loc 1 121 22 view .LVU189
+ 609 0222 CDED057A 		vstr.32	s15, [sp, #20]
+ 610 0226 D3E7     		b	.L30
+ 611              	.L31:
+ 125:Core/Src/dht11.c **** 				rawData[2] &= ~(1<<7);
+ 612              		.loc 1 125 5 is_stmt 1 view .LVU190
+ 125:Core/Src/dht11.c **** 				rawData[2] &= ~(1<<7);
+ 613              		.loc 1 125 16 is_stmt 0 view .LVU191
+ 614 0228 01F07F01 		and	r1, r1, #127
+ 615 022c 8DF80A10 		strb	r1, [sp, #10]
+ 126:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*-0.1f;
+ 616              		.loc 1 126 5 is_stmt 1 view .LVU192
+ 126:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*-0.1f;
+ 617              		.loc 1 126 58 is_stmt 0 view .LVU193
+ 618 0230 43EA0123 		orr	r3, r3, r1, lsl #8
+ 619 0234 07EE903A 		vmov	s15, r3	@ int
+ 126:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*-0.1f;
+ 620              		.loc 1 126 24 view .LVU194
+ 621 0238 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 126:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*-0.1f;
+ 622              		.loc 1 126 71 view .LVU195
+ 623 023c 9FED097A 		vldr.32	s14, .L44+24
+ 624 0240 67EE877A 		vmul.f32	s15, s15, s14
+ 126:Core/Src/dht11.c **** 				data.Temperature = (float)(((uint16_t)rawData[2]<<8) | rawData[3])*-0.1f;
+ 625              		.loc 1 126 22 view .LVU196
+ 626 0244 CDED057A 		vstr.32	s15, [sp, #20]
+ 627 0248 C2E7     		b	.L30
+ 628              	.L45:
+ 629 024a 00BF     		.align	2
+ 630              	.L44:
+ 631 024c 00000000 		.word	.LANCHOR0
+ 632 0250 00000000 		.word	.LANCHOR1
+ 633 0254 00000000 		.word	.LANCHOR2
+ 634 0258 00000000 		.word	.LANCHOR3
+ 635 025c 905F0100 		.word	90000
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 18
+
+
+ 636 0260 CDCCCC3D 		.word	1036831949
+ 637 0264 CDCCCCBD 		.word	-1110651699
+ 638              		.cfi_endproc
+ 639              	.LFE134:
+ 641              		.section	.rodata
+ 642              		.align	2
+ 643              		.set	.LANCHOR3,. + 0
+ 644              	.LC0:
+ 645 0000 00000000 		.ascii	"\000\000\000\000\000"
+ 645      00
+ 646              		.section	.bss.bFirstcall.2,"aw",%nobits
+ 647              		.set	.LANCHOR0,. + 0
+ 650              	bFirstcall.2:
+ 651 0000 00       		.space	1
+ 652              		.section	.bss.lastPollingTime.1,"aw",%nobits
+ 653              		.align	2
+ 654              		.set	.LANCHOR1,. + 0
+ 657              	lastPollingTime.1:
+ 658 0000 00000000 		.space	4
+ 659              		.section	.bss.stored_data.0,"aw",%nobits
+ 660              		.align	2
+ 661              		.set	.LANCHOR2,. + 0
+ 664              	stored_data.0:
+ 665 0000 00000000 		.space	8
+ 665      00000000 
+ 666              		.text
+ 667              	.Letext0:
+ 668              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 669              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 670              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 671              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
+ 672              		.file 6 "Core/Inc/dht11.h"
+ 673              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 dht11.c
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:20     .text.DHT11_ModeSelection:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:25     .text.DHT11_ModeSelection:00000000 DHT11_ModeSelection
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:112    .text.DHT11_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:118    .text.DHT11_Init:00000000 DHT11_Init
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:140    .text.DHT11_Init:00000010 $d
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:145    .text.DHT_getData:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:151    .text.DHT_getData:00000000 DHT_getData
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:631    .text.DHT_getData:0000024c $d
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:642    .rodata:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:650    .bss.bFirstcall.2:00000000 bFirstcall.2
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:651    .bss.bFirstcall.2:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:653    .bss.lastPollingTime.1:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:657    .bss.lastPollingTime.1:00000000 lastPollingTime.1
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:660    .bss.stored_data.0:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccIrEQ8m.s:664    .bss.stored_data.0:00000000 stored_data.0
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_GPIO_Init
+HAL_GetTick
+HAL_Delay
+HAL_GPIO_ReadPin

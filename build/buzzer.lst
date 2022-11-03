@@ -1,0 +1,188 @@
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnXBnDI.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"buzzer.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Buzzer_Act,"ax",%progbits
+  20              		.align	1
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	Buzzer_Act:
+  26              	.LVL0:
+  27              	.LFB134:
+  28              		.file 1 "Core/Src/buzzer.c"
+   1:Core/Src/buzzer.c **** #include "buzzer.h"
+   2:Core/Src/buzzer.c **** 
+   3:Core/Src/buzzer.c **** static void Buzzer_Act(int time);
+   4:Core/Src/buzzer.c **** 
+   5:Core/Src/buzzer.c **** void Buzzer_Init(void)
+   6:Core/Src/buzzer.c **** {
+   7:Core/Src/buzzer.c ****     // Buzzer PWM Start
+   8:Core/Src/buzzer.c **** 	HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_3);
+   9:Core/Src/buzzer.c **** 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3,0);
+  10:Core/Src/buzzer.c ****     
+  11:Core/Src/buzzer.c **** 	if (HAL_TIM_Base_Start_IT(&htim3) != HAL_OK)
+  12:Core/Src/buzzer.c ****     {
+  13:Core/Src/buzzer.c **** 		Error_Handler();
+  14:Core/Src/buzzer.c **** 	}
+  15:Core/Src/buzzer.c **** 
+  16:Core/Src/buzzer.c **** 	// Start Buzzer
+  17:Core/Src/buzzer.c ****     Buzzer_Act(100);
+  18:Core/Src/buzzer.c **** }
+  19:Core/Src/buzzer.c **** 
+  20:Core/Src/buzzer.c **** static void Buzzer_Act(int time)
+  21:Core/Src/buzzer.c **** {
+  29              		.loc 1 21 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 21 1 is_stmt 0 view .LVU1
+  34 0000 10B5     		push	{r4, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 4, -8
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnXBnDI.s 			page 2
+
+
+  38              		.cfi_offset 14, -4
+  22:Core/Src/buzzer.c **** 	__HAL_TIM_SET_AUTORELOAD(&htim3, 370);
+  39              		.loc 1 22 2 is_stmt 1 view .LVU2
+  40              		.loc 1 22 2 view .LVU3
+  41 0002 074C     		ldr	r4, .L3
+  42 0004 2368     		ldr	r3, [r4]
+  43 0006 4FF4B972 		mov	r2, #370
+  44 000a DA62     		str	r2, [r3, #44]
+  45              		.loc 1 22 2 view .LVU4
+  46 000c E260     		str	r2, [r4, #12]
+  47              		.loc 1 22 2 view .LVU5
+  23:Core/Src/buzzer.c **** 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3,50);
+  48              		.loc 1 23 2 view .LVU6
+  49 000e 3222     		movs	r2, #50
+  50 0010 DA63     		str	r2, [r3, #60]
+  24:Core/Src/buzzer.c **** 	HAL_Delay(time);
+  51              		.loc 1 24 2 view .LVU7
+  52 0012 FFF7FEFF 		bl	HAL_Delay
+  53              	.LVL1:
+  25:Core/Src/buzzer.c **** 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3,0);
+  54              		.loc 1 25 2 view .LVU8
+  55 0016 2368     		ldr	r3, [r4]
+  56 0018 0022     		movs	r2, #0
+  57 001a DA63     		str	r2, [r3, #60]
+  26:Core/Src/buzzer.c **** }
+  58              		.loc 1 26 1 is_stmt 0 view .LVU9
+  59 001c 10BD     		pop	{r4, pc}
+  60              	.L4:
+  61 001e 00BF     		.align	2
+  62              	.L3:
+  63 0020 00000000 		.word	htim3
+  64              		.cfi_endproc
+  65              	.LFE134:
+  67              		.section	.text.Buzzer_Init,"ax",%progbits
+  68              		.align	1
+  69              		.global	Buzzer_Init
+  70              		.syntax unified
+  71              		.thumb
+  72              		.thumb_func
+  74              	Buzzer_Init:
+  75              	.LFB133:
+   6:Core/Src/buzzer.c ****     // Buzzer PWM Start
+  76              		.loc 1 6 1 is_stmt 1 view -0
+  77              		.cfi_startproc
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80 0000 10B5     		push	{r4, lr}
+  81              	.LCFI1:
+  82              		.cfi_def_cfa_offset 8
+  83              		.cfi_offset 4, -8
+  84              		.cfi_offset 14, -4
+   8:Core/Src/buzzer.c **** 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3,0);
+  85              		.loc 1 8 2 view .LVU11
+  86 0002 094C     		ldr	r4, .L9
+  87 0004 0821     		movs	r1, #8
+  88 0006 2046     		mov	r0, r4
+  89 0008 FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnXBnDI.s 			page 3
+
+
+  90              	.LVL2:
+   9:Core/Src/buzzer.c ****     
+  91              		.loc 1 9 2 view .LVU12
+  92 000c 2368     		ldr	r3, [r4]
+  93 000e 0022     		movs	r2, #0
+  94 0010 DA63     		str	r2, [r3, #60]
+  11:Core/Src/buzzer.c ****     {
+  95              		.loc 1 11 2 view .LVU13
+  11:Core/Src/buzzer.c ****     {
+  96              		.loc 1 11 6 is_stmt 0 view .LVU14
+  97 0012 2046     		mov	r0, r4
+  98 0014 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+  99              	.LVL3:
+  11:Core/Src/buzzer.c ****     {
+ 100              		.loc 1 11 5 view .LVU15
+ 101 0018 18B9     		cbnz	r0, .L8
+ 102              	.L6:
+  17:Core/Src/buzzer.c **** }
+ 103              		.loc 1 17 5 is_stmt 1 view .LVU16
+ 104 001a 6420     		movs	r0, #100
+ 105 001c FFF7FEFF 		bl	Buzzer_Act
+ 106              	.LVL4:
+  18:Core/Src/buzzer.c **** 
+ 107              		.loc 1 18 1 is_stmt 0 view .LVU17
+ 108 0020 10BD     		pop	{r4, pc}
+ 109              	.L8:
+  13:Core/Src/buzzer.c **** 	}
+ 110              		.loc 1 13 3 is_stmt 1 view .LVU18
+ 111 0022 FFF7FEFF 		bl	Error_Handler
+ 112              	.LVL5:
+ 113 0026 F8E7     		b	.L6
+ 114              	.L10:
+ 115              		.align	2
+ 116              	.L9:
+ 117 0028 00000000 		.word	htim3
+ 118              		.cfi_endproc
+ 119              	.LFE133:
+ 121              		.text
+ 122              	.Letext0:
+ 123              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 124              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 125              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 126              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 127              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 128              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
+ 129              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h"
+ 130              		.file 9 "Core/Inc/main.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnXBnDI.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 buzzer.c
+C:\Users\jisu8\AppData\Local\Temp\ccnXBnDI.s:20     .text.Buzzer_Act:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnXBnDI.s:25     .text.Buzzer_Act:00000000 Buzzer_Act
+C:\Users\jisu8\AppData\Local\Temp\ccnXBnDI.s:63     .text.Buzzer_Act:00000020 $d
+C:\Users\jisu8\AppData\Local\Temp\ccnXBnDI.s:68     .text.Buzzer_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnXBnDI.s:74     .text.Buzzer_Init:00000000 Buzzer_Init
+C:\Users\jisu8\AppData\Local\Temp\ccnXBnDI.s:117    .text.Buzzer_Init:00000028 $d
+
+UNDEFINED SYMBOLS
+HAL_Delay
+htim3
+HAL_TIM_PWM_Start
+HAL_TIM_Base_Start_IT
+Error_Handler

@@ -1,0 +1,243 @@
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"rtc.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.RTC_Init,"ax",%progbits
+  20              		.align	1
+  21              		.global	RTC_Init
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	RTC_Init:
+  27              	.LFB133:
+  28              		.file 1 "Core/Src/rtc.c"
+   1:Core/Src/rtc.c **** #include "rtc.h"
+   2:Core/Src/rtc.c **** 
+   3:Core/Src/rtc.c **** uint32_t time_counters;
+   4:Core/Src/rtc.c **** 
+   5:Core/Src/rtc.c **** 
+   6:Core/Src/rtc.c **** 
+   7:Core/Src/rtc.c **** uint16_t RTC_hours,RTC_minutes,RTC_seconds;
+   8:Core/Src/rtc.c **** 
+   9:Core/Src/rtc.c **** void RTC_Init(void)
+  10:Core/Src/rtc.c **** {
+  29              		.loc 1 10 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  11:Core/Src/rtc.c ****     //sTime.Hours = 3;
+  12:Core/Src/rtc.c ****     //sTime.Minutes = 28;
+  13:Core/Src/rtc.c ****     //sTime.Seconds = 50;
+  14:Core/Src/rtc.c **** 
+  15:Core/Src/rtc.c ****     /* Alarm every minute @ XX:XX:20 */
+  16:Core/Src/rtc.c ****     //sAlarm.AlarmTime.Seconds = 0x20;
+  17:Core/Src/rtc.c ****     //sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY|RTC_ALARMMASK_HOURS |RTC_ALARMMASK_MINUTES;
+  18:Core/Src/rtc.c ****     //sAlarm.Alarm = RTC_ALARM_A;
+  19:Core/Src/rtc.c **** 
+  20:Core/Src/rtc.c **** 
+  21:Core/Src/rtc.c ****     //HAL_RTC_SetTime(&hrtc, &sTime, FORMAT_BIN);
+  22:Core/Src/rtc.c ****     //HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
+  23:Core/Src/rtc.c **** }
+  34              		.loc 1 23 1 view .LVU1
+  35 0000 7047     		bx	lr
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s 			page 2
+
+
+  36              		.cfi_endproc
+  37              	.LFE133:
+  39              		.section	.text.RTC_Measure_Time,"ax",%progbits
+  40              		.align	1
+  41              		.global	RTC_Measure_Time
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  46              	RTC_Measure_Time:
+  47              	.LFB134:
+  24:Core/Src/rtc.c **** 
+  25:Core/Src/rtc.c **** void RTC_Measure_Time(void)
+  26:Core/Src/rtc.c **** {
+  48              		.loc 1 26 1 view -0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 24
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52 0000 10B5     		push	{r4, lr}
+  53              	.LCFI0:
+  54              		.cfi_def_cfa_offset 8
+  55              		.cfi_offset 4, -8
+  56              		.cfi_offset 14, -4
+  57 0002 86B0     		sub	sp, sp, #24
+  58              	.LCFI1:
+  59              		.cfi_def_cfa_offset 32
+  27:Core/Src/rtc.c ****     uint32_t timeLoc;
+  60              		.loc 1 27 5 view .LVU3
+  28:Core/Src/rtc.c ****     
+  29:Core/Src/rtc.c ****     RTC_TimeTypeDef Time;
+  61              		.loc 1 29 5 view .LVU4
+  30:Core/Src/rtc.c ****     RTC_DateTypeDef Date;
+  62              		.loc 1 30 5 view .LVU5
+  31:Core/Src/rtc.c ****     HAL_RTC_GetTime(&hrtc, &Time, FORMAT_BIN);
+  63              		.loc 1 31 5 view .LVU6
+  64 0004 0C4C     		ldr	r4, .L4
+  65 0006 0022     		movs	r2, #0
+  66 0008 01A9     		add	r1, sp, #4
+  67 000a 2046     		mov	r0, r4
+  68 000c FFF7FEFF 		bl	HAL_RTC_GetTime
+  69              	.LVL0:
+  32:Core/Src/rtc.c ****     HAL_RTC_GetDate(&hrtc, &Date, FORMAT_BIN);
+  70              		.loc 1 32 5 view .LVU7
+  71 0010 0022     		movs	r2, #0
+  72 0012 6946     		mov	r1, sp
+  73 0014 2046     		mov	r0, r4
+  74 0016 FFF7FEFF 		bl	HAL_RTC_GetDate
+  75              	.LVL1:
+  33:Core/Src/rtc.c ****     RTC_hours = Time.Hours;
+  76              		.loc 1 33 5 view .LVU8
+  77              		.loc 1 33 21 is_stmt 0 view .LVU9
+  78 001a 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+  79              		.loc 1 33 15 view .LVU10
+  80 001e 074B     		ldr	r3, .L4+4
+  81 0020 1A80     		strh	r2, [r3]	@ movhi
+  34:Core/Src/rtc.c ****     RTC_minutes = Time.Minutes;
+  82              		.loc 1 34 5 is_stmt 1 view .LVU11
+  83              		.loc 1 34 23 is_stmt 0 view .LVU12
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s 			page 3
+
+
+  84 0022 9DF80520 		ldrb	r2, [sp, #5]	@ zero_extendqisi2
+  85              		.loc 1 34 17 view .LVU13
+  86 0026 064B     		ldr	r3, .L4+8
+  87 0028 1A80     		strh	r2, [r3]	@ movhi
+  35:Core/Src/rtc.c ****     RTC_seconds = Time.Seconds;
+  88              		.loc 1 35 5 is_stmt 1 view .LVU14
+  89              		.loc 1 35 23 is_stmt 0 view .LVU15
+  90 002a 9DF80620 		ldrb	r2, [sp, #6]	@ zero_extendqisi2
+  91              		.loc 1 35 17 view .LVU16
+  92 002e 054B     		ldr	r3, .L4+12
+  93 0030 1A80     		strh	r2, [r3]	@ movhi
+  36:Core/Src/rtc.c **** 
+  37:Core/Src/rtc.c ****     #if 0
+  38:Core/Src/rtc.c ****     g_diff_time = local_time_counters - time_counters;
+  39:Core/Src/rtc.c ****     if( g_diff_time < 0 ) g_diff_time += ( 24 * 3600 );
+  40:Core/Src/rtc.c ****     if( g_diff_time > 120 ) 
+  41:Core/Src/rtc.c ****     {
+  42:Core/Src/rtc.c ****          NVIC_SystemReset();
+  43:Core/Src/rtc.c ****     }
+  44:Core/Src/rtc.c ****     #endif
+  45:Core/Src/rtc.c **** }
+  94              		.loc 1 45 1 view .LVU17
+  95 0032 06B0     		add	sp, sp, #24
+  96              	.LCFI2:
+  97              		.cfi_def_cfa_offset 8
+  98              		@ sp needed
+  99 0034 10BD     		pop	{r4, pc}
+ 100              	.L5:
+ 101 0036 00BF     		.align	2
+ 102              	.L4:
+ 103 0038 00000000 		.word	hrtc
+ 104 003c 00000000 		.word	.LANCHOR0
+ 105 0040 00000000 		.word	.LANCHOR1
+ 106 0044 00000000 		.word	.LANCHOR2
+ 107              		.cfi_endproc
+ 108              	.LFE134:
+ 110              		.section	.text.HAL_RTCEx_TimeStampEventCallback,"ax",%progbits
+ 111              		.align	1
+ 112              		.global	HAL_RTCEx_TimeStampEventCallback
+ 113              		.syntax unified
+ 114              		.thumb
+ 115              		.thumb_func
+ 117              	HAL_RTCEx_TimeStampEventCallback:
+ 118              	.LVL2:
+ 119              	.LFB135:
+  46:Core/Src/rtc.c ****     
+  47:Core/Src/rtc.c **** 
+  48:Core/Src/rtc.c **** void HAL_RTCEx_TimeStampEventCallback(RTC_HandleTypeDef *hrtc)
+  49:Core/Src/rtc.c **** {
+ 120              		.loc 1 49 1 is_stmt 1 view -0
+ 121              		.cfi_startproc
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124              		@ link register save eliminated.
+  50:Core/Src/rtc.c **** 	//HAL_RTCEx_GetTimeStamp(hrtc, &stampTime, &stampDate, RTC_FORMAT_BCD);
+  51:Core/Src/rtc.c **** }
+ 125              		.loc 1 51 1 view .LVU19
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s 			page 4
+
+
+ 126 0000 7047     		bx	lr
+ 127              		.cfi_endproc
+ 128              	.LFE135:
+ 130              		.global	RTC_seconds
+ 131              		.global	RTC_minutes
+ 132              		.global	RTC_hours
+ 133              		.global	time_counters
+ 134              		.section	.bss.RTC_hours,"aw",%nobits
+ 135              		.align	1
+ 136              		.set	.LANCHOR0,. + 0
+ 139              	RTC_hours:
+ 140 0000 0000     		.space	2
+ 141              		.section	.bss.RTC_minutes,"aw",%nobits
+ 142              		.align	1
+ 143              		.set	.LANCHOR1,. + 0
+ 146              	RTC_minutes:
+ 147 0000 0000     		.space	2
+ 148              		.section	.bss.RTC_seconds,"aw",%nobits
+ 149              		.align	1
+ 150              		.set	.LANCHOR2,. + 0
+ 153              	RTC_seconds:
+ 154 0000 0000     		.space	2
+ 155              		.section	.bss.time_counters,"aw",%nobits
+ 156              		.align	2
+ 159              	time_counters:
+ 160 0000 00000000 		.space	4
+ 161              		.text
+ 162              	.Letext0:
+ 163              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 164              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 165              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 166              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 167              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rtc.h"
+ 168              		.file 7 "Core/Inc/main.h"
+ 169              		.file 8 "Core/Inc/rtc.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 rtc.c
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:20     .text.RTC_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:26     .text.RTC_Init:00000000 RTC_Init
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:40     .text.RTC_Measure_Time:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:46     .text.RTC_Measure_Time:00000000 RTC_Measure_Time
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:103    .text.RTC_Measure_Time:00000038 $d
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:111    .text.HAL_RTCEx_TimeStampEventCallback:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:117    .text.HAL_RTCEx_TimeStampEventCallback:00000000 HAL_RTCEx_TimeStampEventCallback
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:153    .bss.RTC_seconds:00000000 RTC_seconds
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:146    .bss.RTC_minutes:00000000 RTC_minutes
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:139    .bss.RTC_hours:00000000 RTC_hours
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:159    .bss.time_counters:00000000 time_counters
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:135    .bss.RTC_hours:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:142    .bss.RTC_minutes:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:149    .bss.RTC_seconds:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccGqMLHs.s:156    .bss.time_counters:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_RTC_GetTime
+HAL_RTC_GetDate
+hrtc
