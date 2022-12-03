@@ -1,0 +1,122 @@
+# pause : msec
+
+# -----------------------------------------#
+ECHO "-----------------------------------------"
+ECHO "MQTT-SN Test Script"
+# -----------------------------------------#
+/*
+ATE0
+PAUSE 1000
+
+
+AT+USIO?
+PAUSE 1000
+
+AT+COPS?
+PAUSE 1000
+
+AT+CEREG?
+PAUSE 1000
+
+AT+CESQ
+PAUSE 1000
+
+AT+UCGED?
+PAUSE 1000
+
+AT+CGDCONT?
+PAUSE 1000
+
+AT+UPSD=0,0,0
+PAUSE 1000
+
+AT+UPSD=0,100,1
+PAUSE 1000
+
+AT+UPSDA=0,3
+PAUSE 5000
+*/
+
+AT+UPSND=0,0
+PAUSE 100
+
+/*
+ECHO "~~~ MQTT-SN ~~~~~"
+
+# MQTT-SN unique client ID
+//AT+UMQTTSN=0,"identity:6006c0ee-44e7-3470-9f34-a872731a963e"
+AT+UMQTTSN=0,"identity:7729a913-4a03-3ece-93fa-ce51fc85ed62"
+PAUSE 1000
+
+# MQTT-SN server IP address
+AT+UMQTTSN=2,"10.7.0.55",2442
+PAUSE 1000
+
+# MQTT connection duration
+AT+UMQTTSN=8,600
+PAUSE 1000
+
+AT+UMQTTSNNV=2
+PAUSE 2000
+
+AT+UMQTTSN?
+PAUSE 2000
+*/
+# MQTT-SN connect
+AT+UMQTTSNC=1
+PAUSE 2000
+
+
+# MQTT-SN register
+#AT+UMQTTSNC=2,"my/publish/topic"
+#PAUSE 2000
+
+//=============================================//
+AT+UMQTTSNC=2,"test_topic"
+PAUSE 2000
+
+AT+UMQTTSNC=5,1,0,"test_topic"
+PAUSE 2000
+//=============================================//
+
+# MQTT-Subscribe read message
+#AT+UMQTTSNC=5,1,0,"my/publish/topic"
+#PAUSE 2000
+
+
+# MQTT-Publish read message
+#AT+UMQTTSNC=4,1,0,0,0,"1","Hello MQTT-SN 1234567890"
+#PAUSE 2000
+
+#Fail
+ECHO("Failed case - wrong json format");
+AT+UMQTTSNC=4,1,0,0,0,"1","{\"_ID\":\"SN_TEST_FM04_001\",\"_TEMP\":\"23.30\",\"_HUMI\":\"36.42\",\"_DIST\":\"158.00\",\"_CHAR\":\"3.87\",\"_GPS\":\"36.80914,127.14504\"}"
+PAUSE 2000
+
+#success 1
+ECHO("Success case - GPS is spilitted with GPS_lat and GPS_long");
+AT+UMQTTSNC=4,1,0,0,0,"1","{\"_ID\":\"SN_TEST_FM04_001\",\"_TEMP\":\"23.30\",\"_HUMI\":\"36.42\",\"_DIST\":\"158.00\",\"_CHAR\":\"3.87\",\"_GPS_lat\":\"36.80914\",\"_GPS_lon\":\"127.14504"\"}"
+PAUSE 2000
+
+#success 2
+ECHO("Success case - GPS has lat,log : ok ");
+AT+UMQTTSNC=4,1,0,0,0,"1","{\"_ID\":\"SN_TEST_FM04_001\",\"_TEMP\":\"23.30\",\"_HUMI\":\"36.42\",\"_DIST\":\"158.00\",\"_CHAR\":\"3.87\",\"_GPS\":\"36.80914","127.14504\",\"_DOOR\":\"1\"}"
+PAUSE 2000
+
+# MQTT-SN read message
+#+UUMQTTSNC: 9,1
+
+AT+UMQTTSNC=9,1
+PAUSE 2000
+
+
+# MQTT-SN disconnect
+#AT+UMQTTSNC=0
+#PAUSE 300
+
+//AT+UPSDA=0,4
+
+# -----------------------------------------#
+ECHO "This is the end of script ^^ "
+ECHO "-----------------------------------------"
+# -----------------------------------------#

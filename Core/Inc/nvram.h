@@ -154,5 +154,7 @@
 #define FLASH_USER_START_ADDR   ADDR_FLASH_PAGE_127
 
 extern void NVRam_Init(void);
+extern void NVRam_Read(void);
+extern void NVRam_Write(void);
 
 #endif

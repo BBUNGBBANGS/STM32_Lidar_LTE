@@ -1,5 +1,4 @@
 #include "debug.h"
-#include "string.h"
 #include "uart.h"
 #include "lte.h"
 
@@ -22,8 +21,17 @@ void Debug_Message_Transmit(uint8_t * buf)
 
 void Test_Debug(void)
 {
-    HAL_UART_Transmit(&huart3,LTE_Rx_Buffer,LTE_Rx_Counter,100);
-    HAL_UART_Transmit(&huart3,Debug_Rx_buffer,Debug_Rx_Count,100);
-    Debug_Rx_Count = 0;
-    LTE_Rx_Counter = 0;
+    if(Debug_Rx_Count>0)
+    {
+        HAL_UART_Transmit(&huart3,Debug_Rx_buffer,Debug_Rx_Count,100);
+        HAL_UART_Transmit(&huart1,Debug_Rx_buffer,Debug_Rx_Count,100);
+        Debug_Rx_Count = 0;
+    }
+    #if 0
+    if(LTE_Rx_Counter>0)
+    {
+        HAL_UART_Transmit(&huart3,LTE_Rx_Buffer,LTE_Rx_Counter,100);
+        LTE_Rx_Counter = 0;
+    }
+    #endif
 }

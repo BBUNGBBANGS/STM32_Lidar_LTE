@@ -38,7 +38,7 @@ static void Os_10ms_Task(void)
 	Device_Battery_Voltage_Read();
 	Device_Detect_SensorSignal();
 }
-uint16_t test_counter;
+
 static void Os_100ms_Task(void)
 {
     DHT_Data_t data;
@@ -53,6 +53,7 @@ static void Os_100ms_Task(void)
     humidity = (uint16_t)data.Humidity;
 	Lidar_Receive_Data();
 	Test_Debug();
+	LTE_Connect();
     //sprintf(tx_data,"Time: %d:%d:%d, Temperature : %d, Humidity : %d, Battery : %d, Lidar Distance : %d, Lidar Strength : %d, Lidar Temp : %d, Sensor_Signal : %d\n",RTC_hours,RTC_minutes,RTC_seconds,temperature,humidity,Device_Batt_Voltage,Lidar_Distance,Lidar_Strength,Lidar_Temperature,Device_Sensor_Signal);
     //Debug_Message_Transmit(tx_data);
 	//memset(tx_data,0x00,150);
@@ -70,11 +71,8 @@ static void Os_Time_Handler(void)
 
 void Os_Handler(void)
 {
-	void(*fp)(void);
     if(Os_Var.Os_Task_Flag.Os_100ms_Flag == 1)
 	{
-		fp = Os_100ms_Task;
-		Os_Var.Os_Task_Add.Os_100ms_Address = fp;
 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 0;
 		Os_Calc_Runtime_Start(OS_TASK_INDEX_100MS);
 		(void)Os_100ms_Task();
@@ -106,8 +104,6 @@ static void Os_Handler_10ms(void)
 	void(*fp)(void);
 	if(Os_Var.Os_Task_Flag.Os_10ms_Flag == 1)
 	{
-		fp = Os_10ms_Task;
-		Os_Var.Os_Task_Add.Os_10ms_Address = fp;
 		Os_Var.Os_Task_Flag.Os_10ms_Flag = 0;
 		Os_Calc_Runtime_Start(OS_TASK_INDEX_10MS);
 		(void)Os_10ms_Task();

@@ -48,12 +48,6 @@ typedef struct
 	uint8_t Os_100ms_Flag;
 }Os_Task_Flag_t;
 
-typedef struct
-{
-	uint32_t *Os_10ms_Address;
-	uint32_t *Os_100ms_Address;
-}Os_Task_Add_t;
-
 typedef struct 
 {
 	Os_Counter_t Os_Counter;
@@ -63,7 +57,6 @@ typedef struct
 	Os_Period_t Os_Period;
 	OS_CPU_Load_t OS_CPU_Load;
 	Os_Task_Flag_t Os_Task_Flag;
-	Os_Task_Add_t Os_Task_Add;
 }Os_Var_t;
 
 #define OS_TASK_INDEX_10MS			(2u)

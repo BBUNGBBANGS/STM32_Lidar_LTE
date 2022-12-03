@@ -1,0 +1,56 @@
+# pause : msec
+
+# -----------------------------------------#
+ECHO "MQTT-SN Test Script"
+# -----------------------------------------#
+// Variables
+string command, resp;
+
+// Configurable parameters
+//string identity = "identity:214bcb2a-961f-3e85-b1be-6351bc5e847a";
+//string identity = "identity:0e39f44f-6f00-35a3-bc2a-7f0ebd423d04";
+//jhcho identity
+string identity = "identity:7729a913-4a03-3ece-93fa-ce51fc85ed62";
+//---------------------------------------------------//
+int QOS = 0;
+//int QOS = 1;
+//int QOS = 2;
+//int QOS = 3;
+bool send_disconnct = true;
+//bool send_disconnct = false;
+//---------------------------------------------------//
+//string data_message = "HelloHello";
+//string data_message = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
+
+string product_in_use = "saraR5"; // Possible options are "saraR5" or "saraR42" 
+//---------------------------------------------------//
+// MQTT Anywhere configuration
+ECHO "~~~~~ MQTT-SN ~~~~~"
+
+#AT+UMQTTSN=0,"352753090041680"
+command = "AT+UMQTTSN=0,\"" + identity + "\"";
+SENDAT(command, 5000, "OK");
+
+# MMQTT-SN server IP address
+AT+UMQTTSN=1,"www.aimbelab.com",2442
+PAUSE 50
+
+# MQTT connection duration
+AT+UMQTTSN=8,600
+PAUSE 50
+
+AT+UMQTTSNNV=2
+PAUSE 2000
+
+AT+UMQTTSN?
+PAUSE 2000
+
+# MQTT-SN clean session
+//AT+UMQTTSN=10,1
+PAUSE 50
+
+
+# -----------------------------------------#
+ECHO "This is the end of script ^^ "
+ECHO "-----------------------------------------"
+# -----------------------------------------#

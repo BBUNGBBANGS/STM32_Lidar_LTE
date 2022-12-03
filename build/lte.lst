@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -19,140 +19,3416 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.section	.text.LTE_Init,"ax",%progbits
+  19              		.section	.text.LTE_Transmit,"ax",%progbits
   20              		.align	1
-  21              		.global	LTE_Init
+  21              		.global	LTE_Transmit
   22              		.syntax unified
   23              		.thumb
   24              		.thumb_func
-  26              	LTE_Init:
-  27              	.LFB133:
-  28              		.file 1 "Core/Src/lte.c"
+  26              	LTE_Transmit:
+  27              	.LVL0:
+  28              	.LFB134:
+  29              		.file 1 "Core/Src/lte.c"
    1:Core/Src/lte.c **** #include "lte.h"
    2:Core/Src/lte.c **** 
-   3:Core/Src/lte.c **** uint8_t LTE_Rx_Buffer[1024];
+   3:Core/Src/lte.c **** uint8_t LTE_Rx_Buffer[LTE_RX_BUFFER_SIZE];
    4:Core/Src/lte.c **** uint16_t LTE_Rx_Counter;
    5:Core/Src/lte.c **** uint8_t dummy_lte;
-   6:Core/Src/lte.c **** void LTE_Init(void)
-   7:Core/Src/lte.c **** {
-  29              		.loc 1 7 1 view -0
-  30              		.cfi_startproc
-  31              		@ args = 0, pretend = 0, frame = 0
-  32              		@ frame_needed = 0, uses_anonymous_args = 0
-  33 0000 10B5     		push	{r4, lr}
-  34              	.LCFI0:
-  35              		.cfi_def_cfa_offset 8
-  36              		.cfi_offset 4, -8
-  37              		.cfi_offset 14, -4
-   8:Core/Src/lte.c ****     if ( HAL_UART_Receive_IT(&huart1, &dummy_lte, 1) != HAL_OK)
-  38              		.loc 1 8 5 view .LVU1
-  39              		.loc 1 8 10 is_stmt 0 view .LVU2
-  40 0002 0122     		movs	r2, #1
-  41 0004 0B49     		ldr	r1, .L5
-  42 0006 0C48     		ldr	r0, .L5+4
-  43 0008 FFF7FEFF 		bl	HAL_UART_Receive_IT
-  44              	.LVL0:
-  45              		.loc 1 8 8 view .LVU3
-  46 000c 78B9     		cbnz	r0, .L4
-  47              	.L2:
-   9:Core/Src/lte.c ****     {
-  10:Core/Src/lte.c ****         Error_Handler();
-  11:Core/Src/lte.c ****     }
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s 			page 2
+   6:Core/Src/lte.c **** 
+   7:Core/Src/lte.c **** uint8_t LTE_Status;
+   8:Core/Src/lte.c **** uint8_t LTE_ID[] = "SN_TEST_FM04_001";
+   9:Core/Src/lte.c **** uint16_t LTE_TEMP_I = 23;
+  10:Core/Src/lte.c **** uint16_t LTE_TEMP_D = 30;
+  11:Core/Src/lte.c **** uint16_t LTE_HUMI_I = 36;
+  12:Core/Src/lte.c **** uint32_t LTE_HUMI_D = 42;
+  13:Core/Src/lte.c **** uint16_t LTE_DIST_I = 158;
+  14:Core/Src/lte.c **** uint32_t LTE_DIST_D = 00;
+  15:Core/Src/lte.c **** uint16_t LTE_CHAR_I = 3;
+  16:Core/Src/lte.c **** uint32_t LTE_CHAR_D = 87;
+  17:Core/Src/lte.c **** uint16_t LTE_GPS1_I = 36;
+  18:Core/Src/lte.c **** uint32_t LTE_GPS1_D = 80914;
+  19:Core/Src/lte.c **** uint16_t LTE_GPS2_I = 127;
+  20:Core/Src/lte.c **** uint32_t LTE_GPS2_D = 14504;
+  21:Core/Src/lte.c **** uint8_t LTE_DOOR = 1;
+  22:Core/Src/lte.c **** 
+  23:Core/Src/lte.c **** uint8_t LTE_Test_Buffer[LTE_RX_BUFFER_SIZE];
+  24:Core/Src/lte.c **** 
+  25:Core/Src/lte.c **** void LTE_Init(void)
+  26:Core/Src/lte.c **** {
+  27:Core/Src/lte.c ****     if ( HAL_UART_Receive_IT(&huart1, &dummy_lte, 1) != HAL_OK)
+  28:Core/Src/lte.c ****     {
+  29:Core/Src/lte.c ****         Error_Handler();
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 2
 
 
-  12:Core/Src/lte.c ****     
-  13:Core/Src/lte.c **** 	//SARA Power On
-  14:Core/Src/lte.c **** 	HAL_GPIO_WritePin(POWER_KEY_GPIO_Port, POWER_KEY_Pin, GPIO_PIN_RESET);
-  48              		.loc 1 14 2 is_stmt 1 view .LVU4
-  49 000e 0B4C     		ldr	r4, .L5+8
-  50 0010 0022     		movs	r2, #0
-  51 0012 2021     		movs	r1, #32
-  52 0014 2046     		mov	r0, r4
-  53 0016 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  54              	.LVL1:
-  15:Core/Src/lte.c ****     HAL_Delay(2000);
-  55              		.loc 1 15 5 view .LVU5
-  56 001a 4FF4FA60 		mov	r0, #2000
-  57 001e FFF7FEFF 		bl	HAL_Delay
-  58              	.LVL2:
-  16:Core/Src/lte.c **** 	//SARA Reset Off
-  17:Core/Src/lte.c **** 	HAL_GPIO_WritePin(RESET_ONOFF_GPIO_Port, RESET_ONOFF_Pin, GPIO_PIN_RESET);
-  59              		.loc 1 17 2 view .LVU6
-  60 0022 0022     		movs	r2, #0
-  61 0024 4021     		movs	r1, #64
-  62 0026 2046     		mov	r0, r4
-  63 0028 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  64              	.LVL3:
-  18:Core/Src/lte.c **** }...
-  65              		.loc 1 18 1 is_stmt 0 view .LVU7
-  66 002c 10BD     		pop	{r4, pc}
+  30:Core/Src/lte.c ****     }
+  31:Core/Src/lte.c ****     
+  32:Core/Src/lte.c **** 	//SARA Power On
+  33:Core/Src/lte.c **** 	HAL_GPIO_WritePin(POWER_KEY_GPIO_Port, POWER_KEY_Pin, GPIO_PIN_RESET);
+  34:Core/Src/lte.c ****     HAL_Delay(1000);
+  35:Core/Src/lte.c **** 	//SARA Reset Off
+  36:Core/Src/lte.c **** 	HAL_GPIO_WritePin(RESET_ONOFF_GPIO_Port, RESET_ONOFF_Pin, GPIO_PIN_RESET);
+  37:Core/Src/lte.c ****     LTE_MQTT_Convert_Buffer(LTE_Test_Buffer);
+  38:Core/Src/lte.c **** }
+  39:Core/Src/lte.c **** 
+  40:Core/Src/lte.c **** void LTE_Transmit(uint8_t * buf)
+  41:Core/Src/lte.c **** {
+  30              		.loc 1 41 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 41 1 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+  40 0002 0446     		mov	r4, r0
+  42:Core/Src/lte.c ****     HAL_UART_Transmit(&huart1,buf,strlen(buf),100);                    
+  41              		.loc 1 42 5 is_stmt 1 view .LVU2
+  42              		.loc 1 42 35 is_stmt 0 view .LVU3
+  43 0004 FFF7FEFF 		bl	strlen
+  44              	.LVL1:
+  45              		.loc 1 42 5 view .LVU4
+  46 0008 6423     		movs	r3, #100
+  47 000a 82B2     		uxth	r2, r0
+  48 000c 2146     		mov	r1, r4
+  49 000e 0648     		ldr	r0, .L3
+  50 0010 FFF7FEFF 		bl	HAL_UART_Transmit
+  51              	.LVL2:
+  43:Core/Src/lte.c ****     HAL_UART_Transmit(&huart3,buf,strlen(buf),100);
+  52              		.loc 1 43 5 is_stmt 1 view .LVU5
+  53              		.loc 1 43 35 is_stmt 0 view .LVU6
+  54 0014 2046     		mov	r0, r4
+  55 0016 FFF7FEFF 		bl	strlen
+  56              	.LVL3:
+  57              		.loc 1 43 5 view .LVU7
+  58 001a 6423     		movs	r3, #100
+  59 001c 82B2     		uxth	r2, r0
+  60 001e 2146     		mov	r1, r4
+  61 0020 0248     		ldr	r0, .L3+4
+  62 0022 FFF7FEFF 		bl	HAL_UART_Transmit
+  63              	.LVL4:
+  44:Core/Src/lte.c **** }
+  64              		.loc 1 44 1 view .LVU8
+  65 0026 10BD     		pop	{r4, pc}
+  66              	.LVL5:
   67              	.L4:
-  10:Core/Src/lte.c ****         Error_Handler();
-  68              		.loc 1 10 9 is_stmt 1 view .LVU8
-  69 002e FFF7FEFF 		bl	Error_Handler
-  70              	.LVL4:
-  71 0032 ECE7     		b	.L2
-  72              	.L6:
-  73              		.align	2
-  74              	.L5:
-  75 0034 00000000 		.word	.LANCHOR0
-  76 0038 00000000 		.word	huart1
-  77 003c 00040048 		.word	1207960576
-  78              		.cfi_endproc
-  79              	.LFE133:
-  81              		.global	dummy_lte
-  82              		.global	LTE_Rx_Counter
-  83              		.global	LTE_Rx_Buffer
-  84              		.section	.bss.LTE_Rx_Buffer,"aw",%nobits
-  85              		.align	2
-  88              	LTE_Rx_Buffer:
-  89 0000 00000000 		.space	1024
-  89      00000000 
-  89      00000000 
-  89      00000000 
-  89      00000000 
-  90              		.section	.bss.LTE_Rx_Counter,"aw",%nobits
-  91              		.align	1
-  94              	LTE_Rx_Counter:
-  95 0000 0000     		.space	2
-  96              		.section	.bss.dummy_lte,"aw",%nobits
-  97              		.set	.LANCHOR0,. + 0
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s 			page 3
+  68              		.loc 1 44 1 view .LVU9
+  69              		.align	2
+  70              	.L3:
+  71 0028 00000000 		.word	huart1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 3
 
 
- 100              	dummy_lte:
- 101 0000 00       		.space	1
- 102              		.text
- 103              	.Letext0:
- 104              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
- 105              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
- 106              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
- 107              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
- 108              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
- 109              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
- 110              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
- 111              		.file 9 "Core/Inc/main.h"
- 112              		.file 10 "Core/Inc/lte.h"
- 113              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s 			page 4
+  72 002c 00000000 		.word	huart3
+  73              		.cfi_endproc
+  74              	.LFE134:
+  76              		.section	.text.LTE_OK_Check,"ax",%progbits
+  77              		.align	1
+  78              		.global	LTE_OK_Check
+  79              		.syntax unified
+  80              		.thumb
+  81              		.thumb_func
+  83              	LTE_OK_Check:
+  84              	.LFB135:
+  45:Core/Src/lte.c **** 
+  46:Core/Src/lte.c **** uint8_t LTE_OK_Check(void)
+  47:Core/Src/lte.c **** {
+  85              		.loc 1 47 1 is_stmt 1 view -0
+  86              		.cfi_startproc
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 0, uses_anonymous_args = 0
+  89 0000 38B5     		push	{r3, r4, r5, lr}
+  90              	.LCFI1:
+  91              		.cfi_def_cfa_offset 16
+  92              		.cfi_offset 3, -16
+  93              		.cfi_offset 4, -12
+  94              		.cfi_offset 5, -8
+  95              		.cfi_offset 14, -4
+  48:Core/Src/lte.c ****     uint8_t retval = FAIL;
+  96              		.loc 1 48 5 view .LVU11
+  97              	.LVL6:
+  49:Core/Src/lte.c ****     if(LTE_Rx_Counter>3)
+  98              		.loc 1 49 5 view .LVU12
+  99              		.loc 1 49 22 is_stmt 0 view .LVU13
+ 100 0002 1A4B     		ldr	r3, .L13
+ 101 0004 1B88     		ldrh	r3, [r3]
+ 102              		.loc 1 49 7 view .LVU14
+ 103 0006 032B     		cmp	r3, #3
+ 104 0008 2CD8     		bhi	.L10
+  50:Core/Src/lte.c ****     {
+  51:Core/Src/lte.c ****         for(uint16_t i = 0; i < LTE_RX_BUFFER_SIZE; i++)
+  52:Core/Src/lte.c ****         {
+  53:Core/Src/lte.c ****             if((LTE_Rx_Buffer[i] == 'O') && (LTE_Rx_Buffer[i+1] == 'K') && (LTE_Rx_Buffer[i+2] == '
+  54:Core/Src/lte.c ****             {
+  55:Core/Src/lte.c ****                 HAL_UART_Transmit(&huart3,&LTE_Rx_Buffer[i],strlen(&LTE_Rx_Buffer[i]),100);
+  56:Core/Src/lte.c ****                 memset(LTE_Rx_Buffer,0x00,LTE_Rx_Counter);
+  57:Core/Src/lte.c ****                 LTE_Rx_Counter = 0;
+  58:Core/Src/lte.c ****                 retval = OK;
+  59:Core/Src/lte.c ****                 return retval;
+  60:Core/Src/lte.c ****             }
+  61:Core/Src/lte.c ****         }
+  62:Core/Src/lte.c ****     }
+  63:Core/Src/lte.c **** 
+  64:Core/Src/lte.c ****     return retval;
+ 105              		.loc 1 64 12 view .LVU15
+ 106 000a 0020     		movs	r0, #0
+ 107              	.LVL7:
+ 108              	.L7:
+  65:Core/Src/lte.c **** }
+ 109              		.loc 1 65 1 view .LVU16
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 4
+
+
+ 110 000c 38BD     		pop	{r3, r4, r5, pc}
+ 111              	.LVL8:
+ 112              	.L8:
+ 113              	.LBB2:
+  51:Core/Src/lte.c ****         {
+ 114              		.loc 1 51 53 is_stmt 1 discriminator 2 view .LVU17
+  51:Core/Src/lte.c ****         {
+ 115              		.loc 1 51 54 is_stmt 0 discriminator 2 view .LVU18
+ 116 000e 0133     		adds	r3, r3, #1
+ 117              	.LVL9:
+  51:Core/Src/lte.c ****         {
+ 118              		.loc 1 51 54 discriminator 2 view .LVU19
+ 119 0010 9BB2     		uxth	r3, r3
+ 120              	.LVL10:
+ 121              	.L6:
+  51:Core/Src/lte.c ****         {
+ 122              		.loc 1 51 29 is_stmt 1 discriminator 1 view .LVU20
+  51:Core/Src/lte.c ****         {
+ 123              		.loc 1 51 9 is_stmt 0 discriminator 1 view .LVU21
+ 124 0012 B3F5806F 		cmp	r3, #1024
+ 125 0016 27D2     		bcs	.L12
+  53:Core/Src/lte.c ****             {
+ 126              		.loc 1 53 13 is_stmt 1 view .LVU22
+  53:Core/Src/lte.c ****             {
+ 127              		.loc 1 53 30 is_stmt 0 view .LVU23
+ 128 0018 154A     		ldr	r2, .L13+4
+ 129 001a D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+  53:Core/Src/lte.c ****             {
+ 130              		.loc 1 53 15 view .LVU24
+ 131 001c 4F2A     		cmp	r2, #79
+ 132 001e F6D1     		bne	.L8
+  53:Core/Src/lte.c ****             {
+ 133              		.loc 1 53 61 discriminator 1 view .LVU25
+ 134 0020 5A1C     		adds	r2, r3, #1
+  53:Core/Src/lte.c ****             {
+ 135              		.loc 1 53 59 discriminator 1 view .LVU26
+ 136 0022 1348     		ldr	r0, .L13+4
+ 137 0024 825C     		ldrb	r2, [r0, r2]	@ zero_extendqisi2
+  53:Core/Src/lte.c ****             {
+ 138              		.loc 1 53 42 discriminator 1 view .LVU27
+ 139 0026 4B2A     		cmp	r2, #75
+ 140 0028 F1D1     		bne	.L8
+  53:Core/Src/lte.c ****             {
+ 141              		.loc 1 53 92 discriminator 2 view .LVU28
+ 142 002a 9A1C     		adds	r2, r3, #2
+  53:Core/Src/lte.c ****             {
+ 143              		.loc 1 53 90 discriminator 2 view .LVU29
+ 144 002c 825C     		ldrb	r2, [r0, r2]	@ zero_extendqisi2
+  53:Core/Src/lte.c ****             {
+ 145              		.loc 1 53 73 discriminator 2 view .LVU30
+ 146 002e 0D2A     		cmp	r2, #13
+ 147 0030 EDD1     		bne	.L8
+  53:Core/Src/lte.c ****             {
+ 148              		.loc 1 53 124 discriminator 3 view .LVU31
+ 149 0032 DA1C     		adds	r2, r3, #3
+  53:Core/Src/lte.c ****             {
+ 150              		.loc 1 53 122 discriminator 3 view .LVU32
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 5
+
+
+ 151 0034 825C     		ldrb	r2, [r0, r2]	@ zero_extendqisi2
+  53:Core/Src/lte.c ****             {
+ 152              		.loc 1 53 105 discriminator 3 view .LVU33
+ 153 0036 0A2A     		cmp	r2, #10
+ 154 0038 E9D1     		bne	.L8
+  55:Core/Src/lte.c ****                 memset(LTE_Rx_Buffer,0x00,LTE_Rx_Counter);
+ 155              		.loc 1 55 17 is_stmt 1 view .LVU34
+ 156 003a 0546     		mov	r5, r0
+ 157 003c C418     		adds	r4, r0, r3
+  55:Core/Src/lte.c ****                 memset(LTE_Rx_Buffer,0x00,LTE_Rx_Counter);
+ 158              		.loc 1 55 61 is_stmt 0 view .LVU35
+ 159 003e 2046     		mov	r0, r4
+ 160 0040 FFF7FEFF 		bl	strlen
+ 161              	.LVL11:
+  55:Core/Src/lte.c ****                 memset(LTE_Rx_Buffer,0x00,LTE_Rx_Counter);
+ 162              		.loc 1 55 17 view .LVU36
+ 163 0044 6423     		movs	r3, #100
+ 164 0046 82B2     		uxth	r2, r0
+ 165 0048 2146     		mov	r1, r4
+ 166 004a 0A48     		ldr	r0, .L13+8
+ 167 004c FFF7FEFF 		bl	HAL_UART_Transmit
+ 168              	.LVL12:
+  56:Core/Src/lte.c ****                 LTE_Rx_Counter = 0;
+ 169              		.loc 1 56 17 is_stmt 1 view .LVU37
+ 170 0050 064C     		ldr	r4, .L13
+ 171 0052 2288     		ldrh	r2, [r4]
+ 172 0054 0021     		movs	r1, #0
+ 173 0056 2846     		mov	r0, r5
+ 174 0058 FFF7FEFF 		bl	memset
+ 175              	.LVL13:
+  57:Core/Src/lte.c ****                 retval = OK;
+ 176              		.loc 1 57 17 view .LVU38
+  57:Core/Src/lte.c ****                 retval = OK;
+ 177              		.loc 1 57 32 is_stmt 0 view .LVU39
+ 178 005c 0023     		movs	r3, #0
+ 179 005e 2380     		strh	r3, [r4]	@ movhi
+  58:Core/Src/lte.c ****                 return retval;
+ 180              		.loc 1 58 17 is_stmt 1 view .LVU40
+ 181              	.LVL14:
+  59:Core/Src/lte.c ****             }
+ 182              		.loc 1 59 17 view .LVU41
+  59:Core/Src/lte.c ****             }
+ 183              		.loc 1 59 24 is_stmt 0 view .LVU42
+ 184 0060 0120     		movs	r0, #1
+ 185 0062 D3E7     		b	.L7
+ 186              	.LVL15:
+ 187              	.L10:
+  51:Core/Src/lte.c ****         {
+ 188              		.loc 1 51 22 view .LVU43
+ 189 0064 0023     		movs	r3, #0
+ 190 0066 D4E7     		b	.L6
+ 191              	.LVL16:
+ 192              	.L12:
+  51:Core/Src/lte.c ****         {
+ 193              		.loc 1 51 22 view .LVU44
+ 194              	.LBE2:
+  64:Core/Src/lte.c **** }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 6
+
+
+ 195              		.loc 1 64 12 view .LVU45
+ 196 0068 0020     		movs	r0, #0
+ 197 006a CFE7     		b	.L7
+ 198              	.L14:
+ 199              		.align	2
+ 200              	.L13:
+ 201 006c 00000000 		.word	.LANCHOR0
+ 202 0070 00000000 		.word	.LANCHOR1
+ 203 0074 00000000 		.word	huart3
+ 204              		.cfi_endproc
+ 205              	.LFE135:
+ 207              		.section	.text.LTE_Delay,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	LTE_Delay
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 214              	LTE_Delay:
+ 215              	.LVL17:
+ 216              	.LFB136:
+  66:Core/Src/lte.c **** 
+  67:Core/Src/lte.c **** uint8_t LTE_Delay(uint16_t time)
+  68:Core/Src/lte.c **** {
+ 217              		.loc 1 68 1 is_stmt 1 view -0
+ 218              		.cfi_startproc
+ 219              		@ args = 0, pretend = 0, frame = 0
+ 220              		@ frame_needed = 0, uses_anonymous_args = 0
+ 221              		@ link register save eliminated.
+  69:Core/Src/lte.c ****     static uint16_t timer;
+ 222              		.loc 1 69 5 view .LVU47
+  70:Core/Src/lte.c ****     LTE_Status_t retval = FAIL;
+ 223              		.loc 1 70 5 view .LVU48
+  71:Core/Src/lte.c ****     time = time / 100; // [ms] to 100[ms]
+ 224              		.loc 1 71 5 view .LVU49
+ 225              		.loc 1 71 10 is_stmt 0 view .LVU50
+ 226 0000 084B     		ldr	r3, .L18
+ 227 0002 A3FB0030 		umull	r3, r0, r3, r0
+ 228              	.LVL18:
+  72:Core/Src/lte.c ****     timer++;
+ 229              		.loc 1 72 5 is_stmt 1 view .LVU51
+ 230              		.loc 1 72 10 is_stmt 0 view .LVU52
+ 231 0006 084A     		ldr	r2, .L18+4
+ 232 0008 1388     		ldrh	r3, [r2]
+ 233 000a 0133     		adds	r3, r3, #1
+ 234 000c 9BB2     		uxth	r3, r3
+ 235 000e 1380     		strh	r3, [r2]	@ movhi
+  73:Core/Src/lte.c ****     if(timer>time)
+ 236              		.loc 1 73 5 is_stmt 1 view .LVU53
+ 237              		.loc 1 73 7 is_stmt 0 view .LVU54
+ 238 0010 B3EB501F 		cmp	r3, r0, lsr #5
+ 239 0014 04D9     		bls	.L17
+  74:Core/Src/lte.c ****     {
+  75:Core/Src/lte.c ****         timer = 0;
+ 240              		.loc 1 75 9 is_stmt 1 view .LVU55
+ 241              		.loc 1 75 15 is_stmt 0 view .LVU56
+ 242 0016 1346     		mov	r3, r2
+ 243 0018 0022     		movs	r2, #0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 7
+
+
+ 244 001a 1A80     		strh	r2, [r3]	@ movhi
+  76:Core/Src/lte.c ****         retval = OK;
+ 245              		.loc 1 76 9 is_stmt 1 view .LVU57
+ 246              	.LVL19:
+ 247              		.loc 1 76 16 is_stmt 0 view .LVU58
+ 248 001c 0120     		movs	r0, #1
+ 249              	.LVL20:
+ 250              		.loc 1 76 16 view .LVU59
+ 251 001e 7047     		bx	lr
+ 252              	.LVL21:
+ 253              	.L17:
+  70:Core/Src/lte.c ****     time = time / 100; // [ms] to 100[ms]
+ 254              		.loc 1 70 18 view .LVU60
+ 255 0020 0020     		movs	r0, #0
+ 256              	.LVL22:
+  77:Core/Src/lte.c ****     }
+  78:Core/Src/lte.c **** 
+  79:Core/Src/lte.c ****     return retval;
+ 257              		.loc 1 79 5 is_stmt 1 view .LVU61
+  80:Core/Src/lte.c **** }
+ 258              		.loc 1 80 1 is_stmt 0 view .LVU62
+ 259 0022 7047     		bx	lr
+ 260              	.L19:
+ 261              		.align	2
+ 262              	.L18:
+ 263 0024 1F85EB51 		.word	1374389535
+ 264 0028 00000000 		.word	.LANCHOR2
+ 265              		.cfi_endproc
+ 266              	.LFE136:
+ 268              		.section	.text.LTE_Receive_Check,"ax",%progbits
+ 269              		.align	1
+ 270              		.global	LTE_Receive_Check
+ 271              		.syntax unified
+ 272              		.thumb
+ 273              		.thumb_func
+ 275              	LTE_Receive_Check:
+ 276              	.LVL23:
+ 277              	.LFB137:
+  81:Core/Src/lte.c **** 
+  82:Core/Src/lte.c **** uint8_t LTE_Receive_Check(uint8_t status)
+  83:Core/Src/lte.c **** {
+ 278              		.loc 1 83 1 is_stmt 1 view -0
+ 279              		.cfi_startproc
+ 280              		@ args = 0, pretend = 0, frame = 0
+ 281              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282              		.loc 1 83 1 is_stmt 0 view .LVU64
+ 283 0000 10B5     		push	{r4, lr}
+ 284              	.LCFI2:
+ 285              		.cfi_def_cfa_offset 8
+ 286              		.cfi_offset 4, -8
+ 287              		.cfi_offset 14, -4
+ 288 0002 0446     		mov	r4, r0
+  84:Core/Src/lte.c ****     LTE_Status_t stReceive = FAIL;
+ 289              		.loc 1 84 5 is_stmt 1 view .LVU65
+ 290              	.LVL24:
+  85:Core/Src/lte.c ****     static uint8_t fail_counter;
+ 291              		.loc 1 85 5 view .LVU66
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 8
+
+
+  86:Core/Src/lte.c ****     uint8_t retval = status;
+ 292              		.loc 1 86 5 view .LVU67
+  87:Core/Src/lte.c **** 
+  88:Core/Src/lte.c ****     stReceive = LTE_OK_Check();
+ 293              		.loc 1 88 5 view .LVU68
+ 294              		.loc 1 88 17 is_stmt 0 view .LVU69
+ 295 0004 FFF7FEFF 		bl	LTE_OK_Check
+ 296              	.LVL25:
+  89:Core/Src/lte.c **** 
+  90:Core/Src/lte.c ****     if(OK == stReceive)    
+ 297              		.loc 1 90 5 is_stmt 1 view .LVU70
+ 298              		.loc 1 90 7 is_stmt 0 view .LVU71
+ 299 0008 0128     		cmp	r0, #1
+ 300 000a 08D0     		beq	.L24
+  91:Core/Src/lte.c ****     {
+  92:Core/Src/lte.c ****         retval++;
+  93:Core/Src/lte.c ****     }
+  94:Core/Src/lte.c ****     else
+  95:Core/Src/lte.c ****     {
+  96:Core/Src/lte.c ****         /* OK 실패 시, 현재 status 머무름 */
+  97:Core/Src/lte.c ****         fail_counter++;
+ 301              		.loc 1 97 9 is_stmt 1 view .LVU72
+ 302              		.loc 1 97 21 is_stmt 0 view .LVU73
+ 303 000c 074A     		ldr	r2, .L26
+ 304 000e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 305 0010 0133     		adds	r3, r3, #1
+ 306 0012 DBB2     		uxtb	r3, r3
+ 307 0014 1370     		strb	r3, [r2]
+  98:Core/Src/lte.c ****         if(fail_counter > 10)
+ 308              		.loc 1 98 9 is_stmt 1 view .LVU74
+ 309              		.loc 1 98 11 is_stmt 0 view .LVU75
+ 310 0016 0A2B     		cmp	r3, #10
+ 311 0018 04D8     		bhi	.L25
+ 312              	.LVL26:
+ 313              	.L22:
+  99:Core/Src/lte.c ****         {
+ 100:Core/Src/lte.c ****             HAL_NVIC_SystemReset();
+ 101:Core/Src/lte.c ****         }
+ 102:Core/Src/lte.c ****     }
+ 103:Core/Src/lte.c **** 
+ 104:Core/Src/lte.c ****     return retval;
+ 314              		.loc 1 104 5 is_stmt 1 view .LVU76
+ 105:Core/Src/lte.c **** }
+ 315              		.loc 1 105 1 is_stmt 0 view .LVU77
+ 316 001a 2046     		mov	r0, r4
+ 317 001c 10BD     		pop	{r4, pc}
+ 318              	.LVL27:
+ 319              	.L24:
+  92:Core/Src/lte.c ****     }
+ 320              		.loc 1 92 9 is_stmt 1 view .LVU78
+  92:Core/Src/lte.c ****     }
+ 321              		.loc 1 92 15 is_stmt 0 view .LVU79
+ 322 001e 0134     		adds	r4, r4, #1
+ 323              	.LVL28:
+  92:Core/Src/lte.c ****     }
+ 324              		.loc 1 92 15 view .LVU80
+ 325 0020 E4B2     		uxtb	r4, r4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 9
+
+
+ 326              	.LVL29:
+  92:Core/Src/lte.c ****     }
+ 327              		.loc 1 92 15 view .LVU81
+ 328 0022 FAE7     		b	.L22
+ 329              	.L25:
+ 100:Core/Src/lte.c ****         }
+ 330              		.loc 1 100 13 is_stmt 1 view .LVU82
+ 331 0024 FFF7FEFF 		bl	HAL_NVIC_SystemReset
+ 332              	.LVL30:
+ 100:Core/Src/lte.c ****         }
+ 333              		.loc 1 100 13 is_stmt 0 view .LVU83
+ 334 0028 F7E7     		b	.L22
+ 335              	.L27:
+ 336 002a 00BF     		.align	2
+ 337              	.L26:
+ 338 002c 00000000 		.word	.LANCHOR3
+ 339              		.cfi_endproc
+ 340              	.LFE137:
+ 342              		.section	.rodata.LTE_MQTT_Convert_Buffer.str1.4,"aMS",%progbits,1
+ 343              		.align	2
+ 344              	.LC1:
+ 345 0000 7B225F49 		.ascii	"{\"_ID\":\"%s\",\"_TEMP\":\"%d.%d\",\"_HUMI\":\"%d."
+ 345      44223A22 
+ 345      2573222C 
+ 345      225F5445 
+ 345      4D50223A 
+ 346 0028 2564222C 		.ascii	"%d\",\"_DIST\":\"%d.%d\",\"_CHAR\":\"%d.%d\",\"_GPS"
+ 346      225F4449 
+ 346      5354223A 
+ 346      2225642E 
+ 346      2564222C 
+ 347 0051 223A2225 		.ascii	"\":\"%d.%d,%d.%d\",\"_DOOR\":\"%d\"}\000"
+ 347      642E2564 
+ 347      2C25642E 
+ 347      2564222C 
+ 347      225F444F 
+ 348 006f 00       		.align	2
+ 349              	.LC2:
+ 350 0070 257800   		.ascii	"%x\000"
+ 351 0073 00       		.align	2
+ 352              	.LC0:
+ 353 0074 41542B55 		.ascii	"AT+UMQTTSNC=4,1,0,1,0,\"1\",\"\000"
+ 353      4D515454 
+ 353      534E433D 
+ 353      342C312C 
+ 353      302C312C 
+ 354              		.section	.text.LTE_MQTT_Convert_Buffer,"ax",%progbits
+ 355              		.align	1
+ 356              		.global	LTE_MQTT_Convert_Buffer
+ 357              		.syntax unified
+ 358              		.thumb
+ 359              		.thumb_func
+ 361              	LTE_MQTT_Convert_Buffer:
+ 362              	.LVL31:
+ 363              	.LFB138:
+ 106:Core/Src/lte.c **** 
+ 107:Core/Src/lte.c **** void LTE_MQTT_Convert_Buffer(uint8_t *buf)
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 10
+
+
+ 108:Core/Src/lte.c **** {
+ 364              		.loc 1 108 1 is_stmt 1 view -0
+ 365              		.cfi_startproc
+ 366              		@ args = 0, pretend = 0, frame = 2080
+ 367              		@ frame_needed = 0, uses_anonymous_args = 0
+ 368              		.loc 1 108 1 is_stmt 0 view .LVU85
+ 369 0000 70B5     		push	{r4, r5, r6, lr}
+ 370              	.LCFI3:
+ 371              		.cfi_def_cfa_offset 16
+ 372              		.cfi_offset 4, -16
+ 373              		.cfi_offset 5, -12
+ 374              		.cfi_offset 6, -8
+ 375              		.cfi_offset 14, -4
+ 376 0002 ADF5056D 		sub	sp, sp, #2128
+ 377              	.LCFI4:
+ 378              		.cfi_def_cfa_offset 2144
+ 379 0006 0646     		mov	r6, r0
+ 109:Core/Src/lte.c ****     uint8_t ascii_buf[1024] = {0,};    
+ 380              		.loc 1 109 5 is_stmt 1 view .LVU86
+ 381              		.loc 1 109 13 is_stmt 0 view .LVU87
+ 382 0008 0024     		movs	r4, #0
+ 383 000a CDF85044 		str	r4, [sp, #1104]
+ 384 000e 4FF47F75 		mov	r5, #1020
+ 385 0012 2A46     		mov	r2, r5
+ 386 0014 2146     		mov	r1, r4
+ 387 0016 0DF25440 		addw	r0, sp, #1108
+ 388              	.LVL32:
+ 389              		.loc 1 109 13 view .LVU88
+ 390 001a FFF7FEFF 		bl	memset
+ 391              	.LVL33:
+ 110:Core/Src/lte.c ****     uint8_t convert_buf[1024] = {0,};
+ 392              		.loc 1 110 5 is_stmt 1 view .LVU89
+ 393              		.loc 1 110 13 is_stmt 0 view .LVU90
+ 394 001e 1494     		str	r4, [sp, #80]
+ 395 0020 2A46     		mov	r2, r5
+ 396 0022 2146     		mov	r1, r4
+ 397 0024 15A8     		add	r0, sp, #84
+ 398 0026 FFF7FEFF 		bl	memset
+ 399              	.LVL34:
+ 111:Core/Src/lte.c ****     uint8_t header[] = "AT+UMQTTSNC=4,1,0,1,0,\"1\",\"";
+ 400              		.loc 1 111 5 is_stmt 1 view .LVU91
+ 401              		.loc 1 111 13 is_stmt 0 view .LVU92
+ 402 002a 0DF1340C 		add	ip, sp, #52
+ 403 002e 354D     		ldr	r5, .L32
+ 404 0030 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 405 0032 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 406 0036 95E80700 		ldm	r5, {r0, r1, r2}
+ 407 003a 8CE80700 		stm	ip, {r0, r1, r2}
+ 112:Core/Src/lte.c ****     uint8_t end[] = "\"\r\n";
+ 408              		.loc 1 112 5 is_stmt 1 view .LVU93
+ 409              		.loc 1 112 13 is_stmt 0 view .LVU94
+ 410 003e 324B     		ldr	r3, .L32+4
+ 411 0040 0C93     		str	r3, [sp, #48]
+ 113:Core/Src/lte.c ****     sprintf(ascii_buf,"{\"_ID\":\"%s\",\"_TEMP\":\"%d.%d\",\"_HUMI\":\"%d.%d\",\"_DIST\":\"%d.%d\",
+ 412              		.loc 1 113 5 is_stmt 1 view .LVU95
+ 413 0042 324B     		ldr	r3, .L32+8
+ 414 0044 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 11
+
+
+ 415 0046 0B93     		str	r3, [sp, #44]
+ 416 0048 314B     		ldr	r3, .L32+12
+ 417 004a 1B68     		ldr	r3, [r3]
+ 418 004c 0A93     		str	r3, [sp, #40]
+ 419 004e 314B     		ldr	r3, .L32+16
+ 420 0050 1B88     		ldrh	r3, [r3]
+ 421 0052 0993     		str	r3, [sp, #36]
+ 422 0054 304B     		ldr	r3, .L32+20
+ 423 0056 1B68     		ldr	r3, [r3]
+ 424 0058 0893     		str	r3, [sp, #32]
+ 425 005a 304B     		ldr	r3, .L32+24
+ 426 005c 1B88     		ldrh	r3, [r3]
+ 427 005e 0793     		str	r3, [sp, #28]
+ 428 0060 2F4B     		ldr	r3, .L32+28
+ 429 0062 1B68     		ldr	r3, [r3]
+ 430 0064 0693     		str	r3, [sp, #24]
+ 431 0066 2F4B     		ldr	r3, .L32+32
+ 432 0068 1B88     		ldrh	r3, [r3]
+ 433 006a 0593     		str	r3, [sp, #20]
+ 434 006c 2E4B     		ldr	r3, .L32+36
+ 435 006e 1B68     		ldr	r3, [r3]
+ 436 0070 0493     		str	r3, [sp, #16]
+ 437 0072 2E4B     		ldr	r3, .L32+40
+ 438 0074 1B88     		ldrh	r3, [r3]
+ 439 0076 0393     		str	r3, [sp, #12]
+ 440 0078 2D4B     		ldr	r3, .L32+44
+ 441 007a 1B68     		ldr	r3, [r3]
+ 442 007c 0293     		str	r3, [sp, #8]
+ 443 007e 2D4B     		ldr	r3, .L32+48
+ 444 0080 1B88     		ldrh	r3, [r3]
+ 445 0082 0193     		str	r3, [sp, #4]
+ 446 0084 2C4B     		ldr	r3, .L32+52
+ 447 0086 1B88     		ldrh	r3, [r3]
+ 448 0088 0093     		str	r3, [sp]
+ 449 008a 2C4B     		ldr	r3, .L32+56
+ 450 008c 1B88     		ldrh	r3, [r3]
+ 451 008e 2C4A     		ldr	r2, .L32+60
+ 452 0090 2C49     		ldr	r1, .L32+64
+ 453 0092 0DF58A60 		add	r0, sp, #1104
+ 454 0096 FFF7FEFF 		bl	sprintf
+ 455              	.LVL35:
+ 114:Core/Src/lte.c ****             LTE_ID,LTE_TEMP_I,LTE_TEMP_D,LTE_HUMI_I,LTE_HUMI_D,LTE_DIST_I,LTE_DIST_D,LTE_CHAR_I,LTE
+ 115:Core/Src/lte.c ****     for(uint16_t i = 0; i < strlen(ascii_buf); i++)
+ 456              		.loc 1 115 5 view .LVU96
+ 457              	.LBB3:
+ 458              		.loc 1 115 9 view .LVU97
+ 459              		.loc 1 115 5 is_stmt 0 view .LVU98
+ 460 009a 0AE0     		b	.L29
+ 461              	.LVL36:
+ 462              	.L30:
+ 116:Core/Src/lte.c ****     {
+ 117:Core/Src/lte.c ****         sprintf(&convert_buf[2*i],"%x",ascii_buf[i]);
+ 463              		.loc 1 117 9 is_stmt 1 discriminator 3 view .LVU99
+ 464 009c 0DF58A63 		add	r3, sp, #1104
+ 465 00a0 1A5D     		ldrb	r2, [r3, r4]	@ zero_extendqisi2
+ 466 00a2 2949     		ldr	r1, .L32+68
+ 467 00a4 14AB     		add	r3, sp, #80
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 12
+
+
+ 468 00a6 03EB4400 		add	r0, r3, r4, lsl #1
+ 469 00aa FFF7FEFF 		bl	sprintf
+ 470              	.LVL37:
+ 115:Core/Src/lte.c ****     {
+ 471              		.loc 1 115 48 discriminator 3 view .LVU100
+ 115:Core/Src/lte.c ****     {
+ 472              		.loc 1 115 49 is_stmt 0 discriminator 3 view .LVU101
+ 473 00ae 0134     		adds	r4, r4, #1
+ 474              	.LVL38:
+ 115:Core/Src/lte.c ****     {
+ 475              		.loc 1 115 49 discriminator 3 view .LVU102
+ 476 00b0 A4B2     		uxth	r4, r4
+ 477              	.LVL39:
+ 478              	.L29:
+ 115:Core/Src/lte.c ****     {
+ 479              		.loc 1 115 25 is_stmt 1 discriminator 1 view .LVU103
+ 115:Core/Src/lte.c ****     {
+ 480              		.loc 1 115 29 is_stmt 0 discriminator 1 view .LVU104
+ 481 00b2 0DF58A60 		add	r0, sp, #1104
+ 482 00b6 FFF7FEFF 		bl	strlen
+ 483              	.LVL40:
+ 115:Core/Src/lte.c ****     {
+ 484              		.loc 1 115 5 discriminator 1 view .LVU105
+ 485 00ba 8442     		cmp	r4, r0
+ 486 00bc EED3     		bcc	.L30
+ 487              	.LBE3:
+ 118:Core/Src/lte.c ****     }
+ 119:Core/Src/lte.c **** 
+ 120:Core/Src/lte.c ****     memcpy(buf,header,strlen(header));
+ 488              		.loc 1 120 5 is_stmt 1 view .LVU106
+ 489 00be 0DA8     		add	r0, sp, #52
+ 490 00c0 FFF7FEFF 		bl	strlen
+ 491              	.LVL41:
+ 492 00c4 0246     		mov	r2, r0
+ 493 00c6 0DA9     		add	r1, sp, #52
+ 494 00c8 3046     		mov	r0, r6
+ 495 00ca FFF7FEFF 		bl	memcpy
+ 496              	.LVL42:
+ 121:Core/Src/lte.c ****     memcpy(&buf[strlen(header)],convert_buf,strlen(convert_buf));
+ 497              		.loc 1 121 5 view .LVU107
+ 498              		.loc 1 121 17 is_stmt 0 view .LVU108
+ 499 00ce 0DA8     		add	r0, sp, #52
+ 500 00d0 FFF7FEFF 		bl	strlen
+ 501              	.LVL43:
+ 502              		.loc 1 121 12 view .LVU109
+ 503 00d4 3418     		adds	r4, r6, r0
+ 504              	.LVL44:
+ 505              		.loc 1 121 5 view .LVU110
+ 506 00d6 14A8     		add	r0, sp, #80
+ 507 00d8 FFF7FEFF 		bl	strlen
+ 508              	.LVL45:
+ 509 00dc 0246     		mov	r2, r0
+ 510 00de 14A9     		add	r1, sp, #80
+ 511 00e0 2046     		mov	r0, r4
+ 512 00e2 FFF7FEFF 		bl	memcpy
+ 513              	.LVL46:
+ 122:Core/Src/lte.c ****     memcpy(&buf[strlen(buf)],end,strlen(end));
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 13
+
+
+ 514              		.loc 1 122 5 is_stmt 1 view .LVU111
+ 515              		.loc 1 122 17 is_stmt 0 view .LVU112
+ 516 00e6 3046     		mov	r0, r6
+ 517 00e8 FFF7FEFF 		bl	strlen
+ 518              	.LVL47:
+ 519              		.loc 1 122 12 view .LVU113
+ 520 00ec 0644     		add	r6, r6, r0
+ 521              	.LVL48:
+ 522              		.loc 1 122 5 view .LVU114
+ 523 00ee 0CA8     		add	r0, sp, #48
+ 524 00f0 FFF7FEFF 		bl	strlen
+ 525              	.LVL49:
+ 526 00f4 0246     		mov	r2, r0
+ 527 00f6 0CA9     		add	r1, sp, #48
+ 528 00f8 3046     		mov	r0, r6
+ 529 00fa FFF7FEFF 		bl	memcpy
+ 530              	.LVL50:
+ 123:Core/Src/lte.c **** }
+ 531              		.loc 1 123 1 view .LVU115
+ 532 00fe 0DF5056D 		add	sp, sp, #2128
+ 533              	.LCFI5:
+ 534              		.cfi_def_cfa_offset 16
+ 535              		@ sp needed
+ 536 0102 70BD     		pop	{r4, r5, r6, pc}
+ 537              	.L33:
+ 538              		.align	2
+ 539              	.L32:
+ 540 0104 74000000 		.word	.LC0
+ 541 0108 220D0A00 		.word	658722
+ 542 010c 00000000 		.word	.LANCHOR6
+ 543 0110 00000000 		.word	.LANCHOR7
+ 544 0114 00000000 		.word	.LANCHOR8
+ 545 0118 00000000 		.word	.LANCHOR9
+ 546 011c 00000000 		.word	.LANCHOR10
+ 547 0120 00000000 		.word	.LANCHOR11
+ 548 0124 00000000 		.word	.LANCHOR12
+ 549 0128 00000000 		.word	.LANCHOR13
+ 550 012c 00000000 		.word	.LANCHOR14
+ 551 0130 00000000 		.word	.LANCHOR15
+ 552 0134 00000000 		.word	.LANCHOR16
+ 553 0138 00000000 		.word	.LANCHOR17
+ 554 013c 00000000 		.word	.LANCHOR4
+ 555 0140 00000000 		.word	.LANCHOR5
+ 556 0144 00000000 		.word	.LC1
+ 557 0148 70000000 		.word	.LC2
+ 558              		.cfi_endproc
+ 559              	.LFE138:
+ 561              		.section	.text.LTE_Init,"ax",%progbits
+ 562              		.align	1
+ 563              		.global	LTE_Init
+ 564              		.syntax unified
+ 565              		.thumb
+ 566              		.thumb_func
+ 568              	LTE_Init:
+ 569              	.LFB133:
+  26:Core/Src/lte.c ****     if ( HAL_UART_Receive_IT(&huart1, &dummy_lte, 1) != HAL_OK)
+ 570              		.loc 1 26 1 is_stmt 1 view -0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 14
+
+
+ 571              		.cfi_startproc
+ 572              		@ args = 0, pretend = 0, frame = 0
+ 573              		@ frame_needed = 0, uses_anonymous_args = 0
+ 574 0000 10B5     		push	{r4, lr}
+ 575              	.LCFI6:
+ 576              		.cfi_def_cfa_offset 8
+ 577              		.cfi_offset 4, -8
+ 578              		.cfi_offset 14, -4
+  27:Core/Src/lte.c ****     {
+ 579              		.loc 1 27 5 view .LVU117
+  27:Core/Src/lte.c ****     {
+ 580              		.loc 1 27 10 is_stmt 0 view .LVU118
+ 581 0002 0122     		movs	r2, #1
+ 582 0004 0D49     		ldr	r1, .L38
+ 583 0006 0E48     		ldr	r0, .L38+4
+ 584 0008 FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 585              	.LVL51:
+  27:Core/Src/lte.c ****     {
+ 586              		.loc 1 27 8 view .LVU119
+ 587 000c 90B9     		cbnz	r0, .L37
+ 588              	.L35:
+  33:Core/Src/lte.c ****     HAL_Delay(1000);
+ 589              		.loc 1 33 2 is_stmt 1 view .LVU120
+ 590 000e 0D4C     		ldr	r4, .L38+8
+ 591 0010 0022     		movs	r2, #0
+ 592 0012 2021     		movs	r1, #32
+ 593 0014 2046     		mov	r0, r4
+ 594 0016 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 595              	.LVL52:
+  34:Core/Src/lte.c **** 	//SARA Reset Off
+ 596              		.loc 1 34 5 view .LVU121
+ 597 001a 4FF47A70 		mov	r0, #1000
+ 598 001e FFF7FEFF 		bl	HAL_Delay
+ 599              	.LVL53:
+  36:Core/Src/lte.c ****     LTE_MQTT_Convert_Buffer(LTE_Test_Buffer);
+ 600              		.loc 1 36 2 view .LVU122
+ 601 0022 0022     		movs	r2, #0
+ 602 0024 4021     		movs	r1, #64
+ 603 0026 2046     		mov	r0, r4
+ 604 0028 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 605              	.LVL54:
+  37:Core/Src/lte.c **** }
+ 606              		.loc 1 37 5 view .LVU123
+ 607 002c 0648     		ldr	r0, .L38+12
+ 608 002e FFF7FEFF 		bl	LTE_MQTT_Convert_Buffer
+ 609              	.LVL55:
+  38:Core/Src/lte.c **** 
+ 610              		.loc 1 38 1 is_stmt 0 view .LVU124
+ 611 0032 10BD     		pop	{r4, pc}
+ 612              	.L37:
+  29:Core/Src/lte.c ****     }
+ 613              		.loc 1 29 9 is_stmt 1 view .LVU125
+ 614 0034 FFF7FEFF 		bl	Error_Handler
+ 615              	.LVL56:
+ 616 0038 E9E7     		b	.L35
+ 617              	.L39:
+ 618 003a 00BF     		.align	2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 15
+
+
+ 619              	.L38:
+ 620 003c 00000000 		.word	.LANCHOR18
+ 621 0040 00000000 		.word	huart1
+ 622 0044 00040048 		.word	1207960576
+ 623 0048 00000000 		.word	.LANCHOR19
+ 624              		.cfi_endproc
+ 625              	.LFE133:
+ 627              		.section	.rodata.LTE_Connect.str1.4,"aMS",%progbits,1
+ 628              		.align	2
+ 629              	.LC3:
+ 630 0000 41544530 		.ascii	"ATE0\015\012\000"
+ 630      0D0A00
+ 631 0007 00       		.align	2
+ 632              	.LC4:
+ 633 0008 41542B43 		.ascii	"AT+CMEE=2\015\012\000"
+ 633      4D45453D 
+ 633      320D0A00 
+ 634              		.align	2
+ 635              	.LC5:
+ 636 0014 41542B43 		.ascii	"AT+CFUN=0\015\012\000"
+ 636      46554E3D 
+ 636      300D0A00 
+ 637              		.align	2
+ 638              	.LC6:
+ 639 0020 41542B43 		.ascii	"AT+CGDCONT=1\015\012\000"
+ 639      4744434F 
+ 639      4E543D31 
+ 639      0D0A00
+ 640 002f 00       		.align	2
+ 641              	.LC7:
+ 642 0030 41542B43 		.ascii	"AT+CFUN=1\015\012\000"
+ 642      46554E3D 
+ 642      310D0A00 
+ 643              		.align	2
+ 644              	.LC8:
+ 645 003c 41542B43 		.ascii	"AT+CESQ\015\012\000"
+ 645      4553510D 
+ 645      0A00
+ 646 0046 0000     		.align	2
+ 647              	.LC9:
+ 648 0048 41542B43 		.ascii	"AT+CEREG=2\015\012\000"
+ 648      45524547 
+ 648      3D320D0A 
+ 648      00
+ 649 0055 000000   		.align	2
+ 650              	.LC10:
+ 651 0058 41542B55 		.ascii	"AT+UPSD=0,100,1\015\012\000"
+ 651      5053443D 
+ 651      302C3130 
+ 651      302C310D 
+ 651      0A00
+ 652 006a 0000     		.align	2
+ 653              	.LC11:
+ 654 006c 41542B55 		.ascii	"AT+UPSD=0,0,0\015\012\000"
+ 654      5053443D 
+ 654      302C302C 
+ 654      300D0A00 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 16
+
+
+ 655              		.align	2
+ 656              	.LC12:
+ 657 007c 41542B55 		.ascii	"AT+UPSDA=0,3\015\012\000"
+ 657      50534441 
+ 657      3D302C33 
+ 657      0D0A00
+ 658 008b 00       		.align	2
+ 659              	.LC13:
+ 660 008c 41542B55 		.ascii	"AT+UPSND=0,0\015\012\000"
+ 660      50534E44 
+ 660      3D302C30 
+ 660      0D0A00
+ 661 009b 00       		.align	2
+ 662              	.LC14:
+ 663 009c 41542B55 		.ascii	"AT+UMQTTSN=2,\"10.7.0.55\",2442\015\012\000"
+ 663      4D515454 
+ 663      534E3D32 
+ 663      2C223130 
+ 663      2E372E30 
+ 664              		.align	2
+ 665              	.LC15:
+ 666 00bc 41542B55 		.ascii	"AT+UMQTTSN=8,600\015\012\000"
+ 666      4D515454 
+ 666      534E3D38 
+ 666      2C363030 
+ 666      0D0A00
+ 667 00cf 00       		.align	2
+ 668              	.LC16:
+ 669 00d0 41542B55 		.ascii	"AT+UMQTTSNNV=2\015\012\000"
+ 669      4D515454 
+ 669      534E4E56 
+ 669      3D320D0A 
+ 669      00
+ 670 00e1 000000   		.align	2
+ 671              	.LC17:
+ 672 00e4 41542B55 		.ascii	"AT+UMQTTSNC=1\015\012\000"
+ 672      4D515454 
+ 672      534E433D 
+ 672      310D0A00 
+ 673              		.align	2
+ 674              	.LC18:
+ 675 00f4 41542B55 		.ascii	"AT+UMQTTSNC=2,\"mqtt_test\"\015\012\000"
+ 675      4D515454 
+ 675      534E433D 
+ 675      322C226D 
+ 675      7174745F 
+ 676              		.align	2
+ 677              	.LC19:
+ 678 0110 41542B55 		.ascii	"AT+UMQTTSNC=5,1,0,\"mqtt_test\"\015\012\000"
+ 678      4D515454 
+ 678      534E433D 
+ 678      352C312C 
+ 678      302C226D 
+ 679              		.section	.text.LTE_Connect,"ax",%progbits
+ 680              		.align	1
+ 681              		.global	LTE_Connect
+ 682              		.syntax unified
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 17
+
+
+ 683              		.thumb
+ 684              		.thumb_func
+ 686              	LTE_Connect:
+ 687              	.LFB139:
+ 124:Core/Src/lte.c **** 
+ 125:Core/Src/lte.c **** void LTE_Connect(void)
+ 126:Core/Src/lte.c **** {
+ 688              		.loc 1 126 1 view -0
+ 689              		.cfi_startproc
+ 690              		@ args = 0, pretend = 0, frame = 1024
+ 691              		@ frame_needed = 0, uses_anonymous_args = 0
+ 692 0000 30B5     		push	{r4, r5, lr}
+ 693              	.LCFI7:
+ 694              		.cfi_def_cfa_offset 12
+ 695              		.cfi_offset 4, -12
+ 696              		.cfi_offset 5, -8
+ 697              		.cfi_offset 14, -4
+ 698 0002 ADF2044D 		subw	sp, sp, #1028
+ 699              	.LCFI8:
+ 700              		.cfi_def_cfa_offset 1040
+ 127:Core/Src/lte.c ****     char Tx_Buf[1024] = {0,};
+ 701              		.loc 1 127 5 view .LVU127
+ 702              		.loc 1 127 10 is_stmt 0 view .LVU128
+ 703 0006 0021     		movs	r1, #0
+ 704 0008 0091     		str	r1, [sp]
+ 705 000a 4FF47F72 		mov	r2, #1020
+ 706 000e 01A8     		add	r0, sp, #4
+ 707 0010 FFF7FEFF 		bl	memset
+ 708              	.LVL57:
+ 128:Core/Src/lte.c ****     static LTE_Status_t stDelay;
+ 709              		.loc 1 128 5 is_stmt 1 view .LVU129
+ 129:Core/Src/lte.c ****     static uint8_t uart_status;
+ 710              		.loc 1 129 5 view .LVU130
+ 130:Core/Src/lte.c **** 
+ 131:Core/Src/lte.c ****     switch(LTE_Status)
+ 711              		.loc 1 131 5 view .LVU131
+ 712 0014 A04B     		ldr	r3, .L134
+ 713 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 714 0018 112B     		cmp	r3, #17
+ 715 001a 1AD8     		bhi	.L40
+ 716 001c DFE813F0 		tbh	[pc, r3, lsl #1]
+ 717              	.L43:
+ 718 0020 1200     		.2byte	(.L60-.L43)/2
+ 719 0022 4100     		.2byte	(.L59-.L43)/2
+ 720 0024 6900     		.2byte	(.L58-.L43)/2
+ 721 0026 9200     		.2byte	(.L57-.L43)/2
+ 722 0028 BF00     		.2byte	(.L56-.L43)/2
+ 723 002a E900     		.2byte	(.L55-.L43)/2
+ 724 002c 1201     		.2byte	(.L54-.L43)/2
+ 725 002e 5001     		.2byte	(.L53-.L43)/2
+ 726 0030 7B01     		.2byte	(.L52-.L43)/2
+ 727 0032 A501     		.2byte	(.L51-.L43)/2
+ 728 0034 D201     		.2byte	(.L50-.L43)/2
+ 729 0036 FF01     		.2byte	(.L49-.L43)/2
+ 730 0038 2B02     		.2byte	(.L48-.L43)/2
+ 731 003a 5802     		.2byte	(.L47-.L43)/2
+ 732 003c 8302     		.2byte	(.L46-.L43)/2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 18
+
+
+ 733 003e C102     		.2byte	(.L45-.L43)/2
+ 734 0040 EE02     		.2byte	(.L44-.L43)/2
+ 735 0042 1C03     		.2byte	(.L42-.L43)/2
+ 736              		.p2align 1
+ 737              	.L60:
+ 132:Core/Src/lte.c ****     {
+ 133:Core/Src/lte.c ****         case LTE_STEP_ATE0 :
+ 134:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 738              		.loc 1 134 13 view .LVU132
+ 739              		.loc 1 134 41 is_stmt 0 view .LVU133
+ 740 0044 954B     		ldr	r3, .L134+4
+ 741 0046 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 742              		.loc 1 134 15 view .LVU134
+ 743 0048 33B1     		cbz	r3, .L98
+ 744              	.L61:
+ 135:Core/Src/lte.c ****             {
+ 136:Core/Src/lte.c ****                 sprintf(Tx_Buf,"ATE0\r\n");
+ 137:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 138:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 139:Core/Src/lte.c ****             }
+ 140:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 745              		.loc 1 140 13 is_stmt 1 view .LVU135
+ 746              		.loc 1 140 40 is_stmt 0 view .LVU136
+ 747 004a 944B     		ldr	r3, .L134+4
+ 748 004c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 749              		.loc 1 140 15 view .LVU137
+ 750 004e 012B     		cmp	r3, #1
+ 751 0050 12D0     		beq	.L99
+ 752              	.L40:
+ 141:Core/Src/lte.c ****             {
+ 142:Core/Src/lte.c ****                 if(OK == stDelay)
+ 143:Core/Src/lte.c ****                 {
+ 144:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_ATE0);
+ 145:Core/Src/lte.c ****                     stDelay = FAIL;
+ 146:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 147:Core/Src/lte.c ****                 }
+ 148:Core/Src/lte.c ****                 else
+ 149:Core/Src/lte.c ****                 {
+ 150:Core/Src/lte.c ****                     stDelay = LTE_Delay(100);
+ 151:Core/Src/lte.c ****                 }
+ 152:Core/Src/lte.c ****             }
+ 153:Core/Src/lte.c ****         break;
+ 154:Core/Src/lte.c ****         case LTE_STEP_CMEE : 
+ 155:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 156:Core/Src/lte.c ****             {
+ 157:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+CMEE=2\r\n");
+ 158:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 159:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 160:Core/Src/lte.c ****             }
+ 161:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 162:Core/Src/lte.c ****             {
+ 163:Core/Src/lte.c ****                 if(OK == stDelay)
+ 164:Core/Src/lte.c ****                 {
+ 165:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_CMEE);
+ 166:Core/Src/lte.c ****                     stDelay = FAIL;
+ 167:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 168:Core/Src/lte.c ****                 }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 19
+
+
+ 169:Core/Src/lte.c ****                 else
+ 170:Core/Src/lte.c ****                 {
+ 171:Core/Src/lte.c ****                     stDelay = LTE_Delay(100);
+ 172:Core/Src/lte.c ****                 }
+ 173:Core/Src/lte.c ****             }
+ 174:Core/Src/lte.c ****         break;
+ 175:Core/Src/lte.c ****         case LTE_STEP_CFUN_DISABLE :
+ 176:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 177:Core/Src/lte.c ****             {
+ 178:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+CFUN=0\r\n");
+ 179:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 180:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 181:Core/Src/lte.c ****             }
+ 182:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 183:Core/Src/lte.c ****             {
+ 184:Core/Src/lte.c ****                 if(OK == stDelay)
+ 185:Core/Src/lte.c ****                 {
+ 186:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_CFUN_DISABLE);
+ 187:Core/Src/lte.c ****                     stDelay = FAIL;
+ 188:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 189:Core/Src/lte.c ****                 }
+ 190:Core/Src/lte.c ****                 else
+ 191:Core/Src/lte.c ****                 {
+ 192:Core/Src/lte.c ****                     stDelay = LTE_Delay(3000);
+ 193:Core/Src/lte.c ****                 }
+ 194:Core/Src/lte.c ****             }        
+ 195:Core/Src/lte.c ****         break;
+ 196:Core/Src/lte.c ****         case LTE_STEP_APN :
+ 197:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 198:Core/Src/lte.c ****             {
+ 199:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+CGDCONT=1\r\n");
+ 200:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 201:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 202:Core/Src/lte.c ****             }
+ 203:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 204:Core/Src/lte.c ****             {
+ 205:Core/Src/lte.c ****                 if(OK == stDelay)
+ 206:Core/Src/lte.c ****                 {
+ 207:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_APN);
+ 208:Core/Src/lte.c ****                     stDelay = FAIL;
+ 209:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 210:Core/Src/lte.c ****                 }
+ 211:Core/Src/lte.c ****                 else
+ 212:Core/Src/lte.c ****                 {
+ 213:Core/Src/lte.c ****                     stDelay = LTE_Delay(500);
+ 214:Core/Src/lte.c ****                 }
+ 215:Core/Src/lte.c ****             }
+ 216:Core/Src/lte.c ****         break;   
+ 217:Core/Src/lte.c ****         case LTE_STEP_CFUN_ENABLE :
+ 218:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 219:Core/Src/lte.c ****             {
+ 220:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+CFUN=1\r\n");
+ 221:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 222:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 223:Core/Src/lte.c ****             }
+ 224:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 225:Core/Src/lte.c ****             {   
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 20
+
+
+ 226:Core/Src/lte.c ****                 if(OK == stDelay)
+ 227:Core/Src/lte.c ****                 {
+ 228:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_CFUN_ENABLE);
+ 229:Core/Src/lte.c ****                     stDelay = FAIL;
+ 230:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 231:Core/Src/lte.c ****                 }
+ 232:Core/Src/lte.c ****                 else
+ 233:Core/Src/lte.c ****                 {
+ 234:Core/Src/lte.c ****                     stDelay = LTE_Delay(3000);
+ 235:Core/Src/lte.c ****                 }
+ 236:Core/Src/lte.c ****             }
+ 237:Core/Src/lte.c ****         break;
+ 238:Core/Src/lte.c ****         case LTE_STEP_CESQ :
+ 239:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 240:Core/Src/lte.c ****             {
+ 241:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+CESQ\r\n");
+ 242:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 243:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 244:Core/Src/lte.c ****             }
+ 245:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 246:Core/Src/lte.c ****             {                
+ 247:Core/Src/lte.c ****                 if(OK == stDelay)
+ 248:Core/Src/lte.c ****                 {
+ 249:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_CESQ);
+ 250:Core/Src/lte.c ****                     stDelay = FAIL;
+ 251:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 252:Core/Src/lte.c ****                 }
+ 253:Core/Src/lte.c ****                 else
+ 254:Core/Src/lte.c ****                 {
+ 255:Core/Src/lte.c ****                     stDelay = LTE_Delay(100);
+ 256:Core/Src/lte.c ****                 }
+ 257:Core/Src/lte.c ****             }
+ 258:Core/Src/lte.c ****         break;
+ 259:Core/Src/lte.c ****         case LTE_STEP_CEREG :
+ 260:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 261:Core/Src/lte.c ****             {
+ 262:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+CEREG=2\r\n");
+ 263:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 264:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 265:Core/Src/lte.c ****             }
+ 266:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 267:Core/Src/lte.c ****             {
+ 268:Core/Src/lte.c ****                 if(OK == stDelay)
+ 269:Core/Src/lte.c ****                 {
+ 270:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_CEREG);
+ 271:Core/Src/lte.c ****                     stDelay = FAIL;
+ 272:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 273:Core/Src/lte.c ****                 }
+ 274:Core/Src/lte.c ****                 else
+ 275:Core/Src/lte.c ****                 {
+ 276:Core/Src/lte.c ****                     stDelay = LTE_Delay(100);
+ 277:Core/Src/lte.c ****                 }
+ 278:Core/Src/lte.c ****             }
+ 279:Core/Src/lte.c ****         break;
+ 280:Core/Src/lte.c ****         case LTE_STEP_UPSD_MAP :
+ 281:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 282:Core/Src/lte.c ****             {
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 21
+
+
+ 283:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+UPSD=0,100,1\r\n");
+ 284:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 285:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 286:Core/Src/lte.c ****             }
+ 287:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 288:Core/Src/lte.c ****             {                
+ 289:Core/Src/lte.c ****                 if(OK == stDelay)
+ 290:Core/Src/lte.c ****                 {
+ 291:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_UPSD_MAP);
+ 292:Core/Src/lte.c ****                     stDelay = FAIL;
+ 293:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 294:Core/Src/lte.c ****                 }
+ 295:Core/Src/lte.c ****                 else
+ 296:Core/Src/lte.c ****                 {
+ 297:Core/Src/lte.c ****                     stDelay = LTE_Delay(1000);
+ 298:Core/Src/lte.c ****                 }
+ 299:Core/Src/lte.c ****             }
+ 300:Core/Src/lte.c ****         break;
+ 301:Core/Src/lte.c ****         case LTE_STEP_UPSD_IPV4 :
+ 302:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 303:Core/Src/lte.c ****             {
+ 304:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+UPSD=0,0,0\r\n");
+ 305:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 306:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 307:Core/Src/lte.c ****             }
+ 308:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 309:Core/Src/lte.c ****             {                
+ 310:Core/Src/lte.c ****                 if(OK == stDelay)
+ 311:Core/Src/lte.c ****                 {
+ 312:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_UPSD_IPV4);
+ 313:Core/Src/lte.c ****                     stDelay = FAIL;
+ 314:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 315:Core/Src/lte.c ****                 }
+ 316:Core/Src/lte.c ****                 else
+ 317:Core/Src/lte.c ****                 {
+ 318:Core/Src/lte.c ****                     stDelay = LTE_Delay(1000);
+ 319:Core/Src/lte.c ****                 }
+ 320:Core/Src/lte.c ****             }
+ 321:Core/Src/lte.c ****         break;
+ 322:Core/Src/lte.c ****         case LTE_STEP_UPSDA :           
+ 323:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 324:Core/Src/lte.c ****             {
+ 325:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+UPSDA=0,3\r\n");
+ 326:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 327:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 328:Core/Src/lte.c ****             }
+ 329:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 330:Core/Src/lte.c ****             {                
+ 331:Core/Src/lte.c ****                 if(OK == stDelay)
+ 332:Core/Src/lte.c ****                 {
+ 333:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_UPSDA);
+ 334:Core/Src/lte.c ****                     stDelay = FAIL;
+ 335:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 336:Core/Src/lte.c ****                 }
+ 337:Core/Src/lte.c ****                 else
+ 338:Core/Src/lte.c ****                 {
+ 339:Core/Src/lte.c ****                     stDelay = LTE_Delay(8000);
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 22
+
+
+ 340:Core/Src/lte.c ****                 }
+ 341:Core/Src/lte.c ****             }
+ 342:Core/Src/lte.c ****         break;
+ 343:Core/Src/lte.c ****         case LTE_STEP_UPSND :           
+ 344:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 345:Core/Src/lte.c ****             {
+ 346:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+UPSND=0,0\r\n");
+ 347:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 348:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 349:Core/Src/lte.c ****             }
+ 350:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 351:Core/Src/lte.c ****             {                
+ 352:Core/Src/lte.c ****                 if(OK == stDelay)
+ 353:Core/Src/lte.c ****                 {
+ 354:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_UPSND);
+ 355:Core/Src/lte.c ****                     stDelay = FAIL;
+ 356:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 357:Core/Src/lte.c ****                 }
+ 358:Core/Src/lte.c ****                 else
+ 359:Core/Src/lte.c ****                 {
+ 360:Core/Src/lte.c ****                     stDelay = LTE_Delay(1000);
+ 361:Core/Src/lte.c ****                 }
+ 362:Core/Src/lte.c ****             }
+ 363:Core/Src/lte.c ****         break;
+ 364:Core/Src/lte.c ****         case LTE_STEP_MQTT_IP_SET :           
+ 365:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 366:Core/Src/lte.c ****             {
+ 367:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+UMQTTSN=2,\"10.7.0.55\",2442\r\n");
+ 368:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 369:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 370:Core/Src/lte.c ****             }
+ 371:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 372:Core/Src/lte.c ****             {                
+ 373:Core/Src/lte.c ****                 if(OK == stDelay)
+ 374:Core/Src/lte.c ****                 {
+ 375:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_MQTT_IP_SET);
+ 376:Core/Src/lte.c ****                     stDelay = FAIL;
+ 377:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 378:Core/Src/lte.c ****                 }
+ 379:Core/Src/lte.c ****                 else
+ 380:Core/Src/lte.c ****                 {
+ 381:Core/Src/lte.c ****                     stDelay = LTE_Delay(50);
+ 382:Core/Src/lte.c ****                 }
+ 383:Core/Src/lte.c ****             }
+ 384:Core/Src/lte.c ****         break;
+ 385:Core/Src/lte.c ****         case LTE_STEP_MQTT_DURATION :           
+ 386:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 387:Core/Src/lte.c ****             {
+ 388:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+UMQTTSN=8,600\r\n");
+ 389:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 390:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 391:Core/Src/lte.c ****             }
+ 392:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 393:Core/Src/lte.c ****             {                
+ 394:Core/Src/lte.c ****                 if(OK == stDelay)
+ 395:Core/Src/lte.c ****                 {
+ 396:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_MQTT_DURATION);
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 23
+
+
+ 397:Core/Src/lte.c ****                     stDelay = FAIL;
+ 398:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 399:Core/Src/lte.c ****                 }
+ 400:Core/Src/lte.c ****                 else
+ 401:Core/Src/lte.c ****                 {
+ 402:Core/Src/lte.c ****                     stDelay = LTE_Delay(50);
+ 403:Core/Src/lte.c ****                 }
+ 404:Core/Src/lte.c ****             }
+ 405:Core/Src/lte.c ****         break;
+ 406:Core/Src/lte.c ****         case LTE_STEP_MQTT_SNNV :           
+ 407:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 408:Core/Src/lte.c ****             {
+ 409:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+UMQTTSNNV=2\r\n");
+ 410:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 411:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 412:Core/Src/lte.c ****             }
+ 413:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 414:Core/Src/lte.c ****             {                
+ 415:Core/Src/lte.c ****                 if(OK == stDelay)
+ 416:Core/Src/lte.c ****                 {
+ 417:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_MQTT_SNNV);
+ 418:Core/Src/lte.c ****                     stDelay = FAIL;
+ 419:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 420:Core/Src/lte.c ****                 }
+ 421:Core/Src/lte.c ****                 else
+ 422:Core/Src/lte.c ****                 {
+ 423:Core/Src/lte.c ****                     stDelay = LTE_Delay(2000);
+ 424:Core/Src/lte.c ****                 }
+ 425:Core/Src/lte.c ****             }
+ 426:Core/Src/lte.c ****         break;
+ 427:Core/Src/lte.c ****         case LTE_STEP_MQTT_CONNECT :           
+ 428:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 429:Core/Src/lte.c ****             {
+ 430:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+UMQTTSNC=1\r\n");
+ 431:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 432:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 433:Core/Src/lte.c ****             }
+ 434:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 435:Core/Src/lte.c ****             {               
+ 436:Core/Src/lte.c ****                 if(OK == stDelay)
+ 437:Core/Src/lte.c ****                 {
+ 438:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_MQTT_CONNECT);
+ 439:Core/Src/lte.c ****                     stDelay = FAIL;
+ 440:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 441:Core/Src/lte.c ****                 }
+ 442:Core/Src/lte.c ****                 else
+ 443:Core/Src/lte.c ****                 {
+ 444:Core/Src/lte.c ****                     stDelay = LTE_Delay(2000);
+ 445:Core/Src/lte.c ****                 }
+ 446:Core/Src/lte.c ****             }
+ 447:Core/Src/lte.c ****         break;
+ 448:Core/Src/lte.c ****         case LTE_STEP_MQTT_REGISTER :           
+ 449:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 450:Core/Src/lte.c ****             {
+ 451:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+UMQTTSNC=2,\"mqtt_test\"\r\n");
+ 452:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 453:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 24
+
+
+ 454:Core/Src/lte.c ****             }
+ 455:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 456:Core/Src/lte.c ****             {                
+ 457:Core/Src/lte.c ****                 if(OK == stDelay)
+ 458:Core/Src/lte.c ****                 {
+ 459:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_MQTT_REGISTER);
+ 460:Core/Src/lte.c ****                     stDelay = FAIL;
+ 461:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 462:Core/Src/lte.c ****                 }
+ 463:Core/Src/lte.c ****                 else
+ 464:Core/Src/lte.c ****                 {
+ 465:Core/Src/lte.c ****                     stDelay = LTE_Delay(2000);
+ 466:Core/Src/lte.c ****                 }
+ 467:Core/Src/lte.c ****             }
+ 468:Core/Src/lte.c ****         break;
+ 469:Core/Src/lte.c ****         case LTE_STEP_MQTT_SUBSCRIBE :           
+ 470:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 471:Core/Src/lte.c ****             {
+ 472:Core/Src/lte.c ****                 sprintf(Tx_Buf,"AT+UMQTTSNC=5,1,0,\"mqtt_test\"\r\n");
+ 473:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 474:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 475:Core/Src/lte.c ****             }
+ 476:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 477:Core/Src/lte.c ****             {                
+ 478:Core/Src/lte.c ****                 if(OK == stDelay)
+ 479:Core/Src/lte.c ****                 {
+ 480:Core/Src/lte.c ****                     LTE_Status = LTE_Receive_Check(LTE_STEP_MQTT_SUBSCRIBE);
+ 481:Core/Src/lte.c ****                     stDelay = FAIL;
+ 482:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 483:Core/Src/lte.c ****                 }
+ 484:Core/Src/lte.c ****                 else
+ 485:Core/Src/lte.c ****                 {
+ 486:Core/Src/lte.c ****                     stDelay = LTE_Delay(2000);
+ 487:Core/Src/lte.c ****                 }
+ 488:Core/Src/lte.c ****             }
+ 489:Core/Src/lte.c ****         break;
+ 490:Core/Src/lte.c ****         case LTE_STEP_MQTT_PUBLISH :           
+ 491:Core/Src/lte.c ****             if(LTE_UART_STATUS_TRANSMIT == uart_status)
+ 492:Core/Src/lte.c ****             {
+ 493:Core/Src/lte.c ****                 LTE_MQTT_Convert_Buffer(Tx_Buf);
+ 494:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 495:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 496:Core/Src/lte.c ****             }
+ 497:Core/Src/lte.c ****             if(LTE_UART_STATUS_RECEIVE == uart_status)
+ 498:Core/Src/lte.c ****             {
+ 499:Core/Src/lte.c ****                 if(OK == stDelay)
+ 500:Core/Src/lte.c ****                 {
+ 501:Core/Src/lte.c ****                     //LTE_Status = LTE_Receive_Check(LTE_STEP_MQTT_PUBLISH);
+ 502:Core/Src/lte.c ****                     stDelay = FAIL;
+ 503:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 504:Core/Src/lte.c ****                 }
+ 505:Core/Src/lte.c ****                 else
+ 506:Core/Src/lte.c ****                 {
+ 507:Core/Src/lte.c ****                     stDelay = LTE_Delay(10000);
+ 508:Core/Src/lte.c ****                 }
+ 509:Core/Src/lte.c ****             }
+ 510:Core/Src/lte.c ****         break;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 25
+
+
+ 511:Core/Src/lte.c ****     }
+ 512:Core/Src/lte.c **** }
+ 753              		.loc 1 512 1 view .LVU138
+ 754 0052 0DF2044D 		addw	sp, sp, #1028
+ 755              	.LCFI9:
+ 756              		.cfi_remember_state
+ 757              		.cfi_def_cfa_offset 12
+ 758              		@ sp needed
+ 759 0056 30BD     		pop	{r4, r5, pc}
+ 760              	.L98:
+ 761              	.LCFI10:
+ 762              		.cfi_restore_state
+ 136:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 763              		.loc 1 136 17 is_stmt 1 view .LVU139
+ 764 0058 914B     		ldr	r3, .L134+8
+ 765 005a 93E80300 		ldm	r3, {r0, r1}
+ 766 005e 0090     		str	r0, [sp]
+ 767 0060 ADF80410 		strh	r1, [sp, #4]	@ movhi
+ 768 0064 090C     		lsrs	r1, r1, #16
+ 769 0066 8DF80610 		strb	r1, [sp, #6]
+ 137:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 770              		.loc 1 137 17 view .LVU140
+ 771 006a 6846     		mov	r0, sp
+ 772 006c FFF7FEFF 		bl	LTE_Transmit
+ 773              	.LVL58:
+ 138:Core/Src/lte.c ****             }
+ 774              		.loc 1 138 17 view .LVU141
+ 138:Core/Src/lte.c ****             }
+ 775              		.loc 1 138 29 is_stmt 0 view .LVU142
+ 776 0070 8A4B     		ldr	r3, .L134+4
+ 777 0072 0122     		movs	r2, #1
+ 778 0074 1A70     		strb	r2, [r3]
+ 779 0076 E8E7     		b	.L61
+ 780              	.L99:
+ 142:Core/Src/lte.c ****                 {
+ 781              		.loc 1 142 17 is_stmt 1 view .LVU143
+ 142:Core/Src/lte.c ****                 {
+ 782              		.loc 1 142 23 is_stmt 0 view .LVU144
+ 783 0078 8A4B     		ldr	r3, .L134+12
+ 784 007a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 142:Core/Src/lte.c ****                 {
+ 785              		.loc 1 142 19 view .LVU145
+ 786 007c 012B     		cmp	r3, #1
+ 787 007e 05D0     		beq	.L100
+ 150:Core/Src/lte.c ****                 }
+ 788              		.loc 1 150 21 is_stmt 1 view .LVU146
+ 150:Core/Src/lte.c ****                 }
+ 789              		.loc 1 150 31 is_stmt 0 view .LVU147
+ 790 0080 6420     		movs	r0, #100
+ 791 0082 FFF7FEFF 		bl	LTE_Delay
+ 792              	.LVL59:
+ 150:Core/Src/lte.c ****                 }
+ 793              		.loc 1 150 29 view .LVU148
+ 794 0086 874B     		ldr	r3, .L134+12
+ 795 0088 1870     		strb	r0, [r3]
+ 796 008a E2E7     		b	.L40
+ 797              	.L100:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 26
+
+
+ 144:Core/Src/lte.c ****                     stDelay = FAIL;
+ 798              		.loc 1 144 21 is_stmt 1 view .LVU149
+ 144:Core/Src/lte.c ****                     stDelay = FAIL;
+ 799              		.loc 1 144 34 is_stmt 0 view .LVU150
+ 800 008c 0020     		movs	r0, #0
+ 801 008e FFF7FEFF 		bl	LTE_Receive_Check
+ 802              	.LVL60:
+ 144:Core/Src/lte.c ****                     stDelay = FAIL;
+ 803              		.loc 1 144 32 view .LVU151
+ 804 0092 814B     		ldr	r3, .L134
+ 805 0094 1870     		strb	r0, [r3]
+ 145:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 806              		.loc 1 145 21 is_stmt 1 view .LVU152
+ 145:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 807              		.loc 1 145 29 is_stmt 0 view .LVU153
+ 808 0096 0023     		movs	r3, #0
+ 809 0098 824A     		ldr	r2, .L134+12
+ 810 009a 1370     		strb	r3, [r2]
+ 146:Core/Src/lte.c ****                 }
+ 811              		.loc 1 146 21 is_stmt 1 view .LVU154
+ 146:Core/Src/lte.c ****                 }
+ 812              		.loc 1 146 33 is_stmt 0 view .LVU155
+ 813 009c 7F4A     		ldr	r2, .L134+4
+ 814 009e 1370     		strb	r3, [r2]
+ 815 00a0 D7E7     		b	.L40
+ 816              	.L59:
+ 155:Core/Src/lte.c ****             {
+ 817              		.loc 1 155 13 is_stmt 1 view .LVU156
+ 155:Core/Src/lte.c ****             {
+ 818              		.loc 1 155 41 is_stmt 0 view .LVU157
+ 819 00a2 7E4B     		ldr	r3, .L134+4
+ 820 00a4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 155:Core/Src/lte.c ****             {
+ 821              		.loc 1 155 15 view .LVU158
+ 822 00a6 6BB1     		cbz	r3, .L101
+ 823              	.L63:
+ 161:Core/Src/lte.c ****             {
+ 824              		.loc 1 161 13 is_stmt 1 view .LVU159
+ 161:Core/Src/lte.c ****             {
+ 825              		.loc 1 161 40 is_stmt 0 view .LVU160
+ 826 00a8 7C4B     		ldr	r3, .L134+4
+ 827 00aa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 161:Core/Src/lte.c ****             {
+ 828              		.loc 1 161 15 view .LVU161
+ 829 00ac 012B     		cmp	r3, #1
+ 830 00ae D0D1     		bne	.L40
+ 163:Core/Src/lte.c ****                 {
+ 831              		.loc 1 163 17 is_stmt 1 view .LVU162
+ 163:Core/Src/lte.c ****                 {
+ 832              		.loc 1 163 23 is_stmt 0 view .LVU163
+ 833 00b0 7C4B     		ldr	r3, .L134+12
+ 834 00b2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 163:Core/Src/lte.c ****                 {
+ 835              		.loc 1 163 19 view .LVU164
+ 836 00b4 012B     		cmp	r3, #1
+ 837 00b6 11D0     		beq	.L102
+ 171:Core/Src/lte.c ****                 }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 27
+
+
+ 838              		.loc 1 171 21 is_stmt 1 view .LVU165
+ 171:Core/Src/lte.c ****                 }
+ 839              		.loc 1 171 31 is_stmt 0 view .LVU166
+ 840 00b8 6420     		movs	r0, #100
+ 841 00ba FFF7FEFF 		bl	LTE_Delay
+ 842              	.LVL61:
+ 171:Core/Src/lte.c ****                 }
+ 843              		.loc 1 171 29 view .LVU167
+ 844 00be 794B     		ldr	r3, .L134+12
+ 845 00c0 1870     		strb	r0, [r3]
+ 846 00c2 C6E7     		b	.L40
+ 847              	.L101:
+ 157:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 848              		.loc 1 157 17 is_stmt 1 view .LVU168
+ 849 00c4 6B46     		mov	r3, sp
+ 850 00c6 784A     		ldr	r2, .L134+16
+ 851 00c8 07CA     		ldm	r2, {r0, r1, r2}
+ 852 00ca 83E80700 		stm	r3, {r0, r1, r2}
+ 158:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 853              		.loc 1 158 17 view .LVU169
+ 854 00ce 1846     		mov	r0, r3
+ 855 00d0 FFF7FEFF 		bl	LTE_Transmit
+ 856              	.LVL62:
+ 159:Core/Src/lte.c ****             }
+ 857              		.loc 1 159 17 view .LVU170
+ 159:Core/Src/lte.c ****             }
+ 858              		.loc 1 159 29 is_stmt 0 view .LVU171
+ 859 00d4 714B     		ldr	r3, .L134+4
+ 860 00d6 0122     		movs	r2, #1
+ 861 00d8 1A70     		strb	r2, [r3]
+ 862 00da E5E7     		b	.L63
+ 863              	.L102:
+ 165:Core/Src/lte.c ****                     stDelay = FAIL;
+ 864              		.loc 1 165 21 is_stmt 1 view .LVU172
+ 165:Core/Src/lte.c ****                     stDelay = FAIL;
+ 865              		.loc 1 165 34 is_stmt 0 view .LVU173
+ 866 00dc 0120     		movs	r0, #1
+ 867 00de FFF7FEFF 		bl	LTE_Receive_Check
+ 868              	.LVL63:
+ 165:Core/Src/lte.c ****                     stDelay = FAIL;
+ 869              		.loc 1 165 32 view .LVU174
+ 870 00e2 6D4B     		ldr	r3, .L134
+ 871 00e4 1870     		strb	r0, [r3]
+ 166:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 872              		.loc 1 166 21 is_stmt 1 view .LVU175
+ 166:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 873              		.loc 1 166 29 is_stmt 0 view .LVU176
+ 874 00e6 0023     		movs	r3, #0
+ 875 00e8 6E4A     		ldr	r2, .L134+12
+ 876 00ea 1370     		strb	r3, [r2]
+ 167:Core/Src/lte.c ****                 }
+ 877              		.loc 1 167 21 is_stmt 1 view .LVU177
+ 167:Core/Src/lte.c ****                 }
+ 878              		.loc 1 167 33 is_stmt 0 view .LVU178
+ 879 00ec 6B4A     		ldr	r2, .L134+4
+ 880 00ee 1370     		strb	r3, [r2]
+ 881 00f0 AFE7     		b	.L40
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 28
+
+
+ 882              	.L58:
+ 176:Core/Src/lte.c ****             {
+ 883              		.loc 1 176 13 is_stmt 1 view .LVU179
+ 176:Core/Src/lte.c ****             {
+ 884              		.loc 1 176 41 is_stmt 0 view .LVU180
+ 885 00f2 6A4B     		ldr	r3, .L134+4
+ 886 00f4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 176:Core/Src/lte.c ****             {
+ 887              		.loc 1 176 15 view .LVU181
+ 888 00f6 73B1     		cbz	r3, .L103
+ 889              	.L65:
+ 182:Core/Src/lte.c ****             {
+ 890              		.loc 1 182 13 is_stmt 1 view .LVU182
+ 182:Core/Src/lte.c ****             {
+ 891              		.loc 1 182 40 is_stmt 0 view .LVU183
+ 892 00f8 684B     		ldr	r3, .L134+4
+ 893 00fa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 182:Core/Src/lte.c ****             {
+ 894              		.loc 1 182 15 view .LVU184
+ 895 00fc 012B     		cmp	r3, #1
+ 896 00fe A8D1     		bne	.L40
+ 184:Core/Src/lte.c ****                 {
+ 897              		.loc 1 184 17 is_stmt 1 view .LVU185
+ 184:Core/Src/lte.c ****                 {
+ 898              		.loc 1 184 23 is_stmt 0 view .LVU186
+ 899 0100 684B     		ldr	r3, .L134+12
+ 900 0102 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 184:Core/Src/lte.c ****                 {
+ 901              		.loc 1 184 19 view .LVU187
+ 902 0104 012B     		cmp	r3, #1
+ 903 0106 12D0     		beq	.L104
+ 192:Core/Src/lte.c ****                 }
+ 904              		.loc 1 192 21 is_stmt 1 view .LVU188
+ 192:Core/Src/lte.c ****                 }
+ 905              		.loc 1 192 31 is_stmt 0 view .LVU189
+ 906 0108 40F6B830 		movw	r0, #3000
+ 907 010c FFF7FEFF 		bl	LTE_Delay
+ 908              	.LVL64:
+ 192:Core/Src/lte.c ****                 }
+ 909              		.loc 1 192 29 view .LVU190
+ 910 0110 644B     		ldr	r3, .L134+12
+ 911 0112 1870     		strb	r0, [r3]
+ 912 0114 9DE7     		b	.L40
+ 913              	.L103:
+ 178:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 914              		.loc 1 178 17 is_stmt 1 view .LVU191
+ 915 0116 6B46     		mov	r3, sp
+ 916 0118 644A     		ldr	r2, .L134+20
+ 917 011a 07CA     		ldm	r2, {r0, r1, r2}
+ 918 011c 83E80700 		stm	r3, {r0, r1, r2}
+ 179:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 919              		.loc 1 179 17 view .LVU192
+ 920 0120 1846     		mov	r0, r3
+ 921 0122 FFF7FEFF 		bl	LTE_Transmit
+ 922              	.LVL65:
+ 180:Core/Src/lte.c ****             }
+ 923              		.loc 1 180 17 view .LVU193
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 29
+
+
+ 180:Core/Src/lte.c ****             }
+ 924              		.loc 1 180 29 is_stmt 0 view .LVU194
+ 925 0126 5D4B     		ldr	r3, .L134+4
+ 926 0128 0122     		movs	r2, #1
+ 927 012a 1A70     		strb	r2, [r3]
+ 928 012c E4E7     		b	.L65
+ 929              	.L104:
+ 186:Core/Src/lte.c ****                     stDelay = FAIL;
+ 930              		.loc 1 186 21 is_stmt 1 view .LVU195
+ 186:Core/Src/lte.c ****                     stDelay = FAIL;
+ 931              		.loc 1 186 34 is_stmt 0 view .LVU196
+ 932 012e 0220     		movs	r0, #2
+ 933 0130 FFF7FEFF 		bl	LTE_Receive_Check
+ 934              	.LVL66:
+ 186:Core/Src/lte.c ****                     stDelay = FAIL;
+ 935              		.loc 1 186 32 view .LVU197
+ 936 0134 584B     		ldr	r3, .L134
+ 937 0136 1870     		strb	r0, [r3]
+ 187:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 938              		.loc 1 187 21 is_stmt 1 view .LVU198
+ 187:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 939              		.loc 1 187 29 is_stmt 0 view .LVU199
+ 940 0138 0023     		movs	r3, #0
+ 941 013a 5A4A     		ldr	r2, .L134+12
+ 942 013c 1370     		strb	r3, [r2]
+ 188:Core/Src/lte.c ****                 }
+ 943              		.loc 1 188 21 is_stmt 1 view .LVU200
+ 188:Core/Src/lte.c ****                 }
+ 944              		.loc 1 188 33 is_stmt 0 view .LVU201
+ 945 013e 574A     		ldr	r2, .L134+4
+ 946 0140 1370     		strb	r3, [r2]
+ 947 0142 86E7     		b	.L40
+ 948              	.L57:
+ 197:Core/Src/lte.c ****             {
+ 949              		.loc 1 197 13 is_stmt 1 view .LVU202
+ 197:Core/Src/lte.c ****             {
+ 950              		.loc 1 197 41 is_stmt 0 view .LVU203
+ 951 0144 554B     		ldr	r3, .L134+4
+ 952 0146 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 197:Core/Src/lte.c ****             {
+ 953              		.loc 1 197 15 view .LVU204
+ 954 0148 7BB1     		cbz	r3, .L105
+ 955              	.L67:
+ 203:Core/Src/lte.c ****             {
+ 956              		.loc 1 203 13 is_stmt 1 view .LVU205
+ 203:Core/Src/lte.c ****             {
+ 957              		.loc 1 203 40 is_stmt 0 view .LVU206
+ 958 014a 544B     		ldr	r3, .L134+4
+ 959 014c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 203:Core/Src/lte.c ****             {
+ 960              		.loc 1 203 15 view .LVU207
+ 961 014e 012B     		cmp	r3, #1
+ 962 0150 7FF47FAF 		bne	.L40
+ 205:Core/Src/lte.c ****                 {
+ 963              		.loc 1 205 17 is_stmt 1 view .LVU208
+ 205:Core/Src/lte.c ****                 {
+ 964              		.loc 1 205 23 is_stmt 0 view .LVU209
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 30
+
+
+ 965 0154 534B     		ldr	r3, .L134+12
+ 966 0156 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 205:Core/Src/lte.c ****                 {
+ 967              		.loc 1 205 19 view .LVU210
+ 968 0158 012B     		cmp	r3, #1
+ 969 015a 15D0     		beq	.L106
+ 213:Core/Src/lte.c ****                 }
+ 970              		.loc 1 213 21 is_stmt 1 view .LVU211
+ 213:Core/Src/lte.c ****                 }
+ 971              		.loc 1 213 31 is_stmt 0 view .LVU212
+ 972 015c 4FF4FA70 		mov	r0, #500
+ 973 0160 FFF7FEFF 		bl	LTE_Delay
+ 974              	.LVL67:
+ 213:Core/Src/lte.c ****                 }
+ 975              		.loc 1 213 29 view .LVU213
+ 976 0164 4F4B     		ldr	r3, .L134+12
+ 977 0166 1870     		strb	r0, [r3]
+ 978 0168 73E7     		b	.L40
+ 979              	.L105:
+ 199:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 980              		.loc 1 199 17 is_stmt 1 view .LVU214
+ 981 016a 514B     		ldr	r3, .L134+24
+ 982 016c 6C46     		mov	r4, sp
+ 983 016e 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 984 0170 07C4     		stmia	r4!, {r0, r1, r2}
+ 985 0172 24F8023B 		strh	r3, [r4], #2	@ movhi
+ 986 0176 1B0C     		lsrs	r3, r3, #16
+ 987 0178 2370     		strb	r3, [r4]
+ 200:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 988              		.loc 1 200 17 view .LVU215
+ 989 017a 6846     		mov	r0, sp
+ 990 017c FFF7FEFF 		bl	LTE_Transmit
+ 991              	.LVL68:
+ 201:Core/Src/lte.c ****             }
+ 992              		.loc 1 201 17 view .LVU216
+ 201:Core/Src/lte.c ****             }
+ 993              		.loc 1 201 29 is_stmt 0 view .LVU217
+ 994 0180 464B     		ldr	r3, .L134+4
+ 995 0182 0122     		movs	r2, #1
+ 996 0184 1A70     		strb	r2, [r3]
+ 997 0186 E0E7     		b	.L67
+ 998              	.L106:
+ 207:Core/Src/lte.c ****                     stDelay = FAIL;
+ 999              		.loc 1 207 21 is_stmt 1 view .LVU218
+ 207:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1000              		.loc 1 207 34 is_stmt 0 view .LVU219
+ 1001 0188 0320     		movs	r0, #3
+ 1002 018a FFF7FEFF 		bl	LTE_Receive_Check
+ 1003              	.LVL69:
+ 207:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1004              		.loc 1 207 32 view .LVU220
+ 1005 018e 424B     		ldr	r3, .L134
+ 1006 0190 1870     		strb	r0, [r3]
+ 208:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1007              		.loc 1 208 21 is_stmt 1 view .LVU221
+ 208:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1008              		.loc 1 208 29 is_stmt 0 view .LVU222
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 31
+
+
+ 1009 0192 0023     		movs	r3, #0
+ 1010 0194 434A     		ldr	r2, .L134+12
+ 1011 0196 1370     		strb	r3, [r2]
+ 209:Core/Src/lte.c ****                 }
+ 1012              		.loc 1 209 21 is_stmt 1 view .LVU223
+ 209:Core/Src/lte.c ****                 }
+ 1013              		.loc 1 209 33 is_stmt 0 view .LVU224
+ 1014 0198 404A     		ldr	r2, .L134+4
+ 1015 019a 1370     		strb	r3, [r2]
+ 1016 019c 59E7     		b	.L40
+ 1017              	.L56:
+ 218:Core/Src/lte.c ****             {
+ 1018              		.loc 1 218 13 is_stmt 1 view .LVU225
+ 218:Core/Src/lte.c ****             {
+ 1019              		.loc 1 218 41 is_stmt 0 view .LVU226
+ 1020 019e 3F4B     		ldr	r3, .L134+4
+ 1021 01a0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 218:Core/Src/lte.c ****             {
+ 1022              		.loc 1 218 15 view .LVU227
+ 1023 01a2 7BB1     		cbz	r3, .L107
+ 1024              	.L69:
+ 224:Core/Src/lte.c ****             {   
+ 1025              		.loc 1 224 13 is_stmt 1 view .LVU228
+ 224:Core/Src/lte.c ****             {   
+ 1026              		.loc 1 224 40 is_stmt 0 view .LVU229
+ 1027 01a4 3D4B     		ldr	r3, .L134+4
+ 1028 01a6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 224:Core/Src/lte.c ****             {   
+ 1029              		.loc 1 224 15 view .LVU230
+ 1030 01a8 012B     		cmp	r3, #1
+ 1031 01aa 7FF452AF 		bne	.L40
+ 226:Core/Src/lte.c ****                 {
+ 1032              		.loc 1 226 17 is_stmt 1 view .LVU231
+ 226:Core/Src/lte.c ****                 {
+ 1033              		.loc 1 226 23 is_stmt 0 view .LVU232
+ 1034 01ae 3D4B     		ldr	r3, .L134+12
+ 1035 01b0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 226:Core/Src/lte.c ****                 {
+ 1036              		.loc 1 226 19 view .LVU233
+ 1037 01b2 012B     		cmp	r3, #1
+ 1038 01b4 12D0     		beq	.L108
+ 234:Core/Src/lte.c ****                 }
+ 1039              		.loc 1 234 21 is_stmt 1 view .LVU234
+ 234:Core/Src/lte.c ****                 }
+ 1040              		.loc 1 234 31 is_stmt 0 view .LVU235
+ 1041 01b6 40F6B830 		movw	r0, #3000
+ 1042 01ba FFF7FEFF 		bl	LTE_Delay
+ 1043              	.LVL70:
+ 234:Core/Src/lte.c ****                 }
+ 1044              		.loc 1 234 29 view .LVU236
+ 1045 01be 394B     		ldr	r3, .L134+12
+ 1046 01c0 1870     		strb	r0, [r3]
+ 1047 01c2 46E7     		b	.L40
+ 1048              	.L107:
+ 220:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1049              		.loc 1 220 17 is_stmt 1 view .LVU237
+ 1050 01c4 6B46     		mov	r3, sp
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 32
+
+
+ 1051 01c6 3B4A     		ldr	r2, .L134+28
+ 1052 01c8 07CA     		ldm	r2, {r0, r1, r2}
+ 1053 01ca 83E80700 		stm	r3, {r0, r1, r2}
+ 221:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1054              		.loc 1 221 17 view .LVU238
+ 1055 01ce 1846     		mov	r0, r3
+ 1056 01d0 FFF7FEFF 		bl	LTE_Transmit
+ 1057              	.LVL71:
+ 222:Core/Src/lte.c ****             }
+ 1058              		.loc 1 222 17 view .LVU239
+ 222:Core/Src/lte.c ****             }
+ 1059              		.loc 1 222 29 is_stmt 0 view .LVU240
+ 1060 01d4 314B     		ldr	r3, .L134+4
+ 1061 01d6 0122     		movs	r2, #1
+ 1062 01d8 1A70     		strb	r2, [r3]
+ 1063 01da E3E7     		b	.L69
+ 1064              	.L108:
+ 228:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1065              		.loc 1 228 21 is_stmt 1 view .LVU241
+ 228:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1066              		.loc 1 228 34 is_stmt 0 view .LVU242
+ 1067 01dc 0420     		movs	r0, #4
+ 1068 01de FFF7FEFF 		bl	LTE_Receive_Check
+ 1069              	.LVL72:
+ 228:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1070              		.loc 1 228 32 view .LVU243
+ 1071 01e2 2D4B     		ldr	r3, .L134
+ 1072 01e4 1870     		strb	r0, [r3]
+ 229:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1073              		.loc 1 229 21 is_stmt 1 view .LVU244
+ 229:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1074              		.loc 1 229 29 is_stmt 0 view .LVU245
+ 1075 01e6 0023     		movs	r3, #0
+ 1076 01e8 2E4A     		ldr	r2, .L134+12
+ 1077 01ea 1370     		strb	r3, [r2]
+ 230:Core/Src/lte.c ****                 }
+ 1078              		.loc 1 230 21 is_stmt 1 view .LVU246
+ 230:Core/Src/lte.c ****                 }
+ 1079              		.loc 1 230 33 is_stmt 0 view .LVU247
+ 1080 01ec 2B4A     		ldr	r2, .L134+4
+ 1081 01ee 1370     		strb	r3, [r2]
+ 1082 01f0 2FE7     		b	.L40
+ 1083              	.L55:
+ 239:Core/Src/lte.c ****             {
+ 1084              		.loc 1 239 13 is_stmt 1 view .LVU248
+ 239:Core/Src/lte.c ****             {
+ 1085              		.loc 1 239 41 is_stmt 0 view .LVU249
+ 1086 01f2 2A4B     		ldr	r3, .L134+4
+ 1087 01f4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 239:Core/Src/lte.c ****             {
+ 1088              		.loc 1 239 15 view .LVU250
+ 1089 01f6 73B1     		cbz	r3, .L109
+ 1090              	.L71:
+ 245:Core/Src/lte.c ****             {                
+ 1091              		.loc 1 245 13 is_stmt 1 view .LVU251
+ 245:Core/Src/lte.c ****             {                
+ 1092              		.loc 1 245 40 is_stmt 0 view .LVU252
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 33
+
+
+ 1093 01f8 284B     		ldr	r3, .L134+4
+ 1094 01fa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 245:Core/Src/lte.c ****             {                
+ 1095              		.loc 1 245 15 view .LVU253
+ 1096 01fc 012B     		cmp	r3, #1
+ 1097 01fe 7FF428AF 		bne	.L40
+ 247:Core/Src/lte.c ****                 {
+ 1098              		.loc 1 247 17 is_stmt 1 view .LVU254
+ 247:Core/Src/lte.c ****                 {
+ 1099              		.loc 1 247 23 is_stmt 0 view .LVU255
+ 1100 0202 284B     		ldr	r3, .L134+12
+ 1101 0204 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 247:Core/Src/lte.c ****                 {
+ 1102              		.loc 1 247 19 view .LVU256
+ 1103 0206 012B     		cmp	r3, #1
+ 1104 0208 11D0     		beq	.L110
+ 255:Core/Src/lte.c ****                 }
+ 1105              		.loc 1 255 21 is_stmt 1 view .LVU257
+ 255:Core/Src/lte.c ****                 }
+ 1106              		.loc 1 255 31 is_stmt 0 view .LVU258
+ 1107 020a 6420     		movs	r0, #100
+ 1108 020c FFF7FEFF 		bl	LTE_Delay
+ 1109              	.LVL73:
+ 255:Core/Src/lte.c ****                 }
+ 1110              		.loc 1 255 29 view .LVU259
+ 1111 0210 244B     		ldr	r3, .L134+12
+ 1112 0212 1870     		strb	r0, [r3]
+ 1113 0214 1DE7     		b	.L40
+ 1114              	.L109:
+ 241:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1115              		.loc 1 241 17 is_stmt 1 view .LVU260
+ 1116 0216 284A     		ldr	r2, .L134+32
+ 1117 0218 6B46     		mov	r3, sp
+ 1118 021a 07CA     		ldm	r2, {r0, r1, r2}
+ 1119 021c 03C3     		stmia	r3!, {r0, r1}
+ 1120 021e 1A80     		strh	r2, [r3]	@ movhi
+ 242:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1121              		.loc 1 242 17 view .LVU261
+ 1122 0220 6846     		mov	r0, sp
+ 1123 0222 FFF7FEFF 		bl	LTE_Transmit
+ 1124              	.LVL74:
+ 243:Core/Src/lte.c ****             }
+ 1125              		.loc 1 243 17 view .LVU262
+ 243:Core/Src/lte.c ****             }
+ 1126              		.loc 1 243 29 is_stmt 0 view .LVU263
+ 1127 0226 1D4B     		ldr	r3, .L134+4
+ 1128 0228 0122     		movs	r2, #1
+ 1129 022a 1A70     		strb	r2, [r3]
+ 1130 022c E4E7     		b	.L71
+ 1131              	.L110:
+ 249:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1132              		.loc 1 249 21 is_stmt 1 view .LVU264
+ 249:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1133              		.loc 1 249 34 is_stmt 0 view .LVU265
+ 1134 022e 0520     		movs	r0, #5
+ 1135 0230 FFF7FEFF 		bl	LTE_Receive_Check
+ 1136              	.LVL75:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 34
+
+
+ 249:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1137              		.loc 1 249 32 view .LVU266
+ 1138 0234 184B     		ldr	r3, .L134
+ 1139 0236 1870     		strb	r0, [r3]
+ 250:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1140              		.loc 1 250 21 is_stmt 1 view .LVU267
+ 250:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1141              		.loc 1 250 29 is_stmt 0 view .LVU268
+ 1142 0238 0023     		movs	r3, #0
+ 1143 023a 1A4A     		ldr	r2, .L134+12
+ 1144 023c 1370     		strb	r3, [r2]
+ 251:Core/Src/lte.c ****                 }
+ 1145              		.loc 1 251 21 is_stmt 1 view .LVU269
+ 251:Core/Src/lte.c ****                 }
+ 1146              		.loc 1 251 33 is_stmt 0 view .LVU270
+ 1147 023e 174A     		ldr	r2, .L134+4
+ 1148 0240 1370     		strb	r3, [r2]
+ 1149 0242 06E7     		b	.L40
+ 1150              	.L54:
+ 260:Core/Src/lte.c ****             {
+ 1151              		.loc 1 260 13 is_stmt 1 view .LVU271
+ 260:Core/Src/lte.c ****             {
+ 1152              		.loc 1 260 41 is_stmt 0 view .LVU272
+ 1153 0244 154B     		ldr	r3, .L134+4
+ 1154 0246 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 260:Core/Src/lte.c ****             {
+ 1155              		.loc 1 260 15 view .LVU273
+ 1156 0248 73B1     		cbz	r3, .L111
+ 1157              	.L73:
+ 266:Core/Src/lte.c ****             {
+ 1158              		.loc 1 266 13 is_stmt 1 view .LVU274
+ 266:Core/Src/lte.c ****             {
+ 1159              		.loc 1 266 40 is_stmt 0 view .LVU275
+ 1160 024a 144B     		ldr	r3, .L134+4
+ 1161 024c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 266:Core/Src/lte.c ****             {
+ 1162              		.loc 1 266 15 view .LVU276
+ 1163 024e 012B     		cmp	r3, #1
+ 1164 0250 7FF4FFAE 		bne	.L40
+ 268:Core/Src/lte.c ****                 {
+ 1165              		.loc 1 268 17 is_stmt 1 view .LVU277
+ 268:Core/Src/lte.c ****                 {
+ 1166              		.loc 1 268 23 is_stmt 0 view .LVU278
+ 1167 0254 134B     		ldr	r3, .L134+12
+ 1168 0256 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 268:Core/Src/lte.c ****                 {
+ 1169              		.loc 1 268 19 view .LVU279
+ 1170 0258 012B     		cmp	r3, #1
+ 1171 025a 11D0     		beq	.L112
+ 276:Core/Src/lte.c ****                 }
+ 1172              		.loc 1 276 21 is_stmt 1 view .LVU280
+ 276:Core/Src/lte.c ****                 }
+ 1173              		.loc 1 276 31 is_stmt 0 view .LVU281
+ 1174 025c 6420     		movs	r0, #100
+ 1175 025e FFF7FEFF 		bl	LTE_Delay
+ 1176              	.LVL76:
+ 276:Core/Src/lte.c ****                 }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 35
+
+
+ 1177              		.loc 1 276 29 view .LVU282
+ 1178 0262 104B     		ldr	r3, .L134+12
+ 1179 0264 1870     		strb	r0, [r3]
+ 1180 0266 F4E6     		b	.L40
+ 1181              	.L111:
+ 262:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1182              		.loc 1 262 17 is_stmt 1 view .LVU283
+ 1183 0268 144B     		ldr	r3, .L134+36
+ 1184 026a 6C46     		mov	r4, sp
+ 1185 026c 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 1186 026e 07C4     		stmia	r4!, {r0, r1, r2}
+ 1187 0270 2370     		strb	r3, [r4]
+ 263:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1188              		.loc 1 263 17 view .LVU284
+ 1189 0272 6846     		mov	r0, sp
+ 1190 0274 FFF7FEFF 		bl	LTE_Transmit
+ 1191              	.LVL77:
+ 264:Core/Src/lte.c ****             }
+ 1192              		.loc 1 264 17 view .LVU285
+ 264:Core/Src/lte.c ****             }
+ 1193              		.loc 1 264 29 is_stmt 0 view .LVU286
+ 1194 0278 084B     		ldr	r3, .L134+4
+ 1195 027a 0122     		movs	r2, #1
+ 1196 027c 1A70     		strb	r2, [r3]
+ 1197 027e E4E7     		b	.L73
+ 1198              	.L112:
+ 270:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1199              		.loc 1 270 21 is_stmt 1 view .LVU287
+ 270:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1200              		.loc 1 270 34 is_stmt 0 view .LVU288
+ 1201 0280 0620     		movs	r0, #6
+ 1202 0282 FFF7FEFF 		bl	LTE_Receive_Check
+ 1203              	.LVL78:
+ 270:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1204              		.loc 1 270 32 view .LVU289
+ 1205 0286 044B     		ldr	r3, .L134
+ 1206 0288 1870     		strb	r0, [r3]
+ 271:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1207              		.loc 1 271 21 is_stmt 1 view .LVU290
+ 271:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1208              		.loc 1 271 29 is_stmt 0 view .LVU291
+ 1209 028a 0023     		movs	r3, #0
+ 1210 028c 054A     		ldr	r2, .L134+12
+ 1211 028e 1370     		strb	r3, [r2]
+ 272:Core/Src/lte.c ****                 }
+ 1212              		.loc 1 272 21 is_stmt 1 view .LVU292
+ 272:Core/Src/lte.c ****                 }
+ 1213              		.loc 1 272 33 is_stmt 0 view .LVU293
+ 1214 0290 024A     		ldr	r2, .L134+4
+ 1215 0292 1370     		strb	r3, [r2]
+ 1216 0294 DDE6     		b	.L40
+ 1217              	.L135:
+ 1218 0296 00BF     		.align	2
+ 1219              	.L134:
+ 1220 0298 00000000 		.word	.LANCHOR20
+ 1221 029c 00000000 		.word	.LANCHOR21
+ 1222 02a0 00000000 		.word	.LC3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 36
+
+
+ 1223 02a4 00000000 		.word	.LANCHOR22
+ 1224 02a8 08000000 		.word	.LC4
+ 1225 02ac 14000000 		.word	.LC5
+ 1226 02b0 20000000 		.word	.LC6
+ 1227 02b4 30000000 		.word	.LC7
+ 1228 02b8 3C000000 		.word	.LC8
+ 1229 02bc 48000000 		.word	.LC9
+ 1230              	.L53:
+ 281:Core/Src/lte.c ****             {
+ 1231              		.loc 1 281 13 is_stmt 1 view .LVU294
+ 281:Core/Src/lte.c ****             {
+ 1232              		.loc 1 281 41 is_stmt 0 view .LVU295
+ 1233 02c0 A24B     		ldr	r3, .L136
+ 1234 02c2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 281:Core/Src/lte.c ****             {
+ 1235              		.loc 1 281 15 view .LVU296
+ 1236 02c4 7BB1     		cbz	r3, .L113
+ 1237              	.L75:
+ 287:Core/Src/lte.c ****             {                
+ 1238              		.loc 1 287 13 is_stmt 1 view .LVU297
+ 287:Core/Src/lte.c ****             {                
+ 1239              		.loc 1 287 40 is_stmt 0 view .LVU298
+ 1240 02c6 A14B     		ldr	r3, .L136
+ 1241 02c8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 287:Core/Src/lte.c ****             {                
+ 1242              		.loc 1 287 15 view .LVU299
+ 1243 02ca 012B     		cmp	r3, #1
+ 1244 02cc 7FF4C1AE 		bne	.L40
+ 289:Core/Src/lte.c ****                 {
+ 1245              		.loc 1 289 17 is_stmt 1 view .LVU300
+ 289:Core/Src/lte.c ****                 {
+ 1246              		.loc 1 289 23 is_stmt 0 view .LVU301
+ 1247 02d0 9F4B     		ldr	r3, .L136+4
+ 1248 02d2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 289:Core/Src/lte.c ****                 {
+ 1249              		.loc 1 289 19 view .LVU302
+ 1250 02d4 012B     		cmp	r3, #1
+ 1251 02d6 13D0     		beq	.L114
+ 297:Core/Src/lte.c ****                 }
+ 1252              		.loc 1 297 21 is_stmt 1 view .LVU303
+ 297:Core/Src/lte.c ****                 }
+ 1253              		.loc 1 297 31 is_stmt 0 view .LVU304
+ 1254 02d8 4FF47A70 		mov	r0, #1000
+ 1255 02dc FFF7FEFF 		bl	LTE_Delay
+ 1256              	.LVL79:
+ 297:Core/Src/lte.c ****                 }
+ 1257              		.loc 1 297 29 view .LVU305
+ 1258 02e0 9B4B     		ldr	r3, .L136+4
+ 1259 02e2 1870     		strb	r0, [r3]
+ 1260 02e4 B5E6     		b	.L40
+ 1261              	.L113:
+ 283:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1262              		.loc 1 283 17 is_stmt 1 view .LVU306
+ 1263 02e6 6C46     		mov	r4, sp
+ 1264 02e8 9A4D     		ldr	r5, .L136+8
+ 1265 02ea 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1266 02ec 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 37
+
+
+ 1267 02ee 2B68     		ldr	r3, [r5]
+ 1268 02f0 2380     		strh	r3, [r4]	@ movhi
+ 284:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1269              		.loc 1 284 17 view .LVU307
+ 1270 02f2 6846     		mov	r0, sp
+ 1271 02f4 FFF7FEFF 		bl	LTE_Transmit
+ 1272              	.LVL80:
+ 285:Core/Src/lte.c ****             }
+ 1273              		.loc 1 285 17 view .LVU308
+ 285:Core/Src/lte.c ****             }
+ 1274              		.loc 1 285 29 is_stmt 0 view .LVU309
+ 1275 02f8 944B     		ldr	r3, .L136
+ 1276 02fa 0122     		movs	r2, #1
+ 1277 02fc 1A70     		strb	r2, [r3]
+ 1278 02fe E2E7     		b	.L75
+ 1279              	.L114:
+ 291:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1280              		.loc 1 291 21 is_stmt 1 view .LVU310
+ 291:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1281              		.loc 1 291 34 is_stmt 0 view .LVU311
+ 1282 0300 0720     		movs	r0, #7
+ 1283 0302 FFF7FEFF 		bl	LTE_Receive_Check
+ 1284              	.LVL81:
+ 291:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1285              		.loc 1 291 32 view .LVU312
+ 1286 0306 944B     		ldr	r3, .L136+12
+ 1287 0308 1870     		strb	r0, [r3]
+ 292:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1288              		.loc 1 292 21 is_stmt 1 view .LVU313
+ 292:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1289              		.loc 1 292 29 is_stmt 0 view .LVU314
+ 1290 030a 0023     		movs	r3, #0
+ 1291 030c 904A     		ldr	r2, .L136+4
+ 1292 030e 1370     		strb	r3, [r2]
+ 293:Core/Src/lte.c ****                 }
+ 1293              		.loc 1 293 21 is_stmt 1 view .LVU315
+ 293:Core/Src/lte.c ****                 }
+ 1294              		.loc 1 293 33 is_stmt 0 view .LVU316
+ 1295 0310 8E4A     		ldr	r2, .L136
+ 1296 0312 1370     		strb	r3, [r2]
+ 1297 0314 9DE6     		b	.L40
+ 1298              	.L52:
+ 302:Core/Src/lte.c ****             {
+ 1299              		.loc 1 302 13 is_stmt 1 view .LVU317
+ 302:Core/Src/lte.c ****             {
+ 1300              		.loc 1 302 41 is_stmt 0 view .LVU318
+ 1301 0316 8D4B     		ldr	r3, .L136
+ 1302 0318 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 302:Core/Src/lte.c ****             {
+ 1303              		.loc 1 302 15 view .LVU319
+ 1304 031a 7BB1     		cbz	r3, .L115
+ 1305              	.L77:
+ 308:Core/Src/lte.c ****             {                
+ 1306              		.loc 1 308 13 is_stmt 1 view .LVU320
+ 308:Core/Src/lte.c ****             {                
+ 1307              		.loc 1 308 40 is_stmt 0 view .LVU321
+ 1308 031c 8B4B     		ldr	r3, .L136
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 38
+
+
+ 1309 031e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 308:Core/Src/lte.c ****             {                
+ 1310              		.loc 1 308 15 view .LVU322
+ 1311 0320 012B     		cmp	r3, #1
+ 1312 0322 7FF496AE 		bne	.L40
+ 310:Core/Src/lte.c ****                 {
+ 1313              		.loc 1 310 17 is_stmt 1 view .LVU323
+ 310:Core/Src/lte.c ****                 {
+ 1314              		.loc 1 310 23 is_stmt 0 view .LVU324
+ 1315 0326 8A4B     		ldr	r3, .L136+4
+ 1316 0328 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 310:Core/Src/lte.c ****                 {
+ 1317              		.loc 1 310 19 view .LVU325
+ 1318 032a 012B     		cmp	r3, #1
+ 1319 032c 12D0     		beq	.L116
+ 318:Core/Src/lte.c ****                 }
+ 1320              		.loc 1 318 21 is_stmt 1 view .LVU326
+ 318:Core/Src/lte.c ****                 }
+ 1321              		.loc 1 318 31 is_stmt 0 view .LVU327
+ 1322 032e 4FF47A70 		mov	r0, #1000
+ 1323 0332 FFF7FEFF 		bl	LTE_Delay
+ 1324              	.LVL82:
+ 318:Core/Src/lte.c ****                 }
+ 1325              		.loc 1 318 29 view .LVU328
+ 1326 0336 864B     		ldr	r3, .L136+4
+ 1327 0338 1870     		strb	r0, [r3]
+ 1328 033a 8AE6     		b	.L40
+ 1329              	.L115:
+ 304:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1330              		.loc 1 304 17 is_stmt 1 view .LVU329
+ 1331 033c 6C46     		mov	r4, sp
+ 1332 033e 874B     		ldr	r3, .L136+16
+ 1333 0340 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 1334 0342 84E80F00 		stm	r4, {r0, r1, r2, r3}
+ 305:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1335              		.loc 1 305 17 view .LVU330
+ 1336 0346 2046     		mov	r0, r4
+ 1337 0348 FFF7FEFF 		bl	LTE_Transmit
+ 1338              	.LVL83:
+ 306:Core/Src/lte.c ****             }
+ 1339              		.loc 1 306 17 view .LVU331
+ 306:Core/Src/lte.c ****             }
+ 1340              		.loc 1 306 29 is_stmt 0 view .LVU332
+ 1341 034c 7F4B     		ldr	r3, .L136
+ 1342 034e 0122     		movs	r2, #1
+ 1343 0350 1A70     		strb	r2, [r3]
+ 1344 0352 E3E7     		b	.L77
+ 1345              	.L116:
+ 312:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1346              		.loc 1 312 21 is_stmt 1 view .LVU333
+ 312:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1347              		.loc 1 312 34 is_stmt 0 view .LVU334
+ 1348 0354 0820     		movs	r0, #8
+ 1349 0356 FFF7FEFF 		bl	LTE_Receive_Check
+ 1350              	.LVL84:
+ 312:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1351              		.loc 1 312 32 view .LVU335
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 39
+
+
+ 1352 035a 7F4B     		ldr	r3, .L136+12
+ 1353 035c 1870     		strb	r0, [r3]
+ 313:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1354              		.loc 1 313 21 is_stmt 1 view .LVU336
+ 313:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1355              		.loc 1 313 29 is_stmt 0 view .LVU337
+ 1356 035e 0023     		movs	r3, #0
+ 1357 0360 7B4A     		ldr	r2, .L136+4
+ 1358 0362 1370     		strb	r3, [r2]
+ 314:Core/Src/lte.c ****                 }
+ 1359              		.loc 1 314 21 is_stmt 1 view .LVU338
+ 314:Core/Src/lte.c ****                 }
+ 1360              		.loc 1 314 33 is_stmt 0 view .LVU339
+ 1361 0364 794A     		ldr	r2, .L136
+ 1362 0366 1370     		strb	r3, [r2]
+ 1363 0368 73E6     		b	.L40
+ 1364              	.L51:
+ 323:Core/Src/lte.c ****             {
+ 1365              		.loc 1 323 13 is_stmt 1 view .LVU340
+ 323:Core/Src/lte.c ****             {
+ 1366              		.loc 1 323 41 is_stmt 0 view .LVU341
+ 1367 036a 784B     		ldr	r3, .L136
+ 1368 036c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 323:Core/Src/lte.c ****             {
+ 1369              		.loc 1 323 15 view .LVU342
+ 1370 036e 7BB1     		cbz	r3, .L117
+ 1371              	.L79:
+ 329:Core/Src/lte.c ****             {                
+ 1372              		.loc 1 329 13 is_stmt 1 view .LVU343
+ 329:Core/Src/lte.c ****             {                
+ 1373              		.loc 1 329 40 is_stmt 0 view .LVU344
+ 1374 0370 764B     		ldr	r3, .L136
+ 1375 0372 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 329:Core/Src/lte.c ****             {                
+ 1376              		.loc 1 329 15 view .LVU345
+ 1377 0374 012B     		cmp	r3, #1
+ 1378 0376 7FF46CAE 		bne	.L40
+ 331:Core/Src/lte.c ****                 {
+ 1379              		.loc 1 331 17 is_stmt 1 view .LVU346
+ 331:Core/Src/lte.c ****                 {
+ 1380              		.loc 1 331 23 is_stmt 0 view .LVU347
+ 1381 037a 754B     		ldr	r3, .L136+4
+ 1382 037c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 331:Core/Src/lte.c ****                 {
+ 1383              		.loc 1 331 19 view .LVU348
+ 1384 037e 012B     		cmp	r3, #1
+ 1385 0380 15D0     		beq	.L118
+ 339:Core/Src/lte.c ****                 }
+ 1386              		.loc 1 339 21 is_stmt 1 view .LVU349
+ 339:Core/Src/lte.c ****                 }
+ 1387              		.loc 1 339 31 is_stmt 0 view .LVU350
+ 1388 0382 4FF4FA50 		mov	r0, #8000
+ 1389 0386 FFF7FEFF 		bl	LTE_Delay
+ 1390              	.LVL85:
+ 339:Core/Src/lte.c ****                 }
+ 1391              		.loc 1 339 29 view .LVU351
+ 1392 038a 714B     		ldr	r3, .L136+4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 40
+
+
+ 1393 038c 1870     		strb	r0, [r3]
+ 1394 038e 60E6     		b	.L40
+ 1395              	.L117:
+ 325:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1396              		.loc 1 325 17 is_stmt 1 view .LVU352
+ 1397 0390 734B     		ldr	r3, .L136+20
+ 1398 0392 6C46     		mov	r4, sp
+ 1399 0394 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 1400 0396 07C4     		stmia	r4!, {r0, r1, r2}
+ 1401 0398 24F8023B 		strh	r3, [r4], #2	@ movhi
+ 1402 039c 1B0C     		lsrs	r3, r3, #16
+ 1403 039e 2370     		strb	r3, [r4]
+ 326:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1404              		.loc 1 326 17 view .LVU353
+ 1405 03a0 6846     		mov	r0, sp
+ 1406 03a2 FFF7FEFF 		bl	LTE_Transmit
+ 1407              	.LVL86:
+ 327:Core/Src/lte.c ****             }
+ 1408              		.loc 1 327 17 view .LVU354
+ 327:Core/Src/lte.c ****             }
+ 1409              		.loc 1 327 29 is_stmt 0 view .LVU355
+ 1410 03a6 694B     		ldr	r3, .L136
+ 1411 03a8 0122     		movs	r2, #1
+ 1412 03aa 1A70     		strb	r2, [r3]
+ 1413 03ac E0E7     		b	.L79
+ 1414              	.L118:
+ 333:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1415              		.loc 1 333 21 is_stmt 1 view .LVU356
+ 333:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1416              		.loc 1 333 34 is_stmt 0 view .LVU357
+ 1417 03ae 0920     		movs	r0, #9
+ 1418 03b0 FFF7FEFF 		bl	LTE_Receive_Check
+ 1419              	.LVL87:
+ 333:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1420              		.loc 1 333 32 view .LVU358
+ 1421 03b4 684B     		ldr	r3, .L136+12
+ 1422 03b6 1870     		strb	r0, [r3]
+ 334:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1423              		.loc 1 334 21 is_stmt 1 view .LVU359
+ 334:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1424              		.loc 1 334 29 is_stmt 0 view .LVU360
+ 1425 03b8 0023     		movs	r3, #0
+ 1426 03ba 654A     		ldr	r2, .L136+4
+ 1427 03bc 1370     		strb	r3, [r2]
+ 335:Core/Src/lte.c ****                 }
+ 1428              		.loc 1 335 21 is_stmt 1 view .LVU361
+ 335:Core/Src/lte.c ****                 }
+ 1429              		.loc 1 335 33 is_stmt 0 view .LVU362
+ 1430 03be 634A     		ldr	r2, .L136
+ 1431 03c0 1370     		strb	r3, [r2]
+ 1432 03c2 46E6     		b	.L40
+ 1433              	.L50:
+ 344:Core/Src/lte.c ****             {
+ 1434              		.loc 1 344 13 is_stmt 1 view .LVU363
+ 344:Core/Src/lte.c ****             {
+ 1435              		.loc 1 344 41 is_stmt 0 view .LVU364
+ 1436 03c4 614B     		ldr	r3, .L136
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 41
+
+
+ 1437 03c6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 344:Core/Src/lte.c ****             {
+ 1438              		.loc 1 344 15 view .LVU365
+ 1439 03c8 7BB1     		cbz	r3, .L119
+ 1440              	.L81:
+ 350:Core/Src/lte.c ****             {                
+ 1441              		.loc 1 350 13 is_stmt 1 view .LVU366
+ 350:Core/Src/lte.c ****             {                
+ 1442              		.loc 1 350 40 is_stmt 0 view .LVU367
+ 1443 03ca 604B     		ldr	r3, .L136
+ 1444 03cc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 350:Core/Src/lte.c ****             {                
+ 1445              		.loc 1 350 15 view .LVU368
+ 1446 03ce 012B     		cmp	r3, #1
+ 1447 03d0 7FF43FAE 		bne	.L40
+ 352:Core/Src/lte.c ****                 {
+ 1448              		.loc 1 352 17 is_stmt 1 view .LVU369
+ 352:Core/Src/lte.c ****                 {
+ 1449              		.loc 1 352 23 is_stmt 0 view .LVU370
+ 1450 03d4 5E4B     		ldr	r3, .L136+4
+ 1451 03d6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 352:Core/Src/lte.c ****                 {
+ 1452              		.loc 1 352 19 view .LVU371
+ 1453 03d8 012B     		cmp	r3, #1
+ 1454 03da 15D0     		beq	.L120
+ 360:Core/Src/lte.c ****                 }
+ 1455              		.loc 1 360 21 is_stmt 1 view .LVU372
+ 360:Core/Src/lte.c ****                 }
+ 1456              		.loc 1 360 31 is_stmt 0 view .LVU373
+ 1457 03dc 4FF47A70 		mov	r0, #1000
+ 1458 03e0 FFF7FEFF 		bl	LTE_Delay
+ 1459              	.LVL88:
+ 360:Core/Src/lte.c ****                 }
+ 1460              		.loc 1 360 29 view .LVU374
+ 1461 03e4 5A4B     		ldr	r3, .L136+4
+ 1462 03e6 1870     		strb	r0, [r3]
+ 1463 03e8 33E6     		b	.L40
+ 1464              	.L119:
+ 346:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1465              		.loc 1 346 17 is_stmt 1 view .LVU375
+ 1466 03ea 5E4B     		ldr	r3, .L136+24
+ 1467 03ec 6C46     		mov	r4, sp
+ 1468 03ee 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 1469 03f0 07C4     		stmia	r4!, {r0, r1, r2}
+ 1470 03f2 24F8023B 		strh	r3, [r4], #2	@ movhi
+ 1471 03f6 1B0C     		lsrs	r3, r3, #16
+ 1472 03f8 2370     		strb	r3, [r4]
+ 347:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1473              		.loc 1 347 17 view .LVU376
+ 1474 03fa 6846     		mov	r0, sp
+ 1475 03fc FFF7FEFF 		bl	LTE_Transmit
+ 1476              	.LVL89:
+ 348:Core/Src/lte.c ****             }
+ 1477              		.loc 1 348 17 view .LVU377
+ 348:Core/Src/lte.c ****             }
+ 1478              		.loc 1 348 29 is_stmt 0 view .LVU378
+ 1479 0400 524B     		ldr	r3, .L136
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 42
+
+
+ 1480 0402 0122     		movs	r2, #1
+ 1481 0404 1A70     		strb	r2, [r3]
+ 1482 0406 E0E7     		b	.L81
+ 1483              	.L120:
+ 354:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1484              		.loc 1 354 21 is_stmt 1 view .LVU379
+ 354:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1485              		.loc 1 354 34 is_stmt 0 view .LVU380
+ 1486 0408 0A20     		movs	r0, #10
+ 1487 040a FFF7FEFF 		bl	LTE_Receive_Check
+ 1488              	.LVL90:
+ 354:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1489              		.loc 1 354 32 view .LVU381
+ 1490 040e 524B     		ldr	r3, .L136+12
+ 1491 0410 1870     		strb	r0, [r3]
+ 355:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1492              		.loc 1 355 21 is_stmt 1 view .LVU382
+ 355:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1493              		.loc 1 355 29 is_stmt 0 view .LVU383
+ 1494 0412 0023     		movs	r3, #0
+ 1495 0414 4E4A     		ldr	r2, .L136+4
+ 1496 0416 1370     		strb	r3, [r2]
+ 356:Core/Src/lte.c ****                 }
+ 1497              		.loc 1 356 21 is_stmt 1 view .LVU384
+ 356:Core/Src/lte.c ****                 }
+ 1498              		.loc 1 356 33 is_stmt 0 view .LVU385
+ 1499 0418 4C4A     		ldr	r2, .L136
+ 1500 041a 1370     		strb	r3, [r2]
+ 1501 041c 19E6     		b	.L40
+ 1502              	.L49:
+ 365:Core/Src/lte.c ****             {
+ 1503              		.loc 1 365 13 is_stmt 1 view .LVU386
+ 365:Core/Src/lte.c ****             {
+ 1504              		.loc 1 365 41 is_stmt 0 view .LVU387
+ 1505 041e 4B4B     		ldr	r3, .L136
+ 1506 0420 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 365:Core/Src/lte.c ****             {
+ 1507              		.loc 1 365 15 view .LVU388
+ 1508 0422 73B1     		cbz	r3, .L121
+ 1509              	.L83:
+ 371:Core/Src/lte.c ****             {                
+ 1510              		.loc 1 371 13 is_stmt 1 view .LVU389
+ 371:Core/Src/lte.c ****             {                
+ 1511              		.loc 1 371 40 is_stmt 0 view .LVU390
+ 1512 0424 494B     		ldr	r3, .L136
+ 1513 0426 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 371:Core/Src/lte.c ****             {                
+ 1514              		.loc 1 371 15 view .LVU391
+ 1515 0428 012B     		cmp	r3, #1
+ 1516 042a 7FF412AE 		bne	.L40
+ 373:Core/Src/lte.c ****                 {
+ 1517              		.loc 1 373 17 is_stmt 1 view .LVU392
+ 373:Core/Src/lte.c ****                 {
+ 1518              		.loc 1 373 23 is_stmt 0 view .LVU393
+ 1519 042e 484B     		ldr	r3, .L136+4
+ 1520 0430 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 373:Core/Src/lte.c ****                 {
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 43
+
+
+ 1521              		.loc 1 373 19 view .LVU394
+ 1522 0432 012B     		cmp	r3, #1
+ 1523 0434 14D0     		beq	.L122
+ 381:Core/Src/lte.c ****                 }
+ 1524              		.loc 1 381 21 is_stmt 1 view .LVU395
+ 381:Core/Src/lte.c ****                 }
+ 1525              		.loc 1 381 31 is_stmt 0 view .LVU396
+ 1526 0436 3220     		movs	r0, #50
+ 1527 0438 FFF7FEFF 		bl	LTE_Delay
+ 1528              	.LVL91:
+ 381:Core/Src/lte.c ****                 }
+ 1529              		.loc 1 381 29 view .LVU397
+ 1530 043c 444B     		ldr	r3, .L136+4
+ 1531 043e 1870     		strb	r0, [r3]
+ 1532 0440 07E6     		b	.L40
+ 1533              	.L121:
+ 367:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1534              		.loc 1 367 17 is_stmt 1 view .LVU398
+ 1535 0442 6C46     		mov	r4, sp
+ 1536 0444 484D     		ldr	r5, .L136+28
+ 1537 0446 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1538 0448 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1539 044a 95E80F00 		ldm	r5, {r0, r1, r2, r3}
+ 1540 044e 84E80F00 		stm	r4, {r0, r1, r2, r3}
+ 368:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1541              		.loc 1 368 17 view .LVU399
+ 1542 0452 6846     		mov	r0, sp
+ 1543 0454 FFF7FEFF 		bl	LTE_Transmit
+ 1544              	.LVL92:
+ 369:Core/Src/lte.c ****             }
+ 1545              		.loc 1 369 17 view .LVU400
+ 369:Core/Src/lte.c ****             }
+ 1546              		.loc 1 369 29 is_stmt 0 view .LVU401
+ 1547 0458 3C4B     		ldr	r3, .L136
+ 1548 045a 0122     		movs	r2, #1
+ 1549 045c 1A70     		strb	r2, [r3]
+ 1550 045e E1E7     		b	.L83
+ 1551              	.L122:
+ 375:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1552              		.loc 1 375 21 is_stmt 1 view .LVU402
+ 375:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1553              		.loc 1 375 34 is_stmt 0 view .LVU403
+ 1554 0460 0B20     		movs	r0, #11
+ 1555 0462 FFF7FEFF 		bl	LTE_Receive_Check
+ 1556              	.LVL93:
+ 375:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1557              		.loc 1 375 32 view .LVU404
+ 1558 0466 3C4B     		ldr	r3, .L136+12
+ 1559 0468 1870     		strb	r0, [r3]
+ 376:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1560              		.loc 1 376 21 is_stmt 1 view .LVU405
+ 376:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1561              		.loc 1 376 29 is_stmt 0 view .LVU406
+ 1562 046a 0023     		movs	r3, #0
+ 1563 046c 384A     		ldr	r2, .L136+4
+ 1564 046e 1370     		strb	r3, [r2]
+ 377:Core/Src/lte.c ****                 }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 44
+
+
+ 1565              		.loc 1 377 21 is_stmt 1 view .LVU407
+ 377:Core/Src/lte.c ****                 }
+ 1566              		.loc 1 377 33 is_stmt 0 view .LVU408
+ 1567 0470 364A     		ldr	r2, .L136
+ 1568 0472 1370     		strb	r3, [r2]
+ 1569 0474 EDE5     		b	.L40
+ 1570              	.L48:
+ 386:Core/Src/lte.c ****             {
+ 1571              		.loc 1 386 13 is_stmt 1 view .LVU409
+ 386:Core/Src/lte.c ****             {
+ 1572              		.loc 1 386 41 is_stmt 0 view .LVU410
+ 1573 0476 354B     		ldr	r3, .L136
+ 1574 0478 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 386:Core/Src/lte.c ****             {
+ 1575              		.loc 1 386 15 view .LVU411
+ 1576 047a 73B1     		cbz	r3, .L123
+ 1577              	.L85:
+ 392:Core/Src/lte.c ****             {                
+ 1578              		.loc 1 392 13 is_stmt 1 view .LVU412
+ 392:Core/Src/lte.c ****             {                
+ 1579              		.loc 1 392 40 is_stmt 0 view .LVU413
+ 1580 047c 334B     		ldr	r3, .L136
+ 1581 047e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 392:Core/Src/lte.c ****             {                
+ 1582              		.loc 1 392 15 view .LVU414
+ 1583 0480 012B     		cmp	r3, #1
+ 1584 0482 7FF4E6AD 		bne	.L40
+ 394:Core/Src/lte.c ****                 {
+ 1585              		.loc 1 394 17 is_stmt 1 view .LVU415
+ 394:Core/Src/lte.c ****                 {
+ 1586              		.loc 1 394 23 is_stmt 0 view .LVU416
+ 1587 0486 324B     		ldr	r3, .L136+4
+ 1588 0488 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 394:Core/Src/lte.c ****                 {
+ 1589              		.loc 1 394 19 view .LVU417
+ 1590 048a 012B     		cmp	r3, #1
+ 1591 048c 15D0     		beq	.L124
+ 402:Core/Src/lte.c ****                 }
+ 1592              		.loc 1 402 21 is_stmt 1 view .LVU418
+ 402:Core/Src/lte.c ****                 }
+ 1593              		.loc 1 402 31 is_stmt 0 view .LVU419
+ 1594 048e 3220     		movs	r0, #50
+ 1595 0490 FFF7FEFF 		bl	LTE_Delay
+ 1596              	.LVL94:
+ 402:Core/Src/lte.c ****                 }
+ 1597              		.loc 1 402 29 view .LVU420
+ 1598 0494 2E4B     		ldr	r3, .L136+4
+ 1599 0496 1870     		strb	r0, [r3]
+ 1600 0498 DBE5     		b	.L40
+ 1601              	.L123:
+ 388:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1602              		.loc 1 388 17 is_stmt 1 view .LVU421
+ 1603 049a 6C46     		mov	r4, sp
+ 1604 049c 334D     		ldr	r5, .L136+32
+ 1605 049e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1606 04a0 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1607 04a2 2B68     		ldr	r3, [r5]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 45
+
+
+ 1608 04a4 24F8023B 		strh	r3, [r4], #2	@ movhi
+ 1609 04a8 1B0C     		lsrs	r3, r3, #16
+ 1610 04aa 2370     		strb	r3, [r4]
+ 389:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1611              		.loc 1 389 17 view .LVU422
+ 1612 04ac 6846     		mov	r0, sp
+ 1613 04ae FFF7FEFF 		bl	LTE_Transmit
+ 1614              	.LVL95:
+ 390:Core/Src/lte.c ****             }
+ 1615              		.loc 1 390 17 view .LVU423
+ 390:Core/Src/lte.c ****             }
+ 1616              		.loc 1 390 29 is_stmt 0 view .LVU424
+ 1617 04b2 264B     		ldr	r3, .L136
+ 1618 04b4 0122     		movs	r2, #1
+ 1619 04b6 1A70     		strb	r2, [r3]
+ 1620 04b8 E0E7     		b	.L85
+ 1621              	.L124:
+ 396:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1622              		.loc 1 396 21 is_stmt 1 view .LVU425
+ 396:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1623              		.loc 1 396 34 is_stmt 0 view .LVU426
+ 1624 04ba 0C20     		movs	r0, #12
+ 1625 04bc FFF7FEFF 		bl	LTE_Receive_Check
+ 1626              	.LVL96:
+ 396:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1627              		.loc 1 396 32 view .LVU427
+ 1628 04c0 254B     		ldr	r3, .L136+12
+ 1629 04c2 1870     		strb	r0, [r3]
+ 397:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1630              		.loc 1 397 21 is_stmt 1 view .LVU428
+ 397:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1631              		.loc 1 397 29 is_stmt 0 view .LVU429
+ 1632 04c4 0023     		movs	r3, #0
+ 1633 04c6 224A     		ldr	r2, .L136+4
+ 1634 04c8 1370     		strb	r3, [r2]
+ 398:Core/Src/lte.c ****                 }
+ 1635              		.loc 1 398 21 is_stmt 1 view .LVU430
+ 398:Core/Src/lte.c ****                 }
+ 1636              		.loc 1 398 33 is_stmt 0 view .LVU431
+ 1637 04ca 204A     		ldr	r2, .L136
+ 1638 04cc 1370     		strb	r3, [r2]
+ 1639 04ce C0E5     		b	.L40
+ 1640              	.L47:
+ 407:Core/Src/lte.c ****             {
+ 1641              		.loc 1 407 13 is_stmt 1 view .LVU432
+ 407:Core/Src/lte.c ****             {
+ 1642              		.loc 1 407 41 is_stmt 0 view .LVU433
+ 1643 04d0 1E4B     		ldr	r3, .L136
+ 1644 04d2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 407:Core/Src/lte.c ****             {
+ 1645              		.loc 1 407 15 view .LVU434
+ 1646 04d4 7BB1     		cbz	r3, .L125
+ 1647              	.L87:
+ 413:Core/Src/lte.c ****             {                
+ 1648              		.loc 1 413 13 is_stmt 1 view .LVU435
+ 413:Core/Src/lte.c ****             {                
+ 1649              		.loc 1 413 40 is_stmt 0 view .LVU436
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 46
+
+
+ 1650 04d6 1D4B     		ldr	r3, .L136
+ 1651 04d8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 413:Core/Src/lte.c ****             {                
+ 1652              		.loc 1 413 15 view .LVU437
+ 1653 04da 012B     		cmp	r3, #1
+ 1654 04dc 7FF4B9AD 		bne	.L40
+ 415:Core/Src/lte.c ****                 {
+ 1655              		.loc 1 415 17 is_stmt 1 view .LVU438
+ 415:Core/Src/lte.c ****                 {
+ 1656              		.loc 1 415 23 is_stmt 0 view .LVU439
+ 1657 04e0 1B4B     		ldr	r3, .L136+4
+ 1658 04e2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 415:Core/Src/lte.c ****                 {
+ 1659              		.loc 1 415 19 view .LVU440
+ 1660 04e4 012B     		cmp	r3, #1
+ 1661 04e6 13D0     		beq	.L126
+ 423:Core/Src/lte.c ****                 }
+ 1662              		.loc 1 423 21 is_stmt 1 view .LVU441
+ 423:Core/Src/lte.c ****                 }
+ 1663              		.loc 1 423 31 is_stmt 0 view .LVU442
+ 1664 04e8 4FF4FA60 		mov	r0, #2000
+ 1665 04ec FFF7FEFF 		bl	LTE_Delay
+ 1666              	.LVL97:
+ 423:Core/Src/lte.c ****                 }
+ 1667              		.loc 1 423 29 view .LVU443
+ 1668 04f0 174B     		ldr	r3, .L136+4
+ 1669 04f2 1870     		strb	r0, [r3]
+ 1670 04f4 ADE5     		b	.L40
+ 1671              	.L125:
+ 409:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1672              		.loc 1 409 17 is_stmt 1 view .LVU444
+ 1673 04f6 6C46     		mov	r4, sp
+ 1674 04f8 1D4D     		ldr	r5, .L136+36
+ 1675 04fa 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1676 04fc 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1677 04fe 2B68     		ldr	r3, [r5]
+ 1678 0500 2370     		strb	r3, [r4]
+ 410:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1679              		.loc 1 410 17 view .LVU445
+ 1680 0502 6846     		mov	r0, sp
+ 1681 0504 FFF7FEFF 		bl	LTE_Transmit
+ 1682              	.LVL98:
+ 411:Core/Src/lte.c ****             }
+ 1683              		.loc 1 411 17 view .LVU446
+ 411:Core/Src/lte.c ****             }
+ 1684              		.loc 1 411 29 is_stmt 0 view .LVU447
+ 1685 0508 104B     		ldr	r3, .L136
+ 1686 050a 0122     		movs	r2, #1
+ 1687 050c 1A70     		strb	r2, [r3]
+ 1688 050e E2E7     		b	.L87
+ 1689              	.L126:
+ 417:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1690              		.loc 1 417 21 is_stmt 1 view .LVU448
+ 417:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1691              		.loc 1 417 34 is_stmt 0 view .LVU449
+ 1692 0510 0D20     		movs	r0, #13
+ 1693 0512 FFF7FEFF 		bl	LTE_Receive_Check
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 47
+
+
+ 1694              	.LVL99:
+ 417:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1695              		.loc 1 417 32 view .LVU450
+ 1696 0516 104B     		ldr	r3, .L136+12
+ 1697 0518 1870     		strb	r0, [r3]
+ 418:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1698              		.loc 1 418 21 is_stmt 1 view .LVU451
+ 418:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1699              		.loc 1 418 29 is_stmt 0 view .LVU452
+ 1700 051a 0023     		movs	r3, #0
+ 1701 051c 0C4A     		ldr	r2, .L136+4
+ 1702 051e 1370     		strb	r3, [r2]
+ 419:Core/Src/lte.c ****                 }
+ 1703              		.loc 1 419 21 is_stmt 1 view .LVU453
+ 419:Core/Src/lte.c ****                 }
+ 1704              		.loc 1 419 33 is_stmt 0 view .LVU454
+ 1705 0520 0A4A     		ldr	r2, .L136
+ 1706 0522 1370     		strb	r3, [r2]
+ 1707 0524 95E5     		b	.L40
+ 1708              	.L46:
+ 428:Core/Src/lte.c ****             {
+ 1709              		.loc 1 428 13 is_stmt 1 view .LVU455
+ 428:Core/Src/lte.c ****             {
+ 1710              		.loc 1 428 41 is_stmt 0 view .LVU456
+ 1711 0526 094B     		ldr	r3, .L136
+ 1712 0528 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 428:Core/Src/lte.c ****             {
+ 1713              		.loc 1 428 15 view .LVU457
+ 1714 052a 1BB3     		cbz	r3, .L127
+ 1715              	.L89:
+ 434:Core/Src/lte.c ****             {               
+ 1716              		.loc 1 434 13 is_stmt 1 view .LVU458
+ 434:Core/Src/lte.c ****             {               
+ 1717              		.loc 1 434 40 is_stmt 0 view .LVU459
+ 1718 052c 074B     		ldr	r3, .L136
+ 1719 052e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 434:Core/Src/lte.c ****             {               
+ 1720              		.loc 1 434 15 view .LVU460
+ 1721 0530 012B     		cmp	r3, #1
+ 1722 0532 7FF48EAD 		bne	.L40
+ 436:Core/Src/lte.c ****                 {
+ 1723              		.loc 1 436 17 is_stmt 1 view .LVU461
+ 436:Core/Src/lte.c ****                 {
+ 1724              		.loc 1 436 23 is_stmt 0 view .LVU462
+ 1725 0536 064B     		ldr	r3, .L136+4
+ 1726 0538 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 436:Core/Src/lte.c ****                 {
+ 1727              		.loc 1 436 19 view .LVU463
+ 1728 053a 012B     		cmp	r3, #1
+ 1729 053c 26D0     		beq	.L128
+ 444:Core/Src/lte.c ****                 }
+ 1730              		.loc 1 444 21 is_stmt 1 view .LVU464
+ 444:Core/Src/lte.c ****                 }
+ 1731              		.loc 1 444 31 is_stmt 0 view .LVU465
+ 1732 053e 4FF4FA60 		mov	r0, #2000
+ 1733 0542 FFF7FEFF 		bl	LTE_Delay
+ 1734              	.LVL100:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 48
+
+
+ 444:Core/Src/lte.c ****                 }
+ 1735              		.loc 1 444 29 view .LVU466
+ 1736 0546 024B     		ldr	r3, .L136+4
+ 1737 0548 1870     		strb	r0, [r3]
+ 1738 054a 82E5     		b	.L40
+ 1739              	.L137:
+ 1740              		.align	2
+ 1741              	.L136:
+ 1742 054c 00000000 		.word	.LANCHOR21
+ 1743 0550 00000000 		.word	.LANCHOR22
+ 1744 0554 58000000 		.word	.LC10
+ 1745 0558 00000000 		.word	.LANCHOR20
+ 1746 055c 6C000000 		.word	.LC11
+ 1747 0560 7C000000 		.word	.LC12
+ 1748 0564 8C000000 		.word	.LC13
+ 1749 0568 9C000000 		.word	.LC14
+ 1750 056c BC000000 		.word	.LC15
+ 1751 0570 D0000000 		.word	.LC16
+ 1752              	.L127:
+ 430:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1753              		.loc 1 430 17 is_stmt 1 view .LVU467
+ 1754 0574 6C46     		mov	r4, sp
+ 1755 0576 4A4B     		ldr	r3, .L138
+ 1756 0578 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 1757 057a 84E80F00 		stm	r4, {r0, r1, r2, r3}
+ 431:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1758              		.loc 1 431 17 view .LVU468
+ 1759 057e 2046     		mov	r0, r4
+ 1760 0580 FFF7FEFF 		bl	LTE_Transmit
+ 1761              	.LVL101:
+ 432:Core/Src/lte.c ****             }
+ 1762              		.loc 1 432 17 view .LVU469
+ 432:Core/Src/lte.c ****             }
+ 1763              		.loc 1 432 29 is_stmt 0 view .LVU470
+ 1764 0584 474B     		ldr	r3, .L138+4
+ 1765 0586 0122     		movs	r2, #1
+ 1766 0588 1A70     		strb	r2, [r3]
+ 1767 058a CFE7     		b	.L89
+ 1768              	.L128:
+ 438:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1769              		.loc 1 438 21 is_stmt 1 view .LVU471
+ 438:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1770              		.loc 1 438 34 is_stmt 0 view .LVU472
+ 1771 058c 0E20     		movs	r0, #14
+ 1772 058e FFF7FEFF 		bl	LTE_Receive_Check
+ 1773              	.LVL102:
+ 438:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1774              		.loc 1 438 32 view .LVU473
+ 1775 0592 454B     		ldr	r3, .L138+8
+ 1776 0594 1870     		strb	r0, [r3]
+ 439:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1777              		.loc 1 439 21 is_stmt 1 view .LVU474
+ 439:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1778              		.loc 1 439 29 is_stmt 0 view .LVU475
+ 1779 0596 0023     		movs	r3, #0
+ 1780 0598 444A     		ldr	r2, .L138+12
+ 1781 059a 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 49
+
+
+ 440:Core/Src/lte.c ****                 }
+ 1782              		.loc 1 440 21 is_stmt 1 view .LVU476
+ 440:Core/Src/lte.c ****                 }
+ 1783              		.loc 1 440 33 is_stmt 0 view .LVU477
+ 1784 059c 414A     		ldr	r2, .L138+4
+ 1785 059e 1370     		strb	r3, [r2]
+ 1786 05a0 57E5     		b	.L40
+ 1787              	.L45:
+ 449:Core/Src/lte.c ****             {
+ 1788              		.loc 1 449 13 is_stmt 1 view .LVU478
+ 449:Core/Src/lte.c ****             {
+ 1789              		.loc 1 449 41 is_stmt 0 view .LVU479
+ 1790 05a2 404B     		ldr	r3, .L138+4
+ 1791 05a4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 449:Core/Src/lte.c ****             {
+ 1792              		.loc 1 449 15 view .LVU480
+ 1793 05a6 7BB1     		cbz	r3, .L129
+ 1794              	.L91:
+ 455:Core/Src/lte.c ****             {                
+ 1795              		.loc 1 455 13 is_stmt 1 view .LVU481
+ 455:Core/Src/lte.c ****             {                
+ 1796              		.loc 1 455 40 is_stmt 0 view .LVU482
+ 1797 05a8 3E4B     		ldr	r3, .L138+4
+ 1798 05aa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 455:Core/Src/lte.c ****             {                
+ 1799              		.loc 1 455 15 view .LVU483
+ 1800 05ac 012B     		cmp	r3, #1
+ 1801 05ae 7FF450AD 		bne	.L40
+ 457:Core/Src/lte.c ****                 {
+ 1802              		.loc 1 457 17 is_stmt 1 view .LVU484
+ 457:Core/Src/lte.c ****                 {
+ 1803              		.loc 1 457 23 is_stmt 0 view .LVU485
+ 1804 05b2 3E4B     		ldr	r3, .L138+12
+ 1805 05b4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 457:Core/Src/lte.c ****                 {
+ 1806              		.loc 1 457 19 view .LVU486
+ 1807 05b6 012B     		cmp	r3, #1
+ 1808 05b8 15D0     		beq	.L130
+ 465:Core/Src/lte.c ****                 }
+ 1809              		.loc 1 465 21 is_stmt 1 view .LVU487
+ 465:Core/Src/lte.c ****                 }
+ 1810              		.loc 1 465 31 is_stmt 0 view .LVU488
+ 1811 05ba 4FF4FA60 		mov	r0, #2000
+ 1812 05be FFF7FEFF 		bl	LTE_Delay
+ 1813              	.LVL103:
+ 465:Core/Src/lte.c ****                 }
+ 1814              		.loc 1 465 29 view .LVU489
+ 1815 05c2 3A4B     		ldr	r3, .L138+12
+ 1816 05c4 1870     		strb	r0, [r3]
+ 1817 05c6 44E5     		b	.L40
+ 1818              	.L129:
+ 451:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1819              		.loc 1 451 17 is_stmt 1 view .LVU490
+ 1820 05c8 6C46     		mov	r4, sp
+ 1821 05ca 394D     		ldr	r5, .L138+16
+ 1822 05cc 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1823 05ce 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 50
+
+
+ 1824 05d0 95E80700 		ldm	r5, {r0, r1, r2}
+ 1825 05d4 84E80700 		stm	r4, {r0, r1, r2}
+ 452:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1826              		.loc 1 452 17 view .LVU491
+ 1827 05d8 6846     		mov	r0, sp
+ 1828 05da FFF7FEFF 		bl	LTE_Transmit
+ 1829              	.LVL104:
+ 453:Core/Src/lte.c ****             }
+ 1830              		.loc 1 453 17 view .LVU492
+ 453:Core/Src/lte.c ****             }
+ 1831              		.loc 1 453 29 is_stmt 0 view .LVU493
+ 1832 05de 314B     		ldr	r3, .L138+4
+ 1833 05e0 0122     		movs	r2, #1
+ 1834 05e2 1A70     		strb	r2, [r3]
+ 1835 05e4 E0E7     		b	.L91
+ 1836              	.L130:
+ 459:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1837              		.loc 1 459 21 is_stmt 1 view .LVU494
+ 459:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1838              		.loc 1 459 34 is_stmt 0 view .LVU495
+ 1839 05e6 0F20     		movs	r0, #15
+ 1840 05e8 FFF7FEFF 		bl	LTE_Receive_Check
+ 1841              	.LVL105:
+ 459:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1842              		.loc 1 459 32 view .LVU496
+ 1843 05ec 2E4B     		ldr	r3, .L138+8
+ 1844 05ee 1870     		strb	r0, [r3]
+ 460:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1845              		.loc 1 460 21 is_stmt 1 view .LVU497
+ 460:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1846              		.loc 1 460 29 is_stmt 0 view .LVU498
+ 1847 05f0 0023     		movs	r3, #0
+ 1848 05f2 2E4A     		ldr	r2, .L138+12
+ 1849 05f4 1370     		strb	r3, [r2]
+ 461:Core/Src/lte.c ****                 }
+ 1850              		.loc 1 461 21 is_stmt 1 view .LVU499
+ 461:Core/Src/lte.c ****                 }
+ 1851              		.loc 1 461 33 is_stmt 0 view .LVU500
+ 1852 05f6 2B4A     		ldr	r2, .L138+4
+ 1853 05f8 1370     		strb	r3, [r2]
+ 1854 05fa 2AE5     		b	.L40
+ 1855              	.L44:
+ 470:Core/Src/lte.c ****             {
+ 1856              		.loc 1 470 13 is_stmt 1 view .LVU501
+ 470:Core/Src/lte.c ****             {
+ 1857              		.loc 1 470 41 is_stmt 0 view .LVU502
+ 1858 05fc 294B     		ldr	r3, .L138+4
+ 1859 05fe 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 470:Core/Src/lte.c ****             {
+ 1860              		.loc 1 470 15 view .LVU503
+ 1861 0600 7BB1     		cbz	r3, .L131
+ 1862              	.L93:
+ 476:Core/Src/lte.c ****             {                
+ 1863              		.loc 1 476 13 is_stmt 1 view .LVU504
+ 476:Core/Src/lte.c ****             {                
+ 1864              		.loc 1 476 40 is_stmt 0 view .LVU505
+ 1865 0602 284B     		ldr	r3, .L138+4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 51
+
+
+ 1866 0604 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 476:Core/Src/lte.c ****             {                
+ 1867              		.loc 1 476 15 view .LVU506
+ 1868 0606 012B     		cmp	r3, #1
+ 1869 0608 7FF423AD 		bne	.L40
+ 478:Core/Src/lte.c ****                 {
+ 1870              		.loc 1 478 17 is_stmt 1 view .LVU507
+ 478:Core/Src/lte.c ****                 {
+ 1871              		.loc 1 478 23 is_stmt 0 view .LVU508
+ 1872 060c 274B     		ldr	r3, .L138+12
+ 1873 060e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 478:Core/Src/lte.c ****                 {
+ 1874              		.loc 1 478 19 view .LVU509
+ 1875 0610 012B     		cmp	r3, #1
+ 1876 0612 16D0     		beq	.L132
+ 486:Core/Src/lte.c ****                 }
+ 1877              		.loc 1 486 21 is_stmt 1 view .LVU510
+ 486:Core/Src/lte.c ****                 }
+ 1878              		.loc 1 486 31 is_stmt 0 view .LVU511
+ 1879 0614 4FF4FA60 		mov	r0, #2000
+ 1880 0618 FFF7FEFF 		bl	LTE_Delay
+ 1881              	.LVL106:
+ 486:Core/Src/lte.c ****                 }
+ 1882              		.loc 1 486 29 view .LVU512
+ 1883 061c 234B     		ldr	r3, .L138+12
+ 1884 061e 1870     		strb	r0, [r3]
+ 1885 0620 17E5     		b	.L40
+ 1886              	.L131:
+ 472:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1887              		.loc 1 472 17 is_stmt 1 view .LVU513
+ 1888 0622 EC46     		mov	ip, sp
+ 1889 0624 234C     		ldr	r4, .L138+20
+ 1890 0626 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 1891 0628 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 1892 062c 94E80F00 		ldm	r4, {r0, r1, r2, r3}
+ 1893 0630 8CE80F00 		stm	ip, {r0, r1, r2, r3}
+ 473:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1894              		.loc 1 473 17 view .LVU514
+ 1895 0634 6846     		mov	r0, sp
+ 1896 0636 FFF7FEFF 		bl	LTE_Transmit
+ 1897              	.LVL107:
+ 474:Core/Src/lte.c ****             }
+ 1898              		.loc 1 474 17 view .LVU515
+ 474:Core/Src/lte.c ****             }
+ 1899              		.loc 1 474 29 is_stmt 0 view .LVU516
+ 1900 063a 1A4B     		ldr	r3, .L138+4
+ 1901 063c 0122     		movs	r2, #1
+ 1902 063e 1A70     		strb	r2, [r3]
+ 1903 0640 DFE7     		b	.L93
+ 1904              	.L132:
+ 480:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1905              		.loc 1 480 21 is_stmt 1 view .LVU517
+ 480:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1906              		.loc 1 480 34 is_stmt 0 view .LVU518
+ 1907 0642 1020     		movs	r0, #16
+ 1908 0644 FFF7FEFF 		bl	LTE_Receive_Check
+ 1909              	.LVL108:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 52
+
+
+ 480:Core/Src/lte.c ****                     stDelay = FAIL;
+ 1910              		.loc 1 480 32 view .LVU519
+ 1911 0648 174B     		ldr	r3, .L138+8
+ 1912 064a 1870     		strb	r0, [r3]
+ 481:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1913              		.loc 1 481 21 is_stmt 1 view .LVU520
+ 481:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1914              		.loc 1 481 29 is_stmt 0 view .LVU521
+ 1915 064c 0023     		movs	r3, #0
+ 1916 064e 174A     		ldr	r2, .L138+12
+ 1917 0650 1370     		strb	r3, [r2]
+ 482:Core/Src/lte.c ****                 }
+ 1918              		.loc 1 482 21 is_stmt 1 view .LVU522
+ 482:Core/Src/lte.c ****                 }
+ 1919              		.loc 1 482 33 is_stmt 0 view .LVU523
+ 1920 0652 144A     		ldr	r2, .L138+4
+ 1921 0654 1370     		strb	r3, [r2]
+ 1922 0656 FCE4     		b	.L40
+ 1923              	.L42:
+ 491:Core/Src/lte.c ****             {
+ 1924              		.loc 1 491 13 is_stmt 1 view .LVU524
+ 491:Core/Src/lte.c ****             {
+ 1925              		.loc 1 491 41 is_stmt 0 view .LVU525
+ 1926 0658 124B     		ldr	r3, .L138+4
+ 1927 065a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 491:Core/Src/lte.c ****             {
+ 1928              		.loc 1 491 15 view .LVU526
+ 1929 065c 73B1     		cbz	r3, .L133
+ 1930              	.L95:
+ 497:Core/Src/lte.c ****             {
+ 1931              		.loc 1 497 13 is_stmt 1 view .LVU527
+ 497:Core/Src/lte.c ****             {
+ 1932              		.loc 1 497 40 is_stmt 0 view .LVU528
+ 1933 065e 114B     		ldr	r3, .L138+4
+ 1934 0660 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 497:Core/Src/lte.c ****             {
+ 1935              		.loc 1 497 15 view .LVU529
+ 1936 0662 012B     		cmp	r3, #1
+ 1937 0664 7FF4F5AC 		bne	.L40
+ 499:Core/Src/lte.c ****                 {
+ 1938              		.loc 1 499 17 is_stmt 1 view .LVU530
+ 499:Core/Src/lte.c ****                 {
+ 1939              		.loc 1 499 23 is_stmt 0 view .LVU531
+ 1940 0668 104B     		ldr	r3, .L138+12
+ 1941 066a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 499:Core/Src/lte.c ****                 {
+ 1942              		.loc 1 499 19 view .LVU532
+ 1943 066c 012B     		cmp	r3, #1
+ 1944 066e 0FD1     		bne	.L96
+ 502:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1945              		.loc 1 502 21 is_stmt 1 view .LVU533
+ 502:Core/Src/lte.c ****                     uart_status = LTE_UART_STATUS_TRANSMIT;
+ 1946              		.loc 1 502 29 is_stmt 0 view .LVU534
+ 1947 0670 0023     		movs	r3, #0
+ 1948 0672 0E4A     		ldr	r2, .L138+12
+ 1949 0674 1370     		strb	r3, [r2]
+ 503:Core/Src/lte.c ****                 }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 53
+
+
+ 1950              		.loc 1 503 21 is_stmt 1 view .LVU535
+ 503:Core/Src/lte.c ****                 }
+ 1951              		.loc 1 503 33 is_stmt 0 view .LVU536
+ 1952 0676 0B4A     		ldr	r2, .L138+4
+ 1953 0678 1370     		strb	r3, [r2]
+ 1954 067a EAE4     		b	.L40
+ 1955              	.L133:
+ 493:Core/Src/lte.c ****                 LTE_Transmit(Tx_Buf);
+ 1956              		.loc 1 493 17 is_stmt 1 view .LVU537
+ 1957 067c 6846     		mov	r0, sp
+ 1958 067e FFF7FEFF 		bl	LTE_MQTT_Convert_Buffer
+ 1959              	.LVL109:
+ 494:Core/Src/lte.c ****                 uart_status = LTE_UART_STATUS_RECEIVE;
+ 1960              		.loc 1 494 17 view .LVU538
+ 1961 0682 6846     		mov	r0, sp
+ 1962 0684 FFF7FEFF 		bl	LTE_Transmit
+ 1963              	.LVL110:
+ 495:Core/Src/lte.c ****             }
+ 1964              		.loc 1 495 17 view .LVU539
+ 495:Core/Src/lte.c ****             }
+ 1965              		.loc 1 495 29 is_stmt 0 view .LVU540
+ 1966 0688 064B     		ldr	r3, .L138+4
+ 1967 068a 0122     		movs	r2, #1
+ 1968 068c 1A70     		strb	r2, [r3]
+ 1969 068e E6E7     		b	.L95
+ 1970              	.L96:
+ 507:Core/Src/lte.c ****                 }
+ 1971              		.loc 1 507 21 is_stmt 1 view .LVU541
+ 507:Core/Src/lte.c ****                 }
+ 1972              		.loc 1 507 31 is_stmt 0 view .LVU542
+ 1973 0690 42F21070 		movw	r0, #10000
+ 1974 0694 FFF7FEFF 		bl	LTE_Delay
+ 1975              	.LVL111:
+ 507:Core/Src/lte.c ****                 }
+ 1976              		.loc 1 507 29 view .LVU543
+ 1977 0698 044B     		ldr	r3, .L138+12
+ 1978 069a 1870     		strb	r0, [r3]
+ 1979              		.loc 1 512 1 view .LVU544
+ 1980 069c D9E4     		b	.L40
+ 1981              	.L139:
+ 1982 069e 00BF     		.align	2
+ 1983              	.L138:
+ 1984 06a0 E4000000 		.word	.LC17
+ 1985 06a4 00000000 		.word	.LANCHOR21
+ 1986 06a8 00000000 		.word	.LANCHOR20
+ 1987 06ac 00000000 		.word	.LANCHOR22
+ 1988 06b0 F4000000 		.word	.LC18
+ 1989 06b4 10010000 		.word	.LC19
+ 1990              		.cfi_endproc
+ 1991              	.LFE139:
+ 1993              		.global	LTE_Test_Buffer
+ 1994              		.global	LTE_DOOR
+ 1995              		.global	LTE_GPS2_D
+ 1996              		.global	LTE_GPS2_I
+ 1997              		.global	LTE_GPS1_D
+ 1998              		.global	LTE_GPS1_I
+ 1999              		.global	LTE_CHAR_D
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 54
+
+
+ 2000              		.global	LTE_CHAR_I
+ 2001              		.global	LTE_DIST_D
+ 2002              		.global	LTE_DIST_I
+ 2003              		.global	LTE_HUMI_D
+ 2004              		.global	LTE_HUMI_I
+ 2005              		.global	LTE_TEMP_D
+ 2006              		.global	LTE_TEMP_I
+ 2007              		.global	LTE_ID
+ 2008              		.global	LTE_Status
+ 2009              		.global	dummy_lte
+ 2010              		.global	LTE_Rx_Counter
+ 2011              		.global	LTE_Rx_Buffer
+ 2012              		.section	.bss.LTE_DIST_D,"aw",%nobits
+ 2013              		.align	2
+ 2014              		.set	.LANCHOR13,. + 0
+ 2017              	LTE_DIST_D:
+ 2018 0000 00000000 		.space	4
+ 2019              		.section	.bss.LTE_Rx_Buffer,"aw",%nobits
+ 2020              		.align	2
+ 2021              		.set	.LANCHOR1,. + 0
+ 2024              	LTE_Rx_Buffer:
+ 2025 0000 00000000 		.space	1024
+ 2025      00000000 
+ 2025      00000000 
+ 2025      00000000 
+ 2025      00000000 
+ 2026              		.section	.bss.LTE_Rx_Counter,"aw",%nobits
+ 2027              		.align	1
+ 2028              		.set	.LANCHOR0,. + 0
+ 2031              	LTE_Rx_Counter:
+ 2032 0000 0000     		.space	2
+ 2033              		.section	.bss.LTE_Status,"aw",%nobits
+ 2034              		.set	.LANCHOR20,. + 0
+ 2037              	LTE_Status:
+ 2038 0000 00       		.space	1
+ 2039              		.section	.bss.LTE_Test_Buffer,"aw",%nobits
+ 2040              		.align	2
+ 2041              		.set	.LANCHOR19,. + 0
+ 2044              	LTE_Test_Buffer:
+ 2045 0000 00000000 		.space	1024
+ 2045      00000000 
+ 2045      00000000 
+ 2045      00000000 
+ 2045      00000000 
+ 2046              		.section	.bss.dummy_lte,"aw",%nobits
+ 2047              		.set	.LANCHOR18,. + 0
+ 2050              	dummy_lte:
+ 2051 0000 00       		.space	1
+ 2052              		.section	.bss.fail_counter.2,"aw",%nobits
+ 2053              		.set	.LANCHOR3,. + 0
+ 2056              	fail_counter.2:
+ 2057 0000 00       		.space	1
+ 2058              		.section	.bss.stDelay.0,"aw",%nobits
+ 2059              		.set	.LANCHOR22,. + 0
+ 2062              	stDelay.0:
+ 2063 0000 00       		.space	1
+ 2064              		.section	.bss.timer.3,"aw",%nobits
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 55
+
+
+ 2065              		.align	1
+ 2066              		.set	.LANCHOR2,. + 0
+ 2069              	timer.3:
+ 2070 0000 0000     		.space	2
+ 2071              		.section	.bss.uart_status.1,"aw",%nobits
+ 2072              		.set	.LANCHOR21,. + 0
+ 2075              	uart_status.1:
+ 2076 0000 00       		.space	1
+ 2077              		.section	.data.LTE_CHAR_D,"aw"
+ 2078              		.align	2
+ 2079              		.set	.LANCHOR11,. + 0
+ 2082              	LTE_CHAR_D:
+ 2083 0000 57000000 		.word	87
+ 2084              		.section	.data.LTE_CHAR_I,"aw"
+ 2085              		.align	1
+ 2086              		.set	.LANCHOR12,. + 0
+ 2089              	LTE_CHAR_I:
+ 2090 0000 0300     		.short	3
+ 2091              		.section	.data.LTE_DIST_I,"aw"
+ 2092              		.align	1
+ 2093              		.set	.LANCHOR14,. + 0
+ 2096              	LTE_DIST_I:
+ 2097 0000 9E00     		.short	158
+ 2098              		.section	.data.LTE_DOOR,"aw"
+ 2099              		.set	.LANCHOR6,. + 0
+ 2102              	LTE_DOOR:
+ 2103 0000 01       		.byte	1
+ 2104              		.section	.data.LTE_GPS1_D,"aw"
+ 2105              		.align	2
+ 2106              		.set	.LANCHOR9,. + 0
+ 2109              	LTE_GPS1_D:
+ 2110 0000 123C0100 		.word	80914
+ 2111              		.section	.data.LTE_GPS1_I,"aw"
+ 2112              		.align	1
+ 2113              		.set	.LANCHOR10,. + 0
+ 2116              	LTE_GPS1_I:
+ 2117 0000 2400     		.short	36
+ 2118              		.section	.data.LTE_GPS2_D,"aw"
+ 2119              		.align	2
+ 2120              		.set	.LANCHOR7,. + 0
+ 2123              	LTE_GPS2_D:
+ 2124 0000 A8380000 		.word	14504
+ 2125              		.section	.data.LTE_GPS2_I,"aw"
+ 2126              		.align	1
+ 2127              		.set	.LANCHOR8,. + 0
+ 2130              	LTE_GPS2_I:
+ 2131 0000 7F00     		.short	127
+ 2132              		.section	.data.LTE_HUMI_D,"aw"
+ 2133              		.align	2
+ 2134              		.set	.LANCHOR15,. + 0
+ 2137              	LTE_HUMI_D:
+ 2138 0000 2A000000 		.word	42
+ 2139              		.section	.data.LTE_HUMI_I,"aw"
+ 2140              		.align	1
+ 2141              		.set	.LANCHOR16,. + 0
+ 2144              	LTE_HUMI_I:
+ 2145 0000 2400     		.short	36
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 56
+
+
+ 2146              		.section	.data.LTE_ID,"aw"
+ 2147              		.align	2
+ 2148              		.set	.LANCHOR5,. + 0
+ 2151              	LTE_ID:
+ 2152 0000 534E5F54 		.ascii	"SN_TEST_FM04_001\000"
+ 2152      4553545F 
+ 2152      464D3034 
+ 2152      5F303031 
+ 2152      00
+ 2153              		.section	.data.LTE_TEMP_D,"aw"
+ 2154              		.align	1
+ 2155              		.set	.LANCHOR17,. + 0
+ 2158              	LTE_TEMP_D:
+ 2159 0000 1E00     		.short	30
+ 2160              		.section	.data.LTE_TEMP_I,"aw"
+ 2161              		.align	1
+ 2162              		.set	.LANCHOR4,. + 0
+ 2165              	LTE_TEMP_I:
+ 2166 0000 1700     		.short	23
+ 2167              		.text
+ 2168              	.Letext0:
+ 2169              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 2170              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 2171              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 2172              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 2173              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
+ 2174              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 2175              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 2176              		.file 9 "Core/Inc/main.h"
+ 2177              		.file 10 "Core/Inc/lte.h"
+ 2178              		.file 11 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\stdio.h"
+ 2179              		.file 12 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\string.h"
+ 2180              		.file 13 "<built-in>"
+ 2181              		.file 14 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_cortex.h"
+ 2182              		.file 15 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 57
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 lte.c
-C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:20     .text.LTE_Init:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:26     .text.LTE_Init:00000000 LTE_Init
-C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:75     .text.LTE_Init:00000034 $d
-C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:100    .bss.dummy_lte:00000000 dummy_lte
-C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:94     .bss.LTE_Rx_Counter:00000000 LTE_Rx_Counter
-C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:88     .bss.LTE_Rx_Buffer:00000000 LTE_Rx_Buffer
-C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:85     .bss.LTE_Rx_Buffer:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:91     .bss.LTE_Rx_Counter:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccZj6xH7.s:101    .bss.dummy_lte:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:20     .text.LTE_Transmit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:26     .text.LTE_Transmit:00000000 LTE_Transmit
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:71     .text.LTE_Transmit:00000028 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:77     .text.LTE_OK_Check:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:83     .text.LTE_OK_Check:00000000 LTE_OK_Check
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:201    .text.LTE_OK_Check:0000006c $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:208    .text.LTE_Delay:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:214    .text.LTE_Delay:00000000 LTE_Delay
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:263    .text.LTE_Delay:00000024 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:269    .text.LTE_Receive_Check:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:275    .text.LTE_Receive_Check:00000000 LTE_Receive_Check
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:338    .text.LTE_Receive_Check:0000002c $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:343    .rodata.LTE_MQTT_Convert_Buffer.str1.4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:355    .text.LTE_MQTT_Convert_Buffer:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:361    .text.LTE_MQTT_Convert_Buffer:00000000 LTE_MQTT_Convert_Buffer
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:540    .text.LTE_MQTT_Convert_Buffer:00000104 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:562    .text.LTE_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:568    .text.LTE_Init:00000000 LTE_Init
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:620    .text.LTE_Init:0000003c $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:628    .rodata.LTE_Connect.str1.4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:680    .text.LTE_Connect:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:686    .text.LTE_Connect:00000000 LTE_Connect
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:718    .text.LTE_Connect:00000020 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:736    .text.LTE_Connect:00000044 $t
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:1220   .text.LTE_Connect:00000298 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:1233   .text.LTE_Connect:000002c0 $t
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:1742   .text.LTE_Connect:0000054c $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:1754   .text.LTE_Connect:00000574 $t
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:1984   .text.LTE_Connect:000006a0 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2044   .bss.LTE_Test_Buffer:00000000 LTE_Test_Buffer
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2102   .data.LTE_DOOR:00000000 LTE_DOOR
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2123   .data.LTE_GPS2_D:00000000 LTE_GPS2_D
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2130   .data.LTE_GPS2_I:00000000 LTE_GPS2_I
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2109   .data.LTE_GPS1_D:00000000 LTE_GPS1_D
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2116   .data.LTE_GPS1_I:00000000 LTE_GPS1_I
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2082   .data.LTE_CHAR_D:00000000 LTE_CHAR_D
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2089   .data.LTE_CHAR_I:00000000 LTE_CHAR_I
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2017   .bss.LTE_DIST_D:00000000 LTE_DIST_D
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2096   .data.LTE_DIST_I:00000000 LTE_DIST_I
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2137   .data.LTE_HUMI_D:00000000 LTE_HUMI_D
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2144   .data.LTE_HUMI_I:00000000 LTE_HUMI_I
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2158   .data.LTE_TEMP_D:00000000 LTE_TEMP_D
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2165   .data.LTE_TEMP_I:00000000 LTE_TEMP_I
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2151   .data.LTE_ID:00000000 LTE_ID
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2037   .bss.LTE_Status:00000000 LTE_Status
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2050   .bss.dummy_lte:00000000 dummy_lte
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2031   .bss.LTE_Rx_Counter:00000000 LTE_Rx_Counter
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2024   .bss.LTE_Rx_Buffer:00000000 LTE_Rx_Buffer
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2013   .bss.LTE_DIST_D:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2020   .bss.LTE_Rx_Buffer:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2027   .bss.LTE_Rx_Counter:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2038   .bss.LTE_Status:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2040   .bss.LTE_Test_Buffer:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2051   .bss.dummy_lte:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2056   .bss.fail_counter.2:00000000 fail_counter.2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s 			page 58
+
+
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2057   .bss.fail_counter.2:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2062   .bss.stDelay.0:00000000 stDelay.0
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2063   .bss.stDelay.0:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2065   .bss.timer.3:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2069   .bss.timer.3:00000000 timer.3
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2075   .bss.uart_status.1:00000000 uart_status.1
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2076   .bss.uart_status.1:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2078   .data.LTE_CHAR_D:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2085   .data.LTE_CHAR_I:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2092   .data.LTE_DIST_I:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2105   .data.LTE_GPS1_D:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2112   .data.LTE_GPS1_I:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2119   .data.LTE_GPS2_D:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2126   .data.LTE_GPS2_I:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2133   .data.LTE_HUMI_D:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2140   .data.LTE_HUMI_I:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2147   .data.LTE_ID:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2154   .data.LTE_TEMP_D:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccbllppH.s:2161   .data.LTE_TEMP_I:00000000 $d
 
 UNDEFINED SYMBOLS
+strlen
+HAL_UART_Transmit
+huart1
+huart3
+memset
+HAL_NVIC_SystemReset
+sprintf
+memcpy
 HAL_UART_Receive_IT
 HAL_GPIO_WritePin
 HAL_Delay
 Error_Handler
-huart1

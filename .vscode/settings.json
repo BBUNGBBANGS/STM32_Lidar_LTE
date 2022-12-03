@@ -15,7 +15,9 @@
         "stm32f3xx_hal.h": "c",
         "dht11.h": "c",
         "buzzer.h": "c",
-        "lte.h": "c"
+        "lte.h": "c",
+        "debug.h": "c",
+        "_locale.h": "c"
     },
     "cortex-debug.showRTOS": false
 }

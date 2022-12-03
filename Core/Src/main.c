@@ -50,9 +50,7 @@ TIM_HandleTypeDef htim17;
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
-DMA_HandleTypeDef hdma_usart1_rx;
 DMA_HandleTypeDef hdma_usart2_rx;
-DMA_HandleTypeDef hdma_usart3_rx;
 
 /* USER CODE BEGIN PV */
 
@@ -122,6 +120,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim16);
   HAL_TIM_Base_Start_IT(&htim17);
   Os_Init_Task();
+  HAL_Delay(2000);
   /* USER CODE END 2 */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -175,9 +174,9 @@ void SystemClock_Config(void)
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_USART2
                               |RCC_PERIPHCLK_USART3|RCC_PERIPHCLK_RTC
                               |RCC_PERIPHCLK_ADC12;
-  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
-  PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
-  PeriphClkInit.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
+  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_SYSCLK;
+  PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_SYSCLK;
+  PeriphClkInit.Usart3ClockSelection = RCC_USART3CLKSOURCE_SYSCLK;
   PeriphClkInit.Adc12ClockSelection = RCC_ADC12PLLCLK_DIV1;
   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_HSE_DIV32;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
@@ -603,7 +602,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, LTE_STATUS_Pin|Lidar_ONOFF_Pin|DHT_INOUT_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, TEMP_ONOFF_Pin|SPI2_CS_Pin|POWER_KEY_Pin|RESET_ONOFF_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, TEMP_ONOFF_Pin|SPI2_CS_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, POWER_KEY_Pin|RESET_ONOFF_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : LTE_STATUS_Pin Lidar_ONOFF_Pin DHT_INOUT_Pin */
@@ -619,9 +620,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(DOOR_INT_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : TEMP_ONOFF_Pin SPI2_CS_Pin POWER_KEY_Pin RESET_ONOFF_Pin */
-  GPIO_InitStruct.Pin = TEMP_ONOFF_Pin|SPI2_CS_Pin|POWER_KEY_Pin|RESET_ONOFF_Pin;
+  /*Configure GPIO pins : TEMP_ONOFF_Pin SPI2_CS_Pin */
+  GPIO_InitStruct.Pin = TEMP_ONOFF_Pin|SPI2_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : POWER_KEY_Pin RESET_ONOFF_Pin */
+  GPIO_InitStruct.Pin = POWER_KEY_Pin|RESET_ONOFF_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);

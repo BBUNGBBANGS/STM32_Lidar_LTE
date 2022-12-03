@@ -30,6 +30,8 @@ extern "C" {
 #include "stm32f3xx_hal.h"
 #include "stdint.h"
 #include "stdio.h"
+#include "string.h"
+#include "stdlib.h"
 
 extern ADC_HandleTypeDef hadc2;
 extern DMA_HandleTypeDef hdma_adc2;

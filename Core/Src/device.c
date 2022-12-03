@@ -1,6 +1,6 @@
 #include "device.h"
 
-uint16_t Device_Batt_DMA;
+uint32_t Device_Batt_DMA;
 uint16_t Device_Batt_Voltage;
 uint8_t Device_Sensor_Signal;
 uint8_t Device_Sensor_Detect;

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 1
   29:Core/Src/os.c ****     Lidar_Init();
   30:Core/Src/os.c ****     LTE_Init();
   31:Core/Src/os.c ****     Buzzer_Init();
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 2
 
 
   32:Core/Src/os.c **** 	NVRam_Init();
@@ -70,7 +70,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 1
   38:Core/Src/os.c **** 	Device_Battery_Voltage_Read();
   39:Core/Src/os.c **** 	Device_Detect_SensorSignal();
   40:Core/Src/os.c **** }
-  41:Core/Src/os.c **** uint16_t test_counter;
+  41:Core/Src/os.c **** 
   42:Core/Src/os.c **** static void Os_100ms_Task(void)
   43:Core/Src/os.c **** {
   44:Core/Src/os.c ****     DHT_Data_t data;
@@ -85,42 +85,43 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 1
   53:Core/Src/os.c ****     humidity = (uint16_t)data.Humidity;
   54:Core/Src/os.c **** 	Lidar_Receive_Data();
   55:Core/Src/os.c **** 	Test_Debug();
-  56:Core/Src/os.c ****     //sprintf(tx_data,"Time: %d:%d:%d, Temperature : %d, Humidity : %d, Battery : %d, Lidar Distanc
-  57:Core/Src/os.c ****     //Debug_Message_Transmit(tx_data);
-  58:Core/Src/os.c **** 	//memset(tx_data,0x00,150);
-  59:Core/Src/os.c **** }
-  60:Core/Src/os.c **** 
-  61:Core/Src/os.c **** static void Os_Background_Task(void)
-  62:Core/Src/os.c **** {
-  63:Core/Src/os.c **** 
-  64:Core/Src/os.c **** }
-  65:Core/Src/os.c **** 
-  66:Core/Src/os.c **** static void Os_Time_Handler(void)
-  67:Core/Src/os.c **** {
-  28              		.loc 1 67 1 view -0
+  56:Core/Src/os.c **** 	LTE_Connect();
+  57:Core/Src/os.c ****     //sprintf(tx_data,"Time: %d:%d:%d, Temperature : %d, Humidity : %d, Battery : %d, Lidar Distanc
+  58:Core/Src/os.c ****     //Debug_Message_Transmit(tx_data);
+  59:Core/Src/os.c **** 	//memset(tx_data,0x00,150);
+  60:Core/Src/os.c **** }
+  61:Core/Src/os.c **** 
+  62:Core/Src/os.c **** static void Os_Background_Task(void)
+  63:Core/Src/os.c **** {
+  64:Core/Src/os.c **** 
+  65:Core/Src/os.c **** }
+  66:Core/Src/os.c **** 
+  67:Core/Src/os.c **** static void Os_Time_Handler(void)
+  68:Core/Src/os.c **** {
+  28              		.loc 1 68 1 view -0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
-  68:Core/Src/os.c **** 	Os_Var.Os_Counter.Os_100us_Counter++;
-  33              		.loc 1 68 2 view .LVU1
-  34              		.loc 1 68 19 is_stmt 0 view .LVU2
+  69:Core/Src/os.c **** 	Os_Var.Os_Counter.Os_100us_Counter++;
+  33              		.loc 1 69 2 view .LVU1
+  34              		.loc 1 69 19 is_stmt 0 view .LVU2
   35 0000 024A     		ldr	r2, .L2
   36 0002 1368     		ldr	r3, [r2]
-  37              		.loc 1 68 36 view .LVU3
+  37              		.loc 1 69 36 view .LVU3
   38 0004 0133     		adds	r3, r3, #1
   39 0006 1360     		str	r3, [r2]
-  69:Core/Src/os.c **** }
-  40              		.loc 1 69 1 view .LVU4
+  70:Core/Src/os.c **** }
+  40              		.loc 1 70 1 view .LVU4
   41 0008 7047     		bx	lr
   42              	.L3:
   43 000a 00BF     		.align	2
   44              	.L2:
   45 000c 00000000 		.word	.LANCHOR0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 3
+
+
   46              		.cfi_endproc
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 3
-
-
   47              	.LFE137:
   49              		.section	.text.Os_Get_Tick_100us,"ax",%progbits
   50              		.align	1
@@ -129,69 +130,64 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 1
   53              		.thumb_func
   55              	Os_Get_Tick_100us:
   56              	.LFB140:
-  70:Core/Src/os.c **** 
-  71:Core/Src/os.c **** void Os_Handler(void)
-  72:Core/Src/os.c **** {
-  73:Core/Src/os.c **** 	void(*fp)(void);
+  71:Core/Src/os.c **** 
+  72:Core/Src/os.c **** void Os_Handler(void)
+  73:Core/Src/os.c **** {
   74:Core/Src/os.c ****     if(Os_Var.Os_Task_Flag.Os_100ms_Flag == 1)
   75:Core/Src/os.c **** 	{
-  76:Core/Src/os.c **** 		fp = Os_100ms_Task;
-  77:Core/Src/os.c **** 		Os_Var.Os_Task_Add.Os_100ms_Address = fp;
-  78:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 0;
-  79:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_100MS);
-  80:Core/Src/os.c **** 		(void)Os_100ms_Task();
-  81:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_100MS);
-  82:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_100MS);
-  83:Core/Src/os.c **** 	}
-  84:Core/Src/os.c **** 	else
-  85:Core/Src/os.c **** 	{
-  86:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_BG);
-  87:Core/Src/os.c **** 		(void)Os_Background_Task();
-  88:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_BG);
-  89:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_BG);
-  90:Core/Src/os.c **** 	}
-  91:Core/Src/os.c **** 
-  92:Core/Src/os.c ****     return;
-  93:Core/Src/os.c **** }
-  94:Core/Src/os.c **** 
-  95:Core/Src/os.c **** static void Os_Handler_10ms(void)
-  96:Core/Src/os.c **** {
-  97:Core/Src/os.c **** 	Os_Var.Os_Counter.Os_10ms_Counter++;
-  98:Core/Src/os.c **** 	Os_Var.Os_Task_Flag.Os_10ms_Flag = 1;
-  99:Core/Src/os.c ****     
- 100:Core/Src/os.c **** 	if(Os_Var.Os_Counter.Os_10ms_Counter % 10 == 0)
- 101:Core/Src/os.c **** 	{
- 102:Core/Src/os.c **** 		Os_Var.Os_Counter.Os_100ms_Counter++;
- 103:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 1;
- 104:Core/Src/os.c **** 	}
- 105:Core/Src/os.c **** 
- 106:Core/Src/os.c **** 	void(*fp)(void);
- 107:Core/Src/os.c **** 	if(Os_Var.Os_Task_Flag.Os_10ms_Flag == 1)
- 108:Core/Src/os.c **** 	{
- 109:Core/Src/os.c **** 		fp = Os_10ms_Task;
- 110:Core/Src/os.c **** 		Os_Var.Os_Task_Add.Os_10ms_Address = fp;
- 111:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_10ms_Flag = 0;
- 112:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_10MS);
- 113:Core/Src/os.c **** 		(void)Os_10ms_Task();
- 114:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_10MS);
- 115:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_10MS);
- 116:Core/Src/os.c **** 	}
- 117:Core/Src/os.c **** }
- 118:Core/Src/os.c **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 4
-
-
- 119:Core/Src/os.c **** static uint32_t Os_Get_Tick_100us(void)
- 120:Core/Src/os.c **** {
-  57              		.loc 1 120 1 is_stmt 1 view -0
+  76:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 0;
+  77:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_100MS);
+  78:Core/Src/os.c **** 		(void)Os_100ms_Task();
+  79:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_100MS);
+  80:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_100MS);
+  81:Core/Src/os.c **** 	}
+  82:Core/Src/os.c **** 	else
+  83:Core/Src/os.c **** 	{
+  84:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_BG);
+  85:Core/Src/os.c **** 		(void)Os_Background_Task();
+  86:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_BG);
+  87:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_BG);
+  88:Core/Src/os.c **** 	}
+  89:Core/Src/os.c **** 
+  90:Core/Src/os.c ****     return;
+  91:Core/Src/os.c **** }
+  92:Core/Src/os.c **** 
+  93:Core/Src/os.c **** static void Os_Handler_10ms(void)
+  94:Core/Src/os.c **** {
+  95:Core/Src/os.c **** 	Os_Var.Os_Counter.Os_10ms_Counter++;
+  96:Core/Src/os.c **** 	Os_Var.Os_Task_Flag.Os_10ms_Flag = 1;
+  97:Core/Src/os.c ****     
+  98:Core/Src/os.c **** 	if(Os_Var.Os_Counter.Os_10ms_Counter % 10 == 0)
+  99:Core/Src/os.c **** 	{
+ 100:Core/Src/os.c **** 		Os_Var.Os_Counter.Os_100ms_Counter++;
+ 101:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 1;
+ 102:Core/Src/os.c **** 	}
+ 103:Core/Src/os.c **** 
+ 104:Core/Src/os.c **** 	void(*fp)(void);
+ 105:Core/Src/os.c **** 	if(Os_Var.Os_Task_Flag.Os_10ms_Flag == 1)
+ 106:Core/Src/os.c **** 	{
+ 107:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_10ms_Flag = 0;
+ 108:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_10MS);
+ 109:Core/Src/os.c **** 		(void)Os_10ms_Task();
+ 110:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_10MS);
+ 111:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_10MS);
+ 112:Core/Src/os.c **** 	}
+ 113:Core/Src/os.c **** }
+ 114:Core/Src/os.c **** 
+ 115:Core/Src/os.c **** static uint32_t Os_Get_Tick_100us(void)
+ 116:Core/Src/os.c **** {
+  57              		.loc 1 116 1 is_stmt 1 view -0
   58              		.cfi_startproc
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 4
+
+
   59              		@ args = 0, pretend = 0, frame = 0
   60              		@ frame_needed = 0, uses_anonymous_args = 0
   61              		@ link register save eliminated.
- 121:Core/Src/os.c **** 	return Os_Var.Os_Counter.Os_100us_Counter;
-  62              		.loc 1 121 2 view .LVU6
- 122:Core/Src/os.c **** }
-  63              		.loc 1 122 1 is_stmt 0 view .LVU7
+ 117:Core/Src/os.c **** 	return Os_Var.Os_Counter.Os_100us_Counter;
+  62              		.loc 1 117 2 view .LVU6
+ 118:Core/Src/os.c **** }
+  63              		.loc 1 118 1 is_stmt 0 view .LVU7
   64 0000 014B     		ldr	r3, .L5
   65 0002 1868     		ldr	r0, [r3]
   66 0004 7047     		bx	lr
@@ -209,144 +205,144 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 1
   80              	Os_Calc_Period:
   81              	.LVL0:
   82              	.LFB141:
- 123:Core/Src/os.c **** 
- 124:Core/Src/os.c **** static void Os_Calc_Period(uint8_t idx)
- 125:Core/Src/os.c **** {
-  83              		.loc 1 125 1 is_stmt 1 view -0
+ 119:Core/Src/os.c **** 
+ 120:Core/Src/os.c **** static void Os_Calc_Period(uint8_t idx)
+ 121:Core/Src/os.c **** {
+  83              		.loc 1 121 1 is_stmt 1 view -0
   84              		.cfi_startproc
   85              		@ args = 0, pretend = 0, frame = 0
   86              		@ frame_needed = 0, uses_anonymous_args = 0
-  87              		.loc 1 125 1 is_stmt 0 view .LVU9
+  87              		.loc 1 121 1 is_stmt 0 view .LVU9
   88 0000 10B5     		push	{r4, lr}
   89              	.LCFI0:
   90              		.cfi_def_cfa_offset 8
   91              		.cfi_offset 4, -8
   92              		.cfi_offset 14, -4
   93 0002 0446     		mov	r4, r0
- 126:Core/Src/os.c **** 	uint32_t OS_TimeLoc = 0;
-  94              		.loc 1 126 2 is_stmt 1 view .LVU10
+ 122:Core/Src/os.c **** 	uint32_t OS_TimeLoc = 0;
+  94              		.loc 1 122 2 is_stmt 1 view .LVU10
   95              	.LVL1:
- 127:Core/Src/os.c **** 	uint32_t OS_TimeOldLoc = 0;
-  96              		.loc 1 127 2 view .LVU11
- 128:Core/Src/os.c **** 	uint32_t Os_TimeDiffLoc = 0;
-  97              		.loc 1 128 2 view .LVU12
- 129:Core/Src/os.c **** 
- 130:Core/Src/os.c **** 	OS_TimeLoc = Os_Get_Tick_100us();
-  98              		.loc 1 130 2 view .LVU13
-  99              		.loc 1 130 15 is_stmt 0 view .LVU14
+ 123:Core/Src/os.c **** 	uint32_t OS_TimeOldLoc = 0;
+  96              		.loc 1 123 2 view .LVU11
+ 124:Core/Src/os.c **** 	uint32_t Os_TimeDiffLoc = 0;
+  97              		.loc 1 124 2 view .LVU12
+ 125:Core/Src/os.c **** 
+ 126:Core/Src/os.c **** 	OS_TimeLoc = Os_Get_Tick_100us();
+  98              		.loc 1 126 2 view .LVU13
+  99              		.loc 1 126 15 is_stmt 0 view .LVU14
  100 0004 FFF7FEFF 		bl	Os_Get_Tick_100us
  101              	.LVL2:
- 131:Core/Src/os.c **** 
- 132:Core/Src/os.c **** 	switch(idx)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 5
-
-
- 102              		.loc 1 132 2 is_stmt 1 view .LVU15
+ 127:Core/Src/os.c **** 
+ 128:Core/Src/os.c **** 	switch(idx)
+ 102              		.loc 1 128 2 is_stmt 1 view .LVU15
  103 0008 022C     		cmp	r4, #2
  104 000a 08D0     		beq	.L8
  105 000c 032C     		cmp	r4, #3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 5
+
+
  106 000e 09D0     		beq	.L9
  107 0010 0023     		movs	r3, #0
  108              	.LVL3:
  109              	.L10:
- 133:Core/Src/os.c **** 	{
- 134:Core/Src/os.c **** 		case OS_TASK_INDEX_10MS : 
- 135:Core/Src/os.c **** 			OS_TimeOldLoc = Os_Var.Os_Tick_Period.Os_10ms_Tick_Period;
- 136:Core/Src/os.c **** 		break;
- 137:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
- 138:Core/Src/os.c **** 			OS_TimeOldLoc = Os_Var.Os_Tick_Period.Os_100ms_Tick_Period;
- 139:Core/Src/os.c **** 		break;
- 140:Core/Src/os.c **** 	}
- 141:Core/Src/os.c **** 
- 142:Core/Src/os.c **** 	Os_TimeDiffLoc = OS_TimeLoc - OS_TimeOldLoc;
- 110              		.loc 1 142 2 view .LVU16
- 111              		.loc 1 142 17 is_stmt 0 view .LVU17
+ 129:Core/Src/os.c **** 	{
+ 130:Core/Src/os.c **** 		case OS_TASK_INDEX_10MS : 
+ 131:Core/Src/os.c **** 			OS_TimeOldLoc = Os_Var.Os_Tick_Period.Os_10ms_Tick_Period;
+ 132:Core/Src/os.c **** 		break;
+ 133:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
+ 134:Core/Src/os.c **** 			OS_TimeOldLoc = Os_Var.Os_Tick_Period.Os_100ms_Tick_Period;
+ 135:Core/Src/os.c **** 		break;
+ 136:Core/Src/os.c **** 	}
+ 137:Core/Src/os.c **** 
+ 138:Core/Src/os.c **** 	Os_TimeDiffLoc = OS_TimeLoc - OS_TimeOldLoc;
+ 110              		.loc 1 138 2 view .LVU16
+ 111              		.loc 1 138 17 is_stmt 0 view .LVU17
  112 0012 C31A     		subs	r3, r0, r3
  113              	.LVL4:
- 143:Core/Src/os.c **** 	OS_TimeOldLoc = OS_TimeLoc;
- 114              		.loc 1 143 2 is_stmt 1 view .LVU18
- 144:Core/Src/os.c **** 	
- 145:Core/Src/os.c **** 	switch(idx)
- 115              		.loc 1 145 2 view .LVU19
+ 139:Core/Src/os.c **** 	OS_TimeOldLoc = OS_TimeLoc;
+ 114              		.loc 1 139 2 is_stmt 1 view .LVU18
+ 140:Core/Src/os.c **** 	
+ 141:Core/Src/os.c **** 	switch(idx)
+ 115              		.loc 1 141 2 view .LVU19
  116 0014 022C     		cmp	r4, #2
  117 0016 08D0     		beq	.L11
  118 0018 032C     		cmp	r4, #3
  119 001a 0AD0     		beq	.L12
  120              	.L7:
- 146:Core/Src/os.c **** 	{
- 147:Core/Src/os.c **** 		case OS_TASK_INDEX_10MS : 
- 148:Core/Src/os.c **** 			Os_Var.Os_Period.Os_10ms_Period = Os_TimeDiffLoc;
- 149:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_10ms_Tick_Period = OS_TimeOldLoc;
+ 142:Core/Src/os.c **** 	{
+ 143:Core/Src/os.c **** 		case OS_TASK_INDEX_10MS : 
+ 144:Core/Src/os.c **** 			Os_Var.Os_Period.Os_10ms_Period = Os_TimeDiffLoc;
+ 145:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_10ms_Tick_Period = OS_TimeOldLoc;
+ 146:Core/Src/os.c **** 		break;
+ 147:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
+ 148:Core/Src/os.c **** 			Os_Var.Os_Period.Os_100ms_Period = Os_TimeDiffLoc;
+ 149:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_100ms_Tick_Period = OS_TimeOldLoc;
  150:Core/Src/os.c **** 		break;
- 151:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
- 152:Core/Src/os.c **** 			Os_Var.Os_Period.Os_100ms_Period = Os_TimeDiffLoc;
- 153:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_100ms_Tick_Period = OS_TimeOldLoc;
- 154:Core/Src/os.c **** 		break;
- 155:Core/Src/os.c **** 	}
- 156:Core/Src/os.c **** 	
- 157:Core/Src/os.c **** 	return;
- 158:Core/Src/os.c **** }
- 121              		.loc 1 158 1 is_stmt 0 view .LVU20
+ 151:Core/Src/os.c **** 	}
+ 152:Core/Src/os.c **** 	
+ 153:Core/Src/os.c **** 	return;
+ 154:Core/Src/os.c **** }
+ 121              		.loc 1 154 1 is_stmt 0 view .LVU20
  122 001c 10BD     		pop	{r4, pc}
  123              	.LVL5:
  124              	.L8:
- 135:Core/Src/os.c **** 		break;
- 125              		.loc 1 135 4 is_stmt 1 view .LVU21
- 135:Core/Src/os.c **** 		break;
- 126              		.loc 1 135 18 is_stmt 0 view .LVU22
+ 131:Core/Src/os.c **** 		break;
+ 125              		.loc 1 131 4 is_stmt 1 view .LVU21
+ 131:Core/Src/os.c **** 		break;
+ 126              		.loc 1 131 18 is_stmt 0 view .LVU22
  127 001e 074B     		ldr	r3, .L15
  128 0020 DB69     		ldr	r3, [r3, #28]
  129              	.LVL6:
- 136:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 6
-
-
- 130              		.loc 1 136 3 is_stmt 1 view .LVU23
+ 132:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
+ 130              		.loc 1 132 3 is_stmt 1 view .LVU23
  131 0022 F6E7     		b	.L10
  132              	.LVL7:
  133              	.L9:
- 138:Core/Src/os.c **** 		break;
- 134              		.loc 1 138 4 view .LVU24
- 138:Core/Src/os.c **** 		break;
- 135              		.loc 1 138 18 is_stmt 0 view .LVU25
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 6
+
+
+ 134:Core/Src/os.c **** 		break;
+ 134              		.loc 1 134 4 view .LVU24
+ 134:Core/Src/os.c **** 		break;
+ 135              		.loc 1 134 18 is_stmt 0 view .LVU25
  136 0024 054B     		ldr	r3, .L15
  137 0026 1B6A     		ldr	r3, [r3, #32]
  138              	.LVL8:
- 139:Core/Src/os.c **** 	}
- 139              		.loc 1 139 3 is_stmt 1 view .LVU26
+ 135:Core/Src/os.c **** 	}
+ 139              		.loc 1 135 3 is_stmt 1 view .LVU26
  140 0028 F3E7     		b	.L10
  141              	.LVL9:
  142              	.L11:
- 148:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_10ms_Tick_Period = OS_TimeOldLoc;
- 143              		.loc 1 148 4 view .LVU27
- 148:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_10ms_Tick_Period = OS_TimeOldLoc;
- 144              		.loc 1 148 36 is_stmt 0 view .LVU28
+ 144:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_10ms_Tick_Period = OS_TimeOldLoc;
+ 143              		.loc 1 144 4 view .LVU27
+ 144:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_10ms_Tick_Period = OS_TimeOldLoc;
+ 144              		.loc 1 144 36 is_stmt 0 view .LVU28
  145 002a 044A     		ldr	r2, .L15
  146 002c D362     		str	r3, [r2, #44]
- 149:Core/Src/os.c **** 		break;
- 147              		.loc 1 149 4 is_stmt 1 view .LVU29
- 149:Core/Src/os.c **** 		break;
- 148              		.loc 1 149 46 is_stmt 0 view .LVU30
+ 145:Core/Src/os.c **** 		break;
+ 147              		.loc 1 145 4 is_stmt 1 view .LVU29
+ 145:Core/Src/os.c **** 		break;
+ 148              		.loc 1 145 46 is_stmt 0 view .LVU30
  149 002e D061     		str	r0, [r2, #28]
- 150:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
- 150              		.loc 1 150 3 is_stmt 1 view .LVU31
+ 146:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
+ 150              		.loc 1 146 3 is_stmt 1 view .LVU31
  151 0030 F4E7     		b	.L7
  152              	.L12:
- 152:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_100ms_Tick_Period = OS_TimeOldLoc;
- 153              		.loc 1 152 4 view .LVU32
- 152:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_100ms_Tick_Period = OS_TimeOldLoc;
- 154              		.loc 1 152 37 is_stmt 0 view .LVU33
+ 148:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_100ms_Tick_Period = OS_TimeOldLoc;
+ 153              		.loc 1 148 4 view .LVU32
+ 148:Core/Src/os.c **** 			Os_Var.Os_Tick_Period.Os_100ms_Tick_Period = OS_TimeOldLoc;
+ 154              		.loc 1 148 37 is_stmt 0 view .LVU33
  155 0032 024A     		ldr	r2, .L15
  156 0034 1363     		str	r3, [r2, #48]
- 153:Core/Src/os.c **** 		break;
- 157              		.loc 1 153 4 is_stmt 1 view .LVU34
- 153:Core/Src/os.c **** 		break;
- 158              		.loc 1 153 47 is_stmt 0 view .LVU35
+ 149:Core/Src/os.c **** 		break;
+ 157              		.loc 1 149 4 is_stmt 1 view .LVU34
+ 149:Core/Src/os.c **** 		break;
+ 158              		.loc 1 149 47 is_stmt 0 view .LVU35
  159 0036 1062     		str	r0, [r2, #32]
- 154:Core/Src/os.c **** 	}
- 160              		.loc 1 154 3 is_stmt 1 view .LVU36
- 157:Core/Src/os.c **** }
- 161              		.loc 1 157 2 view .LVU37
+ 150:Core/Src/os.c **** 	}
+ 160              		.loc 1 150 3 is_stmt 1 view .LVU36
+ 153:Core/Src/os.c **** }
+ 161              		.loc 1 153 2 view .LVU37
  162 0038 F0E7     		b	.L7
  163              	.L16:
  164 003a 00BF     		.align	2
@@ -358,81 +354,81 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 1
  171              		.align	1
  172              		.syntax unified
  173              		.thumb
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 7
-
-
  174              		.thumb_func
  176              	Os_Calc_Runtime_Start:
  177              	.LVL10:
  178              	.LFB142:
- 159:Core/Src/os.c **** 
- 160:Core/Src/os.c **** static void Os_Calc_Runtime_Start(uint8_t idx)
- 161:Core/Src/os.c **** {
- 179              		.loc 1 161 1 view -0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 7
+
+
+ 155:Core/Src/os.c **** 
+ 156:Core/Src/os.c **** static void Os_Calc_Runtime_Start(uint8_t idx)
+ 157:Core/Src/os.c **** {
+ 179              		.loc 1 157 1 view -0
  180              		.cfi_startproc
  181              		@ args = 0, pretend = 0, frame = 0
  182              		@ frame_needed = 0, uses_anonymous_args = 0
- 183              		.loc 1 161 1 is_stmt 0 view .LVU39
+ 183              		.loc 1 157 1 is_stmt 0 view .LVU39
  184 0000 10B5     		push	{r4, lr}
  185              	.LCFI1:
  186              		.cfi_def_cfa_offset 8
  187              		.cfi_offset 4, -8
  188              		.cfi_offset 14, -4
  189 0002 0446     		mov	r4, r0
- 162:Core/Src/os.c **** 	uint32_t OS_TimeLoc = 0;
- 190              		.loc 1 162 2 is_stmt 1 view .LVU40
+ 158:Core/Src/os.c **** 	uint32_t OS_TimeLoc = 0;
+ 190              		.loc 1 158 2 is_stmt 1 view .LVU40
  191              	.LVL11:
- 163:Core/Src/os.c **** 
- 164:Core/Src/os.c **** 	OS_TimeLoc = Os_Get_Tick_100us();
- 192              		.loc 1 164 2 view .LVU41
- 193              		.loc 1 164 15 is_stmt 0 view .LVU42
+ 159:Core/Src/os.c **** 
+ 160:Core/Src/os.c **** 	OS_TimeLoc = Os_Get_Tick_100us();
+ 192              		.loc 1 160 2 view .LVU41
+ 193              		.loc 1 160 15 is_stmt 0 view .LVU42
  194 0004 FFF7FEFF 		bl	Os_Get_Tick_100us
  195              	.LVL12:
- 165:Core/Src/os.c **** 
- 166:Core/Src/os.c **** 	switch(idx)
- 196              		.loc 1 166 2 is_stmt 1 view .LVU43
+ 161:Core/Src/os.c **** 
+ 162:Core/Src/os.c **** 	switch(idx)
+ 196              		.loc 1 162 2 is_stmt 1 view .LVU43
  197 0008 022C     		cmp	r4, #2
  198 000a 02D0     		beq	.L18
  199 000c 032C     		cmp	r4, #3
  200 000e 03D0     		beq	.L19
  201              	.L17:
- 167:Core/Src/os.c **** 	{
- 168:Core/Src/os.c **** 		case OS_TASK_INDEX_10MS : 
- 169:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_10ms_Tick_Runtime_Start = OS_TimeLoc;
- 170:Core/Src/os.c **** 		break;
- 171:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
- 172:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_100ms_Tick_Runtime_Start = OS_TimeLoc;
- 173:Core/Src/os.c **** 		break;
- 174:Core/Src/os.c **** 	}
- 175:Core/Src/os.c **** 
- 176:Core/Src/os.c **** 	return;
- 177:Core/Src/os.c **** }
- 202              		.loc 1 177 1 is_stmt 0 view .LVU44
+ 163:Core/Src/os.c **** 	{
+ 164:Core/Src/os.c **** 		case OS_TASK_INDEX_10MS : 
+ 165:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_10ms_Tick_Runtime_Start = OS_TimeLoc;
+ 166:Core/Src/os.c **** 		break;
+ 167:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
+ 168:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_100ms_Tick_Runtime_Start = OS_TimeLoc;
+ 169:Core/Src/os.c **** 		break;
+ 170:Core/Src/os.c **** 	}
+ 171:Core/Src/os.c **** 
+ 172:Core/Src/os.c **** 	return;
+ 173:Core/Src/os.c **** }
+ 202              		.loc 1 173 1 is_stmt 0 view .LVU44
  203 0010 10BD     		pop	{r4, pc}
  204              	.L18:
- 169:Core/Src/os.c **** 		break;
- 205              		.loc 1 169 4 is_stmt 1 view .LVU45
- 169:Core/Src/os.c **** 		break;
- 206              		.loc 1 169 54 is_stmt 0 view .LVU46
+ 165:Core/Src/os.c **** 		break;
+ 205              		.loc 1 165 4 is_stmt 1 view .LVU45
+ 165:Core/Src/os.c **** 		break;
+ 206              		.loc 1 165 54 is_stmt 0 view .LVU46
  207 0012 034B     		ldr	r3, .L22
  208 0014 D860     		str	r0, [r3, #12]
- 170:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
- 209              		.loc 1 170 3 is_stmt 1 view .LVU47
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 8
-
-
+ 166:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
+ 209              		.loc 1 166 3 is_stmt 1 view .LVU47
  210 0016 FBE7     		b	.L17
  211              	.L19:
- 172:Core/Src/os.c **** 		break;
- 212              		.loc 1 172 4 view .LVU48
- 172:Core/Src/os.c **** 		break;
- 213              		.loc 1 172 55 is_stmt 0 view .LVU49
+ 168:Core/Src/os.c **** 		break;
+ 212              		.loc 1 168 4 view .LVU48
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 8
+
+
+ 168:Core/Src/os.c **** 		break;
+ 213              		.loc 1 168 55 is_stmt 0 view .LVU49
  214 0018 014B     		ldr	r3, .L22
  215 001a 5861     		str	r0, [r3, #20]
- 173:Core/Src/os.c **** 	}
- 216              		.loc 1 173 3 is_stmt 1 view .LVU50
- 176:Core/Src/os.c **** }
- 217              		.loc 1 176 2 view .LVU51
+ 169:Core/Src/os.c **** 	}
+ 216              		.loc 1 169 3 is_stmt 1 view .LVU50
+ 172:Core/Src/os.c **** }
+ 217              		.loc 1 172 2 view .LVU51
  218 001c F8E7     		b	.L17
  219              	.L23:
  220 001e 00BF     		.align	2
@@ -448,142 +444,142 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 1
  232              	Os_Calc_Runtime_Stop:
  233              	.LVL13:
  234              	.LFB143:
- 178:Core/Src/os.c **** 
- 179:Core/Src/os.c **** static void Os_Calc_Runtime_Stop(uint8_t idx)
- 180:Core/Src/os.c **** {
- 235              		.loc 1 180 1 view -0
+ 174:Core/Src/os.c **** 
+ 175:Core/Src/os.c **** static void Os_Calc_Runtime_Stop(uint8_t idx)
+ 176:Core/Src/os.c **** {
+ 235              		.loc 1 176 1 view -0
  236              		.cfi_startproc
  237              		@ args = 0, pretend = 0, frame = 0
  238              		@ frame_needed = 0, uses_anonymous_args = 0
- 239              		.loc 1 180 1 is_stmt 0 view .LVU53
+ 239              		.loc 1 176 1 is_stmt 0 view .LVU53
  240 0000 10B5     		push	{r4, lr}
  241              	.LCFI2:
  242              		.cfi_def_cfa_offset 8
  243              		.cfi_offset 4, -8
  244              		.cfi_offset 14, -4
  245 0002 0446     		mov	r4, r0
- 181:Core/Src/os.c **** 	uint32_t OS_TimeLoc = 0;
- 246              		.loc 1 181 2 is_stmt 1 view .LVU54
+ 177:Core/Src/os.c **** 	uint32_t OS_TimeLoc = 0;
+ 246              		.loc 1 177 2 is_stmt 1 view .LVU54
  247              	.LVL14:
- 182:Core/Src/os.c **** 	uint32_t OS_TimeOldLoc = 0;
- 248              		.loc 1 182 2 view .LVU55
- 183:Core/Src/os.c **** 	uint32_t Os_TimeDiffLoc = 0;
- 249              		.loc 1 183 2 view .LVU56
- 184:Core/Src/os.c **** 
- 185:Core/Src/os.c **** 	OS_TimeLoc = Os_Get_Tick_100us();
- 250              		.loc 1 185 2 view .LVU57
- 251              		.loc 1 185 15 is_stmt 0 view .LVU58
+ 178:Core/Src/os.c **** 	uint32_t OS_TimeOldLoc = 0;
+ 248              		.loc 1 178 2 view .LVU55
+ 179:Core/Src/os.c **** 	uint32_t Os_TimeDiffLoc = 0;
+ 249              		.loc 1 179 2 view .LVU56
+ 180:Core/Src/os.c **** 
+ 181:Core/Src/os.c **** 	OS_TimeLoc = Os_Get_Tick_100us();
+ 250              		.loc 1 181 2 view .LVU57
+ 251              		.loc 1 181 15 is_stmt 0 view .LVU58
  252 0004 FFF7FEFF 		bl	Os_Get_Tick_100us
  253              	.LVL15:
- 186:Core/Src/os.c **** 
- 187:Core/Src/os.c **** 	switch(idx)
- 254              		.loc 1 187 2 is_stmt 1 view .LVU59
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 9
-
-
+ 182:Core/Src/os.c **** 
+ 183:Core/Src/os.c **** 	switch(idx)
+ 254              		.loc 1 183 2 is_stmt 1 view .LVU59
  255 0008 022C     		cmp	r4, #2
  256 000a 08D0     		beq	.L25
  257 000c 032C     		cmp	r4, #3
  258 000e 09D0     		beq	.L26
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 9
+
+
  259 0010 0023     		movs	r3, #0
  260              	.LVL16:
  261              	.L27:
- 188:Core/Src/os.c **** 	{
- 189:Core/Src/os.c **** 		case OS_TASK_INDEX_10MS : 
- 190:Core/Src/os.c **** 			OS_TimeOldLoc = Os_Var.Os_Tick_Runtime.Os_10ms_Tick_Runtime_Start;
- 191:Core/Src/os.c **** 		break;
- 192:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
- 193:Core/Src/os.c **** 			OS_TimeOldLoc = Os_Var.Os_Tick_Runtime.Os_100ms_Tick_Runtime_Start;
- 194:Core/Src/os.c **** 		break;
- 195:Core/Src/os.c **** 	}
- 196:Core/Src/os.c **** 
- 197:Core/Src/os.c **** 	Os_TimeDiffLoc = OS_TimeLoc - OS_TimeOldLoc;
- 262              		.loc 1 197 2 view .LVU60
- 263              		.loc 1 197 17 is_stmt 0 view .LVU61
+ 184:Core/Src/os.c **** 	{
+ 185:Core/Src/os.c **** 		case OS_TASK_INDEX_10MS : 
+ 186:Core/Src/os.c **** 			OS_TimeOldLoc = Os_Var.Os_Tick_Runtime.Os_10ms_Tick_Runtime_Start;
+ 187:Core/Src/os.c **** 		break;
+ 188:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
+ 189:Core/Src/os.c **** 			OS_TimeOldLoc = Os_Var.Os_Tick_Runtime.Os_100ms_Tick_Runtime_Start;
+ 190:Core/Src/os.c **** 		break;
+ 191:Core/Src/os.c **** 	}
+ 192:Core/Src/os.c **** 
+ 193:Core/Src/os.c **** 	Os_TimeDiffLoc = OS_TimeLoc - OS_TimeOldLoc;
+ 262              		.loc 1 193 2 view .LVU60
+ 263              		.loc 1 193 17 is_stmt 0 view .LVU61
  264 0012 C31A     		subs	r3, r0, r3
  265              	.LVL17:
- 198:Core/Src/os.c **** 
- 199:Core/Src/os.c **** 	switch(idx)
- 266              		.loc 1 199 2 is_stmt 1 view .LVU62
+ 194:Core/Src/os.c **** 
+ 195:Core/Src/os.c **** 	switch(idx)
+ 266              		.loc 1 195 2 is_stmt 1 view .LVU62
  267 0014 022C     		cmp	r4, #2
  268 0016 08D0     		beq	.L28
  269 0018 032C     		cmp	r4, #3
  270 001a 0AD0     		beq	.L29
  271              	.L24:
- 200:Core/Src/os.c **** 	{
- 201:Core/Src/os.c **** 		case OS_TASK_INDEX_10MS : 
- 202:Core/Src/os.c **** 			Os_Var.Os_Runtime.Os_10ms_Runtime = Os_TimeDiffLoc;
- 203:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_10ms_Tick_Runtime_Stop = OS_TimeLoc;
+ 196:Core/Src/os.c **** 	{
+ 197:Core/Src/os.c **** 		case OS_TASK_INDEX_10MS : 
+ 198:Core/Src/os.c **** 			Os_Var.Os_Runtime.Os_10ms_Runtime = Os_TimeDiffLoc;
+ 199:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_10ms_Tick_Runtime_Stop = OS_TimeLoc;
+ 200:Core/Src/os.c **** 		break;
+ 201:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
+ 202:Core/Src/os.c **** 			Os_Var.Os_Runtime.Os_100ms_Runtime = Os_TimeDiffLoc;
+ 203:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_100ms_Tick_Runtime_Stop = OS_TimeLoc;
  204:Core/Src/os.c **** 		break;
- 205:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
- 206:Core/Src/os.c **** 			Os_Var.Os_Runtime.Os_100ms_Runtime = Os_TimeDiffLoc;
- 207:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_100ms_Tick_Runtime_Stop = OS_TimeLoc;
- 208:Core/Src/os.c **** 		break;
- 209:Core/Src/os.c **** 	}
- 210:Core/Src/os.c **** 
- 211:Core/Src/os.c **** 	return;
- 212:Core/Src/os.c **** }
- 272              		.loc 1 212 1 is_stmt 0 view .LVU63
+ 205:Core/Src/os.c **** 	}
+ 206:Core/Src/os.c **** 
+ 207:Core/Src/os.c **** 	return;
+ 208:Core/Src/os.c **** }
+ 272              		.loc 1 208 1 is_stmt 0 view .LVU63
  273 001c 10BD     		pop	{r4, pc}
  274              	.LVL18:
  275              	.L25:
- 190:Core/Src/os.c **** 		break;
- 276              		.loc 1 190 4 is_stmt 1 view .LVU64
- 190:Core/Src/os.c **** 		break;
- 277              		.loc 1 190 18 is_stmt 0 view .LVU65
+ 186:Core/Src/os.c **** 		break;
+ 276              		.loc 1 186 4 is_stmt 1 view .LVU64
+ 186:Core/Src/os.c **** 		break;
+ 277              		.loc 1 186 18 is_stmt 0 view .LVU65
  278 001e 074B     		ldr	r3, .L32
  279 0020 DB68     		ldr	r3, [r3, #12]
  280              	.LVL19:
- 191:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
- 281              		.loc 1 191 3 is_stmt 1 view .LVU66
+ 187:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
+ 281              		.loc 1 187 3 is_stmt 1 view .LVU66
  282 0022 F6E7     		b	.L27
  283              	.LVL20:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 10
-
-
  284              	.L26:
- 193:Core/Src/os.c **** 		break;
- 285              		.loc 1 193 4 view .LVU67
- 193:Core/Src/os.c **** 		break;
- 286              		.loc 1 193 18 is_stmt 0 view .LVU68
+ 189:Core/Src/os.c **** 		break;
+ 285              		.loc 1 189 4 view .LVU67
+ 189:Core/Src/os.c **** 		break;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 10
+
+
+ 286              		.loc 1 189 18 is_stmt 0 view .LVU68
  287 0024 054B     		ldr	r3, .L32
  288 0026 5B69     		ldr	r3, [r3, #20]
  289              	.LVL21:
- 194:Core/Src/os.c **** 	}
- 290              		.loc 1 194 3 is_stmt 1 view .LVU69
+ 190:Core/Src/os.c **** 	}
+ 290              		.loc 1 190 3 is_stmt 1 view .LVU69
  291 0028 F3E7     		b	.L27
  292              	.LVL22:
  293              	.L28:
- 202:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_10ms_Tick_Runtime_Stop = OS_TimeLoc;
- 294              		.loc 1 202 4 view .LVU70
- 202:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_10ms_Tick_Runtime_Stop = OS_TimeLoc;
- 295              		.loc 1 202 38 is_stmt 0 view .LVU71
+ 198:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_10ms_Tick_Runtime_Stop = OS_TimeLoc;
+ 294              		.loc 1 198 4 view .LVU70
+ 198:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_10ms_Tick_Runtime_Stop = OS_TimeLoc;
+ 295              		.loc 1 198 38 is_stmt 0 view .LVU71
  296 002a 044A     		ldr	r2, .L32
  297 002c 5362     		str	r3, [r2, #36]
- 203:Core/Src/os.c **** 		break;
- 298              		.loc 1 203 4 is_stmt 1 view .LVU72
- 203:Core/Src/os.c **** 		break;
- 299              		.loc 1 203 53 is_stmt 0 view .LVU73
+ 199:Core/Src/os.c **** 		break;
+ 298              		.loc 1 199 4 is_stmt 1 view .LVU72
+ 199:Core/Src/os.c **** 		break;
+ 299              		.loc 1 199 53 is_stmt 0 view .LVU73
  300 002e 1061     		str	r0, [r2, #16]
- 204:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
- 301              		.loc 1 204 3 is_stmt 1 view .LVU74
+ 200:Core/Src/os.c **** 		case OS_TASK_INDEX_100MS : 
+ 301              		.loc 1 200 3 is_stmt 1 view .LVU74
  302 0030 F4E7     		b	.L24
  303              	.L29:
- 206:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_100ms_Tick_Runtime_Stop = OS_TimeLoc;
- 304              		.loc 1 206 4 view .LVU75
- 206:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_100ms_Tick_Runtime_Stop = OS_TimeLoc;
- 305              		.loc 1 206 39 is_stmt 0 view .LVU76
+ 202:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_100ms_Tick_Runtime_Stop = OS_TimeLoc;
+ 304              		.loc 1 202 4 view .LVU75
+ 202:Core/Src/os.c **** 			Os_Var.Os_Tick_Runtime.Os_100ms_Tick_Runtime_Stop = OS_TimeLoc;
+ 305              		.loc 1 202 39 is_stmt 0 view .LVU76
  306 0032 024A     		ldr	r2, .L32
  307 0034 9362     		str	r3, [r2, #40]
- 207:Core/Src/os.c **** 		break;
- 308              		.loc 1 207 4 is_stmt 1 view .LVU77
- 207:Core/Src/os.c **** 		break;
- 309              		.loc 1 207 54 is_stmt 0 view .LVU78
+ 203:Core/Src/os.c **** 		break;
+ 308              		.loc 1 203 4 is_stmt 1 view .LVU77
+ 203:Core/Src/os.c **** 		break;
+ 309              		.loc 1 203 54 is_stmt 0 view .LVU78
  310 0036 9061     		str	r0, [r2, #24]
- 208:Core/Src/os.c **** 	}
- 311              		.loc 1 208 3 is_stmt 1 view .LVU79
- 211:Core/Src/os.c **** }
- 312              		.loc 1 211 2 view .LVU80
+ 204:Core/Src/os.c **** 	}
+ 311              		.loc 1 204 3 is_stmt 1 view .LVU79
+ 207:Core/Src/os.c **** }
+ 312              		.loc 1 207 2 view .LVU80
  313 0038 F0E7     		b	.L24
  314              	.L33:
  315 003a 00BF     		.align	2
@@ -598,13 +594,13 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 1
  325              		.thumb_func
  327              	Os_100ms_Task:
  328              	.LFB135:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 11
-
-
   43:Core/Src/os.c ****     DHT_Data_t data;
  329              		.loc 1 43 1 view -0
  330              		.cfi_startproc
  331              		@ args = 0, pretend = 0, frame = 160
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 11
+
+
  332              		@ frame_needed = 0, uses_anonymous_args = 0
  333 0000 00B5     		push	{lr}
  334              	.LCFI3:
@@ -653,488 +649,462 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 1
  365              		.loc 1 54 2 view .LVU93
  366 0022 FFF7FEFF 		bl	Lidar_Receive_Data
  367              	.LVL27:
-  55:Core/Src/os.c ****     //sprintf(tx_data,"Time: %d:%d:%d, Temperature : %d, Humidity : %d, Battery : %d, Lidar Distanc
+  55:Core/Src/os.c **** 	LTE_Connect();
  368              		.loc 1 55 2 view .LVU94
  369 0026 FFF7FEFF 		bl	Test_Debug
  370              	.LVL28:
-  59:Core/Src/os.c **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 12
+  56:Core/Src/os.c ****     //sprintf(tx_data,"Time: %d:%d:%d, Temperature : %d, Humidity : %d, Battery : %d, Lidar Distanc
+ 371              		.loc 1 56 2 view .LVU95
+ 372 002a FFF7FEFF 		bl	LTE_Connect
+ 373              	.LVL29:
+  60:Core/Src/os.c **** 
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 12
 
 
- 371              		.loc 1 59 1 is_stmt 0 view .LVU95
- 372 002a 29B0     		add	sp, sp, #164
- 373              	.LCFI5:
- 374              		.cfi_def_cfa_offset 4
- 375              		@ sp needed
- 376 002c 5DF804FB 		ldr	pc, [sp], #4
-  59:Core/Src/os.c **** 
- 377              		.loc 1 59 1 view .LVU96
- 378              		.cfi_endproc
- 379              	.LFE135:
- 381              		.section	.text.Os_10ms_Task,"ax",%progbits
- 382              		.align	1
- 383              		.syntax unified
- 384              		.thumb
- 385              		.thumb_func
- 387              	Os_10ms_Task:
- 388              	.LFB134:
+ 374              		.loc 1 60 1 is_stmt 0 view .LVU96
+ 375 002e 29B0     		add	sp, sp, #164
+ 376              	.LCFI5:
+ 377              		.cfi_def_cfa_offset 4
+ 378              		@ sp needed
+ 379 0030 5DF804FB 		ldr	pc, [sp], #4
+  60:Core/Src/os.c **** 
+ 380              		.loc 1 60 1 view .LVU97
+ 381              		.cfi_endproc
+ 382              	.LFE135:
+ 384              		.section	.text.Os_10ms_Task,"ax",%progbits
+ 385              		.align	1
+ 386              		.syntax unified
+ 387              		.thumb
+ 388              		.thumb_func
+ 390              	Os_10ms_Task:
+ 391              	.LFB134:
   37:Core/Src/os.c **** 	Device_Battery_Voltage_Read();
- 389              		.loc 1 37 1 is_stmt 1 view -0
- 390              		.cfi_startproc
- 391              		@ args = 0, pretend = 0, frame = 0
- 392              		@ frame_needed = 0, uses_anonymous_args = 0
- 393 0000 08B5     		push	{r3, lr}
- 394              	.LCFI6:
- 395              		.cfi_def_cfa_offset 8
- 396              		.cfi_offset 3, -8
- 397              		.cfi_offset 14, -4
+ 392              		.loc 1 37 1 is_stmt 1 view -0
+ 393              		.cfi_startproc
+ 394              		@ args = 0, pretend = 0, frame = 0
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396 0000 08B5     		push	{r3, lr}
+ 397              	.LCFI6:
+ 398              		.cfi_def_cfa_offset 8
+ 399              		.cfi_offset 3, -8
+ 400              		.cfi_offset 14, -4
   38:Core/Src/os.c **** 	Device_Detect_SensorSignal();
- 398              		.loc 1 38 2 view .LVU98
- 399 0002 FFF7FEFF 		bl	Device_Battery_Voltage_Read
- 400              	.LVL29:
-  39:Core/Src/os.c **** }
- 401              		.loc 1 39 2 view .LVU99
- 402 0006 FFF7FEFF 		bl	Device_Detect_SensorSignal
+ 401              		.loc 1 38 2 view .LVU99
+ 402 0002 FFF7FEFF 		bl	Device_Battery_Voltage_Read
  403              	.LVL30:
-  40:Core/Src/os.c **** uint16_t test_counter;
- 404              		.loc 1 40 1 is_stmt 0 view .LVU100
- 405 000a 08BD     		pop	{r3, pc}
- 406              		.cfi_endproc
- 407              	.LFE134:
- 409              		.section	.text.Os_Handler_10ms,"ax",%progbits
- 410              		.align	1
- 411              		.syntax unified
- 412              		.thumb
- 413              		.thumb_func
- 415              	Os_Handler_10ms:
- 416              	.LFB139:
-  96:Core/Src/os.c **** 	Os_Var.Os_Counter.Os_10ms_Counter++;
- 417              		.loc 1 96 1 is_stmt 1 view -0
- 418              		.cfi_startproc
- 419              		@ args = 0, pretend = 0, frame = 0
- 420              		@ frame_needed = 0, uses_anonymous_args = 0
- 421 0000 08B5     		push	{r3, lr}
- 422              	.LCFI7:
- 423              		.cfi_def_cfa_offset 8
- 424              		.cfi_offset 3, -8
- 425              		.cfi_offset 14, -4
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 13
+  39:Core/Src/os.c **** }
+ 404              		.loc 1 39 2 view .LVU100
+ 405 0006 FFF7FEFF 		bl	Device_Detect_SensorSignal
+ 406              	.LVL31:
+  40:Core/Src/os.c **** 
+ 407              		.loc 1 40 1 is_stmt 0 view .LVU101
+ 408 000a 08BD     		pop	{r3, pc}
+ 409              		.cfi_endproc
+ 410              	.LFE134:
+ 412              		.section	.text.Os_Handler_10ms,"ax",%progbits
+ 413              		.align	1
+ 414              		.syntax unified
+ 415              		.thumb
+ 416              		.thumb_func
+ 418              	Os_Handler_10ms:
+ 419              	.LFB139:
+  94:Core/Src/os.c **** 	Os_Var.Os_Counter.Os_10ms_Counter++;
+ 420              		.loc 1 94 1 is_stmt 1 view -0
+ 421              		.cfi_startproc
+ 422              		@ args = 0, pretend = 0, frame = 0
+ 423              		@ frame_needed = 0, uses_anonymous_args = 0
+ 424 0000 08B5     		push	{r3, lr}
+ 425              	.LCFI7:
+ 426              		.cfi_def_cfa_offset 8
+ 427              		.cfi_offset 3, -8
+ 428              		.cfi_offset 14, -4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 13
 
 
-  97:Core/Src/os.c **** 	Os_Var.Os_Task_Flag.Os_10ms_Flag = 1;
- 426              		.loc 1 97 2 view .LVU102
-  97:Core/Src/os.c **** 	Os_Var.Os_Task_Flag.Os_10ms_Flag = 1;
- 427              		.loc 1 97 19 is_stmt 0 view .LVU103
- 428 0002 144B     		ldr	r3, .L41
- 429 0004 5A68     		ldr	r2, [r3, #4]
-  97:Core/Src/os.c **** 	Os_Var.Os_Task_Flag.Os_10ms_Flag = 1;
- 430              		.loc 1 97 35 view .LVU104
- 431 0006 0132     		adds	r2, r2, #1
- 432 0008 5A60     		str	r2, [r3, #4]
-  98:Core/Src/os.c ****     
- 433              		.loc 1 98 2 is_stmt 1 view .LVU105
-  98:Core/Src/os.c ****     
- 434              		.loc 1 98 35 is_stmt 0 view .LVU106
- 435 000a 0121     		movs	r1, #1
- 436 000c 83F83C10 		strb	r1, [r3, #60]
- 100:Core/Src/os.c **** 	{
- 437              		.loc 1 100 2 is_stmt 1 view .LVU107
- 100:Core/Src/os.c **** 	{
- 438              		.loc 1 100 39 is_stmt 0 view .LVU108
- 439 0010 114B     		ldr	r3, .L41+4
- 440 0012 A3FB0213 		umull	r1, r3, r3, r2
- 441 0016 DB08     		lsrs	r3, r3, #3
- 442 0018 03EB8303 		add	r3, r3, r3, lsl #2
- 443 001c 5900     		lsls	r1, r3, #1
- 100:Core/Src/os.c **** 	{
- 444              		.loc 1 100 4 view .LVU109
- 445 001e 8A42     		cmp	r2, r1
- 446 0020 06D1     		bne	.L39
- 102:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 1;
- 447              		.loc 1 102 3 is_stmt 1 view .LVU110
- 102:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 1;
- 448              		.loc 1 102 20 is_stmt 0 view .LVU111
- 449 0022 0C4B     		ldr	r3, .L41
- 450 0024 9A68     		ldr	r2, [r3, #8]
- 102:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 1;
- 451              		.loc 1 102 37 view .LVU112
- 452 0026 0132     		adds	r2, r2, #1
- 453 0028 9A60     		str	r2, [r3, #8]
- 103:Core/Src/os.c **** 	}
- 454              		.loc 1 103 3 is_stmt 1 view .LVU113
- 103:Core/Src/os.c **** 	}
- 455              		.loc 1 103 37 is_stmt 0 view .LVU114
- 456 002a 0122     		movs	r2, #1
- 457 002c 83F83D20 		strb	r2, [r3, #61]
- 458              	.L39:
- 106:Core/Src/os.c **** 	if(Os_Var.Os_Task_Flag.Os_10ms_Flag == 1)
- 459              		.loc 1 106 2 is_stmt 1 view .LVU115
- 107:Core/Src/os.c **** 	{
- 460              		.loc 1 107 2 view .LVU116
- 109:Core/Src/os.c **** 		Os_Var.Os_Task_Add.Os_10ms_Address = fp;
- 461              		.loc 1 109 3 view .LVU117
- 110:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_10ms_Flag = 0;
- 462              		.loc 1 110 3 view .LVU118
- 110:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_10ms_Flag = 0;
- 463              		.loc 1 110 38 is_stmt 0 view .LVU119
- 464 0030 084B     		ldr	r3, .L41
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 14
+  95:Core/Src/os.c **** 	Os_Var.Os_Task_Flag.Os_10ms_Flag = 1;
+ 429              		.loc 1 95 2 view .LVU103
+  95:Core/Src/os.c **** 	Os_Var.Os_Task_Flag.Os_10ms_Flag = 1;
+ 430              		.loc 1 95 19 is_stmt 0 view .LVU104
+ 431 0002 134B     		ldr	r3, .L41
+ 432 0004 5A68     		ldr	r2, [r3, #4]
+  95:Core/Src/os.c **** 	Os_Var.Os_Task_Flag.Os_10ms_Flag = 1;
+ 433              		.loc 1 95 35 view .LVU105
+ 434 0006 0132     		adds	r2, r2, #1
+ 435 0008 5A60     		str	r2, [r3, #4]
+  96:Core/Src/os.c ****     
+ 436              		.loc 1 96 2 is_stmt 1 view .LVU106
+  96:Core/Src/os.c ****     
+ 437              		.loc 1 96 35 is_stmt 0 view .LVU107
+ 438 000a 0121     		movs	r1, #1
+ 439 000c 83F83C10 		strb	r1, [r3, #60]
+  98:Core/Src/os.c **** 	{
+ 440              		.loc 1 98 2 is_stmt 1 view .LVU108
+  98:Core/Src/os.c **** 	{
+ 441              		.loc 1 98 39 is_stmt 0 view .LVU109
+ 442 0010 104B     		ldr	r3, .L41+4
+ 443 0012 A3FB0213 		umull	r1, r3, r3, r2
+ 444 0016 DB08     		lsrs	r3, r3, #3
+ 445 0018 03EB8303 		add	r3, r3, r3, lsl #2
+ 446 001c 5900     		lsls	r1, r3, #1
+  98:Core/Src/os.c **** 	{
+ 447              		.loc 1 98 4 view .LVU110
+ 448 001e 8A42     		cmp	r2, r1
+ 449 0020 06D1     		bne	.L39
+ 100:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 1;
+ 450              		.loc 1 100 3 is_stmt 1 view .LVU111
+ 100:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 1;
+ 451              		.loc 1 100 20 is_stmt 0 view .LVU112
+ 452 0022 0B4B     		ldr	r3, .L41
+ 453 0024 9A68     		ldr	r2, [r3, #8]
+ 100:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 1;
+ 454              		.loc 1 100 37 view .LVU113
+ 455 0026 0132     		adds	r2, r2, #1
+ 456 0028 9A60     		str	r2, [r3, #8]
+ 101:Core/Src/os.c **** 	}
+ 457              		.loc 1 101 3 is_stmt 1 view .LVU114
+ 101:Core/Src/os.c **** 	}
+ 458              		.loc 1 101 37 is_stmt 0 view .LVU115
+ 459 002a 0122     		movs	r2, #1
+ 460 002c 83F83D20 		strb	r2, [r3, #61]
+ 461              	.L39:
+ 104:Core/Src/os.c **** 	if(Os_Var.Os_Task_Flag.Os_10ms_Flag == 1)
+ 462              		.loc 1 104 2 is_stmt 1 view .LVU116
+ 105:Core/Src/os.c **** 	{
+ 463              		.loc 1 105 2 view .LVU117
+ 107:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_10MS);
+ 464              		.loc 1 107 3 view .LVU118
+ 107:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_10MS);
+ 465              		.loc 1 107 36 is_stmt 0 view .LVU119
+ 466 0030 074B     		ldr	r3, .L41
+ 467 0032 0022     		movs	r2, #0
+ 468 0034 83F83C20 		strb	r2, [r3, #60]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 14
 
 
- 465 0032 0A4A     		ldr	r2, .L41+8
- 466 0034 1A64     		str	r2, [r3, #64]
- 111:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_10MS);
- 467              		.loc 1 111 3 is_stmt 1 view .LVU120
- 111:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_10MS);
- 468              		.loc 1 111 36 is_stmt 0 view .LVU121
- 469 0036 0022     		movs	r2, #0
- 470 0038 83F83C20 		strb	r2, [r3, #60]
- 112:Core/Src/os.c **** 		(void)Os_10ms_Task();
- 471              		.loc 1 112 3 is_stmt 1 view .LVU122
- 472 003c 0220     		movs	r0, #2
- 473 003e FFF7FEFF 		bl	Os_Calc_Runtime_Start
- 474              	.LVL31:
- 113:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_10MS);
- 475              		.loc 1 113 3 view .LVU123
- 476 0042 FFF7FEFF 		bl	Os_10ms_Task
- 477              	.LVL32:
- 114:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_10MS);
- 478              		.loc 1 114 3 view .LVU124
- 479 0046 0220     		movs	r0, #2
- 480 0048 FFF7FEFF 		bl	Os_Calc_Runtime_Stop
- 481              	.LVL33:
- 115:Core/Src/os.c **** 	}
- 482              		.loc 1 115 3 view .LVU125
- 483 004c 0220     		movs	r0, #2
- 484 004e FFF7FEFF 		bl	Os_Calc_Period
- 485              	.LVL34:
- 117:Core/Src/os.c **** 
- 486              		.loc 1 117 1 is_stmt 0 view .LVU126
- 487 0052 08BD     		pop	{r3, pc}
- 488              	.L42:
- 489              		.align	2
- 490              	.L41:
- 491 0054 00000000 		.word	.LANCHOR0
- 492 0058 CDCCCCCC 		.word	-858993459
- 493 005c 00000000 		.word	Os_10ms_Task
- 494              		.cfi_endproc
- 495              	.LFE139:
- 497              		.section	.text.Os_Init_Task,"ax",%progbits
- 498              		.align	1
- 499              		.global	Os_Init_Task
- 500              		.syntax unified
- 501              		.thumb
- 502              		.thumb_func
- 504              	Os_Init_Task:
- 505              	.LFB133:
+ 108:Core/Src/os.c **** 		(void)Os_10ms_Task();
+ 469              		.loc 1 108 3 is_stmt 1 view .LVU120
+ 470 0038 0220     		movs	r0, #2
+ 471 003a FFF7FEFF 		bl	Os_Calc_Runtime_Start
+ 472              	.LVL32:
+ 109:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_10MS);
+ 473              		.loc 1 109 3 view .LVU121
+ 474 003e FFF7FEFF 		bl	Os_10ms_Task
+ 475              	.LVL33:
+ 110:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_10MS);
+ 476              		.loc 1 110 3 view .LVU122
+ 477 0042 0220     		movs	r0, #2
+ 478 0044 FFF7FEFF 		bl	Os_Calc_Runtime_Stop
+ 479              	.LVL34:
+ 111:Core/Src/os.c **** 	}
+ 480              		.loc 1 111 3 view .LVU123
+ 481 0048 0220     		movs	r0, #2
+ 482 004a FFF7FEFF 		bl	Os_Calc_Period
+ 483              	.LVL35:
+ 113:Core/Src/os.c **** 
+ 484              		.loc 1 113 1 is_stmt 0 view .LVU124
+ 485 004e 08BD     		pop	{r3, pc}
+ 486              	.L42:
+ 487              		.align	2
+ 488              	.L41:
+ 489 0050 00000000 		.word	.LANCHOR0
+ 490 0054 CDCCCCCC 		.word	-858993459
+ 491              		.cfi_endproc
+ 492              	.LFE139:
+ 494              		.section	.text.Os_Init_Task,"ax",%progbits
+ 495              		.align	1
+ 496              		.global	Os_Init_Task
+ 497              		.syntax unified
+ 498              		.thumb
+ 499              		.thumb_func
+ 501              	Os_Init_Task:
+ 502              	.LFB133:
   24:Core/Src/os.c **** 	RTC_Init();
- 506              		.loc 1 24 1 is_stmt 1 view -0
- 507              		.cfi_startproc
- 508              		@ args = 0, pretend = 0, frame = 0
- 509              		@ frame_needed = 0, uses_anonymous_args = 0
- 510 0000 08B5     		push	{r3, lr}
- 511              	.LCFI8:
- 512              		.cfi_def_cfa_offset 8
- 513              		.cfi_offset 3, -8
- 514              		.cfi_offset 14, -4
+ 503              		.loc 1 24 1 is_stmt 1 view -0
+ 504              		.cfi_startproc
+ 505              		@ args = 0, pretend = 0, frame = 0
+ 506              		@ frame_needed = 0, uses_anonymous_args = 0
+ 507 0000 08B5     		push	{r3, lr}
+ 508              	.LCFI8:
+ 509              		.cfi_def_cfa_offset 8
+ 510              		.cfi_offset 3, -8
+ 511              		.cfi_offset 14, -4
   25:Core/Src/os.c ****     Device_Init();
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 15
-
-
- 515              		.loc 1 25 2 view .LVU128
- 516 0002 FFF7FEFF 		bl	RTC_Init
- 517              	.LVL35:
+ 512              		.loc 1 25 2 view .LVU126
+ 513 0002 FFF7FEFF 		bl	RTC_Init
+ 514              	.LVL36:
   26:Core/Src/os.c ****     DHT11_Init();
- 518              		.loc 1 26 5 view .LVU129
- 519 0006 FFF7FEFF 		bl	Device_Init
- 520              	.LVL36:
+ 515              		.loc 1 26 5 view .LVU127
+ 516 0006 FFF7FEFF 		bl	Device_Init
+ 517              	.LVL37:
   27:Core/Src/os.c ****     Debug_Init();
- 521              		.loc 1 27 5 view .LVU130
- 522 000a FFF7FEFF 		bl	DHT11_Init
- 523              	.LVL37:
+ 518              		.loc 1 27 5 view .LVU128
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 15
+
+
+ 519 000a FFF7FEFF 		bl	DHT11_Init
+ 520              	.LVL38:
   28:Core/Src/os.c ****     Lidar_Init();
- 524              		.loc 1 28 5 view .LVU131
- 525 000e FFF7FEFF 		bl	Debug_Init
- 526              	.LVL38:
+ 521              		.loc 1 28 5 view .LVU129
+ 522 000e FFF7FEFF 		bl	Debug_Init
+ 523              	.LVL39:
   29:Core/Src/os.c ****     LTE_Init();
- 527              		.loc 1 29 5 view .LVU132
- 528 0012 FFF7FEFF 		bl	Lidar_Init
- 529              	.LVL39:
+ 524              		.loc 1 29 5 view .LVU130
+ 525 0012 FFF7FEFF 		bl	Lidar_Init
+ 526              	.LVL40:
   30:Core/Src/os.c ****     Buzzer_Init();
- 530              		.loc 1 30 5 view .LVU133
- 531 0016 FFF7FEFF 		bl	LTE_Init
- 532              	.LVL40:
+ 527              		.loc 1 30 5 view .LVU131
+ 528 0016 FFF7FEFF 		bl	LTE_Init
+ 529              	.LVL41:
   31:Core/Src/os.c **** 	NVRam_Init();
- 533              		.loc 1 31 5 view .LVU134
- 534 001a FFF7FEFF 		bl	Buzzer_Init
- 535              	.LVL41:
+ 530              		.loc 1 31 5 view .LVU132
+ 531 001a FFF7FEFF 		bl	Buzzer_Init
+ 532              	.LVL42:
   32:Core/Src/os.c ****     Device_Reset_Init();
- 536              		.loc 1 32 2 view .LVU135
- 537 001e FFF7FEFF 		bl	NVRam_Init
- 538              	.LVL42:
+ 533              		.loc 1 32 2 view .LVU133
+ 534 001e FFF7FEFF 		bl	NVRam_Init
+ 535              	.LVL43:
   33:Core/Src/os.c **** }
- 539              		.loc 1 33 5 view .LVU136
- 540 0022 FFF7FEFF 		bl	Device_Reset_Init
- 541              	.LVL43:
+ 536              		.loc 1 33 5 view .LVU134
+ 537 0022 FFF7FEFF 		bl	Device_Reset_Init
+ 538              	.LVL44:
   34:Core/Src/os.c **** 
- 542              		.loc 1 34 1 is_stmt 0 view .LVU137
- 543 0026 08BD     		pop	{r3, pc}
- 544              		.cfi_endproc
- 545              	.LFE133:
- 547              		.section	.text.Os_Handler,"ax",%progbits
- 548              		.align	1
- 549              		.global	Os_Handler
- 550              		.syntax unified
- 551              		.thumb
- 552              		.thumb_func
- 554              	Os_Handler:
- 555              	.LFB138:
-  72:Core/Src/os.c **** 	void(*fp)(void);
- 556              		.loc 1 72 1 is_stmt 1 view -0
- 557              		.cfi_startproc
- 558              		@ args = 0, pretend = 0, frame = 0
- 559              		@ frame_needed = 0, uses_anonymous_args = 0
- 560 0000 08B5     		push	{r3, lr}
- 561              	.LCFI9:
- 562              		.cfi_def_cfa_offset 8
- 563              		.cfi_offset 3, -8
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 16
-
-
- 564              		.cfi_offset 14, -4
+ 539              		.loc 1 34 1 is_stmt 0 view .LVU135
+ 540 0026 08BD     		pop	{r3, pc}
+ 541              		.cfi_endproc
+ 542              	.LFE133:
+ 544              		.section	.text.Os_Handler,"ax",%progbits
+ 545              		.align	1
+ 546              		.global	Os_Handler
+ 547              		.syntax unified
+ 548              		.thumb
+ 549              		.thumb_func
+ 551              	Os_Handler:
+ 552              	.LFB138:
   73:Core/Src/os.c ****     if(Os_Var.Os_Task_Flag.Os_100ms_Flag == 1)
- 565              		.loc 1 73 2 view .LVU139
+ 553              		.loc 1 73 1 is_stmt 1 view -0
+ 554              		.cfi_startproc
+ 555              		@ args = 0, pretend = 0, frame = 0
+ 556              		@ frame_needed = 0, uses_anonymous_args = 0
+ 557 0000 08B5     		push	{r3, lr}
+ 558              	.LCFI9:
+ 559              		.cfi_def_cfa_offset 8
+ 560              		.cfi_offset 3, -8
+ 561              		.cfi_offset 14, -4
   74:Core/Src/os.c **** 	{
- 566              		.loc 1 74 5 view .LVU140
+ 562              		.loc 1 74 5 view .LVU137
   74:Core/Src/os.c **** 	{
- 567              		.loc 1 74 27 is_stmt 0 view .LVU141
- 568 0002 104B     		ldr	r3, .L50
- 569 0004 93F83D30 		ldrb	r3, [r3, #61]	@ zero_extendqisi2
+ 563              		.loc 1 74 27 is_stmt 0 view .LVU138
+ 564 0002 0F4B     		ldr	r3, .L50
+ 565 0004 93F83D30 		ldrb	r3, [r3, #61]	@ zero_extendqisi2
   74:Core/Src/os.c **** 	{
- 570              		.loc 1 74 7 view .LVU142
- 571 0008 012B     		cmp	r3, #1
- 572 000a 09D0     		beq	.L49
-  86:Core/Src/os.c **** 		(void)Os_Background_Task();
- 573              		.loc 1 86 3 is_stmt 1 view .LVU143
- 574 000c 0420     		movs	r0, #4
- 575 000e FFF7FEFF 		bl	Os_Calc_Runtime_Start
- 576              	.LVL44:
-  87:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_BG);
- 577              		.loc 1 87 3 view .LVU144
-  88:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_BG);
- 578              		.loc 1 88 3 view .LVU145
- 579 0012 0420     		movs	r0, #4
- 580 0014 FFF7FEFF 		bl	Os_Calc_Runtime_Stop
- 581              	.LVL45:
-  89:Core/Src/os.c **** 	}
- 582              		.loc 1 89 3 view .LVU146
- 583 0018 0420     		movs	r0, #4
- 584 001a FFF7FEFF 		bl	Os_Calc_Period
- 585              	.LVL46:
-  92:Core/Src/os.c **** }
- 586              		.loc 1 92 5 view .LVU147
- 587              	.L45:
-  93:Core/Src/os.c **** 
- 588              		.loc 1 93 1 is_stmt 0 view .LVU148
- 589 001e 08BD     		pop	{r3, pc}
- 590              	.L49:
-  76:Core/Src/os.c **** 		Os_Var.Os_Task_Add.Os_100ms_Address = fp;
- 591              		.loc 1 76 3 is_stmt 1 view .LVU149
-  77:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 0;
- 592              		.loc 1 77 3 view .LVU150
-  77:Core/Src/os.c **** 		Os_Var.Os_Task_Flag.Os_100ms_Flag = 0;
- 593              		.loc 1 77 39 is_stmt 0 view .LVU151
- 594 0020 084B     		ldr	r3, .L50
- 595 0022 094A     		ldr	r2, .L50+4
- 596 0024 5A64     		str	r2, [r3, #68]
-  78:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_100MS);
- 597              		.loc 1 78 3 is_stmt 1 view .LVU152
-  78:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_100MS);
- 598              		.loc 1 78 37 is_stmt 0 view .LVU153
- 599 0026 0022     		movs	r2, #0
- 600 0028 83F83D20 		strb	r2, [r3, #61]
-  79:Core/Src/os.c **** 		(void)Os_100ms_Task();
- 601              		.loc 1 79 3 is_stmt 1 view .LVU154
- 602 002c 0320     		movs	r0, #3
- 603 002e FFF7FEFF 		bl	Os_Calc_Runtime_Start
- 604              	.LVL47:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 17
+ 566              		.loc 1 74 7 view .LVU139
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 16
 
 
-  80:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_100MS);
- 605              		.loc 1 80 3 view .LVU155
- 606 0032 FFF7FEFF 		bl	Os_100ms_Task
- 607              	.LVL48:
-  81:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_100MS);
- 608              		.loc 1 81 3 view .LVU156
- 609 0036 0320     		movs	r0, #3
- 610 0038 FFF7FEFF 		bl	Os_Calc_Runtime_Stop
- 611              	.LVL49:
-  82:Core/Src/os.c **** 	}
- 612              		.loc 1 82 3 view .LVU157
- 613 003c 0320     		movs	r0, #3
- 614 003e FFF7FEFF 		bl	Os_Calc_Period
- 615              	.LVL50:
- 616 0042 ECE7     		b	.L45
- 617              	.L51:
- 618              		.align	2
- 619              	.L50:
- 620 0044 00000000 		.word	.LANCHOR0
- 621 0048 00000000 		.word	Os_100ms_Task
- 622              		.cfi_endproc
- 623              	.LFE138:
- 625              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
- 626              		.align	1
- 627              		.global	HAL_TIM_PeriodElapsedCallback
- 628              		.syntax unified
- 629              		.thumb
- 630              		.thumb_func
- 632              	HAL_TIM_PeriodElapsedCallback:
- 633              	.LVL51:
- 634              	.LFB144:
- 213:Core/Src/os.c **** 
- 214:Core/Src/os.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
- 215:Core/Src/os.c **** {
- 635              		.loc 1 215 1 view -0
- 636              		.cfi_startproc
- 637              		@ args = 0, pretend = 0, frame = 0
- 638              		@ frame_needed = 0, uses_anonymous_args = 0
- 639              		.loc 1 215 1 is_stmt 0 view .LVU159
- 640 0000 10B5     		push	{r4, lr}
- 641              	.LCFI10:
- 642              		.cfi_def_cfa_offset 8
- 643              		.cfi_offset 4, -8
- 644              		.cfi_offset 14, -4
- 645 0002 0446     		mov	r4, r0
- 216:Core/Src/os.c ****     if(htim->Instance == TIM17)
- 646              		.loc 1 216 5 is_stmt 1 view .LVU160
- 647              		.loc 1 216 12 is_stmt 0 view .LVU161
- 648 0004 0268     		ldr	r2, [r0]
- 649              		.loc 1 216 7 view .LVU162
- 650 0006 074B     		ldr	r3, .L58
- 651 0008 9A42     		cmp	r2, r3
- 652 000a 04D0     		beq	.L56
- 653              	.LVL52:
- 654              	.L53:
+ 567 0008 012B     		cmp	r3, #1
+ 568 000a 09D0     		beq	.L49
+  84:Core/Src/os.c **** 		(void)Os_Background_Task();
+ 569              		.loc 1 84 3 is_stmt 1 view .LVU140
+ 570 000c 0420     		movs	r0, #4
+ 571 000e FFF7FEFF 		bl	Os_Calc_Runtime_Start
+ 572              	.LVL45:
+  85:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_BG);
+ 573              		.loc 1 85 3 view .LVU141
+  86:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_BG);
+ 574              		.loc 1 86 3 view .LVU142
+ 575 0012 0420     		movs	r0, #4
+ 576 0014 FFF7FEFF 		bl	Os_Calc_Runtime_Stop
+ 577              	.LVL46:
+  87:Core/Src/os.c **** 	}
+ 578              		.loc 1 87 3 view .LVU143
+ 579 0018 0420     		movs	r0, #4
+ 580 001a FFF7FEFF 		bl	Os_Calc_Period
+ 581              	.LVL47:
+  90:Core/Src/os.c **** }
+ 582              		.loc 1 90 5 view .LVU144
+ 583              	.L45:
+  91:Core/Src/os.c **** 
+ 584              		.loc 1 91 1 is_stmt 0 view .LVU145
+ 585 001e 08BD     		pop	{r3, pc}
+ 586              	.L49:
+  76:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_100MS);
+ 587              		.loc 1 76 3 is_stmt 1 view .LVU146
+  76:Core/Src/os.c **** 		Os_Calc_Runtime_Start(OS_TASK_INDEX_100MS);
+ 588              		.loc 1 76 37 is_stmt 0 view .LVU147
+ 589 0020 074B     		ldr	r3, .L50
+ 590 0022 0022     		movs	r2, #0
+ 591 0024 83F83D20 		strb	r2, [r3, #61]
+  77:Core/Src/os.c **** 		(void)Os_100ms_Task();
+ 592              		.loc 1 77 3 is_stmt 1 view .LVU148
+ 593 0028 0320     		movs	r0, #3
+ 594 002a FFF7FEFF 		bl	Os_Calc_Runtime_Start
+ 595              	.LVL48:
+  78:Core/Src/os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_100MS);
+ 596              		.loc 1 78 3 view .LVU149
+ 597 002e FFF7FEFF 		bl	Os_100ms_Task
+ 598              	.LVL49:
+  79:Core/Src/os.c **** 		Os_Calc_Period(OS_TASK_INDEX_100MS);
+ 599              		.loc 1 79 3 view .LVU150
+ 600 0032 0320     		movs	r0, #3
+ 601 0034 FFF7FEFF 		bl	Os_Calc_Runtime_Stop
+ 602              	.LVL50:
+  80:Core/Src/os.c **** 	}
+ 603              		.loc 1 80 3 view .LVU151
+ 604 0038 0320     		movs	r0, #3
+ 605 003a FFF7FEFF 		bl	Os_Calc_Period
+ 606              	.LVL51:
+ 607 003e EEE7     		b	.L45
+ 608              	.L51:
+ 609              		.align	2
+ 610              	.L50:
+ 611 0040 00000000 		.word	.LANCHOR0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 17
+
+
+ 612              		.cfi_endproc
+ 613              	.LFE138:
+ 615              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+ 616              		.align	1
+ 617              		.global	HAL_TIM_PeriodElapsedCallback
+ 618              		.syntax unified
+ 619              		.thumb
+ 620              		.thumb_func
+ 622              	HAL_TIM_PeriodElapsedCallback:
+ 623              	.LVL52:
+ 624              	.LFB144:
+ 209:Core/Src/os.c **** 
+ 210:Core/Src/os.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+ 211:Core/Src/os.c **** {
+ 625              		.loc 1 211 1 view -0
+ 626              		.cfi_startproc
+ 627              		@ args = 0, pretend = 0, frame = 0
+ 628              		@ frame_needed = 0, uses_anonymous_args = 0
+ 629              		.loc 1 211 1 is_stmt 0 view .LVU153
+ 630 0000 10B5     		push	{r4, lr}
+ 631              	.LCFI10:
+ 632              		.cfi_def_cfa_offset 8
+ 633              		.cfi_offset 4, -8
+ 634              		.cfi_offset 14, -4
+ 635 0002 0446     		mov	r4, r0
+ 212:Core/Src/os.c ****     if(htim->Instance == TIM17)
+ 636              		.loc 1 212 5 is_stmt 1 view .LVU154
+ 637              		.loc 1 212 12 is_stmt 0 view .LVU155
+ 638 0004 0268     		ldr	r2, [r0]
+ 639              		.loc 1 212 7 view .LVU156
+ 640 0006 074B     		ldr	r3, .L58
+ 641 0008 9A42     		cmp	r2, r3
+ 642 000a 04D0     		beq	.L56
+ 643              	.LVL53:
+ 644              	.L53:
+ 213:Core/Src/os.c ****     {
+ 214:Core/Src/os.c ****         Os_Handler_10ms();
+ 215:Core/Src/os.c ****     }
+ 216:Core/Src/os.c ****     if(htim->Instance == TIM16)
+ 645              		.loc 1 216 5 is_stmt 1 view .LVU157
+ 646              		.loc 1 216 12 is_stmt 0 view .LVU158
+ 647 000c 2268     		ldr	r2, [r4]
+ 648              		.loc 1 216 7 view .LVU159
+ 649 000e 064B     		ldr	r3, .L58+4
+ 650 0010 9A42     		cmp	r2, r3
+ 651 0012 03D0     		beq	.L57
+ 652              	.L52:
  217:Core/Src/os.c ****     {
- 218:Core/Src/os.c ****         Os_Handler_10ms();
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 18
-
-
+ 218:Core/Src/os.c ****         Os_Time_Handler();
  219:Core/Src/os.c ****     }
- 220:Core/Src/os.c ****     if(htim->Instance == TIM16)
- 655              		.loc 1 220 5 is_stmt 1 view .LVU163
- 656              		.loc 1 220 12 is_stmt 0 view .LVU164
- 657 000c 2268     		ldr	r2, [r4]
- 658              		.loc 1 220 7 view .LVU165
- 659 000e 064B     		ldr	r3, .L58+4
- 660 0010 9A42     		cmp	r2, r3
- 661 0012 03D0     		beq	.L57
- 662              	.L52:
- 221:Core/Src/os.c ****     {
- 222:Core/Src/os.c ****         Os_Time_Handler();
- 223:Core/Src/os.c ****     }
- 224:Core/Src/os.c **** }...
- 663              		.loc 1 224 1 view .LVU166
- 664 0014 10BD     		pop	{r4, pc}
- 665              	.LVL53:
- 666              	.L56:
- 218:Core/Src/os.c ****         Os_Handler_10ms();
- 667              		.loc 1 218 9 is_stmt 1 view .LVU167
- 668 0016 FFF7FEFF 		bl	Os_Handler_10ms
- 669              	.LVL54:
- 218:Core/Src/os.c ****         Os_Handler_10ms();
- 670              		.loc 1 218 9 is_stmt 0 view .LVU168
- 671 001a F7E7     		b	.L53
- 672              	.L57:
- 222:Core/Src/os.c ****         Os_Time_Handler();
- 673              		.loc 1 222 9 is_stmt 1 view .LVU169
- 674 001c FFF7FEFF 		bl	Os_Time_Handler
- 675              	.LVL55:
- 676              		.loc 1 224 1 is_stmt 0 view .LVU170
- 677 0020 F8E7     		b	.L52
- 678              	.L59:
- 679 0022 00BF     		.align	2
- 680              	.L58:
- 681 0024 00480140 		.word	1073825792
- 682 0028 00440140 		.word	1073824768
- 683              		.cfi_endproc
- 684              	.LFE144:
- 686              		.global	test_counter
- 687              		.global	Os_Var
- 688              		.section	.bss.Os_Var,"aw",%nobits
- 689              		.align	2
- 690              		.set	.LANCHOR0,. + 0
- 693              	Os_Var:
- 694 0000 00000000 		.space	72
- 694      00000000 
- 694      00000000 
- 694      00000000 
- 694      00000000 
- 695              		.section	.bss.test_counter,"aw",%nobits
- 696              		.align	1
- 699              	test_counter:
- 700 0000 0000     		.space	2
- 701              		.text
- 702              	.Letext0:
- 703              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 19
+ 220:Core/Src/os.c **** }...
+ 653              		.loc 1 220 1 view .LVU160
+ 654 0014 10BD     		pop	{r4, pc}
+ 655              	.LVL54:
+ 656              	.L56:
+ 214:Core/Src/os.c ****         Os_Handler_10ms();
+ 657              		.loc 1 214 9 is_stmt 1 view .LVU161
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 18
 
 
- 704              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
- 705              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
- 706              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
- 707              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
- 708              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
- 709              		.file 8 "Core/Inc/os.h"
- 710              		.file 9 "Core/Inc/dht11.h"
- 711              		.file 10 "Core/Inc/rtc.h"
- 712              		.file 11 "Core/Inc/lidar.h"
- 713              		.file 12 "Core/Inc/debug.h"
- 714              		.file 13 "Core/Inc/device.h"
- 715              		.file 14 "Core/Inc/lte.h"
- 716              		.file 15 "Core/Inc/buzzer.h"
- 717              		.file 16 "Core/Inc/nvram.h"
- 718              		.file 17 "<built-in>"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s 			page 20
+ 658 0016 FFF7FEFF 		bl	Os_Handler_10ms
+ 659              	.LVL55:
+ 214:Core/Src/os.c ****         Os_Handler_10ms();
+ 660              		.loc 1 214 9 is_stmt 0 view .LVU162
+ 661 001a F7E7     		b	.L53
+ 662              	.L57:
+ 218:Core/Src/os.c ****         Os_Time_Handler();
+ 663              		.loc 1 218 9 is_stmt 1 view .LVU163
+ 664 001c FFF7FEFF 		bl	Os_Time_Handler
+ 665              	.LVL56:
+ 666              		.loc 1 220 1 is_stmt 0 view .LVU164
+ 667 0020 F8E7     		b	.L52
+ 668              	.L59:
+ 669 0022 00BF     		.align	2
+ 670              	.L58:
+ 671 0024 00480140 		.word	1073825792
+ 672 0028 00440140 		.word	1073824768
+ 673              		.cfi_endproc
+ 674              	.LFE144:
+ 676              		.global	Os_Var
+ 677              		.section	.bss.Os_Var,"aw",%nobits
+ 678              		.align	2
+ 679              		.set	.LANCHOR0,. + 0
+ 682              	Os_Var:
+ 683 0000 00000000 		.space	64
+ 683      00000000 
+ 683      00000000 
+ 683      00000000 
+ 683      00000000 
+ 684              		.text
+ 685              	.Letext0:
+ 686              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 687              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 688              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 689              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 690              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 691              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
+ 692              		.file 8 "Core/Inc/os.h"
+ 693              		.file 9 "Core/Inc/dht11.h"
+ 694              		.file 10 "Core/Inc/rtc.h"
+ 695              		.file 11 "Core/Inc/lidar.h"
+ 696              		.file 12 "Core/Inc/debug.h"
+ 697              		.file 13 "Core/Inc/lte.h"
+ 698              		.file 14 "Core/Inc/device.h"
+ 699              		.file 15 "Core/Inc/buzzer.h"
+ 700              		.file 16 "Core/Inc/nvram.h"
+ 701              		.file 17 "<built-in>"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 os.c
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:20     .text.Os_Time_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:25     .text.Os_Time_Handler:00000000 Os_Time_Handler
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:45     .text.Os_Time_Handler:0000000c $d
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:50     .text.Os_Get_Tick_100us:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:55     .text.Os_Get_Tick_100us:00000000 Os_Get_Tick_100us
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:70     .text.Os_Get_Tick_100us:00000008 $d
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:75     .text.Os_Calc_Period:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:80     .text.Os_Calc_Period:00000000 Os_Calc_Period
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:166    .text.Os_Calc_Period:0000003c $d
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:171    .text.Os_Calc_Runtime_Start:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:176    .text.Os_Calc_Runtime_Start:00000000 Os_Calc_Runtime_Start
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:222    .text.Os_Calc_Runtime_Start:00000020 $d
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:227    .text.Os_Calc_Runtime_Stop:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:232    .text.Os_Calc_Runtime_Stop:00000000 Os_Calc_Runtime_Stop
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:317    .text.Os_Calc_Runtime_Stop:0000003c $d
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:322    .text.Os_100ms_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:327    .text.Os_100ms_Task:00000000 Os_100ms_Task
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:382    .text.Os_10ms_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:387    .text.Os_10ms_Task:00000000 Os_10ms_Task
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:410    .text.Os_Handler_10ms:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:415    .text.Os_Handler_10ms:00000000 Os_Handler_10ms
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:491    .text.Os_Handler_10ms:00000054 $d
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:498    .text.Os_Init_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:504    .text.Os_Init_Task:00000000 Os_Init_Task
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:548    .text.Os_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:554    .text.Os_Handler:00000000 Os_Handler
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:620    .text.Os_Handler:00000044 $d
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:626    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:632    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:681    .text.HAL_TIM_PeriodElapsedCallback:00000024 $d
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:699    .bss.test_counter:00000000 test_counter
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:693    .bss.Os_Var:00000000 Os_Var
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:689    .bss.Os_Var:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccZAj4aL.s:696    .bss.test_counter:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:20     .text.Os_Time_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:25     .text.Os_Time_Handler:00000000 Os_Time_Handler
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:45     .text.Os_Time_Handler:0000000c $d
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:50     .text.Os_Get_Tick_100us:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:55     .text.Os_Get_Tick_100us:00000000 Os_Get_Tick_100us
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:70     .text.Os_Get_Tick_100us:00000008 $d
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:75     .text.Os_Calc_Period:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:80     .text.Os_Calc_Period:00000000 Os_Calc_Period
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:166    .text.Os_Calc_Period:0000003c $d
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:171    .text.Os_Calc_Runtime_Start:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:176    .text.Os_Calc_Runtime_Start:00000000 Os_Calc_Runtime_Start
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:222    .text.Os_Calc_Runtime_Start:00000020 $d
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:227    .text.Os_Calc_Runtime_Stop:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:232    .text.Os_Calc_Runtime_Stop:00000000 Os_Calc_Runtime_Stop
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:317    .text.Os_Calc_Runtime_Stop:0000003c $d
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:322    .text.Os_100ms_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:327    .text.Os_100ms_Task:00000000 Os_100ms_Task
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:385    .text.Os_10ms_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:390    .text.Os_10ms_Task:00000000 Os_10ms_Task
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:413    .text.Os_Handler_10ms:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:418    .text.Os_Handler_10ms:00000000 Os_Handler_10ms
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:489    .text.Os_Handler_10ms:00000050 $d
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:495    .text.Os_Init_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:501    .text.Os_Init_Task:00000000 Os_Init_Task
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:545    .text.Os_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:551    .text.Os_Handler:00000000 Os_Handler
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:611    .text.Os_Handler:00000040 $d
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:616    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:622    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:671    .text.HAL_TIM_PeriodElapsedCallback:00000024 $d
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:682    .bss.Os_Var:00000000 Os_Var
+C:\Users\jisu8\AppData\Local\Temp\cckg54Ih.s:678    .bss.Os_Var:00000000 $d
 
 UNDEFINED SYMBOLS
 memset
@@ -1142,6 +1112,7 @@ RTC_Measure_Time
 DHT_getData
 Lidar_Receive_Data
 Test_Debug
+LTE_Connect
 Device_Battery_Voltage_Read
 Device_Detect_SensorSignal
 RTC_Init

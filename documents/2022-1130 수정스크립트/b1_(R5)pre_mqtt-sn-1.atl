@@ -1,0 +1,76 @@
+# pause : msec
+
+# -----------------------------------------#
+ECHO "-----------------------------------------"
+ECHO "pre configure APN before MQTT-SN Test Script"
+# -----------------------------------------#
+// Variables
+string product_in_use = "saraR5"; // Possible options are "saraR5" or "saraR42" 
+
+# -----------------------------------------#
+
+ATE0
+PAUSE 100
+
+AT+CMEE=2
+PAUSE 100
+
+#AT+USIO?
+#PAUSE 100
+
+AT+CFUN=0
+PAUSE 3000
+
+# set APN to tsudp (MQTT anywhere)
+AT+CGDCONT=1,"IP","tsudp"
+PAUSE 500
+
+AT+CFUN=1
+PAUSE 3000
+
+AT+CGDCONT?
+PAUSE 500
+
+# -----------------------------------------#
+AT+COPS?
+PAUSE 100
+
+AT+CESQ
+PAUSE 100
+
+AT+CEREG=2
+PAUSE 100
+
+AT+CEREG?
+PAUSE 100
+
+#AT+UCGED=2
+#PAUSE 100
+
+AT+UCGED?
+PAUSE 1000
+
+
+# map profile_id 0 to cid 1
+AT+UPSD=0,100,1
+PAUSE 1000
+
+# configure IPV4
+AT+UPSD=0,0,0
+PAUSE 1000
+
+#AT+UPSDA=0,4
+#PAUSE 5000
+
+AT+UPSDA=0,3
+PAUSE 5000
+
+AT+UPSND=0,0
+PAUSE 1000
+
+#AT+UPSDA=0,4
+
+# -----------------------------------------#
+ECHO "This is the end of script ^^ "
+ECHO "-----------------------------------------"
+# -----------------------------------------#
