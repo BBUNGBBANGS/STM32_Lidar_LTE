@@ -4,7 +4,6 @@ uint32_t Device_Batt_DMA;
 uint16_t Device_Batt_Voltage;
 uint8_t Device_Sensor_Signal;
 uint8_t Device_Sensor_Detect;
-uint8_t Device_Sensor_Counter;
 
 Reset_Cause_t reset_cause = RESET_CAUSE_UNKNOWN;
 
@@ -83,39 +82,30 @@ void Device_Detect_SensorSignal(void)
 {
     static uint8_t ti10msOn;
     static uint8_t ti10msOff;
-    if(DEVICE_SENSOR_DETECTED == Device_Sensor_Detect)
-    {
-        ti10msOn++;
-        if(ti10msOn>= DEVICE_SENSOR_OFF_DEBOUNCE_TIME)
-        {
-            ti10msOn = 0;
-            /* Prevent Glitch Signal Detect */
-            if(Device_Sensor_Counter >= DEVICE_SENSOR_ON_COUNT)
-            {
-                Device_Sensor_Signal = DEVICE_SENSOR_ON;
-            }
-            Device_Sensor_Counter = 0;
-            Device_Sensor_Detect = 0;
-        }
-    }
+    uint8_t stgpio;
 
-    if(DEVICE_SENSOR_ON == Device_Sensor_Signal)
-    {
-        ti10msOff++;
-        if(ti10msOff >= DEVICE_SENSOR_ON_DEBOUNCE_TIME)
-        {
-            ti10msOff = 0;
-            Device_Sensor_Signal = DEVICE_SENSOR_OFF;
-        }
-    }
-}
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-    if(GPIO_Pin == DOOR_INT_Pin)
+    stgpio = HAL_GPIO_ReadPin(DOOR_INT_GPIO_Port,DOOR_INT_Pin);
+    if(GPIO_PIN_SET == stgpio)
     {
         Device_Sensor_Detect = DEVICE_SENSOR_DETECTED;
-        Device_Sensor_Counter++;
+    }
+    else
+    {
+        Device_Sensor_Detect = 0;            
+        Device_Sensor_Signal = DEVICE_SENSOR_OFF;
     }
 
+    if(DEVICE_SENSOR_ON_DEBOUNCE_TIME == Device_Sensor_Detect)
+    {
+        ti10msOn++;
+        if(ti10msOn>= DEVICE_SENSOR_ON_DEBOUNCE_TIME)
+        {
+            ti10msOn = 0;
+            Device_Sensor_Signal = DEVICE_SENSOR_ON;
+        }
+    }
+    else
+    {
+        ti10msOn = 0;
+    }
 }

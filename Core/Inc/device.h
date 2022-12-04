@@ -20,9 +20,7 @@ typedef enum
 #define DEVICE_SENSOR_OFF   0
 #define DEVICE_SENSOR_ON    1
 #define DEVICE_SENSOR_DETECTED      1
-#define DEVICE_SENSOR_ON_COUNT      3
-#define DEVICE_SENSOR_OFF_DEBOUNCE_TIME     10 //100[ms]
-#define DEVICE_SENSOR_ON_DEBOUNCE_TIME      100 //1000[ms]
+#define DEVICE_SENSOR_ON_DEBOUNCE_TIME      20 //200[ms]
 
 extern uint16_t Device_Batt_Voltage;
 extern uint8_t Device_Sensor_Signal;

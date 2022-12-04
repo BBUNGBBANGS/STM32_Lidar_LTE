@@ -30,6 +30,11 @@
 #define LTE_STEP_MQTT_SUBSCRIBE     (16)
 #define LTE_STEP_MQTT_PUBLISH       (17)
 
+#define LTE_GPS_STEP_ULOCCELL       (0)
+#define LTE_GPS_STEP_ULOC           (1)
+#define LTE_GPS_STEP_UPDATEDATA     (2)
+#define LTE_GPS_STEP_FINISH         (3)
+
 typedef enum
 {
     FAIL = 0,
@@ -41,6 +46,6 @@ extern uint8_t LTE_Rx_Buffer[LTE_RX_BUFFER_SIZE];
 extern uint16_t LTE_Rx_Counter;
 
 extern void LTE_Init(void);
-extern void LTE_Connect(void);
+extern void LTE_Control(void);
 
 #endif

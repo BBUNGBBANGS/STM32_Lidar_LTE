@@ -66,7 +66,6 @@ extern void Error_Handler(void);
 #define Lidar_ONOFF_GPIO_Port GPIOA
 #define DOOR_INT_Pin GPIO_PIN_5
 #define DOOR_INT_GPIO_Port GPIOA
-#define DOOR_INT_EXTI_IRQn EXTI9_5_IRQn
 #define BAT_ADC_Pin GPIO_PIN_6
 #define BAT_ADC_GPIO_Port GPIOA
 #define DHT_INOUT_Pin GPIO_PIN_7

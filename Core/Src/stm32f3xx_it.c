@@ -172,13 +172,6 @@ void ADC1_2_IRQHandler(void)
     HAL_ADC_IRQHandler(&hadc2);
 }
 
-/**
-  * @brief This function handles EXTI line[9:5] interrupts.
-  */
-void EXTI9_5_IRQHandler(void)
-{
-    HAL_GPIO_EXTI_IRQHandler(DOOR_INT_Pin);
-}
 
 /**
   * @brief This function handles TIM1 update and TIM16 interrupts.
