@@ -95,7 +95,7 @@ void Device_Detect_SensorSignal(void)
         Device_Sensor_Signal = DEVICE_SENSOR_OFF;
     }
 
-    if(DEVICE_SENSOR_ON_DEBOUNCE_TIME == Device_Sensor_Detect)
+    if(DEVICE_SENSOR_DETECTED == Device_Sensor_Detect)
     {
         ti10msOn++;
         if(ti10msOn>= DEVICE_SENSOR_ON_DEBOUNCE_TIME)

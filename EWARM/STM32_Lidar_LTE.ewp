@@ -361,7 +361,7 @@
                 <option>
                     <name>CCOptStrategy</name>
                     <version>0</version>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
@@ -414,7 +414,7 @@
                 <option>
                     <name>CCOptStrategySlave</name>
                     <version>0</version>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>CCGuardCalls</name>
@@ -630,7 +630,7 @@
                 <option>
                     <name>OOCOutputFormat</name>
                     <version>3</version>
-                    <state>1</state>
+                    <state>3</state>
                 </option>
                 <option>
                     <name>OCOutputOverride</name>
@@ -638,7 +638,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>STM32_Lidar_LTE.hex</state>
+                    <state>STM32_Lidar_LTE.bin</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -656,7 +656,7 @@
             <data>
                 <extensions></extensions>
                 <cmdline></cmdline>
-                <hasPrio>0</hasPrio>
+                <hasPrio>240</hasPrio>
                 <buildSequence>inputOutputBased</buildSequence>
             </data>
         </settings>
@@ -982,7 +982,7 @@
                 </option>
                 <option>
                     <name>IlinkTrustzoneImportLibraryOut</name>
-                    <state></state>
+                    <state>STM32_Lidar_LTE_import_lib.o</state>
                 </option>
                 <option>
                     <name>OILinkExtraOption</name>
