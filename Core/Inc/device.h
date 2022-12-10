@@ -24,10 +24,12 @@ typedef enum
 
 extern uint16_t Device_Batt_Voltage;
 extern uint8_t Device_Sensor_Signal;
+extern uint32_t Device_Report_Cycle;
 
 extern void Device_Init(void);
 extern void Device_Reset_Init(void);
 extern void Device_Battery_Voltage_Read(void);
 extern void Device_Detect_SensorSignal(void);
+extern void Device_SleepMode_Start(void);
 
 #endif

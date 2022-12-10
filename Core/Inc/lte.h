@@ -29,11 +29,15 @@
 #define LTE_STEP_MQTT_REGISTER      (15)
 #define LTE_STEP_MQTT_SUBSCRIBE     (16)
 #define LTE_STEP_MQTT_PUBLISH       (17)
+#define LTE_STEP_MQTT_DISCONNECT    (18)
+#define LTE_STEP_MQTT_FINISH        (19)
 
-#define LTE_GPS_STEP_ULOCCELL       (0)
-#define LTE_GPS_STEP_ULOC           (1)
-#define LTE_GPS_STEP_UPDATEDATA     (2)
-#define LTE_GPS_STEP_FINISH         (3)
+#define LTE_GPS_STEP_READY          (0)
+#define LTE_GPS_STEP_ULOCCELL       (1)
+#define LTE_GPS_STEP_ULOC           (2)
+#define LTE_GPS_STEP_RECEIVEDATA    (3)
+#define LTE_GPS_STEP_UPDATEDATA     (4)
+#define LTE_GPS_STEP_FINISH         (5)
 
 typedef enum
 {
@@ -44,6 +48,7 @@ typedef enum
 
 extern uint8_t LTE_Rx_Buffer[LTE_RX_BUFFER_SIZE];
 extern uint16_t LTE_Rx_Counter;
+extern uint8_t LTE_Status;;
 
 extern void LTE_Init(void);
 extern void LTE_Control(void);

@@ -1,9 +1,12 @@
 #include "device.h"
+#include "lte.h"
+#include "rtc.h"
 
 uint32_t Device_Batt_DMA;
 uint16_t Device_Batt_Voltage;
 uint8_t Device_Sensor_Signal;
 uint8_t Device_Sensor_Detect;
+uint32_t Device_Report_Cycle = 900;
 
 Reset_Cause_t reset_cause = RESET_CAUSE_UNKNOWN;
 
@@ -14,7 +17,6 @@ void Device_Init(void)
 	{
 		Error_Handler();
 	}
-	 
 }
 
 void Device_Reset_Init(void)
@@ -107,5 +109,55 @@ void Device_Detect_SensorSignal(void)
     else
     {
         ti10msOn = 0;
+    }
+}
+
+void Device_SleepMode_Start(void)
+{
+    uint16_t timer;
+    if(LTE_STEP_MQTT_FINISH == LTE_Status)
+    {
+	    HAL_GPIO_WritePin(Lidar_ONOFF_GPIO_Port, Lidar_ONOFF_Pin, GPIO_PIN_RESET);
+	    HAL_GPIO_WritePin(TEMP_ONOFF_GPIO_Port, TEMP_ONOFF_Pin, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(POWER_KEY_GPIO_Port, POWER_KEY_Pin, GPIO_PIN_SET);
+        HAL_GPIO_WritePin(RESET_ONOFF_GPIO_Port, RESET_ONOFF_Pin, GPIO_PIN_SET);
+        Debug_Message_Transmit("<System Start Sleep>\n");
+
+        while(!Device_Sensor_Signal)
+        {
+            timer++;
+            if(timer > Device_Report_Cycle)
+            {
+                break;
+            }
+        }
+
+        HAL_TIM_Base_Stop_IT(&htim16);
+        HAL_TIM_Base_Stop_IT(&htim17);
+        __HAL_UART_DISABLE(&huart1);
+        __HAL_UART_DISABLE(&huart2);
+        HAL_ADC_DeInit(&hadc2);
+
+        RTC_AlarmConfig();
+        
+        HAL_Delay(1000);
+        
+        /* Suspend SysTick */
+        HAL_SuspendTick();
+
+        /* Enable Power Peripheral */
+        __HAL_RCC_PWR_CLK_ENABLE();
+
+        /* Sleep Mode */
+        HAL_PWR_EnterSLEEPMode(0, PWR_SLEEPENTRY_WFE);
+
+        /* Resume SysTick When System Wake-up */
+        HAL_ResumeTick();
+            
+        Debug_Message_Transmit("<System Wake Up>\n");
+
+        HAL_Delay(1000);
+
+        NVIC_SystemReset();
     }
 }

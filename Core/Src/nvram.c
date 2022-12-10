@@ -26,7 +26,6 @@ void NVRam_Init(void)
         nv_db[NVRAM_LONGITUDE] = 0;
         nv_db[NVRAM_LATITUDE] = 0;
         nv_db[NVRAM_REPORT_CYCLE] = 3 * 60 * 60;
-        nv_db[NVRAM_MQTT_PORT] = 0;//mqtt_server_port;
         
         for(int i = 0; i < MQTT_DOMAIN_NAME_SIZE; i += 4)
         {
@@ -53,7 +52,6 @@ void NVRam_Read(void)
     did_sub_num      = nv_db[NVRAM_SN_SUB];
     longitude        = nv_db[NVRAM_LONGITUDE];
     latitude         = nv_db[NVRAM_LATITUDE];
-    //mqtt_server_port = nv_db[NVRAM_MQTT_PORT];
     report_cycle     = nv_db[NVRAM_REPORT_CYCLE];
     
     if( (longitude == 0) || (latitude == 0) ) gps_status = 0xDEADDEAD;
@@ -155,13 +153,6 @@ void do_rs_command(int cnt)
         UART_Printf("Domain Name   : %s\n",mqtt_domain_name);
         rs_flag = 0;
     }
-    /*else if( (debug_buf[0] == 'W') && (debug_buf[1] == 'D') ){
-        int cnt = 0;
-        while(1){
-        UART_Printf("Watch Dog wait #%d\n",cnt++);
-        HAL_Delay(1000);
-        }
-    }*/
     else if( (debug_buf[0] == 'N') && (debug_buf[1] == 'D') )
     {
         int index = 2;

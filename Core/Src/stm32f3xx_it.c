@@ -157,6 +157,17 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
+  * @brief This function handles RTC wake-up interrupt through EXTI line 20.
+  */
+void RTC_WKUP_IRQHandler(void)
+{
+
+  HAL_RTCEx_WakeUpTimerIRQHandler(&hrtc);
+
+
+}
+
+/**
   * @brief This function handles DMA1 channel6 global interrupt.
   */
 void DMA1_Channel6_IRQHandler(void)
@@ -172,6 +183,13 @@ void ADC1_2_IRQHandler(void)
     HAL_ADC_IRQHandler(&hadc2);
 }
 
+/**
+  * @brief This function handles EXTI line[9:5] interrupts.
+  */
+void EXTI9_5_IRQHandler(void)
+{
+    HAL_GPIO_EXTI_IRQHandler(DOOR_INT_Pin);    
+}
 
 /**
   * @brief This function handles TIM1 update and TIM16 interrupts.
@@ -213,9 +231,8 @@ void USART3_IRQHandler(void)
     HAL_UART_IRQHandler(&huart3);
 }
 
-
 /**
-  * @brief This function handles Timer 6 interrupt and DAC underrun interrupts.
+  * @brief This function handles DMA2 channel1 global interrupt.
   */
 void DMA2_Channel1_IRQHandler(void)
 {

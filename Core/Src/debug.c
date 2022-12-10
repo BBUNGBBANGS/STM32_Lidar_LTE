@@ -23,15 +23,12 @@ void Test_Debug(void)
 {
     if(Debug_Rx_Count>0)
     {
-        HAL_UART_Transmit(&huart3,Debug_Rx_buffer,Debug_Rx_Count,100);
         HAL_UART_Transmit(&huart1,Debug_Rx_buffer,Debug_Rx_Count,100);
         Debug_Rx_Count = 0;
     }
-    #if 0
-    if(LTE_Rx_Counter>0)
-    {
-        HAL_UART_Transmit(&huart3,LTE_Rx_Buffer,LTE_Rx_Counter,100);
-        LTE_Rx_Counter = 0;
-    }
-    #endif
+}
+
+void Debug_Write_Variable(void)
+{
+
 }

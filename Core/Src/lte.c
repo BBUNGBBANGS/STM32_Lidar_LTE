@@ -18,6 +18,7 @@ uint16_t LTE_GPS_LAT_I,LTE_GPS_LONG_I;
 uint32_t LTE_GPS_LAT_D,LTE_GPS_LONG_D;
 uint8_t LTE_DOOR;
 
+
 static void LTE_Transmit(uint8_t * buf);
 static uint8_t LTE_OK_Check(void);
 static uint8_t LTE_Delay(uint16_t time);
@@ -48,7 +49,7 @@ void LTE_Control(void)
     LTE_Update_Data();
     if(LTE_GPS_STEP_FINISH == LTE_GPS_Status)
     {
-        LTE_Connect();
+        //LTE_Connect();
     }
     else
     {
@@ -467,7 +468,7 @@ static void LTE_Connect(void)
             {
                 if(OK == stDelay)
                 {
-                    //LTE_Status = LTE_Receive_Check(LTE_STEP_MQTT_PUBLISH);
+                    LTE_Status = LTE_Receive_Check(LTE_STEP_MQTT_PUBLISH);
                     stDelay = FAIL;
                     uart_status = LTE_UART_STATUS_TRANSMIT;
                 }
@@ -476,6 +477,29 @@ static void LTE_Connect(void)
                     stDelay = LTE_Delay(10000);
                 }
             }
+        break;
+        case LTE_STEP_MQTT_DISCONNECT :
+            if(LTE_UART_STATUS_TRANSMIT == uart_status)
+            {
+                sprintf(Tx_Buf,"AT+UMQTTSNC=0\r\n");
+                LTE_Transmit(Tx_Buf);
+                uart_status = LTE_UART_STATUS_RECEIVE;
+            }
+            if(LTE_UART_STATUS_RECEIVE == uart_status)
+            {
+                if(OK == stDelay)
+                {
+                    LTE_Status = LTE_Receive_Check(LTE_STEP_MQTT_DISCONNECT);
+                    stDelay = FAIL;
+                    uart_status = LTE_UART_STATUS_TRANSMIT;
+                }
+                else
+                {
+                    stDelay = LTE_Delay(1000);
+                }
+            }
+        break;
+        case LTE_STEP_MQTT_FINISH :
         break;
     }
 }
@@ -488,6 +512,27 @@ static void LTE_GPS_Connect(void)
 
     switch(LTE_GPS_Status)
     {
+        case LTE_GPS_STEP_READY : 
+            if(LTE_UART_STATUS_TRANSMIT == uart_status)
+            {
+                sprintf(Tx_Buf,"AT\r\n");
+                LTE_Transmit(Tx_Buf);
+                uart_status = LTE_UART_STATUS_RECEIVE;
+            }
+            if(LTE_UART_STATUS_RECEIVE == uart_status)
+            {
+                if(OK == stDelay)
+                {
+                    LTE_GPS_Status = LTE_Receive_Check(LTE_GPS_STEP_READY);
+                    stDelay = FAIL;
+                    uart_status = LTE_UART_STATUS_TRANSMIT;
+                }
+                else
+                {
+                    stDelay = LTE_Delay(1000);
+                }
+            }        
+        break;
         case LTE_GPS_STEP_ULOCCELL :
             if(LTE_UART_STATUS_TRANSMIT == uart_status)
             {
@@ -526,10 +571,26 @@ static void LTE_GPS_Connect(void)
                 }
                 else
                 {
-                    stDelay = LTE_Delay(5000);
+                    stDelay = LTE_Delay(1000);
                 }
             }
         break;        
+        case LTE_GPS_STEP_RECEIVEDATA :
+            uart_status = LTE_UART_STATUS_RECEIVE;
+            if(LTE_UART_STATUS_RECEIVE == uart_status)
+            {
+                if(OK == stDelay)
+                {
+                    LTE_GPS_Status = LTE_GPS_Receive_Data(LTE_GPS_STEP_RECEIVEDATA);
+                    stDelay = FAIL;
+                    uart_status = LTE_UART_STATUS_TRANSMIT;
+                }
+                else
+                {
+                    stDelay = LTE_Delay(5000);
+                }
+            }
+        break;    
         case LTE_GPS_STEP_UPDATEDATA :
             LTE_GPS_Status = LTE_GPS_Update_Data(LTE_GPS_STEP_UPDATEDATA);
         break;
@@ -632,27 +693,45 @@ static uint8_t LTE_GPS_Receive_Data(uint8_t status)
 {
     uint8_t retval = status;
 
-    if(LTE_Rx_Counter>0)
+    if(LTE_GPS_STEP_ULOC == status)
     {
-        for(uint16_t i = 0; i < LTE_RX_BUFFER_SIZE; i++)
+        if(LTE_Rx_Counter>0)
         {
-            if((LTE_Rx_Buffer[i] == '+') && (LTE_Rx_Buffer[i+1] == 'U') && (LTE_Rx_Buffer[i+2] == 'U') && (LTE_Rx_Buffer[i+3] == 'L') && (LTE_Rx_Buffer[i+4] == 'O') && (LTE_Rx_Buffer[i+5] == 'C') && (LTE_Rx_Buffer[i+6] == ':'))
+            for(uint16_t i = 0; i < LTE_RX_BUFFER_SIZE; i++)
             {
-                HAL_UART_Transmit(&huart3,&LTE_Rx_Buffer[i],strlen(&LTE_Rx_Buffer[i]),100);
-                memcpy(LTE_GPS_Buffer,&LTE_Rx_Buffer[i+8],(LTE_Rx_Counter - i));
-                memset(LTE_Rx_Buffer,0x00,LTE_Rx_Counter);
-                LTE_Rx_Counter = 0;
-                retval++;
-                break;
-            }
-
-            if(LTE_Rx_Buffer[i] == 0x00)
+                if((LTE_Rx_Buffer[i] == 'O') && (LTE_Rx_Buffer[i+1] == 'K') && (LTE_Rx_Buffer[i+2] == '\r') && (LTE_Rx_Buffer[i+3] == '\n'))
+                {
+                    HAL_UART_Transmit(&huart3,&LTE_Rx_Buffer[i],4,100);
+                    retval++;
+                    break;
+                }
+            }    
+        }
+    }
+    else
+    {
+        if(LTE_Rx_Counter>0)
+        {
+            for(uint16_t i = 0; i < LTE_RX_BUFFER_SIZE; i++)
             {
-                memset(LTE_Rx_Buffer,0x00,LTE_Rx_Counter);
-                LTE_Rx_Counter = 0;
-                break;
-            }
-        }    
+                if((LTE_Rx_Buffer[i] == '+') && (LTE_Rx_Buffer[i+1] == 'U') && (LTE_Rx_Buffer[i+2] == 'U') && (LTE_Rx_Buffer[i+3] == 'L') && (LTE_Rx_Buffer[i+4] == 'O') && (LTE_Rx_Buffer[i+5] == 'C') && (LTE_Rx_Buffer[i+6] == ':'))
+                {
+                    HAL_UART_Transmit(&huart3,&LTE_Rx_Buffer[i],strlen(&LTE_Rx_Buffer[i]),100);
+                    memcpy(LTE_GPS_Buffer,&LTE_Rx_Buffer[i+8],(LTE_Rx_Counter - i));
+                    memset(LTE_Rx_Buffer,0x00,LTE_Rx_Counter);
+                    LTE_Rx_Counter = 0;
+                    if((LTE_GPS_Buffer[6] == '2') && (LTE_GPS_Buffer[7] == '0') && (LTE_GPS_Buffer[8] == '1') && (LTE_GPS_Buffer[9] == '5'))
+                    {
+                        retval = 0;
+                    }
+                    else
+                    {
+                        retval++;
+                    }
+                    break;
+                }
+            }    
+        }
     }
 
     return retval;
@@ -663,9 +742,9 @@ static uint8_t LTE_GPS_Update_Data(uint8_t status)
     uint8_t retval = status;
     uint8_t lat_length=0;
     uint8_t long_length=0;
+    RTC_TimeTypeDef Time = {0};
+    RTC_DateTypeDef Date = {0};
 
-    RTC_TimeTypeDef Time;
-    RTC_DateTypeDef Date;
     Date.Date = ((LTE_GPS_Buffer[0] - 0x30) * 10 + (LTE_GPS_Buffer[1] - 0x30));
     Date.Month = ((LTE_GPS_Buffer[3] - 0x30) * 10 + (LTE_GPS_Buffer[4] - 0x30));
     Date.Year = ((LTE_GPS_Buffer[8] - 0x30) * 10 + (LTE_GPS_Buffer[9] - 0x30));

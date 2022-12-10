@@ -22,7 +22,7 @@ static void Os_Background_Task(void);
 
 void Os_Init_Task(void)
 {
-	RTC_Init();
+	//RTC_Init();
     Device_Init();
     DHT11_Init();
     Debug_Init();
@@ -41,16 +41,11 @@ static void Os_10ms_Task(void)
 
 static void Os_100ms_Task(void)
 {
-
-    uint16_t temperature;
-    uint16_t humidity;
-    uint16_t Battery;  
-    uint8_t tx_data[150] = {0,};
-	
 	Lidar_Receive_Data();
 	Test_Debug();
 	LTE_Control();
 	RTC_Measure_Time();
+	Device_SleepMode_Start();
 }
 
 static void Os_Background_Task(void)
