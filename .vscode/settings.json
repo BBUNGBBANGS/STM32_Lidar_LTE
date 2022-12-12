@@ -17,7 +17,8 @@
         "buzzer.h": "c",
         "lte.h": "c",
         "debug.h": "c",
-        "_locale.h": "c"
+        "_locale.h": "c",
+        "strings.h": "c"
     },
     "cortex-debug.showRTOS": false
 }

@@ -45,10 +45,12 @@ typedef enum
     OK = 1
 }LTE_Status_t;
 
-
+extern uint32_t LTE_SN,LTE_SN_SUB;
+extern uint16_t LTE_GPS_LAT_I,LTE_GPS_LONG_I;
+extern uint32_t LTE_GPS_LAT_D,LTE_GPS_LONG_D;
 extern uint8_t LTE_Rx_Buffer[LTE_RX_BUFFER_SIZE];
 extern uint16_t LTE_Rx_Counter;
-extern uint8_t LTE_Status;;
+extern uint8_t LTE_Status;
 
 extern void LTE_Init(void);
 extern void LTE_Control(void);

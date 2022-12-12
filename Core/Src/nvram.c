@@ -1,36 +1,29 @@
 #include "nvram.h"
+#include "lte.h"
+#include "device.h"
 
-#define MQTT_SERVER_PORT_NUM     1883
-#define MAX_REPORT_TIME         21600  // 6 hr
+static HAL_StatusTypeDef EraseNV();
 
-void NV_Read(void);
-void NV_Write(void);
-HAL_StatusTypeDef EraseNV();
-HAL_StatusTypeDef r_Val;
-
-uint32_t nv_db[MAX_NVRAM_SIZE];
-uint32_t longitude, latitude, report_cycle;
-uint32_t longitude2 = 0, latitude2 = 0;
-uint32_t gps_status = 0;
-char mqtt_domain_name[100];
+uint32_t NVRAM_Block[MAX_NVRAM_SIZE];
+uint8_t NVRAM_Domain[100];
 char debug_buf[100];
-uint32_t mqtt_did_num;
-uint32_t did_sub_num;
 
 void NVRam_Init(void)
 {
     if( *(__IO uint64_t*)(FLASH_USER_START_ADDR) == 0xFFFFFFFFFFFFFFFF)
     { 
-        memset(nv_db, 0x00, MAX_NVRAM_SIZE * 4);
-        nv_db[NVRAM_SN] = 1;
-        nv_db[NVRAM_LONGITUDE] = 0;
-        nv_db[NVRAM_LATITUDE] = 0;
-        nv_db[NVRAM_REPORT_CYCLE] = 3 * 60 * 60;
+        memset(NVRAM_Block, 0x00, MAX_NVRAM_SIZE * 4);
+        NVRAM_Block[NVRAM_SN] = 1;
+        NVRAM_Block[NVRAM_LATITUDE_I] = 0;
+        NVRAM_Block[NVRAM_LATITUDE_D] = 0;
+        NVRAM_Block[NVRAM_LONGITUDE_I] = 0;
+        NVRAM_Block[NVRAM_LONGITUDE_D] = 0;
+        NVRAM_Block[NVRAM_REPORT_CYCLE] = 3 * 60 * 60;
         
         for(int i = 0; i < MQTT_DOMAIN_NAME_SIZE; i += 4)
         {
             int db_index = NVRAM_DOMAIN + (i / 4);
-            nv_db[db_index] = (mqtt_domain_name[i+3] << 24) + (mqtt_domain_name[i+2] << 16) + (mqtt_domain_name[i+1] << 8) + mqtt_domain_name[i];
+            NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NVRAM_Domain[i+1] << 8) + NVRAM_Domain[i];
         }
         
         NVRam_Write();
@@ -45,24 +38,24 @@ void NVRam_Init(void)
 
 void NVRam_Read(void)
 {
-    memset(nv_db, 0x00, MAX_NVRAM_SIZE * 4);
-    for(int i = 0; i < MAX_NVRAM_SIZE; i++) nv_db[i] = *(__IO uint64_t*)(FLASH_USER_START_ADDR + (i * 4));  
+    memset(NVRAM_Block, 0x00, MAX_NVRAM_SIZE * 4);
+    for(int i = 0; i < MAX_NVRAM_SIZE; i++) NVRAM_Block[i] = *(__IO uint64_t*)(FLASH_USER_START_ADDR + (i * 4));  
     
-    mqtt_did_num     = nv_db[NVRAM_SN];
-    did_sub_num      = nv_db[NVRAM_SN_SUB];
-    longitude        = nv_db[NVRAM_LONGITUDE];
-    latitude         = nv_db[NVRAM_LATITUDE];
-    report_cycle     = nv_db[NVRAM_REPORT_CYCLE];
-    
-    if( (longitude == 0) || (latitude == 0) ) gps_status = 0xDEADDEAD;
+    LTE_SN = NVRAM_Block[NVRAM_SN];
+    LTE_SN_SUB = NVRAM_Block[NVRAM_SN_SUB];
+    LTE_GPS_LAT_I = NVRAM_Block[NVRAM_LATITUDE_I];
+    LTE_GPS_LAT_D = NVRAM_Block[NVRAM_LATITUDE_D];
+    LTE_GPS_LONG_I = NVRAM_Block[NVRAM_LONGITUDE_I];
+    LTE_GPS_LONG_D = NVRAM_Block[NVRAM_LONGITUDE_D];
+    Device_Report_Cycle = NVRAM_Block[NVRAM_REPORT_CYCLE];
     
     for(int i = 0; i < MQTT_DOMAIN_NAME_SIZE; i += 4)
     {
         int db_index = NVRAM_DOMAIN + (i / 4);
-        mqtt_domain_name[i+3] = (char)((nv_db[db_index] & 0xFF000000) >> 24);
-        mqtt_domain_name[i+2] = (char)((nv_db[db_index] & 0x00FF0000) >> 16);
-        mqtt_domain_name[i+1] = (char)((nv_db[db_index] & 0x0000FF00) >> 8);
-        mqtt_domain_name[i] = (char)((nv_db[db_index] & 0x000000FF));
+        NVRAM_Domain[i+3] = (char)((NVRAM_Block[db_index] & 0xFF000000) >> 24);
+        NVRAM_Domain[i+2] = (char)((NVRAM_Block[db_index] & 0x00FF0000) >> 16);
+        NVRAM_Domain[i+1] = (char)((NVRAM_Block[db_index] & 0x0000FF00) >> 8);
+        NVRAM_Domain[i] = (char)((NVRAM_Block[db_index] & 0x000000FF));
     }
 }
 
@@ -73,7 +66,7 @@ void NVRam_Write(void)
     for(int i = 0; i < MAX_NVRAM_SIZE; i++)
     {
         __disable_irq();
-        HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, FLASH_USER_START_ADDR + (i * 4), nv_db[i]);
+        HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, FLASH_USER_START_ADDR + (i * 4), NVRAM_Block[i]);
         __enable_irq();
         HAL_Delay(10U);
     }
@@ -101,95 +94,11 @@ HAL_StatusTypeDef EraseNV(void)
     return HAL_OK;  
 }
 
-int rs_flag = 0;
-void do_rs_command(int cnt)
+void NVRam_Update_Variable(void)
 {
-    RTC_TimeTypeDef sTime = {0};
-    if( (debug_buf[0] == 'S') && (debug_buf[1] == 'N') )
-    {
-        sscanf(&debug_buf[2],"%d %d", &did_sub_num, &mqtt_did_num);
-        if( mqtt_did_num > 999999999 ) mqtt_did_num = 1;
-        if( did_sub_num > 999 ) did_sub_num = 0;
-        UART_Printf(">>>SN write to NV_DB(%03d-%09d)<<<\n", did_sub_num, mqtt_did_num);
-        nv_db[NVRAM_SN]     = mqtt_did_num;
-        nv_db[NVRAM_SN_SUB] = did_sub_num;
-        rs_flag = 1;
-    }
-    else if( (debug_buf[0] == 'R') && (debug_buf[1] == 'C') )
-    {
-        sscanf(&debug_buf[2],"%d", &report_cycle);
-        if( report_cycle > MAX_REPORT_TIME ) report_cycle = MAX_REPORT_TIME;
-        UART_Printf(">>>Report Cycle write to NV_DB(%d sec)<<<\n", report_cycle);
-        nv_db[NVRAM_REPORT_CYCLE] = report_cycle;
-        rs_flag = 1;
-    }
-    else if( (debug_buf[0] == 'G') && (debug_buf[1] == 'A') )
-    {
-        sscanf(&debug_buf[2],"%d", &latitude);
-        nv_db[NVRAM_LATITUDE] = latitude;
-        UART_Printf(">>>Latitude write to NV_DB(%d sec)<<<\n", latitude);
-        rs_flag = 1;      
-    }
-    else if( (debug_buf[0] == 'G') && (debug_buf[1] == 'O') )
-    {
-        sscanf(&debug_buf[2],"%d", &longitude);
-        nv_db[NVRAM_LONGITUDE] = longitude;
-        UART_Printf(">>>Longitude write to NV_DB(%d sec)<<<\n", longitude);
-        rs_flag = 1;
-    }
-    else if( (debug_buf[0] == 'T') && (debug_buf[1] == 'I') )
-    {
-        sscanf(&debug_buf[2],"%d:%d:%d", &sTime.Hours, &sTime.Minutes, &sTime.Seconds);
-        HAL_RTC_SetTime(&hrtc, &sTime, FORMAT_BIN);
-        UART_Printf("Set Time %02d:%02d:%02d\n",sTime.Hours,sTime.Minutes,sTime.Seconds);
-        rs_flag = 0;
-    }
-    else if( (debug_buf[0] == 'D') && (debug_buf[1] == 'I') )
-    {
-        UART_Printf("Serial Number : %03d-%09d\n", did_sub_num, mqtt_did_num);
-        UART_Printf("Latitude      : %d.%05d\n",(latitude/100000),(latitude%100000));
-        UART_Printf("Longitude     : %d.%05d\n",(longitude/100000),(longitude%100000));
-        UART_Printf("Report Cycle  : %02d:%02d:%02d\n",report_cycle/3600, (report_cycle%3600)/60, report_cycle%60);
-        UART_Printf("Domain Name   : %s\n",mqtt_domain_name);
-        rs_flag = 0;
-    }
-    else if( (debug_buf[0] == 'N') && (debug_buf[1] == 'D') )
-    {
-        int index = 2;
-        while(1){
-        if( debug_buf[index] == 0x20 )index++;
-        else break;
-        }
-        sscanf(&debug_buf[index],"%[^$]", mqtt_domain_name);
-
-        index = 0;
-        while(1){
-        if( mqtt_domain_name[index] == 0x20 ){
-            mqtt_domain_name[index] = 0x00;
-            break;
-        }
-
-        if( mqtt_domain_name[index] == 0x00 ){
-            break;
-        }
-        index++;
-        }
-        for(int i = 0; i < MQTT_DOMAIN_NAME_SIZE; i += 4)
-        {
-        int db_index = NVRAM_DOMAIN + (i / 4);
-        nv_db[db_index] = (mqtt_domain_name[i+3] << 24) + (mqtt_domain_name[i+2] << 16) + (mqtt_domain_name[i+1] << 8) + mqtt_domain_name[i];
-        }
-        UART_Printf(">>>Domain name write to NV_DB(%s)<<<\n", mqtt_domain_name);
-        nv_db[NVRAM_REPORT_CYCLE] = report_cycle;
-        rs_flag = 1;
-    }
-    
-    if(rs_flag)
-    {
-        EraseNV();
-        HAL_Delay(100);
-        NV_Write();
-        HAL_Delay(500);
-        NVIC_SystemReset();
-    }
+    EraseNV();
+    HAL_Delay(100);
+    NVRam_Write();
+    HAL_Delay(500);
+    NVIC_SystemReset();
 }

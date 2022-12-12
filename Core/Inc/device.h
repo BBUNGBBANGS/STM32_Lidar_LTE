@@ -17,14 +17,17 @@ typedef enum
 
 #define DEVICE_BATTERY_MODULE  hadc2
 
-#define DEVICE_SENSOR_OFF   0
-#define DEVICE_SENSOR_ON    1
+#define DEVICE_SENSOR_OFF   1
+#define DEVICE_SENSOR_ON    0
 #define DEVICE_SENSOR_DETECTED      1
 #define DEVICE_SENSOR_ON_DEBOUNCE_TIME      20 //200[ms]
 
 extern uint16_t Device_Batt_Voltage;
 extern uint8_t Device_Sensor_Signal;
 extern uint32_t Device_Report_Cycle;
+
+#define REPORT_TIME_INIT       900  // 15 min
+#define REPORT_TIME_MAX        21600  // 6 hr
 
 extern void Device_Init(void);
 extern void Device_Reset_Init(void);

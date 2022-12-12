@@ -22,7 +22,6 @@ static void Os_Background_Task(void);
 
 void Os_Init_Task(void)
 {
-	//RTC_Init();
     Device_Init();
     DHT11_Init();
     Debug_Init();
@@ -42,7 +41,7 @@ static void Os_10ms_Task(void)
 static void Os_100ms_Task(void)
 {
 	Lidar_Receive_Data();
-	Test_Debug();
+	Debug_Write_Variable();
 	LTE_Control();
 	RTC_Measure_Time();
 	Device_SleepMode_Start();

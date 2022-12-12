@@ -6,7 +6,7 @@ uint32_t Device_Batt_DMA;
 uint16_t Device_Batt_Voltage;
 uint8_t Device_Sensor_Signal;
 uint8_t Device_Sensor_Detect;
-uint32_t Device_Report_Cycle = 900;
+uint32_t Device_Report_Cycle = REPORT_TIME_INIT;
 
 Reset_Cause_t reset_cause = RESET_CAUSE_UNKNOWN;
 
@@ -114,7 +114,6 @@ void Device_Detect_SensorSignal(void)
 
 void Device_SleepMode_Start(void)
 {
-    uint16_t timer;
     if(LTE_STEP_MQTT_FINISH == LTE_Status)
     {
 	    HAL_GPIO_WritePin(Lidar_ONOFF_GPIO_Port, Lidar_ONOFF_Pin, GPIO_PIN_RESET);
@@ -122,15 +121,6 @@ void Device_SleepMode_Start(void)
         HAL_GPIO_WritePin(POWER_KEY_GPIO_Port, POWER_KEY_Pin, GPIO_PIN_SET);
         HAL_GPIO_WritePin(RESET_ONOFF_GPIO_Port, RESET_ONOFF_Pin, GPIO_PIN_SET);
         Debug_Message_Transmit("<System Start Sleep>\n");
-
-        while(!Device_Sensor_Signal)
-        {
-            timer++;
-            if(timer > Device_Report_Cycle)
-            {
-                break;
-            }
-        }
 
         HAL_TIM_Base_Stop_IT(&htim16);
         HAL_TIM_Base_Stop_IT(&htim17);

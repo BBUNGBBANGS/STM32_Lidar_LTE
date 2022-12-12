@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -32,53 +32,56 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s 			page 1
    1:Core/Src/debug.c **** #include "debug.h"
    2:Core/Src/debug.c **** #include "uart.h"
    3:Core/Src/debug.c **** #include "lte.h"
-   4:Core/Src/debug.c **** 
-   5:Core/Src/debug.c **** uint8_t Debug_Rx_buffer[1024];
-   6:Core/Src/debug.c **** uint16_t Debug_Rx_Count;
-   7:Core/Src/debug.c **** uint8_t debug_dummy;
-   8:Core/Src/debug.c **** void Debug_Init(void)
-   9:Core/Src/debug.c **** {
-  10:Core/Src/debug.c ****     if ( HAL_UART_Receive_IT(&DEBUG_MODULE, &debug_dummy, 1) != HAL_OK)
-  11:Core/Src/debug.c **** 	{
-  12:Core/Src/debug.c **** 		Error_Handler();
-  13:Core/Src/debug.c **** 	}
-  14:Core/Src/debug.c ****     Debug_Message_Transmit("\n=======>>Silo Test F/W 20220628_002\n");
-  15:Core/Src/debug.c **** }
-  16:Core/Src/debug.c **** 
-  17:Core/Src/debug.c **** void Debug_Message_Transmit(uint8_t * buf)
-  18:Core/Src/debug.c **** {
-  30              		.loc 1 18 1 view -0
+   4:Core/Src/debug.c **** #include "nvram.h"
+   5:Core/Src/debug.c **** #include "device.h"
+   6:Core/Src/debug.c **** 
+   7:Core/Src/debug.c **** uint8_t Debug_Rx_buffer[1024];
+   8:Core/Src/debug.c **** uint16_t Debug_Rx_Count;
+   9:Core/Src/debug.c **** uint8_t debug_dummy;
+  10:Core/Src/debug.c **** uint8_t Debug_Write_Request;
+  11:Core/Src/debug.c **** void Debug_Init(void)
+  12:Core/Src/debug.c **** {
+  13:Core/Src/debug.c ****     if ( HAL_UART_Receive_IT(&DEBUG_MODULE, &debug_dummy, 1) != HAL_OK)
+  14:Core/Src/debug.c **** 	{
+  15:Core/Src/debug.c **** 		Error_Handler();
+  16:Core/Src/debug.c **** 	}
+  17:Core/Src/debug.c ****     Debug_Message_Transmit("\n=======>>Silo Test F/W 20220628_002\n");
+  18:Core/Src/debug.c **** }
+  19:Core/Src/debug.c **** 
+  20:Core/Src/debug.c **** void Debug_Message_Transmit(uint8_t * buf)
+  21:Core/Src/debug.c **** {
+  30              		.loc 1 21 1 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		.loc 1 18 1 is_stmt 0 view .LVU1
+  34              		.loc 1 21 1 is_stmt 0 view .LVU1
   35 0000 10B5     		push	{r4, lr}
   36              	.LCFI0:
   37              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 2
+
+
   38              		.cfi_offset 4, -8
   39              		.cfi_offset 14, -4
   40 0002 0446     		mov	r4, r0
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s 			page 2
-
-
-  19:Core/Src/debug.c ****     HAL_UART_Transmit(&DEBUG_MODULE,buf,strlen(buf),100);
-  41              		.loc 1 19 5 is_stmt 1 view .LVU2
-  42              		.loc 1 19 41 is_stmt 0 view .LVU3
+  22:Core/Src/debug.c ****     HAL_UART_Transmit(&DEBUG_MODULE,buf,strlen(buf),100);
+  41              		.loc 1 22 5 is_stmt 1 view .LVU2
+  42              		.loc 1 22 41 is_stmt 0 view .LVU3
   43 0004 FFF7FEFF 		bl	strlen
   44              	.LVL1:
-  45              		.loc 1 19 5 view .LVU4
+  45              		.loc 1 22 5 view .LVU4
   46 0008 6423     		movs	r3, #100
   47 000a 82B2     		uxth	r2, r0
   48 000c 2146     		mov	r1, r4
   49 000e 0248     		ldr	r0, .L3
   50 0010 FFF7FEFF 		bl	HAL_UART_Transmit
   51              	.LVL2:
-  20:Core/Src/debug.c **** }
-  52              		.loc 1 20 1 view .LVU5
+  23:Core/Src/debug.c **** }
+  52              		.loc 1 23 1 view .LVU5
   53 0014 10BD     		pop	{r4, pc}
   54              	.LVL3:
   55              	.L4:
-  56              		.loc 1 20 1 view .LVU6
+  56              		.loc 1 23 1 view .LVU6
   57 0016 00BF     		.align	2
   58              	.L3:
   59 0018 00000000 		.word	huart3
@@ -100,8 +103,8 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s 			page 1
   72              		.thumb_func
   74              	Debug_Init:
   75              	.LFB133:
-   9:Core/Src/debug.c ****     if ( HAL_UART_Receive_IT(&DEBUG_MODULE, &debug_dummy, 1) != HAL_OK)
-  76              		.loc 1 9 1 is_stmt 1 view -0
+  12:Core/Src/debug.c ****     if ( HAL_UART_Receive_IT(&DEBUG_MODULE, &debug_dummy, 1) != HAL_OK)
+  76              		.loc 1 12 1 is_stmt 1 view -0
   77              		.cfi_startproc
   78              		@ args = 0, pretend = 0, frame = 0
   79              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -110,33 +113,33 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s 			page 1
   82              		.cfi_def_cfa_offset 8
   83              		.cfi_offset 3, -8
   84              		.cfi_offset 14, -4
-  10:Core/Src/debug.c **** 	{
-  85              		.loc 1 10 5 view .LVU8
-  10:Core/Src/debug.c **** 	{
-  86              		.loc 1 10 10 is_stmt 0 view .LVU9
+  13:Core/Src/debug.c **** 	{
+  85              		.loc 1 13 5 view .LVU8
+  13:Core/Src/debug.c **** 	{
+  86              		.loc 1 13 10 is_stmt 0 view .LVU9
   87 0002 0122     		movs	r2, #1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 3
+
+
   88 0004 0549     		ldr	r1, .L9
   89 0006 0648     		ldr	r0, .L9+4
   90 0008 FFF7FEFF 		bl	HAL_UART_Receive_IT
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s 			page 3
-
-
   91              	.LVL4:
-  10:Core/Src/debug.c **** 	{
-  92              		.loc 1 10 8 view .LVU10
+  13:Core/Src/debug.c **** 	{
+  92              		.loc 1 13 8 view .LVU10
   93 000c 18B9     		cbnz	r0, .L8
   94              	.L6:
-  14:Core/Src/debug.c **** }
-  95              		.loc 1 14 5 is_stmt 1 view .LVU11
+  17:Core/Src/debug.c **** }
+  95              		.loc 1 17 5 is_stmt 1 view .LVU11
   96 000e 0548     		ldr	r0, .L9+8
   97 0010 FFF7FEFF 		bl	Debug_Message_Transmit
   98              	.LVL5:
-  15:Core/Src/debug.c **** 
-  99              		.loc 1 15 1 is_stmt 0 view .LVU12
+  18:Core/Src/debug.c **** 
+  99              		.loc 1 18 1 is_stmt 0 view .LVU12
  100 0014 08BD     		pop	{r3, pc}
  101              	.L8:
-  12:Core/Src/debug.c **** 	}
- 102              		.loc 1 12 3 is_stmt 1 view .LVU13
+  15:Core/Src/debug.c **** 	}
+ 102              		.loc 1 15 3 is_stmt 1 view .LVU13
  103 0016 FFF7FEFF 		bl	Error_Handler
  104              	.LVL6:
  105 001a F8E7     		b	.L6
@@ -148,149 +151,1243 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s 			page 1
  111 0024 00000000 		.word	.LC0
  112              		.cfi_endproc
  113              	.LFE133:
- 115              		.section	.text.Test_Debug,"ax",%progbits
+ 115              		.section	.text.Debug_Clear_Buffer,"ax",%progbits
  116              		.align	1
- 117              		.global	Test_Debug
+ 117              		.global	Debug_Clear_Buffer
  118              		.syntax unified
  119              		.thumb
  120              		.thumb_func
- 122              	Test_Debug:
+ 122              	Debug_Clear_Buffer:
  123              	.LFB135:
-  21:Core/Src/debug.c **** 
-  22:Core/Src/debug.c **** void Test_Debug(void)
-  23:Core/Src/debug.c **** {
- 124              		.loc 1 23 1 view -0
+  24:Core/Src/debug.c **** 
+  25:Core/Src/debug.c **** void Debug_Clear_Buffer(void)
+  26:Core/Src/debug.c **** {
+ 124              		.loc 1 26 1 view -0
  125              		.cfi_startproc
  126              		@ args = 0, pretend = 0, frame = 0
  127              		@ frame_needed = 0, uses_anonymous_args = 0
- 128 0000 08B5     		push	{r3, lr}
+ 128 0000 10B5     		push	{r4, lr}
  129              	.LCFI2:
  130              		.cfi_def_cfa_offset 8
- 131              		.cfi_offset 3, -8
+ 131              		.cfi_offset 4, -8
  132              		.cfi_offset 14, -4
-  24:Core/Src/debug.c ****     if(Debug_Rx_Count>0)
- 133              		.loc 1 24 5 view .LVU15
- 134              		.loc 1 24 22 is_stmt 0 view .LVU16
- 135 0002 064B     		ldr	r3, .L15
- 136 0004 1A88     		ldrh	r2, [r3]
- 137              		.loc 1 24 7 view .LVU17
- 138 0006 02B9     		cbnz	r2, .L14
- 139              	.L11:
-  25:Core/Src/debug.c ****     {
-  26:Core/Src/debug.c ****         HAL_UART_Transmit(&huart1,Debug_Rx_buffer,Debug_Rx_Count,100);
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s 			page 4
+  27:Core/Src/debug.c ****     memset(Debug_Rx_buffer,0x00,Debug_Rx_Count);
+ 133              		.loc 1 27 5 view .LVU15
+ 134 0002 044C     		ldr	r4, .L13
+ 135 0004 2288     		ldrh	r2, [r4]
+ 136 0006 0021     		movs	r1, #0
+ 137 0008 0348     		ldr	r0, .L13+4
+ 138 000a FFF7FEFF 		bl	memset
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 4
 
 
-  27:Core/Src/debug.c ****         Debug_Rx_Count = 0;
-  28:Core/Src/debug.c ****     }
+ 139              	.LVL7:
+  28:Core/Src/debug.c ****     Debug_Rx_Count = 0;
+ 140              		.loc 1 28 5 view .LVU16
+ 141              		.loc 1 28 20 is_stmt 0 view .LVU17
+ 142 000e 0023     		movs	r3, #0
+ 143 0010 2380     		strh	r3, [r4]	@ movhi
   29:Core/Src/debug.c **** }
- 140              		.loc 1 29 1 view .LVU18
- 141 0008 08BD     		pop	{r3, pc}
- 142              	.L14:
-  26:Core/Src/debug.c ****         Debug_Rx_Count = 0;
- 143              		.loc 1 26 9 is_stmt 1 view .LVU19
- 144 000a 6423     		movs	r3, #100
- 145 000c 0449     		ldr	r1, .L15+4
- 146 000e 0548     		ldr	r0, .L15+8
- 147 0010 FFF7FEFF 		bl	HAL_UART_Transmit
- 148              	.LVL7:
-  27:Core/Src/debug.c ****     }
- 149              		.loc 1 27 9 view .LVU20
-  27:Core/Src/debug.c ****     }
- 150              		.loc 1 27 24 is_stmt 0 view .LVU21
- 151 0014 014B     		ldr	r3, .L15
- 152 0016 0022     		movs	r2, #0
- 153 0018 1A80     		strh	r2, [r3]	@ movhi
- 154              		.loc 1 29 1 view .LVU22
- 155 001a F5E7     		b	.L11
- 156              	.L16:
- 157              		.align	2
- 158              	.L15:
- 159 001c 00000000 		.word	.LANCHOR1
- 160 0020 00000000 		.word	.LANCHOR2
- 161 0024 00000000 		.word	huart1
- 162              		.cfi_endproc
- 163              	.LFE135:
- 165              		.section	.text.Debug_Write_Variable,"ax",%progbits
- 166              		.align	1
- 167              		.global	Debug_Write_Variable
- 168              		.syntax unified
- 169              		.thumb
- 170              		.thumb_func
- 172              	Debug_Write_Variable:
- 173              	.LFB136:
-  30:Core/Src/debug.c **** 
-  31:Core/Src/debug.c **** void Debug_Write_Variable(void)
-  32:Core/Src/debug.c **** {
- 174              		.loc 1 32 1 is_stmt 1 view -0
- 175              		.cfi_startproc
- 176              		@ args = 0, pretend = 0, frame = 0
- 177              		@ frame_needed = 0, uses_anonymous_args = 0
- 178              		@ link register save eliminated.
-  33:Core/Src/debug.c **** 
-  34:Core/Src/debug.c **** }...
- 179              		.loc 1 34 1 view .LVU24
- 180 0000 7047     		bx	lr
- 181              		.cfi_endproc
- 182              	.LFE136:
- 184              		.global	debug_dummy
- 185              		.global	Debug_Rx_Count
- 186              		.global	Debug_Rx_buffer
- 187              		.section	.bss.Debug_Rx_Count,"aw",%nobits
- 188              		.align	1
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s 			page 5
+ 144              		.loc 1 29 1 view .LVU18
+ 145 0012 10BD     		pop	{r4, pc}
+ 146              	.L14:
+ 147              		.align	2
+ 148              	.L13:
+ 149 0014 00000000 		.word	.LANCHOR1
+ 150 0018 00000000 		.word	.LANCHOR2
+ 151              		.cfi_endproc
+ 152              	.LFE135:
+ 154              		.section	.rodata.Debug_Write_Variable.str1.4,"aMS",%progbits,1
+ 155              		.align	2
+ 156              	.LC1:
+ 157 0000 25642025 		.ascii	"%d %d\000"
+ 157      6400
+ 158 0006 0000     		.align	2
+ 159              	.LC2:
+ 160 0008 3E3E3E53 		.ascii	">>>SN write to NVRam(%03d-%09d)<<<\012\000"
+ 160      4E207772 
+ 160      69746520 
+ 160      746F204E 
+ 160      5652616D 
+ 161              		.align	2
+ 162              	.LC3:
+ 163 002c 256400   		.ascii	"%d\000"
+ 164 002f 00       		.align	2
+ 165              	.LC4:
+ 166 0030 3E3E3E52 		.ascii	">>>Report Cycle write to NVRam(%d sec)<<<\012\000"
+ 166      65706F72 
+ 166      74204379 
+ 166      636C6520 
+ 166      77726974 
+ 167 005b 00       		.align	2
+ 168              	.LC5:
+ 169 005c 3E3E3E4C 		.ascii	">>>Latitude write to NVRam(%d sec)<<<\012\000"
+ 169      61746974 
+ 169      75646520 
+ 169      77726974 
+ 169      6520746F 
+ 170 0083 00       		.align	2
+ 171              	.LC6:
+ 172 0084 3E3E3E4C 		.ascii	">>>Longitude write to NVRam(%d sec)<<<\012\000"
+ 172      6F6E6769 
+ 172      74756465 
+ 172      20777269 
+ 172      74652074 
+ 173              		.align	2
+ 174              	.LC7:
+ 175 00ac 25643A25 		.ascii	"%d:%d:%d\000"
+ 175      643A2564 
+ 175      00
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 5
 
 
- 189              		.set	.LANCHOR1,. + 0
- 192              	Debug_Rx_Count:
- 193 0000 0000     		.space	2
- 194              		.section	.bss.Debug_Rx_buffer,"aw",%nobits
- 195              		.align	2
- 196              		.set	.LANCHOR2,. + 0
- 199              	Debug_Rx_buffer:
- 200 0000 00000000 		.space	1024
- 200      00000000 
- 200      00000000 
- 200      00000000 
- 200      00000000 
- 201              		.section	.bss.debug_dummy,"aw",%nobits
- 202              		.set	.LANCHOR0,. + 0
- 205              	debug_dummy:
- 206 0000 00       		.space	1
- 207              		.text
- 208              	.Letext0:
- 209              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
- 210              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
- 211              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
- 212              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
- 213              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
- 214              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
- 215              		.file 8 "Core/Inc/main.h"
- 216              		.file 9 "Core/Inc/debug.h"
- 217              		.file 10 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\string.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s 			page 6
+ 176 00b5 000000   		.align	2
+ 177              	.LC8:
+ 178 00b8 53657420 		.ascii	"Set Time %02d:%02d:%02d\012\000"
+ 178      54696D65 
+ 178      20253032 
+ 178      643A2530 
+ 178      32643A25 
+ 179 00d1 000000   		.align	2
+ 180              	.LC9:
+ 181 00d4 53657269 		.ascii	"Serial Number : %03d-%09d\012Latitude      : %d.%05"
+ 181      616C204E 
+ 181      756D6265 
+ 181      72203A20 
+ 181      25303364 
+ 182 0104 640A4C6F 		.ascii	"d\012Longitude     : %d.%05d\012Report Cycle  : %02"
+ 182      6E676974 
+ 182      75646520 
+ 182      20202020 
+ 182      3A202564 
+ 183 0131 643A2530 		.ascii	"d:%02d:%02d\012Domain Name   : %s\012\000"
+ 183      32643A25 
+ 183      3032640A 
+ 183      446F6D61 
+ 183      696E204E 
+ 184 0151 000000   		.align	2
+ 185              	.LC10:
+ 186 0154 255B5E24 		.ascii	"%[^$]\000"
+ 186      5D00
+ 187 015a 0000     		.align	2
+ 188              	.LC11:
+ 189 015c 3E3E3E44 		.ascii	">>>Domain name write to NVRam(%s)<<<\012\000"
+ 189      6F6D6169 
+ 189      6E206E61 
+ 189      6D652077 
+ 189      72697465 
+ 190              		.section	.text.Debug_Write_Variable,"ax",%progbits
+ 191              		.align	1
+ 192              		.global	Debug_Write_Variable
+ 193              		.syntax unified
+ 194              		.thumb
+ 195              		.thumb_func
+ 197              	Debug_Write_Variable:
+ 198              	.LFB136:
+  30:Core/Src/debug.c **** void Debug_Write_Variable(void)
+  31:Core/Src/debug.c **** {
+ 199              		.loc 1 31 1 is_stmt 1 view -0
+ 200              		.cfi_startproc
+ 201              		@ args = 0, pretend = 0, frame = 184
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203 0000 30B5     		push	{r4, r5, lr}
+ 204              	.LCFI3:
+ 205              		.cfi_def_cfa_offset 12
+ 206              		.cfi_offset 4, -12
+ 207              		.cfi_offset 5, -8
+ 208              		.cfi_offset 14, -4
+ 209 0002 B7B0     		sub	sp, sp, #220
+ 210              	.LCFI4:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 6
+
+
+ 211              		.cfi_def_cfa_offset 232
+  32:Core/Src/debug.c ****     RTC_TimeTypeDef Time = {0};
+ 212              		.loc 1 32 5 view .LVU20
+ 213              		.loc 1 32 21 is_stmt 0 view .LVU21
+ 214 0004 0021     		movs	r1, #0
+ 215 0006 3191     		str	r1, [sp, #196]
+ 216 0008 3291     		str	r1, [sp, #200]
+ 217 000a 3391     		str	r1, [sp, #204]
+ 218 000c 3491     		str	r1, [sp, #208]
+ 219 000e 3591     		str	r1, [sp, #212]
+  33:Core/Src/debug.c ****     RTC_DateTypeDef Date = {0};
+ 220              		.loc 1 33 5 is_stmt 1 view .LVU22
+ 221              		.loc 1 33 21 is_stmt 0 view .LVU23
+ 222 0010 3091     		str	r1, [sp, #192]
+  34:Core/Src/debug.c ****     uint8_t tx_buf[150] = {0,};
+ 223              		.loc 1 34 5 is_stmt 1 view .LVU24
+ 224              		.loc 1 34 13 is_stmt 0 view .LVU25
+ 225 0012 0A91     		str	r1, [sp, #40]
+ 226 0014 9222     		movs	r2, #146
+ 227 0016 0BA8     		add	r0, sp, #44
+ 228 0018 FFF7FEFF 		bl	memset
+ 229              	.LVL8:
+  35:Core/Src/debug.c ****     uint32_t LatLoc,LongLoc;
+ 230              		.loc 1 35 5 is_stmt 1 view .LVU26
+  36:Core/Src/debug.c **** 
+  37:Core/Src/debug.c ****     if((Debug_Rx_Count>3) && (Debug_Rx_buffer[Debug_Rx_Count-4] == '$') && (Debug_Rx_buffer[Debug_R
+ 231              		.loc 1 37 5 view .LVU27
+ 232              		.loc 1 37 23 is_stmt 0 view .LVU28
+ 233 001c A24B     		ldr	r3, .L46
+ 234 001e 1B88     		ldrh	r3, [r3]
+ 235              		.loc 1 37 7 view .LVU29
+ 236 0020 032B     		cmp	r3, #3
+ 237 0022 04D9     		bls	.L16
+ 238              		.loc 1 37 61 discriminator 1 view .LVU30
+ 239 0024 1A1F     		subs	r2, r3, #4
+ 240              		.loc 1 37 46 discriminator 1 view .LVU31
+ 241 0026 A149     		ldr	r1, .L46+4
+ 242 0028 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+ 243              		.loc 1 37 27 discriminator 1 view .LVU32
+ 244 002a 242A     		cmp	r2, #36
+ 245 002c 06D0     		beq	.L36
+ 246              	.L16:
+  38:Core/Src/debug.c ****     {
+  39:Core/Src/debug.c ****         if((Debug_Rx_buffer[0] == 'S') && (Debug_Rx_buffer[1] == 'N'))
+  40:Core/Src/debug.c ****         {
+  41:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[2],"%d %d", &LTE_SN, &LTE_SN_SUB);
+  42:Core/Src/debug.c ****             if(LTE_SN > 999) 
+  43:Core/Src/debug.c ****             {
+  44:Core/Src/debug.c ****                 LTE_SN = 1;
+  45:Core/Src/debug.c ****             }
+  46:Core/Src/debug.c ****             if(LTE_SN_SUB > 999999999) 
+  47:Core/Src/debug.c ****             {
+  48:Core/Src/debug.c ****                 LTE_SN_SUB = 0;
+  49:Core/Src/debug.c ****             }
+  50:Core/Src/debug.c ****             sprintf(tx_buf,">>>SN write to NVRam(%03d-%09d)<<<\n", LTE_SN, LTE_SN_SUB);
+  51:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+  52:Core/Src/debug.c ****             NVRAM_Block[NVRAM_SN] = LTE_SN;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 7
+
+
+  53:Core/Src/debug.c ****             NVRAM_Block[NVRAM_SN_SUB] = LTE_SN_SUB;
+  54:Core/Src/debug.c ****             Debug_Clear_Buffer();
+  55:Core/Src/debug.c ****             Debug_Write_Request = 1;
+  56:Core/Src/debug.c ****         }
+  57:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'R') && (Debug_Rx_buffer[1] == 'C'))
+  58:Core/Src/debug.c ****         {
+  59:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[2],"%d", &Device_Report_Cycle);
+  60:Core/Src/debug.c ****             if(Device_Report_Cycle > REPORT_TIME_MAX) 
+  61:Core/Src/debug.c ****             {
+  62:Core/Src/debug.c ****                 Device_Report_Cycle = REPORT_TIME_MAX;
+  63:Core/Src/debug.c ****             }
+  64:Core/Src/debug.c ****             sprintf(tx_buf,">>>Report Cycle write to NVRam(%d sec)<<<\n", Device_Report_Cycle);
+  65:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+  66:Core/Src/debug.c ****             NVRAM_Block[NVRAM_REPORT_CYCLE] = Device_Report_Cycle;
+  67:Core/Src/debug.c ****             Debug_Clear_Buffer();
+  68:Core/Src/debug.c ****             Debug_Write_Request = 1;
+  69:Core/Src/debug.c ****         }
+  70:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'G') && (Debug_Rx_buffer[1] == 'A'))
+  71:Core/Src/debug.c ****         {
+  72:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[2],"%d", &LatLoc);
+  73:Core/Src/debug.c ****             LTE_GPS_LAT_I = LatLoc / 100000;
+  74:Core/Src/debug.c ****             LTE_GPS_LAT_D = LatLoc % 100000;
+  75:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LATITUDE_I] = LTE_GPS_LAT_I;
+  76:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LATITUDE_D] = LTE_GPS_LAT_D;
+  77:Core/Src/debug.c ****             sprintf(tx_buf,">>>Latitude write to NVRam(%d sec)<<<\n", LTE_GPS_LAT_I);
+  78:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+  79:Core/Src/debug.c ****             Debug_Clear_Buffer();
+  80:Core/Src/debug.c ****             Debug_Write_Request = 1;      
+  81:Core/Src/debug.c ****         }
+  82:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'G') && (Debug_Rx_buffer[1] == 'O'))
+  83:Core/Src/debug.c ****         {
+  84:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[2],"%d", &LongLoc);
+  85:Core/Src/debug.c ****             LTE_GPS_LONG_I = LongLoc / 100000;
+  86:Core/Src/debug.c ****             LTE_GPS_LONG_D = LongLoc % 100000;
+  87:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LONGITUDE_I] = LTE_GPS_LONG_I;
+  88:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LONGITUDE_D] = LTE_GPS_LONG_D;
+  89:Core/Src/debug.c ****             sprintf(tx_buf,">>>Longitude write to NVRam(%d sec)<<<\n", LTE_GPS_LONG_I);
+  90:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+  91:Core/Src/debug.c ****             Debug_Clear_Buffer();
+  92:Core/Src/debug.c ****             Debug_Write_Request = 1;
+  93:Core/Src/debug.c ****         }
+  94:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'T') && (Debug_Rx_buffer[1] == 'I'))
+  95:Core/Src/debug.c ****         {
+  96:Core/Src/debug.c ****             HAL_RTC_GetTime(&hrtc, &Time, FORMAT_BIN);
+  97:Core/Src/debug.c ****             HAL_RTC_GetDate(&hrtc, &Date, FORMAT_BIN);
+  98:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[2],"%d:%d:%d", &Time.Hours, &Time.Minutes, &Time.Seconds);
+  99:Core/Src/debug.c ****             HAL_RTC_SetTime(&hrtc, &Time, FORMAT_BIN);
+ 100:Core/Src/debug.c ****             HAL_RTC_SetDate(&hrtc, &Date, FORMAT_BIN);
+ 101:Core/Src/debug.c ****             sprintf(tx_buf,"Set Time %02d:%02d:%02d\n",Time.Hours,Time.Minutes,Time.Seconds);
+ 102:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+ 103:Core/Src/debug.c ****             Debug_Clear_Buffer();
+ 104:Core/Src/debug.c ****             Debug_Write_Request = 0;
+ 105:Core/Src/debug.c ****         }
+ 106:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'D') && (Debug_Rx_buffer[1] == 'I'))
+ 107:Core/Src/debug.c ****         {
+ 108:Core/Src/debug.c ****             sprintf(tx_buf,"Serial Number : %03d-%09d\nLatitude      : %d.%05d\nLongitude     : %d.
+ 109:Core/Src/debug.c ****                 LTE_SN,LTE_SN_SUB,LTE_GPS_LAT_I,LTE_GPS_LAT_D,LTE_GPS_LONG_I,LTE_GPS_LONG_D,Device_
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 8
+
+
+ 110:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+ 111:Core/Src/debug.c ****             Debug_Clear_Buffer();
+ 112:Core/Src/debug.c ****             Debug_Write_Request = 0;
+ 113:Core/Src/debug.c ****         }
+ 114:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'N') && (Debug_Rx_buffer[1] == 'D'))
+ 115:Core/Src/debug.c ****         {
+ 116:Core/Src/debug.c ****             int index = 2;
+ 117:Core/Src/debug.c ****             while(1)
+ 118:Core/Src/debug.c ****             {
+ 119:Core/Src/debug.c ****                 if(Debug_Rx_buffer[index] == 0x20)
+ 120:Core/Src/debug.c ****                 {
+ 121:Core/Src/debug.c ****                     index++;
+ 122:Core/Src/debug.c ****                 }
+ 123:Core/Src/debug.c ****                 else
+ 124:Core/Src/debug.c ****                 {
+ 125:Core/Src/debug.c ****                     break;
+ 126:Core/Src/debug.c ****                 }
+ 127:Core/Src/debug.c ****             }
+ 128:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[index],"%[^$]", NVRAM_Domain);
+ 129:Core/Src/debug.c **** 
+ 130:Core/Src/debug.c ****             index = 0;
+ 131:Core/Src/debug.c ****             while(1)
+ 132:Core/Src/debug.c ****             {
+ 133:Core/Src/debug.c ****                 if(NVRAM_Domain[index] == 0x20)
+ 134:Core/Src/debug.c ****                 {
+ 135:Core/Src/debug.c ****                     NVRAM_Domain[index] = 0x00;
+ 136:Core/Src/debug.c ****                     break;
+ 137:Core/Src/debug.c ****                 }
+ 138:Core/Src/debug.c **** 
+ 139:Core/Src/debug.c ****                 if(NVRAM_Domain[index] == 0x00)
+ 140:Core/Src/debug.c ****                 {
+ 141:Core/Src/debug.c ****                     break;
+ 142:Core/Src/debug.c ****                 }
+ 143:Core/Src/debug.c ****                 index++;
+ 144:Core/Src/debug.c ****             }
+ 145:Core/Src/debug.c ****             for(int i = 0; i < MQTT_DOMAIN_NAME_SIZE; i += 4)
+ 146:Core/Src/debug.c ****             {
+ 147:Core/Src/debug.c ****                 int db_index = NVRAM_DOMAIN + (i / 4);
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 149:Core/Src/debug.c ****             }
+ 150:Core/Src/debug.c ****             sprintf(tx_buf,">>>Domain name write to NVRam(%s)<<<\n", NVRAM_Domain);
+ 151:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+ 152:Core/Src/debug.c ****             Debug_Clear_Buffer();
+ 153:Core/Src/debug.c **** 
+ 154:Core/Src/debug.c ****             Debug_Write_Request = 1;
+ 155:Core/Src/debug.c ****         }
+ 156:Core/Src/debug.c ****     }
+ 157:Core/Src/debug.c ****     
+ 158:Core/Src/debug.c ****     if(1 == Debug_Write_Request)
+ 247              		.loc 1 158 5 is_stmt 1 view .LVU33
+ 248              		.loc 1 158 10 is_stmt 0 view .LVU34
+ 249 002e A04B     		ldr	r3, .L46+8
+ 250 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 251              		.loc 1 158 7 view .LVU35
+ 252 0032 012B     		cmp	r3, #1
+ 253 0034 00F0AC81 		beq	.L37
+ 254              	.L15:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 9
+
+
+ 159:Core/Src/debug.c ****     {
+ 160:Core/Src/debug.c ****         NVRam_Update_Variable();
+ 161:Core/Src/debug.c ****     }
+ 162:Core/Src/debug.c **** }...
+ 255              		.loc 1 162 1 view .LVU36
+ 256 0038 37B0     		add	sp, sp, #220
+ 257              	.LCFI5:
+ 258              		.cfi_remember_state
+ 259              		.cfi_def_cfa_offset 12
+ 260              		@ sp needed
+ 261 003a 30BD     		pop	{r4, r5, pc}
+ 262              	.L36:
+ 263              	.LCFI6:
+ 264              		.cfi_restore_state
+  37:Core/Src/debug.c ****     if((Debug_Rx_Count>3) && (Debug_Rx_buffer[Debug_Rx_Count-4] == '$') && (Debug_Rx_buffer[Debug_R
+ 265              		.loc 1 37 107 discriminator 2 view .LVU37
+ 266 003c DA1E     		subs	r2, r3, #3
+  37:Core/Src/debug.c ****     if((Debug_Rx_Count>3) && (Debug_Rx_buffer[Debug_Rx_Count-4] == '$') && (Debug_Rx_buffer[Debug_R
+ 267              		.loc 1 37 92 discriminator 2 view .LVU38
+ 268 003e 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+  37:Core/Src/debug.c ****     if((Debug_Rx_Count>3) && (Debug_Rx_buffer[Debug_Rx_Count-4] == '$') && (Debug_Rx_buffer[Debug_R
+ 269              		.loc 1 37 73 discriminator 2 view .LVU39
+ 270 0040 242A     		cmp	r2, #36
+ 271 0042 F4D1     		bne	.L16
+  37:Core/Src/debug.c ****     if((Debug_Rx_Count>3) && (Debug_Rx_buffer[Debug_Rx_Count-4] == '$') && (Debug_Rx_buffer[Debug_R
+ 272              		.loc 1 37 153 discriminator 3 view .LVU40
+ 273 0044 023B     		subs	r3, r3, #2
+  37:Core/Src/debug.c ****     if((Debug_Rx_Count>3) && (Debug_Rx_buffer[Debug_Rx_Count-4] == '$') && (Debug_Rx_buffer[Debug_R
+ 274              		.loc 1 37 138 discriminator 3 view .LVU41
+ 275 0046 CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+  37:Core/Src/debug.c ****     if((Debug_Rx_Count>3) && (Debug_Rx_buffer[Debug_Rx_Count-4] == '$') && (Debug_Rx_buffer[Debug_R
+ 276              		.loc 1 37 119 discriminator 3 view .LVU42
+ 277 0048 242B     		cmp	r3, #36
+ 278 004a F0D1     		bne	.L16
+  39:Core/Src/debug.c ****         if((Debug_Rx_buffer[0] == 'S') && (Debug_Rx_buffer[1] == 'N'))
+ 279              		.loc 1 39 9 is_stmt 1 view .LVU43
+  39:Core/Src/debug.c ****         if((Debug_Rx_buffer[0] == 'S') && (Debug_Rx_buffer[1] == 'N'))
+ 280              		.loc 1 39 28 is_stmt 0 view .LVU44
+ 281 004c 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+  39:Core/Src/debug.c ****         if((Debug_Rx_buffer[0] == 'S') && (Debug_Rx_buffer[1] == 'N'))
+ 282              		.loc 1 39 11 view .LVU45
+ 283 004e 532B     		cmp	r3, #83
+ 284 0050 1AD0     		beq	.L38
+ 285              	.L17:
+  57:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'R') && (Debug_Rx_buffer[1] == 'C'))
+ 286              		.loc 1 57 14 is_stmt 1 view .LVU46
+  57:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'R') && (Debug_Rx_buffer[1] == 'C'))
+ 287              		.loc 1 57 16 is_stmt 0 view .LVU47
+ 288 0052 522B     		cmp	r3, #82
+ 289 0054 46D0     		beq	.L39
+ 290              	.L20:
+  70:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'G') && (Debug_Rx_buffer[1] == 'A'))
+ 291              		.loc 1 70 14 is_stmt 1 view .LVU48
+  70:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'G') && (Debug_Rx_buffer[1] == 'A'))
+ 292              		.loc 1 70 16 is_stmt 0 view .LVU49
+ 293 0056 472B     		cmp	r3, #71
+ 294 0058 68D0     		beq	.L40
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 10
+
+
+ 295              	.L22:
+  82:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'G') && (Debug_Rx_buffer[1] == 'O'))
+ 296              		.loc 1 82 14 is_stmt 1 view .LVU50
+  82:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'G') && (Debug_Rx_buffer[1] == 'O'))
+ 297              		.loc 1 82 16 is_stmt 0 view .LVU51
+ 298 005a 472B     		cmp	r3, #71
+ 299 005c 00F08D80 		beq	.L41
+ 300              	.L23:
+  94:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'T') && (Debug_Rx_buffer[1] == 'I'))
+ 301              		.loc 1 94 14 is_stmt 1 view .LVU52
+  94:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'T') && (Debug_Rx_buffer[1] == 'I'))
+ 302              		.loc 1 94 16 is_stmt 0 view .LVU53
+ 303 0060 542B     		cmp	r3, #84
+ 304 0062 00F0B280 		beq	.L42
+ 305              	.L24:
+ 106:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'D') && (Debug_Rx_buffer[1] == 'I'))
+ 306              		.loc 1 106 14 is_stmt 1 view .LVU54
+ 106:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'D') && (Debug_Rx_buffer[1] == 'I'))
+ 307              		.loc 1 106 16 is_stmt 0 view .LVU55
+ 308 0066 442B     		cmp	r3, #68
+ 309 0068 00F0E780 		beq	.L43
+ 310              	.L25:
+ 114:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'N') && (Debug_Rx_buffer[1] == 'D'))
+ 311              		.loc 1 114 14 is_stmt 1 view .LVU56
+ 114:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'N') && (Debug_Rx_buffer[1] == 'D'))
+ 312              		.loc 1 114 16 is_stmt 0 view .LVU57
+ 313 006c 4E2B     		cmp	r3, #78
+ 314 006e DED1     		bne	.L16
+ 114:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'N') && (Debug_Rx_buffer[1] == 'D'))
+ 315              		.loc 1 114 64 discriminator 1 view .LVU58
+ 316 0070 8E4B     		ldr	r3, .L46+4
+ 317 0072 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 114:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'N') && (Debug_Rx_buffer[1] == 'D'))
+ 318              		.loc 1 114 45 discriminator 1 view .LVU59
+ 319 0074 442B     		cmp	r3, #68
+ 320 0076 DAD1     		bne	.L16
+ 321              	.LBB2:
+ 116:Core/Src/debug.c ****             int index = 2;
+ 322              		.loc 1 116 17 view .LVU60
+ 323 0078 0223     		movs	r3, #2
+ 324              	.L27:
+ 325              	.LVL9:
+ 117:Core/Src/debug.c ****             while(1)
+ 326              		.loc 1 117 13 is_stmt 1 view .LVU61
+ 119:Core/Src/debug.c ****                 if(Debug_Rx_buffer[index] == 0x20)
+ 327              		.loc 1 119 17 view .LVU62
+ 119:Core/Src/debug.c ****                 if(Debug_Rx_buffer[index] == 0x20)
+ 328              		.loc 1 119 35 is_stmt 0 view .LVU63
+ 329 007a 8C4A     		ldr	r2, .L46+4
+ 330 007c D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 119:Core/Src/debug.c ****                 if(Debug_Rx_buffer[index] == 0x20)
+ 331              		.loc 1 119 19 view .LVU64
+ 332 007e 202A     		cmp	r2, #32
+ 333 0080 40F04681 		bne	.L26
+ 121:Core/Src/debug.c ****                     index++;
+ 334              		.loc 1 121 21 is_stmt 1 view .LVU65
+ 121:Core/Src/debug.c ****                     index++;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 11
+
+
+ 335              		.loc 1 121 26 is_stmt 0 view .LVU66
+ 336 0084 0133     		adds	r3, r3, #1
+ 337              	.LVL10:
+ 117:Core/Src/debug.c ****             while(1)
+ 338              		.loc 1 117 18 is_stmt 1 view .LVU67
+ 119:Core/Src/debug.c ****                 if(Debug_Rx_buffer[index] == 0x20)
+ 339              		.loc 1 119 19 is_stmt 0 view .LVU68
+ 340 0086 F8E7     		b	.L27
+ 341              	.LVL11:
+ 342              	.L38:
+ 119:Core/Src/debug.c ****                 if(Debug_Rx_buffer[index] == 0x20)
+ 343              		.loc 1 119 19 view .LVU69
+ 344              	.LBE2:
+  39:Core/Src/debug.c ****         if((Debug_Rx_buffer[0] == 'S') && (Debug_Rx_buffer[1] == 'N'))
+ 345              		.loc 1 39 59 discriminator 1 view .LVU70
+ 346 0088 4A78     		ldrb	r2, [r1, #1]	@ zero_extendqisi2
+  39:Core/Src/debug.c ****         if((Debug_Rx_buffer[0] == 'S') && (Debug_Rx_buffer[1] == 'N'))
+ 347              		.loc 1 39 40 discriminator 1 view .LVU71
+ 348 008a 4E2A     		cmp	r2, #78
+ 349 008c E1D1     		bne	.L17
+  41:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[2],"%d %d", &LTE_SN, &LTE_SN_SUB);
+ 350              		.loc 1 41 13 is_stmt 1 view .LVU72
+ 351 008e 894C     		ldr	r4, .L46+12
+ 352 0090 894B     		ldr	r3, .L46+16
+ 353 0092 2246     		mov	r2, r4
+ 354 0094 8949     		ldr	r1, .L46+20
+ 355 0096 8A48     		ldr	r0, .L46+24
+ 356 0098 FFF7FEFF 		bl	sscanf
+ 357              	.LVL12:
+  42:Core/Src/debug.c ****             if(LTE_SN > 999) 
+ 358              		.loc 1 42 13 view .LVU73
+  42:Core/Src/debug.c ****             if(LTE_SN > 999) 
+ 359              		.loc 1 42 23 is_stmt 0 view .LVU74
+ 360 009c 2368     		ldr	r3, [r4]
+  42:Core/Src/debug.c ****             if(LTE_SN > 999) 
+ 361              		.loc 1 42 15 view .LVU75
+ 362 009e B3F57A7F 		cmp	r3, #1000
+ 363 00a2 01D3     		bcc	.L18
+  44:Core/Src/debug.c ****                 LTE_SN = 1;
+ 364              		.loc 1 44 17 is_stmt 1 view .LVU76
+  44:Core/Src/debug.c ****                 LTE_SN = 1;
+ 365              		.loc 1 44 24 is_stmt 0 view .LVU77
+ 366 00a4 0122     		movs	r2, #1
+ 367 00a6 2260     		str	r2, [r4]
+ 368              	.L18:
+  46:Core/Src/debug.c ****             if(LTE_SN_SUB > 999999999) 
+ 369              		.loc 1 46 13 is_stmt 1 view .LVU78
+  46:Core/Src/debug.c ****             if(LTE_SN_SUB > 999999999) 
+ 370              		.loc 1 46 27 is_stmt 0 view .LVU79
+ 371 00a8 834B     		ldr	r3, .L46+16
+ 372 00aa 1A68     		ldr	r2, [r3]
+  46:Core/Src/debug.c ****             if(LTE_SN_SUB > 999999999) 
+ 373              		.loc 1 46 15 view .LVU80
+ 374 00ac 854B     		ldr	r3, .L46+28
+ 375 00ae 9A42     		cmp	r2, r3
+ 376 00b0 02D9     		bls	.L19
+  48:Core/Src/debug.c ****                 LTE_SN_SUB = 0;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 12
+
+
+ 377              		.loc 1 48 17 is_stmt 1 view .LVU81
+  48:Core/Src/debug.c ****                 LTE_SN_SUB = 0;
+ 378              		.loc 1 48 28 is_stmt 0 view .LVU82
+ 379 00b2 814B     		ldr	r3, .L46+16
+ 380 00b4 0022     		movs	r2, #0
+ 381 00b6 1A60     		str	r2, [r3]
+ 382              	.L19:
+  50:Core/Src/debug.c ****             sprintf(tx_buf,">>>SN write to NVRam(%03d-%09d)<<<\n", LTE_SN, LTE_SN_SUB);
+ 383              		.loc 1 50 13 is_stmt 1 view .LVU83
+ 384 00b8 7F4C     		ldr	r4, .L46+16
+ 385 00ba 7E4D     		ldr	r5, .L46+12
+ 386 00bc 2368     		ldr	r3, [r4]
+ 387 00be 2A68     		ldr	r2, [r5]
+ 388 00c0 8149     		ldr	r1, .L46+32
+ 389 00c2 0AA8     		add	r0, sp, #40
+ 390 00c4 FFF7FEFF 		bl	sprintf
+ 391              	.LVL13:
+  51:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+ 392              		.loc 1 51 13 view .LVU84
+ 393 00c8 0AA8     		add	r0, sp, #40
+ 394 00ca FFF7FEFF 		bl	Debug_Message_Transmit
+ 395              	.LVL14:
+  52:Core/Src/debug.c ****             NVRAM_Block[NVRAM_SN] = LTE_SN;
+ 396              		.loc 1 52 13 view .LVU85
+  52:Core/Src/debug.c ****             NVRAM_Block[NVRAM_SN] = LTE_SN;
+ 397              		.loc 1 52 35 is_stmt 0 view .LVU86
+ 398 00ce 7F4B     		ldr	r3, .L46+36
+ 399 00d0 2A68     		ldr	r2, [r5]
+ 400 00d2 1A60     		str	r2, [r3]
+  53:Core/Src/debug.c ****             NVRAM_Block[NVRAM_SN_SUB] = LTE_SN_SUB;
+ 401              		.loc 1 53 13 is_stmt 1 view .LVU87
+  53:Core/Src/debug.c ****             NVRAM_Block[NVRAM_SN_SUB] = LTE_SN_SUB;
+ 402              		.loc 1 53 39 is_stmt 0 view .LVU88
+ 403 00d4 2268     		ldr	r2, [r4]
+ 404 00d6 5A60     		str	r2, [r3, #4]
+  54:Core/Src/debug.c ****             Debug_Clear_Buffer();
+ 405              		.loc 1 54 13 is_stmt 1 view .LVU89
+ 406 00d8 FFF7FEFF 		bl	Debug_Clear_Buffer
+ 407              	.LVL15:
+  55:Core/Src/debug.c ****             Debug_Write_Request = 1;
+ 408              		.loc 1 55 13 view .LVU90
+  55:Core/Src/debug.c ****             Debug_Write_Request = 1;
+ 409              		.loc 1 55 33 is_stmt 0 view .LVU91
+ 410 00dc 744B     		ldr	r3, .L46+8
+ 411 00de 0122     		movs	r2, #1
+ 412 00e0 1A70     		strb	r2, [r3]
+ 413 00e2 A4E7     		b	.L16
+ 414              	.L39:
+  57:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'R') && (Debug_Rx_buffer[1] == 'C'))
+ 415              		.loc 1 57 64 discriminator 1 view .LVU92
+ 416 00e4 714A     		ldr	r2, .L46+4
+ 417 00e6 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+  57:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'R') && (Debug_Rx_buffer[1] == 'C'))
+ 418              		.loc 1 57 45 discriminator 1 view .LVU93
+ 419 00e8 432A     		cmp	r2, #67
+ 420 00ea B4D1     		bne	.L20
+  59:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[2],"%d", &Device_Report_Cycle);
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 13
+
+
+ 421              		.loc 1 59 13 is_stmt 1 view .LVU94
+ 422 00ec 784C     		ldr	r4, .L46+40
+ 423 00ee 2246     		mov	r2, r4
+ 424 00f0 7849     		ldr	r1, .L46+44
+ 425 00f2 7348     		ldr	r0, .L46+24
+ 426 00f4 FFF7FEFF 		bl	sscanf
+ 427              	.LVL16:
+  60:Core/Src/debug.c ****             if(Device_Report_Cycle > REPORT_TIME_MAX) 
+ 428              		.loc 1 60 13 view .LVU95
+  60:Core/Src/debug.c ****             if(Device_Report_Cycle > REPORT_TIME_MAX) 
+ 429              		.loc 1 60 36 is_stmt 0 view .LVU96
+ 430 00f8 2268     		ldr	r2, [r4]
+  60:Core/Src/debug.c ****             if(Device_Report_Cycle > REPORT_TIME_MAX) 
+ 431              		.loc 1 60 15 view .LVU97
+ 432 00fa 45F26043 		movw	r3, #21600
+ 433 00fe 9A42     		cmp	r2, r3
+ 434 0100 02D9     		bls	.L21
+  62:Core/Src/debug.c ****                 Device_Report_Cycle = REPORT_TIME_MAX;
+ 435              		.loc 1 62 17 is_stmt 1 view .LVU98
+  62:Core/Src/debug.c ****                 Device_Report_Cycle = REPORT_TIME_MAX;
+ 436              		.loc 1 62 37 is_stmt 0 view .LVU99
+ 437 0102 45F26042 		movw	r2, #21600
+ 438 0106 2260     		str	r2, [r4]
+ 439              	.L21:
+  64:Core/Src/debug.c ****             sprintf(tx_buf,">>>Report Cycle write to NVRam(%d sec)<<<\n", Device_Report_Cycle);
+ 440              		.loc 1 64 13 is_stmt 1 view .LVU100
+ 441 0108 714C     		ldr	r4, .L46+40
+ 442 010a 2268     		ldr	r2, [r4]
+ 443 010c 7249     		ldr	r1, .L46+48
+ 444 010e 0AA8     		add	r0, sp, #40
+ 445 0110 FFF7FEFF 		bl	sprintf
+ 446              	.LVL17:
+  65:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+ 447              		.loc 1 65 13 view .LVU101
+ 448 0114 0AA8     		add	r0, sp, #40
+ 449 0116 FFF7FEFF 		bl	Debug_Message_Transmit
+ 450              	.LVL18:
+  66:Core/Src/debug.c ****             NVRAM_Block[NVRAM_REPORT_CYCLE] = Device_Report_Cycle;
+ 451              		.loc 1 66 13 view .LVU102
+  66:Core/Src/debug.c ****             NVRAM_Block[NVRAM_REPORT_CYCLE] = Device_Report_Cycle;
+ 452              		.loc 1 66 45 is_stmt 0 view .LVU103
+ 453 011a 2268     		ldr	r2, [r4]
+ 454 011c 6B4B     		ldr	r3, .L46+36
+ 455 011e 9A61     		str	r2, [r3, #24]
+  67:Core/Src/debug.c ****             Debug_Clear_Buffer();
+ 456              		.loc 1 67 13 is_stmt 1 view .LVU104
+ 457 0120 FFF7FEFF 		bl	Debug_Clear_Buffer
+ 458              	.LVL19:
+  68:Core/Src/debug.c ****             Debug_Write_Request = 1;
+ 459              		.loc 1 68 13 view .LVU105
+  68:Core/Src/debug.c ****             Debug_Write_Request = 1;
+ 460              		.loc 1 68 33 is_stmt 0 view .LVU106
+ 461 0124 624B     		ldr	r3, .L46+8
+ 462 0126 0122     		movs	r2, #1
+ 463 0128 1A70     		strb	r2, [r3]
+ 464 012a 80E7     		b	.L16
+ 465              	.L40:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 14
+
+
+  70:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'G') && (Debug_Rx_buffer[1] == 'A'))
+ 466              		.loc 1 70 64 discriminator 1 view .LVU107
+ 467 012c 5F4A     		ldr	r2, .L46+4
+ 468 012e 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+  70:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'G') && (Debug_Rx_buffer[1] == 'A'))
+ 469              		.loc 1 70 45 discriminator 1 view .LVU108
+ 470 0130 412A     		cmp	r2, #65
+ 471 0132 92D1     		bne	.L22
+  72:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[2],"%d", &LatLoc);
+ 472              		.loc 1 72 13 is_stmt 1 view .LVU109
+ 473 0134 09AA     		add	r2, sp, #36
+ 474 0136 6749     		ldr	r1, .L46+44
+ 475 0138 6148     		ldr	r0, .L46+24
+ 476 013a FFF7FEFF 		bl	sscanf
+ 477              	.LVL20:
+  73:Core/Src/debug.c ****             LTE_GPS_LAT_I = LatLoc / 100000;
+ 478              		.loc 1 73 13 view .LVU110
+  73:Core/Src/debug.c ****             LTE_GPS_LAT_I = LatLoc / 100000;
+ 479              		.loc 1 73 36 is_stmt 0 view .LVU111
+ 480 013e 0998     		ldr	r0, [sp, #36]
+ 481 0140 4209     		lsrs	r2, r0, #5
+ 482 0142 664B     		ldr	r3, .L46+52
+ 483 0144 A3FB0232 		umull	r3, r2, r3, r2
+ 484 0148 D109     		lsrs	r1, r2, #7
+  73:Core/Src/debug.c ****             LTE_GPS_LAT_I = LatLoc / 100000;
+ 485              		.loc 1 73 27 view .LVU112
+ 486 014a 0A46     		mov	r2, r1
+ 487 014c 644B     		ldr	r3, .L46+56
+ 488 014e 1980     		strh	r1, [r3]	@ movhi
+  74:Core/Src/debug.c ****             LTE_GPS_LAT_D = LatLoc % 100000;
+ 489              		.loc 1 74 13 is_stmt 1 view .LVU113
+  74:Core/Src/debug.c ****             LTE_GPS_LAT_D = LatLoc % 100000;
+ 490              		.loc 1 74 36 is_stmt 0 view .LVU114
+ 491 0150 644B     		ldr	r3, .L46+60
+ 492 0152 03FB1103 		mls	r3, r3, r1, r0
+  74:Core/Src/debug.c ****             LTE_GPS_LAT_D = LatLoc % 100000;
+ 493              		.loc 1 74 27 view .LVU115
+ 494 0156 6449     		ldr	r1, .L46+64
+ 495 0158 0B60     		str	r3, [r1]
+  75:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LATITUDE_I] = LTE_GPS_LAT_I;
+ 496              		.loc 1 75 13 is_stmt 1 view .LVU116
+  75:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LATITUDE_I] = LTE_GPS_LAT_I;
+ 497              		.loc 1 75 43 is_stmt 0 view .LVU117
+ 498 015a 5C49     		ldr	r1, .L46+36
+ 499 015c 8A60     		str	r2, [r1, #8]
+  76:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LATITUDE_D] = LTE_GPS_LAT_D;
+ 500              		.loc 1 76 13 is_stmt 1 view .LVU118
+  76:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LATITUDE_D] = LTE_GPS_LAT_D;
+ 501              		.loc 1 76 43 is_stmt 0 view .LVU119
+ 502 015e CB60     		str	r3, [r1, #12]
+  77:Core/Src/debug.c ****             sprintf(tx_buf,">>>Latitude write to NVRam(%d sec)<<<\n", LTE_GPS_LAT_I);
+ 503              		.loc 1 77 13 is_stmt 1 view .LVU120
+ 504 0160 6249     		ldr	r1, .L46+68
+ 505 0162 0AA8     		add	r0, sp, #40
+ 506 0164 FFF7FEFF 		bl	sprintf
+ 507              	.LVL21:
+  78:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 15
+
+
+ 508              		.loc 1 78 13 view .LVU121
+ 509 0168 0AA8     		add	r0, sp, #40
+ 510 016a FFF7FEFF 		bl	Debug_Message_Transmit
+ 511              	.LVL22:
+  79:Core/Src/debug.c ****             Debug_Clear_Buffer();
+ 512              		.loc 1 79 13 view .LVU122
+ 513 016e FFF7FEFF 		bl	Debug_Clear_Buffer
+ 514              	.LVL23:
+  80:Core/Src/debug.c ****             Debug_Write_Request = 1;      
+ 515              		.loc 1 80 13 view .LVU123
+  80:Core/Src/debug.c ****             Debug_Write_Request = 1;      
+ 516              		.loc 1 80 33 is_stmt 0 view .LVU124
+ 517 0172 4F4B     		ldr	r3, .L46+8
+ 518 0174 0122     		movs	r2, #1
+ 519 0176 1A70     		strb	r2, [r3]
+ 520 0178 59E7     		b	.L16
+ 521              	.L41:
+  82:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'G') && (Debug_Rx_buffer[1] == 'O'))
+ 522              		.loc 1 82 64 discriminator 1 view .LVU125
+ 523 017a 4C4A     		ldr	r2, .L46+4
+ 524 017c 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+  82:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'G') && (Debug_Rx_buffer[1] == 'O'))
+ 525              		.loc 1 82 45 discriminator 1 view .LVU126
+ 526 017e 4F2A     		cmp	r2, #79
+ 527 0180 7FF46EAF 		bne	.L23
+  84:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[2],"%d", &LongLoc);
+ 528              		.loc 1 84 13 is_stmt 1 view .LVU127
+ 529 0184 08AA     		add	r2, sp, #32
+ 530 0186 5349     		ldr	r1, .L46+44
+ 531 0188 4D48     		ldr	r0, .L46+24
+ 532 018a FFF7FEFF 		bl	sscanf
+ 533              	.LVL24:
+  85:Core/Src/debug.c ****             LTE_GPS_LONG_I = LongLoc / 100000;
+ 534              		.loc 1 85 13 view .LVU128
+  85:Core/Src/debug.c ****             LTE_GPS_LONG_I = LongLoc / 100000;
+ 535              		.loc 1 85 38 is_stmt 0 view .LVU129
+ 536 018e 0898     		ldr	r0, [sp, #32]
+ 537 0190 4209     		lsrs	r2, r0, #5
+ 538 0192 524B     		ldr	r3, .L46+52
+ 539 0194 A3FB0232 		umull	r3, r2, r3, r2
+ 540 0198 D109     		lsrs	r1, r2, #7
+  85:Core/Src/debug.c ****             LTE_GPS_LONG_I = LongLoc / 100000;
+ 541              		.loc 1 85 28 view .LVU130
+ 542 019a 0A46     		mov	r2, r1
+ 543 019c 544B     		ldr	r3, .L46+72
+ 544 019e 1980     		strh	r1, [r3]	@ movhi
+  86:Core/Src/debug.c ****             LTE_GPS_LONG_D = LongLoc % 100000;
+ 545              		.loc 1 86 13 is_stmt 1 view .LVU131
+  86:Core/Src/debug.c ****             LTE_GPS_LONG_D = LongLoc % 100000;
+ 546              		.loc 1 86 38 is_stmt 0 view .LVU132
+ 547 01a0 504B     		ldr	r3, .L46+60
+ 548 01a2 03FB1103 		mls	r3, r3, r1, r0
+  86:Core/Src/debug.c ****             LTE_GPS_LONG_D = LongLoc % 100000;
+ 549              		.loc 1 86 28 view .LVU133
+ 550 01a6 5349     		ldr	r1, .L46+76
+ 551 01a8 0B60     		str	r3, [r1]
+  87:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LONGITUDE_I] = LTE_GPS_LONG_I;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 16
+
+
+ 552              		.loc 1 87 13 is_stmt 1 view .LVU134
+  87:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LONGITUDE_I] = LTE_GPS_LONG_I;
+ 553              		.loc 1 87 44 is_stmt 0 view .LVU135
+ 554 01aa 4849     		ldr	r1, .L46+36
+ 555 01ac 0A61     		str	r2, [r1, #16]
+  88:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LONGITUDE_D] = LTE_GPS_LONG_D;
+ 556              		.loc 1 88 13 is_stmt 1 view .LVU136
+  88:Core/Src/debug.c ****             NVRAM_Block[NVRAM_LONGITUDE_D] = LTE_GPS_LONG_D;
+ 557              		.loc 1 88 44 is_stmt 0 view .LVU137
+ 558 01ae 4B61     		str	r3, [r1, #20]
+  89:Core/Src/debug.c ****             sprintf(tx_buf,">>>Longitude write to NVRam(%d sec)<<<\n", LTE_GPS_LONG_I);
+ 559              		.loc 1 89 13 is_stmt 1 view .LVU138
+ 560 01b0 5149     		ldr	r1, .L46+80
+ 561 01b2 0AA8     		add	r0, sp, #40
+ 562 01b4 FFF7FEFF 		bl	sprintf
+ 563              	.LVL25:
+  90:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+ 564              		.loc 1 90 13 view .LVU139
+ 565 01b8 0AA8     		add	r0, sp, #40
+ 566 01ba FFF7FEFF 		bl	Debug_Message_Transmit
+ 567              	.LVL26:
+  91:Core/Src/debug.c ****             Debug_Clear_Buffer();
+ 568              		.loc 1 91 13 view .LVU140
+ 569 01be FFF7FEFF 		bl	Debug_Clear_Buffer
+ 570              	.LVL27:
+  92:Core/Src/debug.c ****             Debug_Write_Request = 1;
+ 571              		.loc 1 92 13 view .LVU141
+  92:Core/Src/debug.c ****             Debug_Write_Request = 1;
+ 572              		.loc 1 92 33 is_stmt 0 view .LVU142
+ 573 01c2 3B4B     		ldr	r3, .L46+8
+ 574 01c4 0122     		movs	r2, #1
+ 575 01c6 1A70     		strb	r2, [r3]
+ 576 01c8 31E7     		b	.L16
+ 577              	.L42:
+  94:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'T') && (Debug_Rx_buffer[1] == 'I'))
+ 578              		.loc 1 94 64 discriminator 1 view .LVU143
+ 579 01ca 384A     		ldr	r2, .L46+4
+ 580 01cc 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+  94:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'T') && (Debug_Rx_buffer[1] == 'I'))
+ 581              		.loc 1 94 45 discriminator 1 view .LVU144
+ 582 01ce 492A     		cmp	r2, #73
+ 583 01d0 7FF449AF 		bne	.L24
+  96:Core/Src/debug.c ****             HAL_RTC_GetTime(&hrtc, &Time, FORMAT_BIN);
+ 584              		.loc 1 96 13 is_stmt 1 view .LVU145
+ 585 01d4 494C     		ldr	r4, .L46+84
+ 586 01d6 0022     		movs	r2, #0
+ 587 01d8 31A9     		add	r1, sp, #196
+ 588 01da 2046     		mov	r0, r4
+ 589 01dc FFF7FEFF 		bl	HAL_RTC_GetTime
+ 590              	.LVL28:
+  97:Core/Src/debug.c ****             HAL_RTC_GetDate(&hrtc, &Date, FORMAT_BIN);
+ 591              		.loc 1 97 13 view .LVU146
+ 592 01e0 0022     		movs	r2, #0
+ 593 01e2 30A9     		add	r1, sp, #192
+ 594 01e4 2046     		mov	r0, r4
+ 595 01e6 FFF7FEFF 		bl	HAL_RTC_GetDate
+ 596              	.LVL29:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 17
+
+
+  98:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[2],"%d:%d:%d", &Time.Hours, &Time.Minutes, &Time.Seconds);
+ 597              		.loc 1 98 13 view .LVU147
+ 598 01ea 0DF1C603 		add	r3, sp, #198
+ 599 01ee 0093     		str	r3, [sp]
+ 600 01f0 0DF1C503 		add	r3, sp, #197
+ 601 01f4 31AA     		add	r2, sp, #196
+ 602 01f6 4249     		ldr	r1, .L46+88
+ 603 01f8 3148     		ldr	r0, .L46+24
+ 604 01fa FFF7FEFF 		bl	sscanf
+ 605              	.LVL30:
+  99:Core/Src/debug.c ****             HAL_RTC_SetTime(&hrtc, &Time, FORMAT_BIN);
+ 606              		.loc 1 99 13 view .LVU148
+ 607 01fe 0022     		movs	r2, #0
+ 608 0200 31A9     		add	r1, sp, #196
+ 609 0202 2046     		mov	r0, r4
+ 610 0204 FFF7FEFF 		bl	HAL_RTC_SetTime
+ 611              	.LVL31:
+ 100:Core/Src/debug.c ****             HAL_RTC_SetDate(&hrtc, &Date, FORMAT_BIN);
+ 612              		.loc 1 100 13 view .LVU149
+ 613 0208 0022     		movs	r2, #0
+ 614 020a 30A9     		add	r1, sp, #192
+ 615 020c 2046     		mov	r0, r4
+ 616 020e FFF7FEFF 		bl	HAL_RTC_SetDate
+ 617              	.LVL32:
+ 101:Core/Src/debug.c ****             sprintf(tx_buf,"Set Time %02d:%02d:%02d\n",Time.Hours,Time.Minutes,Time.Seconds);
+ 618              		.loc 1 101 13 view .LVU150
+ 101:Core/Src/debug.c ****             sprintf(tx_buf,"Set Time %02d:%02d:%02d\n",Time.Hours,Time.Minutes,Time.Seconds);
+ 619              		.loc 1 101 84 is_stmt 0 view .LVU151
+ 620 0212 9DF8C630 		ldrb	r3, [sp, #198]	@ zero_extendqisi2
+ 101:Core/Src/debug.c ****             sprintf(tx_buf,"Set Time %02d:%02d:%02d\n",Time.Hours,Time.Minutes,Time.Seconds);
+ 621              		.loc 1 101 13 view .LVU152
+ 622 0216 0093     		str	r3, [sp]
+ 623 0218 9DF8C530 		ldrb	r3, [sp, #197]	@ zero_extendqisi2
+ 624 021c 9DF8C420 		ldrb	r2, [sp, #196]	@ zero_extendqisi2
+ 625 0220 3849     		ldr	r1, .L46+92
+ 626 0222 0AA8     		add	r0, sp, #40
+ 627 0224 FFF7FEFF 		bl	sprintf
+ 628              	.LVL33:
+ 102:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+ 629              		.loc 1 102 13 is_stmt 1 view .LVU153
+ 630 0228 0AA8     		add	r0, sp, #40
+ 631 022a FFF7FEFF 		bl	Debug_Message_Transmit
+ 632              	.LVL34:
+ 103:Core/Src/debug.c ****             Debug_Clear_Buffer();
+ 633              		.loc 1 103 13 view .LVU154
+ 634 022e FFF7FEFF 		bl	Debug_Clear_Buffer
+ 635              	.LVL35:
+ 104:Core/Src/debug.c ****             Debug_Write_Request = 0;
+ 636              		.loc 1 104 13 view .LVU155
+ 104:Core/Src/debug.c ****             Debug_Write_Request = 0;
+ 637              		.loc 1 104 33 is_stmt 0 view .LVU156
+ 638 0232 1F4B     		ldr	r3, .L46+8
+ 639 0234 0022     		movs	r2, #0
+ 640 0236 1A70     		strb	r2, [r3]
+ 641 0238 F9E6     		b	.L16
+ 642              	.L43:
+ 106:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'D') && (Debug_Rx_buffer[1] == 'I'))
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 18
+
+
+ 643              		.loc 1 106 64 discriminator 1 view .LVU157
+ 644 023a 1C4A     		ldr	r2, .L46+4
+ 645 023c 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+ 106:Core/Src/debug.c ****         else if((Debug_Rx_buffer[0] == 'D') && (Debug_Rx_buffer[1] == 'I'))
+ 646              		.loc 1 106 45 discriminator 1 view .LVU158
+ 647 023e 492A     		cmp	r2, #73
+ 648 0240 7FF414AF 		bne	.L25
+ 108:Core/Src/debug.c ****             sprintf(tx_buf,"Serial Number : %03d-%09d\nLatitude      : %d.%05d\nLongitude     : %d.
+ 649              		.loc 1 108 13 is_stmt 1 view .LVU159
+ 650 0244 224B     		ldr	r3, .L46+40
+ 651 0246 1A68     		ldr	r2, [r3]
+ 109:Core/Src/debug.c ****                 LTE_SN,LTE_SN_SUB,LTE_GPS_LAT_I,LTE_GPS_LAT_D,LTE_GPS_LONG_I,LTE_GPS_LONG_D,Device_
+ 652              		.loc 1 109 138 is_stmt 0 view .LVU160
+ 653 0248 4FF46163 		mov	r3, #3600
+ 654 024c B2FBF3F0 		udiv	r0, r2, r3
+ 655 0250 03FB1023 		mls	r3, r3, r0, r2
+ 108:Core/Src/debug.c ****             sprintf(tx_buf,"Serial Number : %03d-%09d\nLatitude      : %d.%05d\nLongitude     : %d.
+ 656              		.loc 1 108 13 view .LVU161
+ 657 0254 2C49     		ldr	r1, .L46+96
+ 658 0256 0791     		str	r1, [sp, #28]
+ 659 0258 3C21     		movs	r1, #60
+ 660 025a B2FBF1F4 		udiv	r4, r2, r1
+ 661 025e 01FB1422 		mls	r2, r1, r4, r2
+ 662 0262 0692     		str	r2, [sp, #24]
+ 663 0264 B3FBF1F3 		udiv	r3, r3, r1
+ 664 0268 0593     		str	r3, [sp, #20]
+ 665 026a 0490     		str	r0, [sp, #16]
+ 666 026c 214B     		ldr	r3, .L46+76
+ 667 026e 1B68     		ldr	r3, [r3]
+ 668 0270 0393     		str	r3, [sp, #12]
+ 669 0272 1F4B     		ldr	r3, .L46+72
+ 670 0274 1B88     		ldrh	r3, [r3]
+ 671 0276 0293     		str	r3, [sp, #8]
+ 672 0278 1B4B     		ldr	r3, .L46+64
+ 673 027a 1B68     		ldr	r3, [r3]
+ 674 027c 0193     		str	r3, [sp, #4]
+ 675 027e 184B     		ldr	r3, .L46+56
+ 676 0280 1B88     		ldrh	r3, [r3]
+ 677 0282 0093     		str	r3, [sp]
+ 678 0284 0C4B     		ldr	r3, .L46+16
+ 679 0286 1B68     		ldr	r3, [r3]
+ 680 0288 0A4A     		ldr	r2, .L46+12
+ 681 028a 1268     		ldr	r2, [r2]
+ 682 028c 1F49     		ldr	r1, .L46+100
+ 683 028e 0AA8     		add	r0, sp, #40
+ 684 0290 FFF7FEFF 		bl	sprintf
+ 685              	.LVL36:
+ 110:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+ 686              		.loc 1 110 13 is_stmt 1 view .LVU162
+ 687 0294 0AA8     		add	r0, sp, #40
+ 688 0296 FFF7FEFF 		bl	Debug_Message_Transmit
+ 689              	.LVL37:
+ 111:Core/Src/debug.c ****             Debug_Clear_Buffer();
+ 690              		.loc 1 111 13 view .LVU163
+ 691 029a FFF7FEFF 		bl	Debug_Clear_Buffer
+ 692              	.LVL38:
+ 112:Core/Src/debug.c ****             Debug_Write_Request = 0;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 19
+
+
+ 693              		.loc 1 112 13 view .LVU164
+ 112:Core/Src/debug.c ****             Debug_Write_Request = 0;
+ 694              		.loc 1 112 33 is_stmt 0 view .LVU165
+ 695 029e 044B     		ldr	r3, .L46+8
+ 696 02a0 0022     		movs	r2, #0
+ 697 02a2 1A70     		strb	r2, [r3]
+ 698 02a4 C3E6     		b	.L16
+ 699              	.L47:
+ 700 02a6 00BF     		.align	2
+ 701              	.L46:
+ 702 02a8 00000000 		.word	.LANCHOR1
+ 703 02ac 00000000 		.word	.LANCHOR2
+ 704 02b0 00000000 		.word	.LANCHOR3
+ 705 02b4 00000000 		.word	LTE_SN
+ 706 02b8 00000000 		.word	LTE_SN_SUB
+ 707 02bc 00000000 		.word	.LC1
+ 708 02c0 02000000 		.word	.LANCHOR2+2
+ 709 02c4 FFC99A3B 		.word	999999999
+ 710 02c8 08000000 		.word	.LC2
+ 711 02cc 00000000 		.word	NVRAM_Block
+ 712 02d0 00000000 		.word	Device_Report_Cycle
+ 713 02d4 2C000000 		.word	.LC3
+ 714 02d8 30000000 		.word	.LC4
+ 715 02dc C55A7C0A 		.word	175921861
+ 716 02e0 00000000 		.word	LTE_GPS_LAT_I
+ 717 02e4 A0860100 		.word	100000
+ 718 02e8 00000000 		.word	LTE_GPS_LAT_D
+ 719 02ec 5C000000 		.word	.LC5
+ 720 02f0 00000000 		.word	LTE_GPS_LONG_I
+ 721 02f4 00000000 		.word	LTE_GPS_LONG_D
+ 722 02f8 84000000 		.word	.LC6
+ 723 02fc 00000000 		.word	hrtc
+ 724 0300 AC000000 		.word	.LC7
+ 725 0304 B8000000 		.word	.LC8
+ 726 0308 00000000 		.word	NVRAM_Domain
+ 727 030c D4000000 		.word	.LC9
+ 728              	.LVL39:
+ 729              	.L26:
+ 730              	.LBB6:
+ 128:Core/Src/debug.c ****             sscanf(&Debug_Rx_buffer[index],"%[^$]", NVRAM_Domain);
+ 731              		.loc 1 128 13 is_stmt 1 view .LVU166
+ 732 0310 214A     		ldr	r2, .L48
+ 733 0312 2249     		ldr	r1, .L48+4
+ 734 0314 2248     		ldr	r0, .L48+8
+ 735 0316 1844     		add	r0, r0, r3
+ 736 0318 FFF7FEFF 		bl	sscanf
+ 737              	.LVL40:
+ 130:Core/Src/debug.c ****             index = 0;
+ 738              		.loc 1 130 13 view .LVU167
+ 130:Core/Src/debug.c ****             index = 0;
+ 739              		.loc 1 130 19 is_stmt 0 view .LVU168
+ 740 031c 0023     		movs	r3, #0
+ 741              	.LVL41:
+ 742              	.L31:
+ 131:Core/Src/debug.c ****             while(1)
+ 743              		.loc 1 131 13 is_stmt 1 view .LVU169
+ 133:Core/Src/debug.c ****                 if(NVRAM_Domain[index] == 0x20)
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 20
+
+
+ 744              		.loc 1 133 17 view .LVU170
+ 133:Core/Src/debug.c ****                 if(NVRAM_Domain[index] == 0x20)
+ 745              		.loc 1 133 32 is_stmt 0 view .LVU171
+ 746 031e 1E4A     		ldr	r2, .L48
+ 747 0320 D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 133:Core/Src/debug.c ****                 if(NVRAM_Domain[index] == 0x20)
+ 748              		.loc 1 133 19 view .LVU172
+ 749 0322 202A     		cmp	r2, #32
+ 750 0324 02D0     		beq	.L44
+ 139:Core/Src/debug.c ****                 if(NVRAM_Domain[index] == 0x00)
+ 751              		.loc 1 139 17 is_stmt 1 view .LVU173
+ 139:Core/Src/debug.c ****                 if(NVRAM_Domain[index] == 0x00)
+ 752              		.loc 1 139 19 is_stmt 0 view .LVU174
+ 753 0326 22B1     		cbz	r2, .L30
+ 143:Core/Src/debug.c ****                 index++;
+ 754              		.loc 1 143 17 is_stmt 1 view .LVU175
+ 143:Core/Src/debug.c ****                 index++;
+ 755              		.loc 1 143 22 is_stmt 0 view .LVU176
+ 756 0328 0133     		adds	r3, r3, #1
+ 757              	.LVL42:
+ 131:Core/Src/debug.c ****             while(1)
+ 758              		.loc 1 131 18 is_stmt 1 view .LVU177
+ 133:Core/Src/debug.c ****                 if(NVRAM_Domain[index] == 0x20)
+ 759              		.loc 1 133 19 is_stmt 0 view .LVU178
+ 760 032a F8E7     		b	.L31
+ 761              	.L44:
+ 135:Core/Src/debug.c ****                     NVRAM_Domain[index] = 0x00;
+ 762              		.loc 1 135 21 is_stmt 1 view .LVU179
+ 135:Core/Src/debug.c ****                     NVRAM_Domain[index] = 0x00;
+ 763              		.loc 1 135 41 is_stmt 0 view .LVU180
+ 764 032c 1A4A     		ldr	r2, .L48
+ 765 032e 0021     		movs	r1, #0
+ 766 0330 D154     		strb	r1, [r2, r3]
+ 136:Core/Src/debug.c ****                     break;
+ 767              		.loc 1 136 21 is_stmt 1 view .LVU181
+ 768              	.L30:
+ 130:Core/Src/debug.c ****             index = 0;
+ 769              		.loc 1 130 19 is_stmt 0 discriminator 1 view .LVU182
+ 770 0332 0022     		movs	r2, #0
+ 771 0334 17E0     		b	.L29
+ 772              	.LVL43:
+ 773              	.L32:
+ 774              	.LBB3:
+ 775              	.LBB4:
+ 147:Core/Src/debug.c ****                 int db_index = NVRAM_DOMAIN + (i / 4);
+ 776              		.loc 1 147 50 discriminator 3 view .LVU183
+ 777 0336 9B10     		asrs	r3, r3, #2
+ 147:Core/Src/debug.c ****                 int db_index = NVRAM_DOMAIN + (i / 4);
+ 778              		.loc 1 147 21 discriminator 3 view .LVU184
+ 779 0338 03F10F00 		add	r0, r3, #15
+ 780              	.LVL44:
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 781              		.loc 1 148 17 is_stmt 1 discriminator 3 view .LVU185
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 782              		.loc 1 148 56 is_stmt 0 discriminator 3 view .LVU186
+ 783 033c D31C     		adds	r3, r2, #3
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 21
+
+
+ 784              		.loc 1 148 54 discriminator 3 view .LVU187
+ 785 033e 1649     		ldr	r1, .L48
+ 786 0340 11F803C0 		ldrb	ip, [r1, r3]	@ zero_extendqisi2
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 787              		.loc 1 148 84 discriminator 3 view .LVU188
+ 788 0344 931C     		adds	r3, r2, #2
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 789              		.loc 1 148 82 discriminator 3 view .LVU189
+ 790 0346 CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 791              		.loc 1 148 88 discriminator 3 view .LVU190
+ 792 0348 1B04     		lsls	r3, r3, #16
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 793              		.loc 1 148 67 discriminator 3 view .LVU191
+ 794 034a 03EB0C63 		add	r3, r3, ip, lsl #24
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 795              		.loc 1 148 112 discriminator 3 view .LVU192
+ 796 034e 02F1010C 		add	ip, r2, #1
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 797              		.loc 1 148 110 discriminator 3 view .LVU193
+ 798 0352 11F80CC0 		ldrb	ip, [r1, ip]	@ zero_extendqisi2
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 799              		.loc 1 148 95 discriminator 3 view .LVU194
+ 800 0356 03EB0C23 		add	r3, r3, ip, lsl #8
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 801              		.loc 1 148 136 discriminator 3 view .LVU195
+ 802 035a 895C     		ldrb	r1, [r1, r2]	@ zero_extendqisi2
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 803              		.loc 1 148 122 discriminator 3 view .LVU196
+ 804 035c 0B44     		add	r3, r3, r1
+ 148:Core/Src/debug.c ****                 NVRAM_Block[db_index] = (NVRAM_Domain[i+3] << 24) + (NVRAM_Domain[i+2] << 16) + (NV
+ 805              		.loc 1 148 39 discriminator 3 view .LVU197
+ 806 035e 1149     		ldr	r1, .L48+12
+ 807 0360 41F82030 		str	r3, [r1, r0, lsl #2]
+ 808              	.LBE4:
+ 145:Core/Src/debug.c ****             for(int i = 0; i < MQTT_DOMAIN_NAME_SIZE; i += 4)
+ 809              		.loc 1 145 55 is_stmt 1 discriminator 3 view .LVU198
+ 145:Core/Src/debug.c ****             for(int i = 0; i < MQTT_DOMAIN_NAME_SIZE; i += 4)
+ 810              		.loc 1 145 57 is_stmt 0 discriminator 3 view .LVU199
+ 811 0364 0432     		adds	r2, r2, #4
+ 812              	.LVL45:
+ 813              	.L29:
+ 145:Core/Src/debug.c ****             for(int i = 0; i < MQTT_DOMAIN_NAME_SIZE; i += 4)
+ 814              		.loc 1 145 28 is_stmt 1 discriminator 1 view .LVU200
+ 145:Core/Src/debug.c ****             for(int i = 0; i < MQTT_DOMAIN_NAME_SIZE; i += 4)
+ 815              		.loc 1 145 13 is_stmt 0 discriminator 1 view .LVU201
+ 816 0366 132A     		cmp	r2, #19
+ 817 0368 04DC     		bgt	.L45
+ 818              	.LBB5:
+ 147:Core/Src/debug.c ****                 int db_index = NVRAM_DOMAIN + (i / 4);
+ 819              		.loc 1 147 17 is_stmt 1 discriminator 3 view .LVU202
+ 147:Core/Src/debug.c ****                 int db_index = NVRAM_DOMAIN + (i / 4);
+ 820              		.loc 1 147 50 is_stmt 0 discriminator 3 view .LVU203
+ 821 036a 1346     		mov	r3, r2
+ 822 036c 002A     		cmp	r2, #0
+ 823 036e E2DA     		bge	.L32
+ 824 0370 D31C     		adds	r3, r2, #3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 22
+
+
+ 825 0372 E0E7     		b	.L32
+ 826              	.L45:
+ 827              	.LBE5:
+ 828              	.LBE3:
+ 150:Core/Src/debug.c ****             sprintf(tx_buf,">>>Domain name write to NVRam(%s)<<<\n", NVRAM_Domain);
+ 829              		.loc 1 150 13 is_stmt 1 view .LVU204
+ 830 0374 084A     		ldr	r2, .L48
+ 831              	.LVL46:
+ 150:Core/Src/debug.c ****             sprintf(tx_buf,">>>Domain name write to NVRam(%s)<<<\n", NVRAM_Domain);
+ 832              		.loc 1 150 13 is_stmt 0 view .LVU205
+ 833 0376 0C49     		ldr	r1, .L48+16
+ 834 0378 0AA8     		add	r0, sp, #40
+ 835 037a FFF7FEFF 		bl	sprintf
+ 836              	.LVL47:
+ 151:Core/Src/debug.c ****             Debug_Message_Transmit(tx_buf);
+ 837              		.loc 1 151 13 is_stmt 1 view .LVU206
+ 838 037e 0AA8     		add	r0, sp, #40
+ 839 0380 FFF7FEFF 		bl	Debug_Message_Transmit
+ 840              	.LVL48:
+ 152:Core/Src/debug.c ****             Debug_Clear_Buffer();
+ 841              		.loc 1 152 13 view .LVU207
+ 842 0384 FFF7FEFF 		bl	Debug_Clear_Buffer
+ 843              	.LVL49:
+ 154:Core/Src/debug.c ****             Debug_Write_Request = 1;
+ 844              		.loc 1 154 13 view .LVU208
+ 154:Core/Src/debug.c ****             Debug_Write_Request = 1;
+ 845              		.loc 1 154 33 is_stmt 0 view .LVU209
+ 846 0388 084B     		ldr	r3, .L48+20
+ 847 038a 0122     		movs	r2, #1
+ 848 038c 1A70     		strb	r2, [r3]
+ 849 038e 4EE6     		b	.L16
+ 850              	.L37:
+ 154:Core/Src/debug.c ****             Debug_Write_Request = 1;
+ 851              		.loc 1 154 33 view .LVU210
+ 852              	.LBE6:
+ 160:Core/Src/debug.c ****         NVRam_Update_Variable();
+ 853              		.loc 1 160 9 is_stmt 1 view .LVU211
+ 854 0390 FFF7FEFF 		bl	NVRam_Update_Variable
+ 855              	.LVL50:
+ 856              		.loc 1 162 1 is_stmt 0 view .LVU212
+ 857 0394 50E6     		b	.L15
+ 858              	.L49:
+ 859 0396 00BF     		.align	2
+ 860              	.L48:
+ 861 0398 00000000 		.word	NVRAM_Domain
+ 862 039c 54010000 		.word	.LC10
+ 863 03a0 00000000 		.word	.LANCHOR2
+ 864 03a4 00000000 		.word	NVRAM_Block
+ 865 03a8 5C010000 		.word	.LC11
+ 866 03ac 00000000 		.word	.LANCHOR3
+ 867              		.cfi_endproc
+ 868              	.LFE136:
+ 870              		.global	Debug_Write_Request
+ 871              		.global	debug_dummy
+ 872              		.global	Debug_Rx_Count
+ 873              		.global	Debug_Rx_buffer
+ 874              		.section	.bss.Debug_Rx_Count,"aw",%nobits
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 23
+
+
+ 875              		.align	1
+ 876              		.set	.LANCHOR1,. + 0
+ 879              	Debug_Rx_Count:
+ 880 0000 0000     		.space	2
+ 881              		.section	.bss.Debug_Rx_buffer,"aw",%nobits
+ 882              		.align	2
+ 883              		.set	.LANCHOR2,. + 0
+ 886              	Debug_Rx_buffer:
+ 887 0000 00000000 		.space	1024
+ 887      00000000 
+ 887      00000000 
+ 887      00000000 
+ 887      00000000 
+ 888              		.section	.bss.Debug_Write_Request,"aw",%nobits
+ 889              		.set	.LANCHOR3,. + 0
+ 892              	Debug_Write_Request:
+ 893 0000 00       		.space	1
+ 894              		.section	.bss.debug_dummy,"aw",%nobits
+ 895              		.set	.LANCHOR0,. + 0
+ 898              	debug_dummy:
+ 899 0000 00       		.space	1
+ 900              		.text
+ 901              	.Letext0:
+ 902              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 903              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 904              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 905              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 906              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 907              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rtc.h"
+ 908              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 909              		.file 9 "Core/Inc/main.h"
+ 910              		.file 10 "Core/Inc/debug.h"
+ 911              		.file 11 "Core/Inc/lte.h"
+ 912              		.file 12 "Core/Inc/nvram.h"
+ 913              		.file 13 "Core/Inc/device.h"
+ 914              		.file 14 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\stdio.h"
+ 915              		.file 15 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\string.h"
+ 916              		.file 16 "<built-in>"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 debug.c
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:20     .text.Debug_Message_Transmit:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:26     .text.Debug_Message_Transmit:00000000 Debug_Message_Transmit
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:59     .text.Debug_Message_Transmit:00000018 $d
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:64     .rodata.Debug_Init.str1.4:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:68     .text.Debug_Init:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:74     .text.Debug_Init:00000000 Debug_Init
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:109    .text.Debug_Init:0000001c $d
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:116    .text.Test_Debug:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:122    .text.Test_Debug:00000000 Test_Debug
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:159    .text.Test_Debug:0000001c $d
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:166    .text.Debug_Write_Variable:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:172    .text.Debug_Write_Variable:00000000 Debug_Write_Variable
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:205    .bss.debug_dummy:00000000 debug_dummy
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:192    .bss.Debug_Rx_Count:00000000 Debug_Rx_Count
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:199    .bss.Debug_Rx_buffer:00000000 Debug_Rx_buffer
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:188    .bss.Debug_Rx_Count:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:195    .bss.Debug_Rx_buffer:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccs5a9yW.s:206    .bss.debug_dummy:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:20     .text.Debug_Message_Transmit:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:26     .text.Debug_Message_Transmit:00000000 Debug_Message_Transmit
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:59     .text.Debug_Message_Transmit:00000018 $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:64     .rodata.Debug_Init.str1.4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:68     .text.Debug_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:74     .text.Debug_Init:00000000 Debug_Init
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:109    .text.Debug_Init:0000001c $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:116    .text.Debug_Clear_Buffer:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:122    .text.Debug_Clear_Buffer:00000000 Debug_Clear_Buffer
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:149    .text.Debug_Clear_Buffer:00000014 $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:155    .rodata.Debug_Write_Variable.str1.4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:191    .text.Debug_Write_Variable:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:197    .text.Debug_Write_Variable:00000000 Debug_Write_Variable
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:702    .text.Debug_Write_Variable:000002a8 $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:732    .text.Debug_Write_Variable:00000310 $t
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:861    .text.Debug_Write_Variable:00000398 $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:892    .bss.Debug_Write_Request:00000000 Debug_Write_Request
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:898    .bss.debug_dummy:00000000 debug_dummy
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:879    .bss.Debug_Rx_Count:00000000 Debug_Rx_Count
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:886    .bss.Debug_Rx_buffer:00000000 Debug_Rx_buffer
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:875    .bss.Debug_Rx_Count:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:882    .bss.Debug_Rx_buffer:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:893    .bss.Debug_Write_Request:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cciMFo9I.s:899    .bss.debug_dummy:00000000 $d
 
 UNDEFINED SYMBOLS
 strlen
@@ -298,4 +1395,21 @@ HAL_UART_Transmit
 huart3
 HAL_UART_Receive_IT
 Error_Handler
-huart1
+memset
+sscanf
+sprintf
+HAL_RTC_GetTime
+HAL_RTC_GetDate
+HAL_RTC_SetTime
+HAL_RTC_SetDate
+LTE_SN
+LTE_SN_SUB
+NVRAM_Block
+Device_Report_Cycle
+LTE_GPS_LAT_I
+LTE_GPS_LAT_D
+LTE_GPS_LONG_I
+LTE_GPS_LONG_D
+hrtc
+NVRAM_Domain
+NVRam_Update_Variable

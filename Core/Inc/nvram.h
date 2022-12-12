@@ -3,22 +3,23 @@
 
 #include "main.h"
 
-#define NVRAM_SN            0   // 1 
-#define NVRAM_LATITUDE      1   // 1
-#define NVRAM_LONGITUDE     2   // 1
-#define NVRAM_REPORT_CYCLE  3   // 1
-#define NVRAM_MQTT_PORT     4   // 1
-#define NVRAM_SN_SUB        5   // 1
-#define NVRAM_ITEM6         6   // 1
-#define NVRAM_ITEM7         7   // 1
-#define NVRAM_ITEM8         8   // 1
-#define NVRAM_ITEM9         9   // 1
-#define NVRAM_ITEM10       10   // 1
-#define NVRAM_ITEM11       11   // 1
-#define NVRAM_ITEM12       12   // 1
-#define NVRAM_ITEM13       13   // 1
-#define NVRAM_DOMAIN       14   // 20
-#define MAX_NVRAM_SIZE     34   // word
+#define NVRAM_SN                0   // 1 
+#define NVRAM_SN_SUB            1   // 1
+#define NVRAM_LATITUDE_I        2   // 1
+#define NVRAM_LATITUDE_D        3   // 1
+#define NVRAM_LONGITUDE_I       4   // 1
+#define NVRAM_LONGITUDE_D       5   // 1
+#define NVRAM_REPORT_CYCLE      6   // 1
+#define NVRAM_ITEM7             7   // 1
+#define NVRAM_ITEM8             8   // 1
+#define NVRAM_ITEM9             9   // 1
+#define NVRAM_ITEM10            10   // 1
+#define NVRAM_ITEM11            11   // 1
+#define NVRAM_ITEM12            12   // 1
+#define NVRAM_ITEM13            13   // 1
+#define NVRAM_ITEM14            14   // 1
+#define NVRAM_DOMAIN            15   // 20
+#define MAX_NVRAM_SIZE          34   // word
 
 #define MQTT_DOMAIN_NAME_SIZE   20
 
@@ -153,8 +154,12 @@
 
 #define FLASH_USER_START_ADDR   ADDR_FLASH_PAGE_127
 
+extern uint32_t NVRAM_Block[MAX_NVRAM_SIZE];
+extern uint8_t NVRAM_Domain[100];
+
 extern void NVRam_Init(void);
 extern void NVRam_Read(void);
 extern void NVRam_Write(void);
+extern void NVRam_Update_Variable(void);
 
 #endif

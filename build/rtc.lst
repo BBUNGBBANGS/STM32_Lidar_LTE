@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -19,13 +19,13 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.section	.text.RTC_Init,"ax",%progbits
+  19              		.section	.text.RTC_Measure_Time,"ax",%progbits
   20              		.align	1
-  21              		.global	RTC_Init
+  21              		.global	RTC_Measure_Time
   22              		.syntax unified
   23              		.thumb
   24              		.thumb_func
-  26              	RTC_Init:
+  26              	RTC_Measure_Time:
   27              	.LFB133:
   28              		.file 1 "Core/Src/rtc.c"
    1:Core/Src/rtc.c **** #include "rtc.h"
@@ -34,562 +34,506 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 1
    4:Core/Src/rtc.c **** uint32_t time_counters;
    5:Core/Src/rtc.c **** uint16_t RTC_hours,RTC_minutes,RTC_seconds;
    6:Core/Src/rtc.c **** 
-   7:Core/Src/rtc.c **** void RTC_Init(void)
-   8:Core/Src/rtc.c **** {
-  29              		.loc 1 8 1 view -0
+   7:Core/Src/rtc.c **** 
+   8:Core/Src/rtc.c **** void RTC_Measure_Time(void)
+   9:Core/Src/rtc.c **** {
+  29              		.loc 1 9 1 view -0
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 24
   32              		@ frame_needed = 0, uses_anonymous_args = 0
-  33 0000 30B5     		push	{r4, r5, lr}
+  33 0000 10B5     		push	{r4, lr}
   34              	.LCFI0:
-  35              		.cfi_def_cfa_offset 12
-  36              		.cfi_offset 4, -12
-  37              		.cfi_offset 5, -8
-  38              		.cfi_offset 14, -4
-  39 0002 87B0     		sub	sp, sp, #28
-  40              	.LCFI1:
-  41              		.cfi_def_cfa_offset 40
-   9:Core/Src/rtc.c **** 
-  10:Core/Src/rtc.c ****     RTC_TimeTypeDef sTime = {0};
-  42              		.loc 1 10 5 view .LVU1
-  43              		.loc 1 10 21 is_stmt 0 view .LVU2
-  44 0004 0024     		movs	r4, #0
-  45 0006 0194     		str	r4, [sp, #4]
-  46 0008 0294     		str	r4, [sp, #8]
-  47 000a 0394     		str	r4, [sp, #12]
-  48 000c 0494     		str	r4, [sp, #16]
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 2
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  38 0002 86B0     		sub	sp, sp, #24
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 32
+  10:Core/Src/rtc.c ****     RTC_TimeTypeDef Time;
+  41              		.loc 1 10 5 view .LVU1
+  11:Core/Src/rtc.c ****     RTC_DateTypeDef Date;
+  42              		.loc 1 11 5 view .LVU2
+  12:Core/Src/rtc.c ****     HAL_RTC_GetTime(&hrtc, &Time, FORMAT_BIN);
+  43              		.loc 1 12 5 view .LVU3
+  44 0004 0C4C     		ldr	r4, .L3
+  45 0006 0022     		movs	r2, #0
+  46 0008 01A9     		add	r1, sp, #4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s 			page 2
 
 
-  49 000e 0594     		str	r4, [sp, #20]
-  11:Core/Src/rtc.c ****     RTC_DateTypeDef sDate = {0};
-  50              		.loc 1 11 5 is_stmt 1 view .LVU3
-  51              		.loc 1 11 21 is_stmt 0 view .LVU4
-  52 0010 0094     		str	r4, [sp]
-  12:Core/Src/rtc.c **** 
-  13:Core/Src/rtc.c ****     HAL_RTC_GetTime(&hrtc, &sTime, FORMAT_BIN);
-  53              		.loc 1 13 5 is_stmt 1 view .LVU5
-  54 0012 064D     		ldr	r5, .L3
-  55 0014 2246     		mov	r2, r4
-  56 0016 01A9     		add	r1, sp, #4
-  57 0018 2846     		mov	r0, r5
-  58 001a FFF7FEFF 		bl	HAL_RTC_GetTime
-  59              	.LVL0:
-  14:Core/Src/rtc.c ****     HAL_RTC_GetDate(&hrtc, &sDate, FORMAT_BIN);
-  60              		.loc 1 14 5 view .LVU6
-  61 001e 2246     		mov	r2, r4
-  62 0020 6946     		mov	r1, sp
-  63 0022 2846     		mov	r0, r5
-  64 0024 FFF7FEFF 		bl	HAL_RTC_GetDate
-  65              	.LVL1:
-  15:Core/Src/rtc.c ****     
-  16:Core/Src/rtc.c ****     
-  17:Core/Src/rtc.c ****     //Debug_Message_Transmit("Set RTC Alarm\n");
-  18:Core/Src/rtc.c **** }
-  66              		.loc 1 18 1 is_stmt 0 view .LVU7
-  67 0028 07B0     		add	sp, sp, #28
-  68              	.LCFI2:
-  69              		.cfi_def_cfa_offset 12
-  70              		@ sp needed
-  71 002a 30BD     		pop	{r4, r5, pc}
-  72              	.L4:
-  73              		.align	2
-  74              	.L3:
-  75 002c 00000000 		.word	hrtc
-  76              		.cfi_endproc
-  77              	.LFE133:
-  79              		.section	.rodata.RTC_Measure_Time.str1.4,"aMS",%progbits,1
-  80              		.align	2
-  81              	.LC0:
-  82 0000 52544320 		.ascii	"RTC Time : %d:%d:%d\012\000"
-  82      54696D65 
-  82      203A2025 
-  82      643A2564 
-  82      3A25640A 
-  83              		.section	.text.RTC_Measure_Time,"ax",%progbits
-  84              		.align	1
-  85              		.global	RTC_Measure_Time
-  86              		.syntax unified
-  87              		.thumb
-  88              		.thumb_func
-  90              	RTC_Measure_Time:
-  91              	.LFB134:
-  19:Core/Src/rtc.c **** 
-  20:Core/Src/rtc.c **** void RTC_Measure_Time(void)
-  21:Core/Src/rtc.c **** {
-  92              		.loc 1 21 1 is_stmt 1 view -0
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 3
+  47 000a 2046     		mov	r0, r4
+  48 000c FFF7FEFF 		bl	HAL_RTC_GetTime
+  49              	.LVL0:
+  13:Core/Src/rtc.c ****     HAL_RTC_GetDate(&hrtc, &Date, FORMAT_BIN);
+  50              		.loc 1 13 5 view .LVU4
+  51 0010 0022     		movs	r2, #0
+  52 0012 6946     		mov	r1, sp
+  53 0014 2046     		mov	r0, r4
+  54 0016 FFF7FEFF 		bl	HAL_RTC_GetDate
+  55              	.LVL1:
+  14:Core/Src/rtc.c ****     RTC_hours = Time.Hours;
+  56              		.loc 1 14 5 view .LVU5
+  57              		.loc 1 14 21 is_stmt 0 view .LVU6
+  58 001a 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+  59              		.loc 1 14 15 view .LVU7
+  60 001e 074B     		ldr	r3, .L3+4
+  61 0020 1A80     		strh	r2, [r3]	@ movhi
+  15:Core/Src/rtc.c ****     RTC_minutes = Time.Minutes;
+  62              		.loc 1 15 5 is_stmt 1 view .LVU8
+  63              		.loc 1 15 23 is_stmt 0 view .LVU9
+  64 0022 9DF80520 		ldrb	r2, [sp, #5]	@ zero_extendqisi2
+  65              		.loc 1 15 17 view .LVU10
+  66 0026 064B     		ldr	r3, .L3+8
+  67 0028 1A80     		strh	r2, [r3]	@ movhi
+  16:Core/Src/rtc.c ****     RTC_seconds = Time.Seconds;
+  68              		.loc 1 16 5 is_stmt 1 view .LVU11
+  69              		.loc 1 16 23 is_stmt 0 view .LVU12
+  70 002a 9DF80620 		ldrb	r2, [sp, #6]	@ zero_extendqisi2
+  71              		.loc 1 16 17 view .LVU13
+  72 002e 054B     		ldr	r3, .L3+12
+  73 0030 1A80     		strh	r2, [r3]	@ movhi
+  17:Core/Src/rtc.c **** }
+  74              		.loc 1 17 1 view .LVU14
+  75 0032 06B0     		add	sp, sp, #24
+  76              	.LCFI2:
+  77              		.cfi_def_cfa_offset 8
+  78              		@ sp needed
+  79 0034 10BD     		pop	{r4, pc}
+  80              	.L4:
+  81 0036 00BF     		.align	2
+  82              	.L3:
+  83 0038 00000000 		.word	hrtc
+  84 003c 00000000 		.word	.LANCHOR0
+  85 0040 00000000 		.word	.LANCHOR1
+  86 0044 00000000 		.word	.LANCHOR2
+  87              		.cfi_endproc
+  88              	.LFE133:
+  90              		.section	.rodata.RTC_AlarmConfig.str1.4,"aMS",%progbits,1
+  91              		.align	2
+  92              	.LC0:
+  93 0000 53657420 		.ascii	"Set Alarm %02d:%02d:%02d\012\000"
+  93      416C6172 
+  93      6D202530 
+  93      32643A25 
+  93      3032643A 
+  94 001a 0000     		.align	2
+  95              	.LC1:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s 			page 3
 
 
-  93              		.cfi_startproc
-  94              		@ args = 0, pretend = 0, frame = 48
-  95              		@ frame_needed = 0, uses_anonymous_args = 0
-  96 0000 30B5     		push	{r4, r5, lr}
-  97              	.LCFI3:
-  98              		.cfi_def_cfa_offset 12
-  99              		.cfi_offset 4, -12
- 100              		.cfi_offset 5, -8
- 101              		.cfi_offset 14, -4
- 102 0002 8FB0     		sub	sp, sp, #60
- 103              	.LCFI4:
- 104              		.cfi_def_cfa_offset 72
-  22:Core/Src/rtc.c ****     uint8_t tx_buf[20] = {0,};
- 105              		.loc 1 22 5 view .LVU9
- 106              		.loc 1 22 13 is_stmt 0 view .LVU10
- 107 0004 0024     		movs	r4, #0
- 108 0006 0994     		str	r4, [sp, #36]
- 109 0008 0A94     		str	r4, [sp, #40]
- 110 000a 0B94     		str	r4, [sp, #44]
- 111 000c 0C94     		str	r4, [sp, #48]
- 112 000e 0D94     		str	r4, [sp, #52]
-  23:Core/Src/rtc.c ****     RTC_TimeTypeDef Time;
- 113              		.loc 1 23 5 is_stmt 1 view .LVU11
-  24:Core/Src/rtc.c ****     RTC_DateTypeDef Date;
- 114              		.loc 1 24 5 view .LVU12
-  25:Core/Src/rtc.c ****     HAL_RTC_GetTime(&hrtc, &Time, FORMAT_BIN);
- 115              		.loc 1 25 5 view .LVU13
- 116 0010 104D     		ldr	r5, .L7
- 117 0012 2246     		mov	r2, r4
- 118 0014 04A9     		add	r1, sp, #16
- 119 0016 2846     		mov	r0, r5
- 120 0018 FFF7FEFF 		bl	HAL_RTC_GetTime
- 121              	.LVL2:
-  26:Core/Src/rtc.c ****     HAL_RTC_GetDate(&hrtc, &Date, FORMAT_BIN);
- 122              		.loc 1 26 5 view .LVU14
- 123 001c 2246     		mov	r2, r4
- 124 001e 03A9     		add	r1, sp, #12
- 125 0020 2846     		mov	r0, r5
- 126 0022 FFF7FEFF 		bl	HAL_RTC_GetDate
- 127              	.LVL3:
-  27:Core/Src/rtc.c ****     RTC_hours = Time.Hours;
- 128              		.loc 1 27 5 view .LVU15
- 129              		.loc 1 27 21 is_stmt 0 view .LVU16
- 130 0026 9DF81020 		ldrb	r2, [sp, #16]	@ zero_extendqisi2
- 131              		.loc 1 27 15 view .LVU17
- 132 002a 0B4B     		ldr	r3, .L7+4
- 133 002c 1A80     		strh	r2, [r3]	@ movhi
-  28:Core/Src/rtc.c ****     RTC_minutes = Time.Minutes;
- 134              		.loc 1 28 5 is_stmt 1 view .LVU18
- 135              		.loc 1 28 23 is_stmt 0 view .LVU19
- 136 002e 9DF81130 		ldrb	r3, [sp, #17]	@ zero_extendqisi2
- 137              		.loc 1 28 17 view .LVU20
- 138 0032 0A49     		ldr	r1, .L7+8
- 139 0034 0B80     		strh	r3, [r1]	@ movhi
-  29:Core/Src/rtc.c ****     RTC_seconds = Time.Seconds;
- 140              		.loc 1 29 5 is_stmt 1 view .LVU21
- 141              		.loc 1 29 23 is_stmt 0 view .LVU22
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 4
+  96 001c 57696C6C 		.ascii	"Will Wake-up %02d:%02d:%02d\012\000"
+  96      2057616B 
+  96      652D7570 
+  96      20253032 
+  96      643A2530 
+  97              		.section	.text.RTC_AlarmConfig,"ax",%progbits
+  98              		.align	1
+  99              		.global	RTC_AlarmConfig
+ 100              		.syntax unified
+ 101              		.thumb
+ 102              		.thumb_func
+ 104              	RTC_AlarmConfig:
+ 105              	.LFB134:
+  18:Core/Src/rtc.c ****     
+  19:Core/Src/rtc.c **** void RTC_AlarmConfig(void)
+  20:Core/Src/rtc.c **** {
+ 106              		.loc 1 20 1 is_stmt 1 view -0
+ 107              		.cfi_startproc
+ 108              		@ args = 0, pretend = 0, frame = 120
+ 109              		@ frame_needed = 0, uses_anonymous_args = 0
+ 110 0000 30B5     		push	{r4, r5, lr}
+ 111              	.LCFI3:
+ 112              		.cfi_def_cfa_offset 12
+ 113              		.cfi_offset 4, -12
+ 114              		.cfi_offset 5, -8
+ 115              		.cfi_offset 14, -4
+ 116 0002 A1B0     		sub	sp, sp, #132
+ 117              	.LCFI4:
+ 118              		.cfi_def_cfa_offset 144
+  21:Core/Src/rtc.c ****     RTC_AlarmTypeDef salarmstructure = {0};
+ 119              		.loc 1 21 5 view .LVU16
+ 120              		.loc 1 21 22 is_stmt 0 view .LVU17
+ 121 0004 2822     		movs	r2, #40
+ 122 0006 0021     		movs	r1, #0
+ 123 0008 16A8     		add	r0, sp, #88
+ 124 000a FFF7FEFF 		bl	memset
+ 125              	.LVL2:
+  22:Core/Src/rtc.c ****     RTC_TimeTypeDef sTime = {0};
+ 126              		.loc 1 22 5 is_stmt 1 view .LVU18
+ 127              		.loc 1 22 21 is_stmt 0 view .LVU19
+ 128 000e 0024     		movs	r4, #0
+ 129 0010 1194     		str	r4, [sp, #68]
+ 130 0012 1294     		str	r4, [sp, #72]
+ 131 0014 1394     		str	r4, [sp, #76]
+ 132 0016 1494     		str	r4, [sp, #80]
+ 133 0018 1594     		str	r4, [sp, #84]
+  23:Core/Src/rtc.c ****     RTC_DateTypeDef sDate = {0};
+ 134              		.loc 1 23 5 is_stmt 1 view .LVU20
+ 135              		.loc 1 23 21 is_stmt 0 view .LVU21
+ 136 001a 1094     		str	r4, [sp, #64]
+  24:Core/Src/rtc.c ****     uint8_t tx_buf[50] = {0,};
+ 137              		.loc 1 24 5 is_stmt 1 view .LVU22
+ 138              		.loc 1 24 13 is_stmt 0 view .LVU23
+ 139 001c 0394     		str	r4, [sp, #12]
+ 140 001e 2E22     		movs	r2, #46
+ 141 0020 2146     		mov	r1, r4
+ 142 0022 04A8     		add	r0, sp, #16
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s 			page 4
 
 
- 142 0036 9DF81210 		ldrb	r1, [sp, #18]	@ zero_extendqisi2
- 143              		.loc 1 29 17 view .LVU23
- 144 003a 0948     		ldr	r0, .L7+12
- 145 003c 0180     		strh	r1, [r0]	@ movhi
-  30:Core/Src/rtc.c ****     sprintf(tx_buf,"RTC Time : %d:%d:%d\n",RTC_hours,RTC_minutes,RTC_seconds);
- 146              		.loc 1 30 5 is_stmt 1 view .LVU24
- 147 003e 0091     		str	r1, [sp]
- 148 0040 0849     		ldr	r1, .L7+16
- 149 0042 09A8     		add	r0, sp, #36
- 150 0044 FFF7FEFF 		bl	sprintf
+ 143 0024 FFF7FEFF 		bl	memset
+ 144              	.LVL3:
+  25:Core/Src/rtc.c ****     
+  26:Core/Src/rtc.c ****     HAL_RTC_GetTime(&hrtc, &sTime, FORMAT_BIN);
+ 145              		.loc 1 26 5 is_stmt 1 view .LVU24
+ 146 0028 474D     		ldr	r5, .L15
+ 147 002a 2246     		mov	r2, r4
+ 148 002c 11A9     		add	r1, sp, #68
+ 149 002e 2846     		mov	r0, r5
+ 150 0030 FFF7FEFF 		bl	HAL_RTC_GetTime
  151              	.LVL4:
-  31:Core/Src/rtc.c ****     Debug_Message_Transmit(tx_buf);
- 152              		.loc 1 31 5 view .LVU25
- 153 0048 09A8     		add	r0, sp, #36
- 154 004a FFF7FEFF 		bl	Debug_Message_Transmit
- 155              	.LVL5:
-  32:Core/Src/rtc.c **** }
- 156              		.loc 1 32 1 is_stmt 0 view .LVU26
- 157 004e 0FB0     		add	sp, sp, #60
- 158              	.LCFI5:
- 159              		.cfi_def_cfa_offset 12
- 160              		@ sp needed
- 161 0050 30BD     		pop	{r4, r5, pc}
- 162              	.L8:
- 163 0052 00BF     		.align	2
- 164              	.L7:
- 165 0054 00000000 		.word	hrtc
- 166 0058 00000000 		.word	.LANCHOR0
- 167 005c 00000000 		.word	.LANCHOR1
- 168 0060 00000000 		.word	.LANCHOR2
- 169 0064 00000000 		.word	.LC0
- 170              		.cfi_endproc
- 171              	.LFE134:
- 173              		.section	.rodata.RTC_AlarmConfig.str1.4,"aMS",%progbits,1
- 174              		.align	2
- 175              	.LC1:
- 176 0000 53657420 		.ascii	"Set Alarm %02d:%02d:%02d\012\000"
- 176      416C6172 
- 176      6D202530 
- 176      32643A25 
- 176      3032643A 
- 177 001a 0000     		.align	2
- 178              	.LC2:
- 179 001c 57696C6C 		.ascii	"Will Wake-up %02d:%02d:%02d\012\000"
- 179      2057616B 
- 179      652D7570 
- 179      20253032 
- 179      643A2530 
- 180              		.section	.text.RTC_AlarmConfig,"ax",%progbits
- 181              		.align	1
- 182              		.global	RTC_AlarmConfig
- 183              		.syntax unified
- 184              		.thumb
- 185              		.thumb_func
- 187              	RTC_AlarmConfig:
- 188              	.LFB135:
-  33:Core/Src/rtc.c ****     
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 5
+  27:Core/Src/rtc.c ****     HAL_RTC_GetDate(&hrtc, &sDate, FORMAT_BIN);
+ 152              		.loc 1 27 5 view .LVU25
+ 153 0034 2246     		mov	r2, r4
+ 154 0036 10A9     		add	r1, sp, #64
+ 155 0038 2846     		mov	r0, r5
+ 156 003a FFF7FEFF 		bl	HAL_RTC_GetDate
+ 157              	.LVL5:
+  28:Core/Src/rtc.c ****     sprintf(tx_buf,"Set Alarm %02d:%02d:%02d\n",sTime.Hours,sTime.Minutes,sTime.Seconds);
+ 158              		.loc 1 28 5 view .LVU26
+ 159              		.loc 1 28 80 is_stmt 0 view .LVU27
+ 160 003e 9DF84630 		ldrb	r3, [sp, #70]	@ zero_extendqisi2
+ 161              		.loc 1 28 5 view .LVU28
+ 162 0042 0093     		str	r3, [sp]
+ 163 0044 9DF84530 		ldrb	r3, [sp, #69]	@ zero_extendqisi2
+ 164 0048 9DF84420 		ldrb	r2, [sp, #68]	@ zero_extendqisi2
+ 165 004c 3F49     		ldr	r1, .L15+4
+ 166 004e 03A8     		add	r0, sp, #12
+ 167 0050 FFF7FEFF 		bl	sprintf
+ 168              	.LVL6:
+  29:Core/Src/rtc.c ****     Debug_Message_Transmit(tx_buf);
+ 169              		.loc 1 29 5 is_stmt 1 view .LVU29
+ 170 0054 03A8     		add	r0, sp, #12
+ 171 0056 FFF7FEFF 		bl	Debug_Message_Transmit
+ 172              	.LVL7:
+  30:Core/Src/rtc.c ****     /*##-3- Configure the RTC Alarm peripheral #################################*/
+  31:Core/Src/rtc.c ****     /* RTC Alarm Generation: Alarm on Hours, Minutes and Seconds */
+  32:Core/Src/rtc.c ****     if(DEVICE_SENSOR_DETECTED == Device_Sensor_Signal)
+ 173              		.loc 1 32 5 view .LVU30
+ 174              		.loc 1 32 31 is_stmt 0 view .LVU31
+ 175 005a 3D4B     		ldr	r3, .L15+8
+ 176 005c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 177              		.loc 1 32 7 view .LVU32
+ 178 005e 012B     		cmp	r3, #1
+ 179 0060 61D0     		beq	.L13
+  33:Core/Src/rtc.c ****     {
+  34:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Hours   = sTime.Hours;
+  35:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Minutes = sTime.Minutes + ((REPORT_TIME_INIT / 60) % 60);   
+  36:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Seconds = sTime.Seconds + (REPORT_TIME_INIT % 60);        
+  37:Core/Src/rtc.c ****     }
+  38:Core/Src/rtc.c ****     else
+  39:Core/Src/rtc.c ****     {
+  40:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Hours   = sTime.Hours + (Device_Report_Cycle / 3600); // Sleep Ti
+ 180              		.loc 1 40 9 is_stmt 1 view .LVU33
+ 181              		.loc 1 40 50 is_stmt 0 view .LVU34
+ 182 0062 9DF84430 		ldrb	r3, [sp, #68]	@ zero_extendqisi2
+ 183              		.loc 1 40 80 view .LVU35
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s 			page 5
 
 
-  34:Core/Src/rtc.c **** void RTC_AlarmConfig(void)
-  35:Core/Src/rtc.c **** {
- 189              		.loc 1 35 1 is_stmt 1 view -0
- 190              		.cfi_startproc
- 191              		@ args = 0, pretend = 0, frame = 120
- 192              		@ frame_needed = 0, uses_anonymous_args = 0
- 193 0000 30B5     		push	{r4, r5, lr}
- 194              	.LCFI6:
- 195              		.cfi_def_cfa_offset 12
- 196              		.cfi_offset 4, -12
- 197              		.cfi_offset 5, -8
- 198              		.cfi_offset 14, -4
- 199 0002 A1B0     		sub	sp, sp, #132
- 200              	.LCFI7:
- 201              		.cfi_def_cfa_offset 144
-  36:Core/Src/rtc.c ****     RTC_AlarmTypeDef salarmstructure = {0};
- 202              		.loc 1 36 5 view .LVU28
- 203              		.loc 1 36 22 is_stmt 0 view .LVU29
- 204 0004 2822     		movs	r2, #40
- 205 0006 0021     		movs	r1, #0
- 206 0008 16A8     		add	r0, sp, #88
- 207 000a FFF7FEFF 		bl	memset
- 208              	.LVL6:
-  37:Core/Src/rtc.c ****     RTC_TimeTypeDef sTime = {0};
- 209              		.loc 1 37 5 is_stmt 1 view .LVU30
- 210              		.loc 1 37 21 is_stmt 0 view .LVU31
- 211 000e 0024     		movs	r4, #0
- 212 0010 1194     		str	r4, [sp, #68]
- 213 0012 1294     		str	r4, [sp, #72]
- 214 0014 1394     		str	r4, [sp, #76]
- 215 0016 1494     		str	r4, [sp, #80]
- 216 0018 1594     		str	r4, [sp, #84]
-  38:Core/Src/rtc.c ****     RTC_DateTypeDef sDate = {0};
- 217              		.loc 1 38 5 is_stmt 1 view .LVU32
- 218              		.loc 1 38 21 is_stmt 0 view .LVU33
- 219 001a 1094     		str	r4, [sp, #64]
-  39:Core/Src/rtc.c ****     uint8_t tx_buf[50] = {0,};
- 220              		.loc 1 39 5 is_stmt 1 view .LVU34
- 221              		.loc 1 39 13 is_stmt 0 view .LVU35
- 222 001c 0394     		str	r4, [sp, #12]
- 223 001e 2E22     		movs	r2, #46
- 224 0020 2146     		mov	r1, r4
- 225 0022 04A8     		add	r0, sp, #16
- 226 0024 FFF7FEFF 		bl	memset
- 227              	.LVL7:
-  40:Core/Src/rtc.c ****     
-  41:Core/Src/rtc.c ****     HAL_RTC_GetTime(&hrtc, &sTime, FORMAT_BIN);
- 228              		.loc 1 41 5 is_stmt 1 view .LVU36
- 229 0028 3D4D     		ldr	r5, .L16
- 230 002a 2246     		mov	r2, r4
- 231 002c 11A9     		add	r1, sp, #68
- 232 002e 2846     		mov	r0, r5
- 233 0030 FFF7FEFF 		bl	HAL_RTC_GetTime
- 234              	.LVL8:
-  42:Core/Src/rtc.c ****     HAL_RTC_GetDate(&hrtc, &sDate, FORMAT_BIN);
- 235              		.loc 1 42 5 view .LVU37
- 236 0034 2246     		mov	r2, r4
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 6
+ 184 0066 3B4A     		ldr	r2, .L15+12
+ 185 0068 1168     		ldr	r1, [r2]
+ 186 006a 3B4A     		ldr	r2, .L15+16
+ 187 006c A2FB0102 		umull	r0, r2, r2, r1
+ 188              		.loc 1 40 57 view .LVU36
+ 189 0070 03EBD223 		add	r3, r3, r2, lsr #11
+ 190              		.loc 1 40 43 view .LVU37
+ 191 0074 8DF85830 		strb	r3, [sp, #88]
+  41:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Minutes = sTime.Minutes + ((Device_Report_Cycle / 60) % 60);   
+ 192              		.loc 1 41 9 is_stmt 1 view .LVU38
+ 193              		.loc 1 41 50 is_stmt 0 view .LVU39
+ 194 0078 9DF84500 		ldrb	r0, [sp, #69]	@ zero_extendqisi2
+ 195              		.loc 1 41 83 view .LVU40
+ 196 007c 374B     		ldr	r3, .L15+20
+ 197 007e A3FB0142 		umull	r4, r2, r3, r1
+ 198 0082 5209     		lsrs	r2, r2, #5
+ 199              		.loc 1 41 89 view .LVU41
+ 200 0084 A3FB0243 		umull	r4, r3, r3, r2
+ 201 0088 5B09     		lsrs	r3, r3, #5
+ 202 008a C3EB0313 		rsb	r3, r3, r3, lsl #4
+ 203 008e A2EB8303 		sub	r3, r2, r3, lsl #2
+ 204              		.loc 1 41 59 view .LVU42
+ 205 0092 0344     		add	r3, r3, r0
+ 206              		.loc 1 41 43 view .LVU43
+ 207 0094 8DF85930 		strb	r3, [sp, #89]
+  42:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Seconds = sTime.Seconds + (Device_Report_Cycle % 60);
+ 208              		.loc 1 42 9 is_stmt 1 view .LVU44
+ 209              		.loc 1 42 50 is_stmt 0 view .LVU45
+ 210 0098 9DF84630 		ldrb	r3, [sp, #70]	@ zero_extendqisi2
+ 211              		.loc 1 42 82 view .LVU46
+ 212 009c C2EB0212 		rsb	r2, r2, r2, lsl #4
+ 213 00a0 A1EB8202 		sub	r2, r1, r2, lsl #2
+ 214              		.loc 1 42 59 view .LVU47
+ 215 00a4 1A44     		add	r2, r2, r3
+ 216              		.loc 1 42 43 view .LVU48
+ 217 00a6 8DF85A20 		strb	r2, [sp, #90]
+ 218              	.L7:
+  43:Core/Src/rtc.c ****     }
+  44:Core/Src/rtc.c ****     salarmstructure.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+ 219              		.loc 1 44 5 is_stmt 1 view .LVU49
+  45:Core/Src/rtc.c ****     salarmstructure.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
+ 220              		.loc 1 45 5 view .LVU50
+  46:Core/Src/rtc.c ****     salarmstructure.AlarmMask = RTC_ALARMMASK_HOURS|RTC_ALARMMASK_MINUTES|RTC_ALARMMASK_SECONDS;
+ 221              		.loc 1 46 5 view .LVU51
+ 222              		.loc 1 46 31 is_stmt 0 view .LVU52
+ 223 00aa 2D4B     		ldr	r3, .L15+24
+ 224 00ac 1B93     		str	r3, [sp, #108]
+  47:Core/Src/rtc.c ****     salarmstructure.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
+ 225              		.loc 1 47 5 is_stmt 1 view .LVU53
+  48:Core/Src/rtc.c ****     salarmstructure.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
+ 226              		.loc 1 48 5 view .LVU54
+  49:Core/Src/rtc.c ****     salarmstructure.AlarmDateWeekDay = 1;
+ 227              		.loc 1 49 5 view .LVU55
+ 228              		.loc 1 49 38 is_stmt 0 view .LVU56
+ 229 00ae 0123     		movs	r3, #1
+ 230 00b0 8DF87830 		strb	r3, [sp, #120]
+  50:Core/Src/rtc.c ****     salarmstructure.Alarm = RTC_ALARM_A;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s 			page 6
 
 
- 237 0036 10A9     		add	r1, sp, #64
- 238 0038 2846     		mov	r0, r5
- 239 003a FFF7FEFF 		bl	HAL_RTC_GetDate
- 240              	.LVL9:
-  43:Core/Src/rtc.c ****     sprintf(tx_buf,"Set Alarm %02d:%02d:%02d\n",sTime.Hours,sTime.Minutes,sTime.Seconds);
- 241              		.loc 1 43 5 view .LVU38
- 242              		.loc 1 43 80 is_stmt 0 view .LVU39
- 243 003e 9DF84630 		ldrb	r3, [sp, #70]	@ zero_extendqisi2
- 244              		.loc 1 43 5 view .LVU40
- 245 0042 0093     		str	r3, [sp]
- 246 0044 9DF84530 		ldrb	r3, [sp, #69]	@ zero_extendqisi2
- 247 0048 9DF84420 		ldrb	r2, [sp, #68]	@ zero_extendqisi2
- 248 004c 3549     		ldr	r1, .L16+4
- 249 004e 03A8     		add	r0, sp, #12
- 250 0050 FFF7FEFF 		bl	sprintf
- 251              	.LVL10:
-  44:Core/Src/rtc.c ****     Debug_Message_Transmit(tx_buf);
- 252              		.loc 1 44 5 is_stmt 1 view .LVU41
- 253 0054 03A8     		add	r0, sp, #12
- 254 0056 FFF7FEFF 		bl	Debug_Message_Transmit
- 255              	.LVL11:
-  45:Core/Src/rtc.c ****     /*##-3- Configure the RTC Alarm peripheral #################################*/
-  46:Core/Src/rtc.c ****     /* RTC Alarm Generation: Alarm on Hours, Minutes and Seconds */
-  47:Core/Src/rtc.c ****     salarmstructure.AlarmTime.Hours   = sTime.Hours + (Device_Report_Cycle / 3600); // Sleep Time ì
- 256              		.loc 1 47 5 view .LVU42
- 257              		.loc 1 47 46 is_stmt 0 view .LVU43
- 258 005a 9DF84400 		ldrb	r0, [sp, #68]	@ zero_extendqisi2
- 259              		.loc 1 47 76 view .LVU44
- 260 005e 324B     		ldr	r3, .L16+8
- 261 0060 1C68     		ldr	r4, [r3]
- 262 0062 324B     		ldr	r3, .L16+12
- 263 0064 A3FB0423 		umull	r2, r3, r3, r4
- 264              		.loc 1 47 53 view .LVU45
- 265 0068 00EBD320 		add	r0, r0, r3, lsr #11
- 266 006c C0B2     		uxtb	r0, r0
- 267              		.loc 1 47 39 view .LVU46
- 268 006e 8DF85800 		strb	r0, [sp, #88]
-  48:Core/Src/rtc.c ****     salarmstructure.AlarmTime.Minutes = sTime.Minutes + ((Device_Report_Cycle / 60) % 60);   
- 269              		.loc 1 48 5 is_stmt 1 view .LVU47
- 270              		.loc 1 48 46 is_stmt 0 view .LVU48
- 271 0072 9DF84510 		ldrb	r1, [sp, #69]	@ zero_extendqisi2
- 272              		.loc 1 48 79 view .LVU49
- 273 0076 2E4B     		ldr	r3, .L16+16
- 274 0078 A3FB0452 		umull	r5, r2, r3, r4
- 275 007c 5209     		lsrs	r2, r2, #5
- 276              		.loc 1 48 85 view .LVU50
- 277 007e A3FB0253 		umull	r5, r3, r3, r2
- 278 0082 5B09     		lsrs	r3, r3, #5
- 279 0084 C3EB0313 		rsb	r3, r3, r3, lsl #4
- 280 0088 A2EB8303 		sub	r3, r2, r3, lsl #2
- 281              		.loc 1 48 55 view .LVU51
- 282 008c 0B44     		add	r3, r3, r1
- 283 008e DBB2     		uxtb	r3, r3
- 284              		.loc 1 48 39 view .LVU52
- 285 0090 8DF85930 		strb	r3, [sp, #89]
-  49:Core/Src/rtc.c ****     salarmstructure.AlarmTime.Seconds = sTime.Seconds + (Device_Report_Cycle % 60);
- 286              		.loc 1 49 5 is_stmt 1 view .LVU53
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 7
-
-
- 287              		.loc 1 49 46 is_stmt 0 view .LVU54
- 288 0094 9DF84610 		ldrb	r1, [sp, #70]	@ zero_extendqisi2
- 289              		.loc 1 49 78 view .LVU55
- 290 0098 C2EB0212 		rsb	r2, r2, r2, lsl #4
- 291 009c A4EB8202 		sub	r2, r4, r2, lsl #2
- 292              		.loc 1 49 55 view .LVU56
- 293 00a0 0A44     		add	r2, r2, r1
- 294 00a2 D2B2     		uxtb	r2, r2
- 295              		.loc 1 49 39 view .LVU57
- 296 00a4 8DF85A20 		strb	r2, [sp, #90]
-  50:Core/Src/rtc.c ****     salarmstructure.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
- 297              		.loc 1 50 5 is_stmt 1 view .LVU58
-  51:Core/Src/rtc.c ****     salarmstructure.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
- 298              		.loc 1 51 5 view .LVU59
-  52:Core/Src/rtc.c ****     salarmstructure.AlarmMask = RTC_ALARMMASK_HOURS|RTC_ALARMMASK_MINUTES|RTC_ALARMMASK_SECONDS;
- 299              		.loc 1 52 5 view .LVU60
- 300              		.loc 1 52 31 is_stmt 0 view .LVU61
- 301 00a8 2249     		ldr	r1, .L16+20
- 302 00aa 1B91     		str	r1, [sp, #108]
-  53:Core/Src/rtc.c ****     salarmstructure.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
- 303              		.loc 1 53 5 is_stmt 1 view .LVU62
-  54:Core/Src/rtc.c ****     salarmstructure.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
- 304              		.loc 1 54 5 view .LVU63
-  55:Core/Src/rtc.c ****     salarmstructure.AlarmDateWeekDay = 1;
- 305              		.loc 1 55 5 view .LVU64
- 306              		.loc 1 55 38 is_stmt 0 view .LVU65
- 307 00ac 0121     		movs	r1, #1
- 308 00ae 8DF87810 		strb	r1, [sp, #120]
-  56:Core/Src/rtc.c ****     salarmstructure.Alarm = RTC_ALARM_A;
- 309              		.loc 1 56 5 is_stmt 1 view .LVU66
- 310              		.loc 1 56 27 is_stmt 0 view .LVU67
- 311 00b2 4FF48071 		mov	r1, #256
- 312 00b6 1F91     		str	r1, [sp, #124]
-  57:Core/Src/rtc.c **** 
-  58:Core/Src/rtc.c ****     if( salarmstructure.AlarmTime.Seconds >= 60 )
- 313              		.loc 1 58 5 is_stmt 1 view .LVU68
- 314              		.loc 1 58 7 is_stmt 0 view .LVU69
- 315 00b8 3B2A     		cmp	r2, #59
- 316 00ba 05D9     		bls	.L10
+ 231              		.loc 1 50 5 is_stmt 1 view .LVU57
+ 232              		.loc 1 50 27 is_stmt 0 view .LVU58
+ 233 00b4 4FF48073 		mov	r3, #256
+ 234 00b8 1F93     		str	r3, [sp, #124]
+  51:Core/Src/rtc.c **** 
+  52:Core/Src/rtc.c ****     if( salarmstructure.AlarmTime.Seconds >= 60 )
+ 235              		.loc 1 52 5 is_stmt 1 view .LVU59
+ 236              		.loc 1 52 34 is_stmt 0 view .LVU60
+ 237 00ba 9DF85A30 		ldrb	r3, [sp, #90]	@ zero_extendqisi2
+ 238              		.loc 1 52 7 view .LVU61
+ 239 00be 3B2B     		cmp	r3, #59
+ 240 00c0 07D9     		bls	.L8
+  53:Core/Src/rtc.c ****     {
+  54:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Seconds -= 60;
+ 241              		.loc 1 54 9 is_stmt 1 view .LVU62
+ 242              		.loc 1 54 43 is_stmt 0 view .LVU63
+ 243 00c2 3C3B     		subs	r3, r3, #60
+ 244 00c4 8DF85A30 		strb	r3, [sp, #90]
+  55:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Minutes++;
+ 245              		.loc 1 55 9 is_stmt 1 view .LVU64
+ 246              		.loc 1 55 34 is_stmt 0 view .LVU65
+ 247 00c8 9DF85930 		ldrb	r3, [sp, #89]	@ zero_extendqisi2
+ 248              		.loc 1 55 42 view .LVU66
+ 249 00cc 0133     		adds	r3, r3, #1
+ 250 00ce 8DF85930 		strb	r3, [sp, #89]
+ 251              	.L8:
+  56:Core/Src/rtc.c ****     }
+  57:Core/Src/rtc.c ****     
+  58:Core/Src/rtc.c ****     if( salarmstructure.AlarmTime.Minutes >= 60 )
+ 252              		.loc 1 58 5 is_stmt 1 view .LVU67
+ 253              		.loc 1 58 34 is_stmt 0 view .LVU68
+ 254 00d2 9DF85930 		ldrb	r3, [sp, #89]	@ zero_extendqisi2
+ 255              		.loc 1 58 7 view .LVU69
+ 256 00d6 3B2B     		cmp	r3, #59
+ 257 00d8 07D9     		bls	.L9
   59:Core/Src/rtc.c ****     {
-  60:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Seconds -= 60;
- 317              		.loc 1 60 9 is_stmt 1 view .LVU70
- 318              		.loc 1 60 43 is_stmt 0 view .LVU71
- 319 00bc 3C3A     		subs	r2, r2, #60
- 320 00be 8DF85A20 		strb	r2, [sp, #90]
-  61:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Minutes++;
- 321              		.loc 1 61 9 is_stmt 1 view .LVU72
- 322              		.loc 1 61 42 is_stmt 0 view .LVU73
- 323 00c2 0133     		adds	r3, r3, #1
- 324 00c4 8DF85930 		strb	r3, [sp, #89]
- 325              	.L10:
+  60:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Minutes -= 60;
+ 258              		.loc 1 60 9 is_stmt 1 view .LVU70
+ 259              		.loc 1 60 43 is_stmt 0 view .LVU71
+ 260 00da 3C3B     		subs	r3, r3, #60
+ 261 00dc 8DF85930 		strb	r3, [sp, #89]
+  61:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Hours++;
+ 262              		.loc 1 61 9 is_stmt 1 view .LVU72
+ 263              		.loc 1 61 34 is_stmt 0 view .LVU73
+ 264 00e0 9DF85830 		ldrb	r3, [sp, #88]	@ zero_extendqisi2
+ 265              		.loc 1 61 40 view .LVU74
+ 266 00e4 0133     		adds	r3, r3, #1
+ 267 00e6 8DF85830 		strb	r3, [sp, #88]
+ 268              	.L9:
   62:Core/Src/rtc.c ****     }
   63:Core/Src/rtc.c ****     
-  64:Core/Src/rtc.c ****     if( salarmstructure.AlarmTime.Minutes >= 60 )
- 326              		.loc 1 64 5 is_stmt 1 view .LVU74
- 327              		.loc 1 64 34 is_stmt 0 view .LVU75
- 328 00c8 9DF85930 		ldrb	r3, [sp, #89]	@ zero_extendqisi2
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 8
+  64:Core/Src/rtc.c ****     if( salarmstructure.AlarmTime.Hours >= 24 )
+ 269              		.loc 1 64 5 is_stmt 1 view .LVU75
+ 270              		.loc 1 64 34 is_stmt 0 view .LVU76
+ 271 00ea 9DF85830 		ldrb	r3, [sp, #88]	@ zero_extendqisi2
+ 272              		.loc 1 64 7 view .LVU77
+ 273 00ee 172B     		cmp	r3, #23
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s 			page 7
 
 
- 329              		.loc 1 64 7 view .LVU76
- 330 00cc 3B2B     		cmp	r3, #59
- 331 00ce 05D9     		bls	.L11
+ 274 00f0 02D9     		bls	.L10
   65:Core/Src/rtc.c ****     {
-  66:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Minutes -= 60;
- 332              		.loc 1 66 9 is_stmt 1 view .LVU77
- 333              		.loc 1 66 43 is_stmt 0 view .LVU78
- 334 00d0 3C3B     		subs	r3, r3, #60
- 335 00d2 8DF85930 		strb	r3, [sp, #89]
-  67:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Hours++;
- 336              		.loc 1 67 9 is_stmt 1 view .LVU79
- 337              		.loc 1 67 40 is_stmt 0 view .LVU80
- 338 00d6 0130     		adds	r0, r0, #1
- 339 00d8 8DF85800 		strb	r0, [sp, #88]
- 340              	.L11:
-  68:Core/Src/rtc.c ****     }
-  69:Core/Src/rtc.c ****     
-  70:Core/Src/rtc.c ****     if( salarmstructure.AlarmTime.Hours >= 24 )
- 341              		.loc 1 70 5 is_stmt 1 view .LVU81
- 342              		.loc 1 70 34 is_stmt 0 view .LVU82
- 343 00dc 9DF85830 		ldrb	r3, [sp, #88]	@ zero_extendqisi2
- 344              		.loc 1 70 7 view .LVU83
- 345 00e0 172B     		cmp	r3, #23
- 346 00e2 02D9     		bls	.L12
-  71:Core/Src/rtc.c ****     {
-  72:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Hours -= 24;
- 347              		.loc 1 72 9 is_stmt 1 view .LVU84
- 348              		.loc 1 72 41 is_stmt 0 view .LVU85
- 349 00e4 183B     		subs	r3, r3, #24
- 350 00e6 8DF85830 		strb	r3, [sp, #88]
- 351              	.L12:
-  73:Core/Src/rtc.c ****     }
-  74:Core/Src/rtc.c ****     
-  75:Core/Src/rtc.c ****     sprintf(tx_buf,"Will Wake-up %02d:%02d:%02d\n",salarmstructure.AlarmTime.Hours,salarmstructure.
- 352              		.loc 1 75 5 is_stmt 1 view .LVU86
- 353              		.loc 1 75 143 is_stmt 0 view .LVU87
- 354 00ea 9DF85A30 		ldrb	r3, [sp, #90]	@ zero_extendqisi2
- 355              		.loc 1 75 5 view .LVU88
- 356 00ee 0093     		str	r3, [sp]
- 357 00f0 9DF85930 		ldrb	r3, [sp, #89]	@ zero_extendqisi2
- 358 00f4 9DF85820 		ldrb	r2, [sp, #88]	@ zero_extendqisi2
- 359 00f8 0F49     		ldr	r1, .L16+24
- 360 00fa 03A8     		add	r0, sp, #12
- 361 00fc FFF7FEFF 		bl	sprintf
- 362              	.LVL12:
-  76:Core/Src/rtc.c ****     Debug_Message_Transmit(tx_buf);
- 363              		.loc 1 76 5 is_stmt 1 view .LVU89
- 364 0100 03A8     		add	r0, sp, #12
- 365 0102 FFF7FEFF 		bl	Debug_Message_Transmit
- 366              	.LVL13:
-  77:Core/Src/rtc.c **** 
-  78:Core/Src/rtc.c ****     if (HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, Device_Report_Cycle, RTC_WAKEUPCLOCK_CK_SPRE_16BITS) != 
- 367              		.loc 1 78 5 view .LVU90
- 368              		.loc 1 78 9 is_stmt 0 view .LVU91
- 369 0106 0422     		movs	r2, #4
- 370 0108 074B     		ldr	r3, .L16+8
- 371 010a 1968     		ldr	r1, [r3]
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 9
+  66:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Hours -= 24;
+ 275              		.loc 1 66 9 is_stmt 1 view .LVU78
+ 276              		.loc 1 66 41 is_stmt 0 view .LVU79
+ 277 00f2 183B     		subs	r3, r3, #24
+ 278 00f4 8DF85830 		strb	r3, [sp, #88]
+ 279              	.L10:
+  67:Core/Src/rtc.c ****     }
+  68:Core/Src/rtc.c ****     
+  69:Core/Src/rtc.c ****     sprintf(tx_buf,"Will Wake-up %02d:%02d:%02d\n",salarmstructure.AlarmTime.Hours,salarmstructure.
+ 280              		.loc 1 69 5 is_stmt 1 view .LVU80
+ 281              		.loc 1 69 143 is_stmt 0 view .LVU81
+ 282 00f8 9DF85A30 		ldrb	r3, [sp, #90]	@ zero_extendqisi2
+ 283              		.loc 1 69 5 view .LVU82
+ 284 00fc 0093     		str	r3, [sp]
+ 285 00fe 9DF85930 		ldrb	r3, [sp, #89]	@ zero_extendqisi2
+ 286 0102 9DF85820 		ldrb	r2, [sp, #88]	@ zero_extendqisi2
+ 287 0106 1749     		ldr	r1, .L15+28
+ 288 0108 03A8     		add	r0, sp, #12
+ 289 010a FFF7FEFF 		bl	sprintf
+ 290              	.LVL8:
+  70:Core/Src/rtc.c ****     Debug_Message_Transmit(tx_buf);
+ 291              		.loc 1 70 5 is_stmt 1 view .LVU83
+ 292 010e 03A8     		add	r0, sp, #12
+ 293 0110 FFF7FEFF 		bl	Debug_Message_Transmit
+ 294              	.LVL9:
+  71:Core/Src/rtc.c **** 
+  72:Core/Src/rtc.c ****     if (HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, Device_Report_Cycle, RTC_WAKEUPCLOCK_CK_SPRE_16BITS) != 
+ 295              		.loc 1 72 5 view .LVU84
+ 296              		.loc 1 72 9 is_stmt 0 view .LVU85
+ 297 0114 0422     		movs	r2, #4
+ 298 0116 0F4B     		ldr	r3, .L15+12
+ 299 0118 1968     		ldr	r1, [r3]
+ 300 011a 0B48     		ldr	r0, .L15
+ 301 011c FFF7FEFF 		bl	HAL_RTCEx_SetWakeUpTimer_IT
+ 302              	.LVL10:
+ 303              		.loc 1 72 8 view .LVU86
+ 304 0120 78B9     		cbnz	r0, .L14
+ 305              	.L5:
+  73:Core/Src/rtc.c ****     {
+  74:Core/Src/rtc.c ****         Error_Handler();
+  75:Core/Src/rtc.c ****     }
+  76:Core/Src/rtc.c **** }
+ 306              		.loc 1 76 1 view .LVU87
+ 307 0122 21B0     		add	sp, sp, #132
+ 308              	.LCFI5:
+ 309              		.cfi_remember_state
+ 310              		.cfi_def_cfa_offset 12
+ 311              		@ sp needed
+ 312 0124 30BD     		pop	{r4, r5, pc}
+ 313              	.L13:
+ 314              	.LCFI6:
+ 315              		.cfi_restore_state
+  34:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Minutes = sTime.Minutes + ((REPORT_TIME_INIT / 60) % 60);   
+ 316              		.loc 1 34 9 is_stmt 1 view .LVU88
+  34:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Minutes = sTime.Minutes + ((REPORT_TIME_INIT / 60) % 60);   
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s 			page 8
 
 
- 372 010c 0448     		ldr	r0, .L16
- 373 010e FFF7FEFF 		bl	HAL_RTCEx_SetWakeUpTimer_IT
- 374              	.LVL14:
- 375              		.loc 1 78 8 view .LVU92
- 376 0112 08B9     		cbnz	r0, .L15
- 377              	.L9:
-  79:Core/Src/rtc.c ****     {
-  80:Core/Src/rtc.c ****         Error_Handler();
-  81:Core/Src/rtc.c ****     }
-  82:Core/Src/rtc.c **** }
- 378              		.loc 1 82 1 view .LVU93
- 379 0114 21B0     		add	sp, sp, #132
- 380              	.LCFI8:
- 381              		.cfi_remember_state
- 382              		.cfi_def_cfa_offset 12
- 383              		@ sp needed
- 384 0116 30BD     		pop	{r4, r5, pc}
- 385              	.L15:
- 386              	.LCFI9:
- 387              		.cfi_restore_state
-  80:Core/Src/rtc.c ****     }
- 388              		.loc 1 80 9 is_stmt 1 view .LVU94
- 389 0118 FFF7FEFF 		bl	Error_Handler
- 390              	.LVL15:
- 391              		.loc 1 82 1 is_stmt 0 view .LVU95
- 392 011c FAE7     		b	.L9
- 393              	.L17:
- 394 011e 00BF     		.align	2
- 395              	.L16:
- 396 0120 00000000 		.word	hrtc
- 397 0124 00000000 		.word	.LC1
- 398 0128 00000000 		.word	Device_Report_Cycle
- 399 012c C5B3A291 		.word	-1851608123
- 400 0130 89888888 		.word	-2004318071
- 401 0134 80808000 		.word	8421504
- 402 0138 1C000000 		.word	.LC2
- 403              		.cfi_endproc
- 404              	.LFE135:
- 406              		.global	RTC_seconds
- 407              		.global	RTC_minutes
- 408              		.global	RTC_hours
- 409              		.global	time_counters
- 410              		.section	.bss.RTC_hours,"aw",%nobits
- 411              		.align	1
- 412              		.set	.LANCHOR0,. + 0
- 415              	RTC_hours:
- 416 0000 0000     		.space	2
- 417              		.section	.bss.RTC_minutes,"aw",%nobits
- 418              		.align	1
- 419              		.set	.LANCHOR1,. + 0
- 422              	RTC_minutes:
- 423 0000 0000     		.space	2
- 424              		.section	.bss.RTC_seconds,"aw",%nobits
- 425              		.align	1
- 426              		.set	.LANCHOR2,. + 0
- 429              	RTC_seconds:
- 430 0000 0000     		.space	2
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 10
+ 317              		.loc 1 34 50 is_stmt 0 view .LVU89
+ 318 0126 9DF84430 		ldrb	r3, [sp, #68]	@ zero_extendqisi2
+  34:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Minutes = sTime.Minutes + ((REPORT_TIME_INIT / 60) % 60);   
+ 319              		.loc 1 34 43 view .LVU90
+ 320 012a 8DF85830 		strb	r3, [sp, #88]
+  35:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Seconds = sTime.Seconds + (REPORT_TIME_INIT % 60);        
+ 321              		.loc 1 35 9 is_stmt 1 view .LVU91
+  35:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Seconds = sTime.Seconds + (REPORT_TIME_INIT % 60);        
+ 322              		.loc 1 35 50 is_stmt 0 view .LVU92
+ 323 012e 9DF84530 		ldrb	r3, [sp, #69]	@ zero_extendqisi2
+  35:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Seconds = sTime.Seconds + (REPORT_TIME_INIT % 60);        
+ 324              		.loc 1 35 59 view .LVU93
+ 325 0132 0F33     		adds	r3, r3, #15
+  35:Core/Src/rtc.c ****         salarmstructure.AlarmTime.Seconds = sTime.Seconds + (REPORT_TIME_INIT % 60);        
+ 326              		.loc 1 35 43 view .LVU94
+ 327 0134 8DF85930 		strb	r3, [sp, #89]
+  36:Core/Src/rtc.c ****     }
+ 328              		.loc 1 36 9 is_stmt 1 view .LVU95
+  36:Core/Src/rtc.c ****     }
+ 329              		.loc 1 36 50 is_stmt 0 view .LVU96
+ 330 0138 9DF84630 		ldrb	r3, [sp, #70]	@ zero_extendqisi2
+  36:Core/Src/rtc.c ****     }
+ 331              		.loc 1 36 43 view .LVU97
+ 332 013c 8DF85A30 		strb	r3, [sp, #90]
+ 333 0140 B3E7     		b	.L7
+ 334              	.L14:
+  74:Core/Src/rtc.c ****     }
+ 335              		.loc 1 74 9 is_stmt 1 view .LVU98
+ 336 0142 FFF7FEFF 		bl	Error_Handler
+ 337              	.LVL11:
+ 338              		.loc 1 76 1 is_stmt 0 view .LVU99
+ 339 0146 ECE7     		b	.L5
+ 340              	.L16:
+ 341              		.align	2
+ 342              	.L15:
+ 343 0148 00000000 		.word	hrtc
+ 344 014c 00000000 		.word	.LC0
+ 345 0150 00000000 		.word	Device_Sensor_Signal
+ 346 0154 00000000 		.word	Device_Report_Cycle
+ 347 0158 C5B3A291 		.word	-1851608123
+ 348 015c 89888888 		.word	-2004318071
+ 349 0160 80808000 		.word	8421504
+ 350 0164 1C000000 		.word	.LC1
+ 351              		.cfi_endproc
+ 352              	.LFE134:
+ 354              		.global	RTC_seconds
+ 355              		.global	RTC_minutes
+ 356              		.global	RTC_hours
+ 357              		.global	time_counters
+ 358              		.section	.bss.RTC_hours,"aw",%nobits
+ 359              		.align	1
+ 360              		.set	.LANCHOR0,. + 0
+ 363              	RTC_hours:
+ 364 0000 0000     		.space	2
+ 365              		.section	.bss.RTC_minutes,"aw",%nobits
+ 366              		.align	1
+ 367              		.set	.LANCHOR1,. + 0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s 			page 9
 
 
- 431              		.section	.bss.time_counters,"aw",%nobits
- 432              		.align	2
- 435              	time_counters:
- 436 0000 00000000 		.space	4
- 437              		.text
- 438              	.Letext0:
- 439              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
- 440              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
- 441              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
- 442              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
- 443              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rtc.h"
- 444              		.file 7 "Core/Inc/main.h"
- 445              		.file 8 "Core/Inc/rtc.h"
- 446              		.file 9 "Core/Inc/device.h"
- 447              		.file 10 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\stdio.h"
- 448              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rtc_ex.h"
- 449              		.file 12 "<built-in>"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s 			page 11
+ 370              	RTC_minutes:
+ 371 0000 0000     		.space	2
+ 372              		.section	.bss.RTC_seconds,"aw",%nobits
+ 373              		.align	1
+ 374              		.set	.LANCHOR2,. + 0
+ 377              	RTC_seconds:
+ 378 0000 0000     		.space	2
+ 379              		.section	.bss.time_counters,"aw",%nobits
+ 380              		.align	2
+ 383              	time_counters:
+ 384 0000 00000000 		.space	4
+ 385              		.text
+ 386              	.Letext0:
+ 387              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 388              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 389              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303xc.h"
+ 390              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 391              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rtc.h"
+ 392              		.file 7 "Core/Inc/main.h"
+ 393              		.file 8 "Core/Inc/rtc.h"
+ 394              		.file 9 "Core/Inc/device.h"
+ 395              		.file 10 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\stdio.h"
+ 396              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rtc_ex.h"
+ 397              		.file 12 "<built-in>"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 rtc.c
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:20     .text.RTC_Init:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:26     .text.RTC_Init:00000000 RTC_Init
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:75     .text.RTC_Init:0000002c $d
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:80     .rodata.RTC_Measure_Time.str1.4:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:84     .text.RTC_Measure_Time:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:90     .text.RTC_Measure_Time:00000000 RTC_Measure_Time
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:165    .text.RTC_Measure_Time:00000054 $d
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:174    .rodata.RTC_AlarmConfig.str1.4:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:181    .text.RTC_AlarmConfig:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:187    .text.RTC_AlarmConfig:00000000 RTC_AlarmConfig
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:396    .text.RTC_AlarmConfig:00000120 $d
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:429    .bss.RTC_seconds:00000000 RTC_seconds
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:422    .bss.RTC_minutes:00000000 RTC_minutes
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:415    .bss.RTC_hours:00000000 RTC_hours
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:435    .bss.time_counters:00000000 time_counters
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:411    .bss.RTC_hours:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:418    .bss.RTC_minutes:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:425    .bss.RTC_seconds:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccwfFJ65.s:432    .bss.time_counters:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:20     .text.RTC_Measure_Time:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:26     .text.RTC_Measure_Time:00000000 RTC_Measure_Time
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:83     .text.RTC_Measure_Time:00000038 $d
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:91     .rodata.RTC_AlarmConfig.str1.4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:98     .text.RTC_AlarmConfig:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:104    .text.RTC_AlarmConfig:00000000 RTC_AlarmConfig
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:343    .text.RTC_AlarmConfig:00000148 $d
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:377    .bss.RTC_seconds:00000000 RTC_seconds
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:370    .bss.RTC_minutes:00000000 RTC_minutes
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:363    .bss.RTC_hours:00000000 RTC_hours
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:383    .bss.time_counters:00000000 time_counters
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:359    .bss.RTC_hours:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:366    .bss.RTC_minutes:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:373    .bss.RTC_seconds:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccoU5MPz.s:380    .bss.time_counters:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_RTC_GetTime
 HAL_RTC_GetDate
 hrtc
+memset
 sprintf
 Debug_Message_Transmit
-memset
 HAL_RTCEx_SetWakeUpTimer_IT
 Error_Handler
+Device_Sensor_Signal
 Device_Report_Cycle

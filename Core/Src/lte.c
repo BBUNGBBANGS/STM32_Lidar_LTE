@@ -10,8 +10,8 @@ uint16_t LTE_Rx_Counter;
 uint8_t dummy_lte;
 
 uint8_t LTE_Status;
-uint8_t LTE_GPS_Status;// = LTE_GPS_STEP_FINISH;
-uint8_t LTE_ID[] = "SN_FM4_TEST_002";
+uint8_t LTE_GPS_Status;
+uint32_t LTE_SN,LTE_SN_SUB;
 uint16_t LTE_TEMP_I,LTE_TEMP_D,LTE_HUMI_I,LTE_HUMI_D,LTE_DIST_I,LTE_DIST_D;
 uint16_t LTE_CHAR_I,LTE_CHAR_D;
 uint16_t LTE_GPS_LAT_I,LTE_GPS_LONG_I;
@@ -49,7 +49,7 @@ void LTE_Control(void)
     LTE_Update_Data();
     if(LTE_GPS_STEP_FINISH == LTE_GPS_Status)
     {
-        //LTE_Connect();
+        LTE_Connect();
     }
     else
     {
@@ -81,13 +81,13 @@ static void LTE_Update_Data(void)
     
     if(data.Temperature<0)
     {
-        sprintf(LTE_ASCII_Buffer,"{\"_ID\":\"%s\",\"_TEMP\":\"-%d.%02d\",\"_HUMI\":\"%d.%02d\",\"_DIST\":\"%d.%02d\",\"_CHAR\":\"%d.%02d\",\"_GPS\":\"%d.%05d,%d.%05d\",\"_DOOR\":\"%d\"}",
-            LTE_ID,LTE_TEMP_I,LTE_TEMP_D,LTE_HUMI_I,LTE_HUMI_D,LTE_DIST_I,LTE_DIST_D,LTE_CHAR_I,LTE_CHAR_D,LTE_GPS_LAT_I,LTE_GPS_LAT_D,LTE_GPS_LONG_I,LTE_GPS_LONG_D,LTE_DOOR);
+        sprintf(LTE_ASCII_Buffer,"{\"_ID\":\"SN-FM4-%03d-%09d\",\"_TEMP\":\"-%d.%02d\",\"_HUMI\":\"%d.%02d\",\"_DIST\":\"%d.%02d\",\"_CHAR\":\"%d.%02d\",\"_GPS\":\"%d.%05d,%d.%05d\",\"_DOOR\":\"%d\"}",
+            LTE_SN,LTE_SN_SUB,LTE_TEMP_I,LTE_TEMP_D,LTE_HUMI_I,LTE_HUMI_D,LTE_DIST_I,LTE_DIST_D,LTE_CHAR_I,LTE_CHAR_D,LTE_GPS_LAT_I,LTE_GPS_LAT_D,LTE_GPS_LONG_I,LTE_GPS_LONG_D,LTE_DOOR);
     }
     else
     {
-        sprintf(LTE_ASCII_Buffer,"{\"_ID\":\"%s\",\"_TEMP\":\"%d.%02d\",\"_HUMI\":\"%d.%02d\",\"_DIST\":\"%d.%02d\",\"_CHAR\":\"%d.%02d\",\"_GPS\":\"%d.%05d,%d.%05d\",\"_DOOR\":\"%d\"}",
-            LTE_ID,LTE_TEMP_I,LTE_TEMP_D,LTE_HUMI_I,LTE_HUMI_D,LTE_DIST_I,LTE_DIST_D,LTE_CHAR_I,LTE_CHAR_D,LTE_GPS_LAT_I,LTE_GPS_LAT_D,LTE_GPS_LONG_I,LTE_GPS_LONG_D,LTE_DOOR);
+        sprintf(LTE_ASCII_Buffer,"{\"_ID\":\"SN-FM4-%03d-%09d\",\"_TEMP\":\"%d.%02d\",\"_HUMI\":\"%d.%02d\",\"_DIST\":\"%d.%02d\",\"_CHAR\":\"%d.%02d\",\"_GPS\":\"%d.%05d,%d.%05d\",\"_DOOR\":\"%d\"}",
+            LTE_SN,LTE_SN_SUB,LTE_TEMP_I,LTE_TEMP_D,LTE_HUMI_I,LTE_HUMI_D,LTE_DIST_I,LTE_DIST_D,LTE_CHAR_I,LTE_CHAR_D,LTE_GPS_LAT_I,LTE_GPS_LAT_D,LTE_GPS_LONG_I,LTE_GPS_LONG_D,LTE_DOOR);
     }
     
 }

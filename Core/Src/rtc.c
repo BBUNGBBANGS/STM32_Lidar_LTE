@@ -4,22 +4,9 @@
 uint32_t time_counters;
 uint16_t RTC_hours,RTC_minutes,RTC_seconds;
 
-void RTC_Init(void)
-{
-
-    RTC_TimeTypeDef sTime = {0};
-    RTC_DateTypeDef sDate = {0};
-
-    HAL_RTC_GetTime(&hrtc, &sTime, FORMAT_BIN);
-    HAL_RTC_GetDate(&hrtc, &sDate, FORMAT_BIN);
-    
-    
-    //Debug_Message_Transmit("Set RTC Alarm\n");
-}
 
 void RTC_Measure_Time(void)
 {
-    uint8_t tx_buf[20] = {0,};
     RTC_TimeTypeDef Time;
     RTC_DateTypeDef Date;
     HAL_RTC_GetTime(&hrtc, &Time, FORMAT_BIN);
@@ -27,8 +14,6 @@ void RTC_Measure_Time(void)
     RTC_hours = Time.Hours;
     RTC_minutes = Time.Minutes;
     RTC_seconds = Time.Seconds;
-    sprintf(tx_buf,"RTC Time : %d:%d:%d\n",RTC_hours,RTC_minutes,RTC_seconds);
-    Debug_Message_Transmit(tx_buf);
 }
     
 void RTC_AlarmConfig(void)
@@ -44,9 +29,18 @@ void RTC_AlarmConfig(void)
     Debug_Message_Transmit(tx_buf);
     /*##-3- Configure the RTC Alarm peripheral #################################*/
     /* RTC Alarm Generation: Alarm on Hours, Minutes and Seconds */
-    salarmstructure.AlarmTime.Hours   = sTime.Hours + (Device_Report_Cycle / 3600); // Sleep Time 설정
-    salarmstructure.AlarmTime.Minutes = sTime.Minutes + ((Device_Report_Cycle / 60) % 60);   
-    salarmstructure.AlarmTime.Seconds = sTime.Seconds + (Device_Report_Cycle % 60);
+    if(DEVICE_SENSOR_DETECTED == Device_Sensor_Signal)
+    {
+        salarmstructure.AlarmTime.Hours   = sTime.Hours;
+        salarmstructure.AlarmTime.Minutes = sTime.Minutes + ((REPORT_TIME_INIT / 60) % 60);   
+        salarmstructure.AlarmTime.Seconds = sTime.Seconds + (REPORT_TIME_INIT % 60);        
+    }
+    else
+    {
+        salarmstructure.AlarmTime.Hours   = sTime.Hours + (Device_Report_Cycle / 3600); // Sleep Time 설정
+        salarmstructure.AlarmTime.Minutes = sTime.Minutes + ((Device_Report_Cycle / 60) % 60);   
+        salarmstructure.AlarmTime.Seconds = sTime.Seconds + (Device_Report_Cycle % 60);
+    }
     salarmstructure.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
     salarmstructure.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
     salarmstructure.AlarmMask = RTC_ALARMMASK_HOURS|RTC_ALARMMASK_MINUTES|RTC_ALARMMASK_SECONDS;
